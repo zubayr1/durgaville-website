@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router, Routes , Route} from 'react-router-dom'
+import DashboardHome from './components/DashboardHome';
+import DashboardEvents from './components/DashboardEvents';
+import DashboardMembers from './components/DashboardMembers';
+import DashboardAdmin from './components/DashboardAdmin';
+import AdminPortal from './components/AdminPortal';
+import AdminAddPost from './components/AdminAddPost';
+import AdminAddEvent from './components/AdminAddEvent';
+import AdminAddMember from './components/AdminAddMember';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<DashboardHome/>}/>
+          <Route exact path="/upcoming-events" element={<DashboardEvents/>}/>
+          <Route exact path="/meet-the-team" element={<DashboardMembers/>}/>
+          <Route exact path="/adminlogin" element={<DashboardAdmin/>}/>
+          <Route exact path="/adminportal" element={<AdminPortal/>}/>
+          <Route exact path="/adminaddpost" element={<AdminAddPost/>}/>
+          <Route exact path="/adminaddevent" element={<AdminAddEvent/>}/>
+          <Route exact path="/adminaddmember" element={<AdminAddMember/>}/>
+        </Routes>
+      </Router>
     </div>
   );
 }

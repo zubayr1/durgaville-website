@@ -1,0 +1,30 @@
+.greetings-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    transform: translate(0, -50%);
+    overflow: hidden;
+    top: 50%;
+  }
+
+@media only screen and (min-width: 768px) {
+    .greetings-container {
+        top: 35vh /* For tablets */
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .greetings-container {
+        top: 60vh; /* For desktops */
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .greetings-container {
+        top: 25vh; /* For mobile devices */
+       
+    }
+}
+
+
+
