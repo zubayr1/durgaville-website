@@ -3,7 +3,7 @@ import Background from './Background';
 import Greetings from './Greetings';
 import Footer from './Footer';
 import Navbar from './Navbar';
-import Events from './Events';
+import Members from './Members';
 import {
     SidebarPusher,
     SidebarPushable,
@@ -98,7 +98,7 @@ function DashboardMembers() {
                     <Greetings onScrollDown={handleScroll}/>
                     <Navbar visible={navbarVisible} setVisible={setNavbarVisible}/>
                     <div ref={homeRef}>
-                        <Events/>
+                        <Members/>
                     </div>
                     <Footer />
                 </Grid.Column>
@@ -155,7 +155,7 @@ function DashboardMembers() {
                             <Greetings onScrollDown={handleScroll}/>
                             <Navbar visible={navbarVisible} setVisible={setNavbarVisible}/>
                             <div ref={homeRef}>
-                                <Events/>
+                                <Members/>
                             </div>
                             <Footer />
                         </SidebarPusher>

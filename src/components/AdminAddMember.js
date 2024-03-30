@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 const AdminAddMember = () => {
   const [name, setName] = useState('');
   const [image, setImage] = useState(null);
-
+  const [date, setDate] = useState('');
   const [error, setError] = useState(-1);
 
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const AdminAddMember = () => {
 
   const handleSubmit = async () => {
     
-    if(name==='' || image===null)
+    if(name==='' || date===''|| image===null)
     {
         setError(1);
     }
@@ -45,7 +45,8 @@ const AdminAddMember = () => {
 
             // Add document to a 'members' collection in Firestore
             await addDoc(collection(db, 'members'), {
-              title: name,              
+              title: name,   
+              date: date,           
               imageUrl: imageUrl,
             });
             setError(0);
@@ -116,7 +117,17 @@ const AdminAddMember = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
-                    </Form.Field>                    
+                    </Form.Field>   
+
+                    <Form.Field>
+                    <label>Date and Time</label>
+                    <input
+                      type="datetime-local" // Use type datetime-local for date and time input
+                      value={date}
+                      onChange={(e) => setDate(e.target.value)}
+                    />
+                    </Form.Field>  
+
                     <Form.Field>
                     <label>Image</label>
                     <input
