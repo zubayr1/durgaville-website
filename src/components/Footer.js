@@ -185,7 +185,7 @@ function Footer() {
 
                 <Grid.Column floated='left' width={8} style={{ padding: 0 }}>
                   <p style={{ fontFamily: 'Inter', fontSize: '1.4rem', color: '#919199', margin: 0, fontStyle:'italic' }}>
-                    durgaville.erlangen@gmail.com</p>
+                    info@durgaville.com</p>
                 </Grid.Column>
               </Grid>
 
@@ -293,7 +293,7 @@ function Footer() {
 
                 <Grid.Column floated='left' width={8} style={{ padding: 0 }}>
                   <p style={{ fontFamily: 'Inter', fontSize: '1.2rem', color: '#919199', margin: 0, fontStyle:'italic' }}>
-                    durgaville.erlangen@gmail.com</p>
+                    info@durgaville.com</p>
                 </Grid.Column>
               </Grid>
 
@@ -398,7 +398,7 @@ function Footer() {
 
                   <Grid.Row floated='left' width={8} style={{ padding: 0, marginBottom: '3%' }}>
                     <p style={{ fontFamily: 'Inter', fontSize: '1.2rem', color: '#919199', margin: 0, fontStyle:'italic' }}>
-                      durgaville.erlangen@gmail.com</p>
+                      info@durgaville.com</p>
                   </Grid.Row>
 
                   <Grid.Row width={4} style={{ padding: 0 }}>
