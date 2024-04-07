@@ -38,15 +38,14 @@ function Greetings({ onScrollDown }) {
                 <Grid.Column width={16} only='computer' textAlign='center'>
                     
                     <div style={{ opacity: showFirstDiv ? 1 : 0, transition: 'opacity 0.7s ease' }}>
-                        <p style={{fontFamily: 'Inter', fontSize:'7.0rem', color:'white', fontWeight: 'bold', marginBottom: '2%',
-                        marginLeft:'15%', marginRight:'15%', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)'}}>
+                        <p className='welcome-text'>
                             WELCOME TO {'\n'} DURGAVILLE</p>
-                        <p style={{fontFamily: 'Inter', fontSize:'2.0rem', color:'white', fontStyle: 'italic',  marginBottom: '3%',
+                        <p className='tag-text' style={{fontFamily: 'Inter', color:'white', fontStyle: 'italic', 
                         textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'}}>
                             The Official Website of Durgaville, Erlangen,</p> 
 
-                        <p style={{fontFamily: 'Inter', fontSize:'2.0rem', color:'white', fontStyle: 'italic',
-                        textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)', marginBottom: '4%',}}>
+                        <p className='desc-text' style={{fontFamily: 'Inter', color:'white', fontStyle: 'italic',
+                        textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'}}>
                             a rapidly growing community of Bengalis and Indians in Erlangen, Germany and beyond!</p>
 
                         
@@ -59,8 +58,8 @@ function Greetings({ onScrollDown }) {
                     <div style={{ opacity: showSecondDiv ? 1 : 0, transition: 'opacity 0.5s ease, transform 0.5s ease', 
                         transform: showSecondDiv ? 'translateY(-140px)' : 'translateY(10px)', zIndex: 1 }}>
                         {showSecondDiv  &&
-                            <p style={{ fontFamily: 'Inter', fontSize: '4rem', color: 'white', fontWeight: 'bold', border: '4px solid white', 
-                            padding: '20px', width: 'fit-content', margin: 'auto', textTransform: 'uppercase' }}>DURGAVILLE</p>
+                            <p className='border-container' style={{ fontFamily: 'Inter', color: 'white', fontWeight: 'bold',  
+                                width: 'fit-content', margin: 'auto', textTransform: 'uppercase' }}>DURGAVILLE</p>
 
                         }
                     </div>
