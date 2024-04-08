@@ -84,7 +84,7 @@ const handleiconClick = (value) =>
         <Grid centered>
             <Grid.Row>
                 <Grid.Column width={16} only='computer' verticalAlign='middle' textAlign='middle'>
-                    <div className="custom-menu" style={{marginLeft:"15%", marginRight:"15%"}}>
+                    <div className="custom-menu" style={{}}>
 
                         <Menu compact secondary attached='top' tabular>
                             <Menu.Item

@@ -30,7 +30,17 @@
 
 .custom-menu {
     background-color: rgba(255, 255, 255, 0.2); /* Translucent whitish background */
+    margin-left: 15%;
+    margin-right: 15%;
 }
+
+@media (max-width: 1496px) {
+    .custom-menu {
+        background-color: rgba(255, 255, 255, 0.2); /* Translucent whitish background */
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+  }
 
 .custom-menu .item {
     color: white !important; /* White text color for menu items */
