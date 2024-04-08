@@ -39,9 +39,9 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
   
-  @media (max-width: 1024px) {
+  @media (max-width: 1496px) {
     .welcome-text {
-      font-size: 5.0rem;
+      font-size: 5.6rem;
       margin-bottom: 1%;
     }
   }
@@ -53,9 +53,9 @@
     
   }
   
-  @media (max-width: 1024px) {
+  @media (max-width: 1496px) {
     .tag-text {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       margin-bottom: 1%;
     }
   }
@@ -67,9 +67,9 @@
     
   }
   
-  @media (max-width: 1024px) {
+  @media (max-width: 1496px) {
     .desc-text {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       margin-bottom: 2%;
     }
   }
@@ -81,10 +81,10 @@
     font-size: 4rem;
   }
   
-  @media (max-width: 1024px) {
+  @media (max-width: 1496px) {
     .border-container {
         border: 2px solid white; 
-        padding: 14px; 
-        font-size: 2.5rem;
+        padding: 16px; 
+        font-size: 3rem;
     }
   }
