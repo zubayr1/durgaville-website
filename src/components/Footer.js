@@ -376,8 +376,11 @@ function Footer() {
                   </Grid.Row>
 
                   <Grid.Row floated='left' width={8} style={{ padding: 0, marginBottom: '3%' }}>
-                    <p style={{ fontFamily: 'Inter', fontSize: '1.2rem', color: '#919199', margin: 0 }}>Am Europakanal 2, 91056</p>
-                    <p style={{ fontFamily: 'Inter', fontSize: '1.2rem', color: '#919199', margin: 0 }}>Erlangen, Germany</p>
+                    <div>
+                      <p style={{ fontFamily: 'Inter', fontSize: '1.2rem', color: '#919199', margin: 0, lineHeight: '1.5', display: 'block' }}>Am Europakanal 2, 91056</p>
+                      <p style={{ fontFamily: 'Inter', fontSize: '1.2rem', color: '#919199', margin: 0, lineHeight: '1.5', display: 'block' }}>Erlangen, Germany</p>
+                    </div>
+
                   </Grid.Row>
 
 
