@@ -1,0 +1,96 @@
+  
+  .grid-item-events {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .item-date-events {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .item-title-events {
+    font-size: 2rem; /* Increased font size for title */
+    margin-bottom: 10px;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+  }
+
+  .item-content-events {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  
+  .item-image-events {
+    max-width: 100%;
+    height: 600px; /* Set a fixed height for images */
+    object-fit: cover; /* Maintain aspect ratio and cover entire container */
+    margin-bottom: 10px;
+  }
+  
+  .item-description-events {
+    font-size: 1.6rem;
+    line-height: 2;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .grid-container-events {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1200px, 1fr)); /* Adjusts to fit two columns for desktop view */
+    gap: 20px;
+    padding: 60px; /* Add padding to grid container */
+  }
+  
+  @media (max-width: 767px) {
+    .grid-container-events {
+      grid-template-columns: repeat(1, 1fr); /* One column for tablet and mobile view */
+    }
+  }
+  
+  /* Media query for tablet screens */
+    @media only screen and (max-width: 768px) {
+    .item-description-events {
+      font-size: 1.4rem; /* Decrease font size for tablets */
+    }
+  }
+  
+  /* Media query for mobile screens */
+  @media only screen and (max-width: 480px) {
+    .item-description-events {
+      font-size: 1.2rem; /* Further decrease font size for mobile */
+    }
+  }
+
+  /* Media query for tablet screens */
+    @media only screen and (max-width: 768px) {
+    .item-image-events {
+      height: 400px; /* Decrease height for tablets */
+    }
+  }
+  
+  /* Media query for mobile screens */
+  @media only screen and (max-width: 480px) {
+    .item-image-events {
+      height: 300px; /* Further decrease height for mobile */
+    }
+  }
+
+
+  /* Media query for tablet screens */
+    @media only screen and (max-width: 768px) {
+    .grid-container-events {
+      padding: 30px; /* Decrease padding for tablet */
+    }
+  }
+  
+  /* Media query for mobile screens */
+  @media only screen and (max-width: 480px) {
+    .grid-container-events {
+      padding: 20px; /* Further decrease padding for mobile */
+    }
+  }

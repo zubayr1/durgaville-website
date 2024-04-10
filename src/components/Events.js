@@ -1,68 +1,76 @@
-import React from 'react'
-import { Grid,} from 'semantic-ui-react'
+import React, { useState, useEffect } from 'react';
+import { db } from '../firebase.js'; 
+import {
+    collection,    
+    getDocs,    
+    query,
+    orderBy
+} from 'firebase/firestore'
+import { Modal, Button, } from 'semantic-ui-react';
+
+import './events.css';
+import './home.css';
 
 function Events() {
+  const [items, setItems] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const querySnapshot = await getDocs(
+          query(collection(db, 'events'), orderBy('date', 'desc'))
+        );
+        const newData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setItems(newData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <div style={{marginLeft:'5%', marginRight:'5%', marginTop:'5%', paddingBottom:'5%'}}>
-      <Grid centered>
-        <Grid.Row only='computer'>
-          <p style={{fontWeight:'bolder', fontFamily: 'Inter', fontSize:'4rem'}}>LET US LOOK
-            AT OUR UPCOMING EVENTS</p>
-        </Grid.Row>
+    <div style={{ backgroundColor:"#dee0e3" }}>
+      <div className="grid-container-events margin-container">
+        {items.map((item) => (
+          <div className="grid-item-events" key={item.id} onClick={() => handleItemClick(item)}> 
+            <div className="item-content-events">
+              <h4 className="item-title-events">{item.title}</h4>
+              <div className="content-container">
+                <img src={item.imageUrl} alt={item.title} className="item-image-events" />
+                <p className="item-description-events">{item.description}</p>
+              </div>
+            </div>            
+          </div>
+        ))}
+      </div>
 
-        <Grid.Row only='computer'>
-          <p style={{fontFamily: 'Inter', fontSize:'2rem', fontStyle:'italic'}}>
-            Durgaville throughout the year organizes a lot of events which are open to you all.
-            From cultural events to religious events, from watching Cricket together to playing Football together. 
-            Here you will find the upcoming events.</p>
-        </Grid.Row>
-
-        <Grid.Row only='computer'>
-          <p style={{fontFamily: 'Inter', fontSize:'2rem', fontStyle:'italic', marginTop:'5%'}}>
-          No events right now... Please come back later...</p>
-        </Grid.Row>
-
-
-
-
-        <Grid.Row only='tablet'>
-          <p style={{fontWeight:'bolder', fontFamily: 'Inter', fontSize:'3rem'}}>LET US LOOK
-            AT OUR UPCOMING EVENTS</p>
-        </Grid.Row>
-
-        <Grid.Row only='tablet'>
-          <p style={{fontFamily: 'Inter', fontSize:'1.4rem', fontStyle:'italic'}}>
-            Durgaville throughout the year organizes a lot of events which are open to you all.
-            From cultural events to religious events, from watching Cricket together to playing Football together. 
-            Here you will find the upcoming events.</p>
-        </Grid.Row>
-
-        <Grid.Row only='tablet'>
-          <p style={{fontFamily: 'Inter', fontSize:'1.4rem', fontStyle:'italic', marginTop:'5%'}}>
-          No events right now... Please come back later...</p>
-        </Grid.Row>
-
-
-
-        <Grid.Row only='mobile'>
-          <p style={{fontWeight:'bolder', fontFamily: 'Inter', fontSize:'1.6rem'}}>LET US LOOK
-            AT OUR UPCOMING EVENTS</p>
-        </Grid.Row>
-
-        <Grid.Row only='mobile'>
-          <p style={{fontFamily: 'Inter', fontSize:'1rem', fontStyle:'italic'}}>
-            Durgaville throughout the year organizes a lot of events which are open to you all.
-            From cultural events to religious events, from watching Cricket together to playing Football together. 
-            Here you will find the upcoming events.</p>
-        </Grid.Row>
-
-        <Grid.Row only='mobile'>
-          <p style={{fontFamily: 'Inter', fontSize:'1rem', fontStyle:'italic', marginTop:'5%'}}>
-          No events right now... Please come back later...</p>
-        </Grid.Row>
-      </Grid>
-      
+      <Modal open={modalOpen} onClose={handleModalClose}>
+        <Modal.Header>{selectedItem?.title}</Modal.Header>
+        <Modal.Content>
+          <p>{selectedItem?.description}</p>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '400px' }}>
+            <img src={selectedItem?.imageUrl} alt={selectedItem?.title} style={{ height: '400px' }} />
+          </div>
+        </Modal.Content>
+        <Modal.Actions>
+          <Button onClick={handleModalClose}>Close</Button>
+        </Modal.Actions>
+      </Modal>
     </div>
+
   )
 }
 
