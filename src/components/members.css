@@ -26,6 +26,7 @@
     object-fit: cover; /* Maintain aspect ratio and cover entire container */
     border-radius: 50%; /* Make the image circular */
     margin-bottom: 10px;
+    filter: grayscale(100%);
   }
   
   .item-description-member {
