@@ -59,21 +59,16 @@ function Navbar({ visible, setVisible }) {
 
 };
 
-const handleiconClick = (value) =>
-{
-    if(value==="facebook")
-    {
-        window.location.href = 'https://www.facebook.com/durgaville/';
+const handleiconClick = (value) => {
+    if(value === "facebook") {
+        window.open('https://www.facebook.com/durgaville/', '_blank');
     }
-    if(value==="instagram")
-    {
-        window.location.href = 'https://www.instagram.com/durgaville/';
+    if(value === "instagram") {
+        window.open('https://www.instagram.com/durgaville/', '_blank');
     }
-    if(value==="youtube")
-    {
-        window.location.href = 'https://www.youtube.com/@durgaville8491';
+    if(value === "youtube") {
+        window.open('https://www.youtube.com/@durgaville8491', '_blank');
     }
-
 }
 
 
