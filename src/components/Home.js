@@ -10,11 +10,11 @@ function Home() {
         <div className="margin-container">
                 <Grid centered>
                     <Grid.Column only='computer' width={16} textAlign='middle'>  
-                        <p style={{fontFamily: 'Zapfino', fontSize:'4.5rem', color:'black', fontWeight: 'bold', marginBottom: '5%', marginTop:'6%',
+                        <p style={{fontFamily: 'Inter', fontSize:'4.5rem', color:'black', fontWeight: 'bold', marginBottom: '5%', marginTop:'6%',
                         textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)'}}>
                             ABOUT DURGAVILLE</p>  
 
-                        <p style={{fontFamily: 'Avenir Next LT Pro, sans-serif', lineHeight: '2.5', fontSize:'1.5rem', color:'black', fontStyle:'italic', marginBottom: '5%', marginLeft:'7%', marginRight:'7%'
+                        <p style={{fontFamily: 'Inter', lineHeight: '2.5', fontSize:'1.5rem', color:'black', fontStyle:'italic', marginBottom: '5%', marginLeft:'7%', marginRight:'7%'
                         }}>
                             "Durgaville" stands as a testament to the enduring spirit of Durga Puja among Bengalis, transcending borders to find expression in Erlangen, 
                             Germany. Initiated by three Bengali families, it began as a heartfelt endeavor to recreate the essence of Durga Puja away from home. 
