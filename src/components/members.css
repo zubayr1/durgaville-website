@@ -1,55 +1,70 @@
 .grid-item-member {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Horizontally center */
-    justify-content: center; /* Vertically center */
-  }
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Horizontally center */
+  justify-content: center;
+  /* Vertically center */
+}
 
-  .item-content-member {
-    flex: 1; /* Allow item-content to grow to fill the remaining space */
-    display: flex; /* Use flexbox layout */
-    flex-direction: column; /* Stack items vertically */
-  }
-  
-  
-  .item-title-member {
-    font-size: 1.2rem; /* Adjust font size as needed */
-    margin-bottom: 10px; /* Add some spacing at the bottom */
-  }
-  
-  .item-image-member {
-    width: 200px; /* Specify the desired width */
-    height: 200px; /* Specify the desired height */
-    object-fit: cover; /* Maintain aspect ratio and cover entire container */
-    border-radius: 50%; /* Make the image circular */
-    margin-bottom: 10px;
-    filter: grayscale(100%);
-  }
-  
-  .item-description-member {
-    font-size: 1rem; /* Adjust font size as needed */
-    margin-bottom: 10px; /* Add some spacing at the bottom */
-  }
-  
+.item-content-member {
+  flex: 1;
+  /* Allow item-content to grow to fill the remaining space */
+  display: flex;
+  /* Use flexbox layout */
+  flex-direction: column;
+  /* Stack items vertically */
+}
+
+
+.item-title-member {
+  font-size: 1.2rem;
+  /* Adjust font size as needed */
+  margin-bottom: 10px;
+  /* Add some spacing at the bottom */
+}
+
+.item-image-member {
+  width: 200px;
+  /* Specify the desired width */
+  height: 200px;
+  /* Specify the desired height */
+  object-fit: cover;
+  /* Maintain aspect ratio and cover entire container */
+  border-radius: 50%;
+  /* Make the image circular */
+  margin-bottom: 10px;
+  filter: grayscale(100%);
+}
+
+.item-description-member {
+  font-size: 1rem;
+  /* Adjust font size as needed */
+  margin-bottom: 10px;
+  /* Add some spacing at the bottom */
+}
+
+.grid-container-member {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* Adjusts to fit as many columns as possible */
+  gap: 20px;
+  padding: 60px;
+}
+
+@media (max-width: 767px) {
   .grid-container-member {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusts to fit as many columns as possible */
-    gap: 20px;
-    padding: 60px;
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns for tablet and mobile view */
   }
-  
-  @media (max-width: 767px) {
-    .grid-container-member {
-      grid-template-columns: repeat(2, 1fr); /* Two columns for tablet and mobile view */
-    }
+}
+
+@media (max-width: 480px) {
+  .grid-container-member {
+    grid-template-columns: repeat(1, 1fr);
+    /* One column for mobile view */
   }
-  
-  @media (max-width: 480px) {
-    .grid-container-member {
-      grid-template-columns: repeat(1, 1fr); /* One column for mobile view */
-    }
-  }
-  
+}

@@ -4,46 +4,52 @@
     right: 0;
     transform: translate(0, -50%);
     overflow: hidden;
-  }
+}
 
-  
+
 @media only screen and (min-width: 768px) {
     .navbar-container {
-        top: 67vh; /* For tablets */
+        top: 67vh;
+        /* For tablets */
     }
 }
 
 @media only screen and (min-width: 992px) {
     .navbar-container {
-        top: 97vh; /* For desktops */
-        
+        top: 97vh;
+        /* For desktops */
+
     }
 }
 
 @media only screen and (max-width: 767px) {
     .navbar-container {
-        top: 0%; /* For mobile devices */
-       
+        top: 0%;
+        /* For mobile devices */
+
     }
 }
 
 
 .custom-menu {
-    background-color: rgba(255, 255, 255, 0.2); /* Translucent whitish background */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Translucent whitish background */
     margin-left: 15%;
     margin-right: 15%;
 }
 
 @media (max-width: 1496px) {
     .custom-menu {
-        background-color: rgba(255, 255, 255, 0.2); /* Translucent whitish background */
+        background-color: rgba(255, 255, 255, 0.2);
+        /* Translucent whitish background */
         margin-left: 10%;
         margin-right: 10%;
     }
-  }
+}
 
 .custom-menu .item {
-    color: white !important; /* White text color for menu items */
+    color: white !important;
+    /* White text color for menu items */
     padding: 40;
     font-family: 'Inter', sans-serif;
     font-size: 1.5rem;
@@ -51,30 +57,35 @@
 }
 
 .custom-menu .item.active {
-    color: black !important; /* Black text color for active menu items */
-    background-color: white !important; /* White background color for active menu items */
+    color: black !important;
+    /* Black text color for active menu items */
+    background-color: white !important;
+    /* White background color for active menu items */
     font-family: 'Inter', sans-serif;
     font-size: 1.5rem;
     font-weight: bolder;
 }
-  
+
 
 @media only screen and (min-width: 768px) {
     .custom-menu .item {
-        font-size: 1.0rem; /* For tablets */
+        font-size: 1.0rem;
+        /* For tablets */
     }
 }
 
 @media only screen and (min-width: 992px) {
     .custom-menu .item {
-        font-size: 1.5rem;/* For desktops */
-        
+        font-size: 1.5rem;
+        /* For desktops */
+
     }
 }
 
 @media only screen and (max-width: 767px) {
     .custom-menu .item {
-        font-size: 1.0rem; /* For mobile devices */
-       
+        font-size: 1.0rem;
+        /* For mobile devices */
+
     }
 }

@@ -1,51 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { db } from '../firebase.js'; 
-import {
-    collection,    
-    getDocs,    
-    query,
-    orderBy
-} from 'firebase/firestore'
-import { Modal, Button, } from 'semantic-ui-react';
+import React, { useState, useEffect } from 'react'
+import { db } from '../firebase.js'
+import { collection, getDocs, query, orderBy } from 'firebase/firestore'
+import { Modal, Button } from 'semantic-ui-react'
 
-import './members.css';
-import './home.css';
+import './members.css'
+import './home.css'
 
 function Members() {
-  const [items, setItems] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [items, setItems] = useState([])
+  const [selectedItem, setSelectedItem] = useState(null)
+  const [modalOpen, setModalOpen] = useState(false)
 
   const handleItemClick = (item) => {
-    setSelectedItem(item);
-    setModalOpen(true);
-  };
+    setSelectedItem(item)
+    setModalOpen(true)
+  }
 
   const handleModalClose = () => {
-    setModalOpen(false);
-  };
+    setModalOpen(false)
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(
-          query(collection(db, 'members'), orderBy('date', 'asc'))
-        );
-        const newData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        setItems(newData);
+        const querySnapshot = await getDocs(query(collection(db, 'members'), orderBy('date', 'asc')))
+        const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+        setItems(newData)
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching data:', error)
       }
-    };
+    }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   return (
-    <div style={{ backgroundColor:"#dee0e3" }}>
+    <div style={{ backgroundColor: '#dee0e3' }}>
       <div className="grid-container-member margin-container">
         {items.map((item) => (
-          <div className="grid-item-member" key={item.id} onClick={() => handleItemClick(item)}> 
+          <div className="grid-item-member" key={item.id} onClick={() => handleItemClick(item)}>
             <div className="item-content-member">
               <div className="content-container">
                 <img src={item.imageUrl} alt={item.title} className="item-image-member" />
@@ -70,7 +63,6 @@ function Members() {
         </Modal.Actions>
       </Modal>
     </div>
-
   )
 }
 
