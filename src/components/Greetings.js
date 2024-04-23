@@ -40,11 +40,11 @@ function Greetings({ onScrollDown }) {
                     <div style={{ opacity: showFirstDiv ? 1 : 0, transition: 'opacity 0.7s ease' }}>
                         <p className='welcome-text'>
                             WELCOME TO {'\n'} DURGAVILLE</p>
-                        <p className='tag-text' style={{fontFamily: 'Inter', color:'white', fontStyle: 'italic', 
+                        <p className='tag-text' style={{fontFamily: 'Avenir Next LT Pro, sans-serif', color:'white', fontStyle: 'italic', 
                         textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'}}>
                             The Official Website of Durgaville, Erlangen,</p> 
 
-                        <p className='desc-text' style={{fontFamily: 'Inter', color:'white', fontStyle: 'italic',
+                        <p className='desc-text' style={{fontFamily: 'Avenir Next LT Pro, sans-serif', color:'white', fontStyle: 'italic',
                         textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)'}}>
                             a rapidly growing community of Bengalis and Indians in Erlangen, Germany and beyond!</p>
 
@@ -68,7 +68,7 @@ function Greetings({ onScrollDown }) {
 
                 <Grid.Column width={16} only='tablet' textAlign='center'>
                     <div style={{ opacity: showFirstDiv ? 1 : 0, transition: 'opacity 0.7s ease' }}>
-                        <p style={{fontFamily: 'Inter', fontSize:'5.0rem', color:'white', fontWeight: 'bold', marginBottom: '3%',
+                        <p style={{fontFamily: 'Zapfino', fontSize:'5.0rem', color:'white', fontWeight: 'bold', marginBottom: '3%',
                         marginLeft:'15%', marginRight:'15%', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)'}}>
                             WELCOME TO {'\n'} DURGAVILLE</p> 
                         <p style={{fontFamily: 'Inter', fontSize:'1.7rem', color:'white', fontStyle: 'italic',  marginBottom: '4%',
@@ -99,7 +99,7 @@ function Greetings({ onScrollDown }) {
 
                 <Grid.Column width={16} only='mobile' textAlign='center'>
                     <div style={{ opacity: showFirstDiv ? 1 : 0, transition: 'opacity 0.7s ease' }}>
-                        <p style={{fontFamily: 'Inter', fontSize:'2.5rem', color:'white', fontWeight: 'bold', marginBottom: '5%',
+                        <p style={{fontFamily: 'Zapfino', fontSize:'2.5rem', color:'white', fontWeight: 'bold', marginBottom: '5%',
                         textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)'}}>
                             WELCOME TO DURGAVILLE</p> 
                         <p style={{fontFamily: 'Inter', fontSize:'1.0rem', color:'white',fontStyle: 'italic', marginBottom: '7%',
