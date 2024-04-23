@@ -10,21 +10,14 @@
     font-weight: bold;
     margin-bottom: 5px;
     text-align: center;
-    font-family: "Avenir Next LT Pro", sans-serif;
   }
   
   .item-title {
-    font-size: 1.4rem; /* Increased font size for title */
+    font-size: 2rem; /* Increased font size for title */
     margin-bottom: 10px;
-    font-family: "Zapfino", sans-serif;
+    font-family: 'Inter', sans-serif;
     text-align: center;
   }
-
-  @media screen and (max-width: 768px) {
-    .item-title {
-        font-size: 1.2rem;
-    }
-}
 
   .item-content {
     display: flex;
@@ -44,7 +37,7 @@
   .item-description {
     font-size: 1.6rem;
     line-height: 2;
-    font-family: "Avenir Next LT Pro", sans-serif;
+    font-family: 'Inter', sans-serif;
   }
   
   .grid-container {
