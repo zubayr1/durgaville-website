@@ -1,38 +1,38 @@
-import React, { useState, useEffect } from 'react'
-import { db } from '../firebase.js'
-import { collection, getDocs, query, orderBy } from 'firebase/firestore'
-import { Modal, Button } from 'semantic-ui-react'
+import React, { useState, useEffect } from 'react';
+import { db } from '../firebase.js';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { Modal, Button } from 'semantic-ui-react';
 
-import './members.css'
-import './home.css'
+import './members.css';
+import './home.css';
 
 function Members() {
-  const [items, setItems] = useState([])
-  const [selectedItem, setSelectedItem] = useState(null)
-  const [modalOpen, setModalOpen] = useState(false)
+  const [items, setItems] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleItemClick = (item) => {
-    setSelectedItem(item)
-    setModalOpen(true)
-  }
+    setSelectedItem(item);
+    setModalOpen(true);
+  };
 
   const handleModalClose = () => {
-    setModalOpen(false)
-  }
+    setModalOpen(false);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(query(collection(db, 'members'), orderBy('date', 'asc')))
-        const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-        setItems(newData)
+        const querySnapshot = await getDocs(query(collection(db, 'members'), orderBy('date', 'asc')));
+        const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        setItems(newData);
       } catch (error) {
-        console.error('Error fetching data:', error)
+        console.error('Error fetching data:', error);
       }
-    }
+    };
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   return (
     <div style={{ backgroundColor: '#dee0e3' }}>
@@ -63,8 +63,9 @@ function Members() {
         </Modal.Actions>
       </Modal>
 
+      <p style={{ textAlign: 'center', fontSize: '15px' }}>*members' names are posted in random order</p>
     </div>
-  )
+  );
 }
 
-export default Members
+export default Members;
