@@ -50,18 +50,19 @@ function Members() {
         ))}
       </div>
 
-      <Modal open={modalOpen} onClose={handleModalClose}>
+      <Modal open={modalOpen} onClose={handleModalClose} style={{ width: 'auto', height: 'auto' }}>
         <Modal.Header>{selectedItem?.title}</Modal.Header>
         <Modal.Content>
           <p>{selectedItem?.description}</p>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '400px' }}>
-            <img src={selectedItem?.imageUrl} alt={selectedItem?.title} style={{ height: '400px' }} />
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src={selectedItem?.imageUrl} alt={selectedItem?.title} style={{ maxWidth: '800px', maxHeight: '400px' }} />
           </div>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={handleModalClose}>Close</Button>
         </Modal.Actions>
       </Modal>
+
     </div>
   )
 }
