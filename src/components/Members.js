@@ -55,7 +55,7 @@ function Members() {
         <Modal.Content>
           <p>{selectedItem?.description}</p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src={selectedItem?.imageUrl} alt={selectedItem?.title} style={{ maxWidth: '800px', maxHeight: '600px' }} />
+            <img src={selectedItem?.imageUrl} alt={selectedItem?.title} style={{ maxWidth: '70vw', maxHeight: '50vh' }} />
           </div>
         </Modal.Content>
         <Modal.Actions>
