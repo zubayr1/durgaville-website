@@ -12,8 +12,6 @@ function Events() {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleItemClick = (item) => {
-    console.log(item['imageUrl']);
-    console.log(item);
     setSelectedItem(item);
     setModalOpen(true);
   };

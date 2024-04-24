@@ -47,7 +47,6 @@ const DisplayData = () => {
   }
 
   const handleImageClick = (imageUrl) => {
-    console.log('Image clicked:', imageUrl);
     setClickedImage((prevState) => (prevState === imageUrl ? null : imageUrl));
   };
 
