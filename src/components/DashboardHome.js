@@ -75,7 +75,8 @@ function DashboardHome() {
             <Greetings onScrollDown={handleScroll} />
             <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
             <Home />
-            <div ref={homeRef}>
+            {/* <div ref={homeRef}> */}
+            <div>
               <Display />
             </div>
             <Footer />
