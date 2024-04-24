@@ -12,6 +12,8 @@ function Events() {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleItemClick = (item) => {
+    console.log(item['imageUrl']);
+    console.log(item);
     setSelectedItem(item);
     setModalOpen(true);
   };
@@ -95,9 +97,9 @@ function Events() {
       </div>
 
       <Modal open={modalOpen} onClose={handleModalClose}>
-        <Modal.Header>{selectedItem?.title}</Modal.Header>
+      <Modal.Header style={{ textAlign: 'center' }}>{selectedItem?.title}</Modal.Header>
         <Modal.Content>
-          <p>{selectedItem?.description}</p>
+         
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '400px' }}>
             <img src={selectedItem?.imageUrl} alt={selectedItem?.title} style={{ height: '400px' }} />
           </div>
