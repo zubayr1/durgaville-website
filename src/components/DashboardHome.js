@@ -56,13 +56,13 @@ function DashboardHome() {
 
   const handleiconClick = (value) => {
     if (value === 'facebook') {
-      window.location.href = 'https://www.facebook.com/durgaville/'
+      window.open('https://www.facebook.com/durgaville/', '_blank')
     }
     if (value === 'instagram') {
-      window.location.href = 'https://www.instagram.com/durgaville/'
+      window.open('https://www.instagram.com/durgaville/', '_blank')
     }
     if (value === 'youtube') {
-      window.location.href = 'https://www.youtube.com/@durgaville8491'
+      window.open('https://www.youtube.com/@durgaville8491', '_blank')
     }
   }
 
