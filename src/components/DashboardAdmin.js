@@ -73,7 +73,8 @@ function DashboardAdmin() {
             <Background />
             <Greetings onScrollDown={handleScroll} />
             <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
-            <div ref={homeRef}>
+            {/* <div ref={homeRef}> */}
+            <div>
               <AdminLogin />
             </div>
             <Footer />
@@ -137,7 +138,8 @@ function DashboardAdmin() {
                 <Background />
                 <Greetings onScrollDown={handleScroll} />
                 <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
-                <div ref={homeRef}>
+                {/* <div ref={homeRef}> */}
+                <div>
                   <AdminLogin />
                 </div>
                 <Footer />

@@ -73,7 +73,8 @@ function DashboardMembers() {
             <Background />
             <Greetings onScrollDown={handleScroll} />
             <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
-            <div ref={homeRef}>
+            {/* <div ref={homeRef}> */}
+            <div>
               <Members />
             </div>
             <Footer />
@@ -137,7 +138,8 @@ function DashboardMembers() {
                 <Background />
                 <Greetings onScrollDown={handleScroll} />
                 <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
-                <div ref={homeRef}>
+                {/* <div ref={homeRef}> */}
+                <div>
                   <Members />
                 </div>
                 <Footer />

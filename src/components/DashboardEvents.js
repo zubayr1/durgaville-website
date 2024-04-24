@@ -73,7 +73,8 @@ function DashboardEvents() {
             <Background />
             <Greetings onScrollDown={handleScroll} />
             <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
-            <div ref={homeRef}>
+            {/* <div ref={homeRef}> */}
+            <div>
               <Events />
             </div>
             <Footer />
@@ -137,7 +138,8 @@ function DashboardEvents() {
                 <Background />
                 <Greetings onScrollDown={handleScroll} />
                 <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
-                <div ref={homeRef}>
+                {/* <div ref={homeRef}> */}
+                <div>
                   <Events />
                 </div>
                 <Footer />
