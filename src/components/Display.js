@@ -7,6 +7,7 @@ import './home.css';
 
 const DisplayData = () => {
   const [items, setItems] = useState([]);
+  const [clickedImage, setClickedImage] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,13 +48,13 @@ const DisplayData = () => {
 
   const handleImageClick = (imageUrl) => {
     console.log('Image clicked:', imageUrl);
+    setClickedImage((prevState) => (prevState === imageUrl ? null : imageUrl));
   };
 
   const handleImageHover = (event) => {
     console.log('Image hovered:', event.target.src);
   };
 
-  // Function to wrap URLs in anchor tags
   const wrapURLs = (text) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank">${url}</a>`);
@@ -70,7 +71,7 @@ const DisplayData = () => {
               <img
                 src={item.imageUrl}
                 alt={item.title}
-                className="item-image"
+                className={`item-image ${clickedImage === item.imageUrl ? 'enlarged' : ''}`}
                 onClick={() => handleImageClick(item.imageUrl)}
                 onMouseOver={handleImageHover}
               />

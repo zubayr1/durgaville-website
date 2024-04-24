@@ -36,7 +36,12 @@
   object-fit: contain; /* Maintain aspect ratio and contain within container */
   margin-bottom: 10px;
   cursor: pointer; /* Add pointer cursor for indicating clickable */
-  transition: transform 0.3s ease; /* Add smooth transition for hover effect */
+  transition: transform 0.3s ease; /* Add smooth transition for click effect */
+}
+
+.item-image.enlarged {
+  transform: scale(1.5); /* Enlarge image when clicked */
+  z-index: 2; /* Bring image to top */
 }
 
 .item-description {
@@ -107,10 +112,4 @@
     padding: 20px;
     /* Further decrease padding for mobile */
   }
-}
-
-/* Hover effect to center image */
-.item-image:hover {
-  transform: scale(1.5); /* Enlarge image slightly on hover */
-  z-index: 2; /* Bring image to top */
 }
