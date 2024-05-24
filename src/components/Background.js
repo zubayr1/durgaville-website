@@ -1,12 +1,25 @@
-import React from 'react'
-import { Image, Grid } from 'semantic-ui-react'
-import background from '../assets/background.jpg'
+import React, { useEffect } from 'react';
+import { Image, Grid } from 'semantic-ui-react';
+import background from '../assets/background.jpg';
 
 function Background() {
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.href = background;
+    link.as = 'image';
+    document.head.appendChild(link);
+
+    return () => {
+      // Clean up: remove the preload link when the component unmounts
+      document.head.removeChild(link);
+    };
+  }, []);
+
   const homeStyle = {
     width: '100%',
-    overflow: 'hdden',
-  }
+    overflow: 'hidden',
+  };
 
   return (
     <div style={homeStyle}>
@@ -26,7 +39,7 @@ function Background() {
         </Grid.Row>
       </Grid>
     </div>
-  )
+  );
 }
 
-export default Background
+export default Background;
