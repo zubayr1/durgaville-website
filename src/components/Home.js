@@ -32,7 +32,7 @@ function Home() {
             </p>
 
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <Image src={thakurhome} style={{ height: '96vh' }} />
+              <Image alt="Thakur Durgaville" src={thakurhome} style={{ height: '96vh' }} />
             </div>
           </Grid.Column>
 
@@ -59,7 +59,7 @@ function Home() {
             </p>
 
             <div style={{ display: 'flex', justifyContent: 'center', padding: '6%' }}>
-              <Image src={thakurhome} style={{ height: '80vh' }} />
+              <Image alt="Thakur Durgaville" src={thakurhome} style={{ height: '80vh' }} />
             </div>
           </Grid.Column>
 
@@ -86,7 +86,7 @@ function Home() {
             </p>
 
             <div style={{ display: 'flex', justifyContent: 'center', padding: '6%' }}>
-              <Image src={thakurhome} />
+              <Image alt="Thakur Durgaville" src={thakurhome} />
             </div>
           </Grid.Column>
         </Grid>
