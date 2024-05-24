@@ -89,12 +89,12 @@ const AdminAddMember = () => {
           <Grid.Column mobile={16} tablet={10} computer={8}>
             <Form onSubmit={handleSubmit}>
               <Form.Field>
-                <label>Name</label>
+                <label htmlFor="name">Name</label>
                 <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
               </Form.Field>
 
               <Form.Field>
-                <label>Date and Time</label>
+                <label htmlFor="datetime">Date and Time</label>
                 <input
                   type="datetime-local" // Use type datetime-local for date and time input
                   value={date}
@@ -103,7 +103,7 @@ const AdminAddMember = () => {
               </Form.Field>
 
               <Form.Field>
-                <label>Image</label>
+                <label htmlFor="image">Image</label>
                 <input type="file" onChange={(e) => setImage(e.target.files[0])} />
               </Form.Field>
               <Button type="submit">Submit</Button>

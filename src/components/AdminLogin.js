@@ -54,11 +54,11 @@ function AdminLogin() {
             <Form onSubmit={handleSubmit} style={{ width: '100%' }}>
               <p style={{ fontWeight: 'bolder', fontFamily: 'Inter', fontSize: '1.5rem' }}>Admin Portal</p>
               <FormField>
-                <label style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem' }}>Admin Email</label>
+                <label htmlFor="admin email" style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem' }}>Admin Email</label>
                 <input placeholder="Email Id" value={email} onChange={(e) => setEmail(e.target.value)} />
               </FormField>
               <FormField>
-                <label style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem' }}>Admin Password</label>
+                <label htmlFor="admin password" style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem' }}>Admin Password</label>
                 <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
               </FormField>
               <Button type="submit" style={{ backgroundColor: 'white', color: 'black', border: '2px solid black', fontSize: '1.3rem' }}>

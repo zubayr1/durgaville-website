@@ -92,19 +92,19 @@ const AdminAddEvent = () => {
           <Grid.Column mobile={16} tablet={10} computer={8}>
             <Form onSubmit={handleSubmit}>
               <Form.Field>
-                <label>Title</label>
+                <label htmlFor="title">Title</label>
                 <input placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
               </Form.Field>
               <Form.Field>
-                <label>Description</label>
+                <label  htmlFor="description">Description</label>
                 <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
               </Form.Field>
               <Form.Field>
-                <label>Date</label>
+                <label  htmlFor="date">Date</label>
                 <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
               </Form.Field>
               <Form.Field>
-                <label>Image</label>
+                <label  htmlFor="image">Image</label>
                 <input type="file" onChange={(e) => setImage(e.target.files[0])} />
               </Form.Field>
               <Button type="submit">Submit</Button>

@@ -90,7 +90,7 @@ function Footer() {
               <Grid.Row>
                 <Form onSubmit={handleSubmit} style={{ width: '100%' }}>
                   <FormField>
-                    <label style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Name</label>
+                    <label htmlFor="name" style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Name</label>
                     <input
                       placeholder=""
                       value={name}
@@ -100,7 +100,7 @@ function Footer() {
                   </FormField>
 
                   <FormField>
-                    <label style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Email</label>
+                    <label htmlFor="email" style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Email</label>
                     <input
                       placeholder=""
                       value={email}
@@ -109,7 +109,7 @@ function Footer() {
                     />
                   </FormField>
                   <FormField>
-                    <label style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Message</label>
+                    <label htmlFor="message" style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Message</label>
                     <TextArea placeholder="" value={description} onChange={(e) => setDescription(e.target.value)} style={{ marginBottom: '4%' }} />
                   </FormField>
 
@@ -184,7 +184,7 @@ function Footer() {
               <Grid.Row>
                 <Form onSubmit={handleSubmit} style={{ width: '100%' }}>
                   <FormField>
-                    <label style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Name</label>
+                    <label htmlFor="name" style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Name</label>
                     <input
                       placeholder=""
                       value={name}
@@ -194,7 +194,7 @@ function Footer() {
                   </FormField>
 
                   <FormField>
-                    <label style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Email</label>
+                    <label htmlFor="email" style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Email</label>
                     <input
                       placeholder=""
                       value={email}
@@ -203,7 +203,7 @@ function Footer() {
                     />
                   </FormField>
                   <FormField>
-                    <label style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Message</label>
+                    <label htmlFor="message" style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Message</label>
                     <TextArea placeholder="" value={description} onChange={(e) => setDescription(e.target.value)} style={{ marginBottom: '4%' }} />
                   </FormField>
 
@@ -278,7 +278,7 @@ function Footer() {
             <Grid.Row centered floated="left" width={8} style={{ marginLeft: '5%', marginRight: '5%', borderRight: '1px solid #a1a1ab' }}>
               <Form onSubmit={handleSubmit} style={{ width: '100%', margin: '5%' }}>
                 <FormField>
-                  <label style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Name</label>
+                  <label htmlFor="name" style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Name</label>
                   <input
                     placeholder=""
                     value={name}
@@ -288,7 +288,7 @@ function Footer() {
                 </FormField>
 
                 <FormField>
-                  <label style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Email</label>
+                  <label htmlFor="email" style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Email</label>
                   <input
                     placeholder=""
                     value={email}
@@ -297,7 +297,7 @@ function Footer() {
                   />
                 </FormField>
                 <FormField>
-                  <label style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Message</label>
+                  <label htmlFor="message" style={{ fontWeight: 'bold', fontFamily: 'Inter', fontSize: '1.3rem', color: '#606166', marginBottom: '2%' }}>Message</label>
                   <TextArea placeholder="" value={description} onChange={(e) => setDescription(e.target.value)} style={{ marginBottom: '4%' }} />
                 </FormField>
 
