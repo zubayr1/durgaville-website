@@ -13,15 +13,15 @@ function Background() {
       <Grid>
         <Grid.Row centered>
           <Grid.Column width={16} only="computer">
-            <Image src={background} style={{ width: '100%', maxHeight: '100%', height: '100vh' }} />
+            <Image alt="Durgaville Background" src={background} style={{ width: '100%', maxHeight: '100%', height: '100vh' }} />
           </Grid.Column>
 
           <Grid.Column width={16} only="tablet">
-            <Image src={background} style={{ width: '100%', maxHeight: '100%', height: '70vh' }} />
+            <Image alt="Durgaville Background" src={background} style={{ width: '100%', maxHeight: '100%', height: '70vh' }} />
           </Grid.Column>
 
           <Grid.Column width={16} only="mobile">
-            <Image src={background} style={{ width: '100%', maxHeight: '100%', height: '50vh' }} />
+            <Image alt="Durgaville Background" src={background} style={{ width: '100%', maxHeight: '100%', height: '50vh' }} />
           </Grid.Column>
         </Grid.Row>
       </Grid>
