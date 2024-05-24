@@ -27,7 +27,6 @@ function Events() {
         const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setItems(newData);
       } catch (error) {
-        console.error('Error fetching data:', error);
       }
     };
 

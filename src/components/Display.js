@@ -16,7 +16,6 @@ const DisplayData = () => {
         const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setItems(newData);
       } catch (error) {
-        console.error('Error fetching data:', error);
       }
     };
 
@@ -51,7 +50,7 @@ const DisplayData = () => {
   };
 
   const handleImageHover = (event) => {
-    console.log('Image hovered:', event.target.src);
+    // console.log('Image hovered:', event.target.src);
   };
 
   const wrapURLs = (text) => {
