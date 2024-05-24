@@ -6,6 +6,7 @@ import Navbar from './Navbar'
 import Home from './Home'
 import Display from './Display'
 import { SidebarPusher, SidebarPushable, Icon, GridColumn, Grid, Sidebar } from 'semantic-ui-react'
+import { Helmet } from 'react-helmet';
 
 import { useNavigate } from 'react-router-dom'
 
@@ -68,6 +69,10 @@ function DashboardHome() {
 
   return (
     <div style={{ overflow: 'hidden' }}>
+      <Helmet>
+          <title>Home - Durgaville</title>
+          <meta name="description" content="Welcome to Durgaville, your go-to place for everything about Durgapujo in Erlangen, Bavaria, Germany" />
+      </Helmet>
       <Grid>
         <Grid.Row>
           <Grid.Column width={16} only="computer tablet" verticalAlign="middle" textAlign="middle">
