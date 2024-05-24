@@ -5,6 +5,7 @@ import Footer from './Footer'
 import Navbar from './Navbar'
 import Events from './Events'
 import { SidebarPusher, SidebarPushable, Icon, GridColumn, Grid, Sidebar } from 'semantic-ui-react'
+import { Helmet } from 'react-helmet';
 
 import { useNavigate } from 'react-router-dom'
 
@@ -67,6 +68,10 @@ function DashboardEvents() {
 
   return (
     <div style={{ overflow: 'hidden' }}>
+      <Helmet>
+          <title>Events - Durgaville</title>
+          <meta name="description" content="Learn more about all the events of Durgaville" />
+      </Helmet>
       <Grid>
         <Grid.Row>
           <Grid.Column width={16} only="computer tablet" verticalAlign="middle" textAlign="middle">

@@ -5,6 +5,7 @@ import Footer from './Footer'
 import Navbar from './Navbar'
 import Members from './Members'
 import { SidebarPusher, SidebarPushable, Icon, GridColumn, Grid, Sidebar } from 'semantic-ui-react'
+import { Helmet } from 'react-helmet';
 
 import { useNavigate } from 'react-router-dom'
 
@@ -67,6 +68,10 @@ function DashboardMembers() {
 
   return (
     <div style={{ overflow: 'hidden' }}>
+      <Helmet>
+          <title>Members - Durgaville</title>
+          <meta name="description" content="Learn more about the team behind Durgaville and our mission." />
+      </Helmet>
       <Grid>
         <Grid.Row>
           <Grid.Column width={16} only="computer tablet" verticalAlign="middle" textAlign="middle">
