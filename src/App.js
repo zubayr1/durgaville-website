@@ -8,6 +8,8 @@ import AdminAddPost from './components/AdminAddPost'
 import AdminAddEvent from './components/AdminAddEvent'
 import AdminAddMember from './components/AdminAddMember'
 import AdminEditPost from './components/AdminEditPost'
+import AdminEditEvent from './components/AdminEditEvent'
+import AdminEditMembers from './components/AdminEditMembers'
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route exact path="/adminaddevent" element={<AdminAddEvent />} />
           <Route exact path="/adminaddmember" element={<AdminAddMember />} />
           <Route exact path="/admineditpost" element={<AdminEditPost />} />
+          <Route exact path="/admineditevent" element={<AdminEditEvent />} />
+          <Route exact path="/admineditmember" element={<AdminEditMembers />} />
         </Routes>
       </Router>
     </div>
