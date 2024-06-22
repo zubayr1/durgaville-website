@@ -68,3 +68,73 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Versioning:
+
+#### 1.0.0
+Home Page 
+
+#### 1.0.1
+Events page, Member page
+
+#### 1.0.2
+Admin Page
+
+#### 1.0.3
+Add Semantic UI
+
+#### 1.1.0
+Tablet and mobile View
+
+##### 1.1.1
+Fix bugs: responsiveness
+
+#### 1.1.2
+Add Dashboard
+
+#### 1.2.0
+Add Firebase
+
+#### 1.2.1
+Firebase Auth
+
+#### 1.2.2
+Firebase db: Posts
+
+#### 1.2.3
+Firebase db: Members
+
+#### 1.2.4
+Firebase db: Events
+
+#### 1.2.5
+Firebase permission update
+
+#### 1.3.0
+Add footer
+
+#### 2.0.0
+Add Admin add post
+
+#### 2.0.1
+Admin add member, add events
+
+#### 2.1.0
+Fix post display: UI
+
+#### 2.2.0
+Fix members display: order
+
+#### 3.0.0
+Add Admin Edit & Delete feature: Posts
+
+#### 3.0.1
+Add Admin Edit & Delete feature: Events, Members
+
+#### 3.1.0:
+Edit & Delete Members update: Card UI
+
+#### 3.1.1:
+Edit & Delete Members update: Image UI
+
