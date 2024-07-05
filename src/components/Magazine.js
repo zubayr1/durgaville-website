@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form, Grid, Message, Image, Dropdown, Segment } from 'semantic-ui-react';
 import { db, storage } from '../firebase.js';
 import { collection, addDoc } from 'firebase/firestore';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytesResumable, getDownloadURL, uploadString } from 'firebase/storage';
 import { TailSpin } from 'react-loader-spinner';
 
 import magazine from '../assets/magazine_entry.jpg';
@@ -101,6 +101,7 @@ const Magazine = () => {
         break;
       }
     }
+
     if (valid) {
       setLoading(true);
       const uploadTimeout = setTimeout(() => {
@@ -127,6 +128,14 @@ const Magazine = () => {
           });
 
           const fileUrl = await getDownloadURL(snapshot.ref);
+
+          // Create metadata text
+          const metadataText = `Full Name: ${entry.fullName}\nAge: ${entry.age}\nEmail: ${entry.email}\nLocation: ${entry.location}\nSubmission Type: ${entry.submissionType}\nTitle: ${entry.title}\nFile Name: ${entry.file.name}`;
+
+          // Upload metadata text to storage
+          await uploadString(ref(storage, `magazine_metadata/${entry.file.name.replace(/\.[^/.]+$/, "")}.txt`), metadataText, 'raw');
+
+          // Store entry data in Firestore
           const entryData = {
             fileUrl,
             fullName: entry.fullName,
@@ -144,10 +153,10 @@ const Magazine = () => {
         setLoading(false);
         setError(0);
       } catch (error) {
-        clearTimeout(uploadTimeout);
-        console.error('Error adding document:', error);
+        console.error('Error during submission:', error);
         setError(4);
         setLoading(false);
+        clearTimeout(uploadTimeout);
       }
     }
   };
