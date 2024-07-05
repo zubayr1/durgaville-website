@@ -20,7 +20,10 @@ function Navbar({ visible, setVisible }) {
       setActiveItem('upcoming-events')
     } else if (currentURL.includes('/meet-the-team')) {
       setActiveItem('meet-the-team')
-    } else if (currentURL.includes('/adminlogin')) {
+    } else if (currentURL.includes('/magazine')) {
+      setActiveItem('magazine')
+    }
+    else if (currentURL.includes('/adminlogin')) {
       setActiveItem('admin-portal')
     }
   }, [])
@@ -41,6 +44,11 @@ function Navbar({ visible, setVisible }) {
     if (name === 'meet-the-team') {
       if (!currentURL.includes('/meet-the-team')) {
         navigate('/meet-the-team')
+      }
+    }
+    if (name === 'magazine') {
+      if (!currentURL.includes('/magazine')) {
+        navigate('/magazine')
       }
     }
     if (name === 'admin-portal') {
@@ -81,6 +89,8 @@ function Navbar({ visible, setVisible }) {
                   className={activeItem === 'upcoming-events' ? 'active' : ''}
                 />
                 <Menu.Item name="meet-the-team" active={activeItem === 'meet-the-team'} onClick={handleItemClick} className={activeItem === 'meet-the-team' ? 'active' : ''} />
+                <Menu.Item name="magazine" active={activeItem === 'magazine'} onClick={handleItemClick} className={activeItem === 'magazine' ? 'active' : ''} />
+
                 <Menu.Item name="admin-portal" active={activeItem === 'admin-portal'} onClick={handleItemClick} className={activeItem === 'admin-portal' ? 'active' : ''} />
                 <Menu.Menu position="right">
                   <Menu.Item>
@@ -106,7 +116,7 @@ function Navbar({ visible, setVisible }) {
           </Grid.Column>
 
           <Grid.Column width={16} only="tablet" verticalAlign="middle" textAlign="middle">
-            <div className="custom-menu" style={{ marginLeft: '10%', marginRight: '10%' }}>
+            <div className="custom-menu" style={{ marginLeft: '4%', marginRight: '4%' }}>
               <Menu compact secondary attached="top" tabular>
                 <Menu.Item name="home" active={activeItem === 'home'} onClick={handleItemClick} className={activeItem === 'home' ? 'active' : ''} />
                 <Menu.Item
@@ -116,6 +126,8 @@ function Navbar({ visible, setVisible }) {
                   className={activeItem === 'upcoming-events' ? 'active' : ''}
                 />
                 <Menu.Item name="meet-the-team" active={activeItem === 'meet-the-team'} onClick={handleItemClick} className={activeItem === 'meet-the-team' ? 'active' : ''} />
+                <Menu.Item name="magazine" active={activeItem === 'magazine'} onClick={handleItemClick} className={activeItem === 'magazine' ? 'active' : ''} />
+
                 <Menu.Item name="admin-portal" active={activeItem === 'admin-portal'} onClick={handleItemClick} className={activeItem === 'admin-portal' ? 'active' : ''} />
                 <Menu.Menu position="right">
                   <Menu.Item>

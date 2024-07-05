@@ -3,13 +3,13 @@ import Background from './Background'
 import Greetings from './Greetings'
 import Footer from './Footer'
 import Navbar from './Navbar'
-import Events from './Events'
+import Magazine from './Magazine'
 import { SidebarPusher, SidebarPushable, Icon, GridColumn, Grid, Sidebar } from 'semantic-ui-react'
 import { Helmet } from 'react-helmet';
 
 import { useNavigate } from 'react-router-dom'
 
-function DashboardEvents() {
+function DashboardMagazine() {
   const [navbarVisible, setNavbarVisible] = useState(false)
 
   const [scrollPosition, setScrollPosition] = useState(0)
@@ -48,9 +48,9 @@ function DashboardEvents() {
       }
     }
     if (value === 'magazine') {
-      if (!currentURL.includes('/magazine')) {
-        navigate('/magazine')
-      }
+        if (!currentURL.includes('/magazine')) {
+          navigate('/magazine')
+        }
     }
     if (value === 'admin-portal') {
       if (!currentURL.includes('/admin-portal')) {
@@ -74,8 +74,8 @@ function DashboardEvents() {
   return (
     <div style={{ overflow: 'hidden' }}>
       <Helmet>
-          <title>Events - Durgaville</title>
-          <meta name="description" content="Learn more about all the events of Durgaville" />
+          <title>Magazine - Durgaville</title>
+          <meta name="description" content="Welcome to Durgaville Magazine 2024" />
       </Helmet>
       <Grid>
         <Grid.Row>
@@ -85,7 +85,7 @@ function DashboardEvents() {
             <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
             {/* <div ref={homeRef}> */}
             <div>
-              <Events />
+                <Magazine />
             </div>
             <Footer />
           </Grid.Column>
@@ -156,7 +156,7 @@ function DashboardEvents() {
                 <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
                 {/* <div ref={homeRef}> */}
                 <div>
-                  <Events />
+                    <Magazine />
                 </div>
                 <Footer />
               </SidebarPusher>
@@ -168,4 +168,4 @@ function DashboardEvents() {
   )
 }
 
-export default DashboardEvents
+export default DashboardMagazine

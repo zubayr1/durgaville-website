@@ -1,8 +1,9 @@
 import React from 'react'
-import { Grid, Image } from 'semantic-ui-react'
+import { Divider, Grid, Image } from 'semantic-ui-react'
 import thakurhome from '../assets/thakurHome.jpg'
 
 import './home.css'
+import MagazineDeclare from './MagazineDeclare'
 
 function Home() {
   return (
@@ -89,6 +90,12 @@ function Home() {
               <Image alt="Thakur Durgaville" src={thakurhome} />
             </div>
           </Grid.Column>
+        </Grid>
+
+        <Divider />
+
+        <Grid centered>
+          <MagazineDeclare/>
         </Grid>
       </div>
     </div>
