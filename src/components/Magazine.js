@@ -53,12 +53,12 @@ const Magazine = () => {
     setEntries(newEntries);
   };
 
-  const addEntry = () => {
-    setEntries([
-      ...entries,
-      { fullName: '', age: '', email: '', location: '', submissionType: '', title: '', file: null }
-    ]);
-  };
+  // const addEntry = () => {
+  //   setEntries([
+  //     ...entries,
+  //     { fullName: '', age: '', email: '', location: '', submissionType: '', title: '', file: null }
+  //   ]);
+  // };
 
   const removeEntry = (index) => {
     const newEntries = entries.filter((_, i) => i !== index);
@@ -284,7 +284,7 @@ const Magazine = () => {
                 </Segment>
               ))}
               <div style={{ marginTop: '2%' }}>
-                <Button type="button" onClick={addEntry} style={{ backgroundColor: '#690460', color: '#fff' }}>Add Another Entry</Button>
+                {/* <Button type="button" onClick={addEntry} style={{ backgroundColor: '#690460', color: '#fff' }}>Add Another Entry</Button> */}
                 <Button type="submit" style={{ backgroundColor: '#bb0d3b', color: '#fff' }}>Submit</Button>
               </div>
             </Form>
