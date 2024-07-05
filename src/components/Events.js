@@ -63,9 +63,9 @@ function Events() {
   };
 
   // Function to handle clicking on links
-  const handleLinkClick = (url) => {
-    window.open(url, '_blank'); // Open link in a new tab
-  };
+  // const handleLinkClick = (url) => {
+  //   window.open(url, '_blank'); // Open link in a new tab
+  // };
 
   return (
     <div style={{ backgroundColor: '#dee0e3' }}>
