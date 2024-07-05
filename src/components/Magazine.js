@@ -108,7 +108,7 @@ const Magazine = () => {
       const uploadTimeout = setTimeout(() => {
         setError(4);
         setLoading(false);
-      }, 10000); // 10 seconds timeout
+      }, 20000); // 20 seconds timeout
 
       try {
         const uploadPromises = entries.map(async (entry) => {
