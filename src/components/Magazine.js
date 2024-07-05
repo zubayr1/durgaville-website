@@ -202,7 +202,7 @@ const Magazine = () => {
       <Grid centered>
         <Grid.Row>
           <div style={{ display: 'flex', justifyContent: 'center', padding: '6%', marginTop: '-7%' }}>
-            <Image alt="Magazine" src={magazine} style={{ height: '60vh' }} />
+            <Image alt="Magazine" src={magazine} style={{ maxWidth: '100%', height: 'auto' }} />
           </div>
         </Grid.Row>
 
