@@ -33,7 +33,7 @@ const Magazine = () => {
   }, []);
 
   useEffect(() => {
-    if (error === 0 || error > 0) {
+    if (error === 0) {
       const timer = setTimeout(() => {
         window.location.reload();
       }, 3000);
@@ -66,6 +66,7 @@ const Magazine = () => {
   };
 
   const handleSubmit = async () => {
+    setError(-1);
     let valid = true;
     for (let i = 0; i < entries.length; i++) {
       const entry = entries[i];
