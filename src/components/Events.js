@@ -69,7 +69,7 @@ function Events() {
 
   return (
     <div style={{ backgroundColor: '#dee0e3' }}>
-      <div className="grid-container-events margin-container">
+      <div className="grid-container-events events-container">
         {items.map((item) => (
           <div className="grid-item-events" key={item.id} onClick={() => handleItemClick(item)}>
             <div className="item-content-events">
@@ -96,7 +96,7 @@ function Events() {
       <Modal open={modalOpen} onClose={handleModalClose}>
       <Modal.Header style={{ textAlign: 'center' }}>{selectedItem?.title}</Modal.Header>
         <Modal.Content>
-         
+
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '400px' }}>
             <img src={selectedItem?.imageUrl} alt={selectedItem?.title} style={{ height: '400px' }} />
           </div>
