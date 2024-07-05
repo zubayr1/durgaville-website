@@ -208,7 +208,7 @@ const Magazine = () => {
         </Grid.Row>
 
         <Grid.Row>
-          <p style={{ fontWeight: 'bolder', fontSize: '4rem', fontFamily: 'Inter', marginTop: '-3%' }}>Add Your Entry for the magazine</p>
+          <p style={{ fontWeight: 'bolder', fontSize: '4rem', fontFamily: 'Inter', marginTop: '-3%', marginLeft:'2%', marginRight:'2%' }}>Add Your Entry for the magazine</p>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column mobile={16} tablet={10} computer={8}>
