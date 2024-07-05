@@ -1,6 +1,6 @@
 {
   "name": "durgaville-website",
-  "author":"zakekal",
+  "author": "zakekal",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +12,7 @@
     "react-awesome-reveal": "^4.2.8",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-loader-spinner": "^6.1.6",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
     "semantic-ui-css": "^2.5.0",
