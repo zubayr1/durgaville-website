@@ -1,33 +1,33 @@
-import React, { useState, useEffect } from 'react'
-import { Grid } from 'semantic-ui-react'
-import arrow from '../assets/down_arrow.svg'
+import React, { useState, useEffect } from 'react';
+import { Grid } from 'semantic-ui-react';
+import arrow from '../assets/down_arrow.svg';
 // import { Fade } from "react-awesome-reveal";
 
-import './greetings.css'
+import './greetings.css';
 
 function Greetings({ onScrollDown }) {
-  const [showFirstDiv, setShowFirstDiv] = useState(true)
-  const [showSecondDiv, setShowSecondDiv] = useState(false)
+  const [showFirstDiv, setShowFirstDiv] = useState(true);
+  const [showSecondDiv, setShowSecondDiv] = useState(false);
 
   const handleScrollDown = () => {
-    onScrollDown()
-  }
+    onScrollDown();
+  };
 
   useEffect(() => {
     const handleScroll = () => {
-      const top = window.scrollY
+      const top = window.scrollY;
       if (top === 0) {
-        setShowFirstDiv(true)
-        setShowSecondDiv(false)
+        setShowFirstDiv(true);
+        setShowSecondDiv(false);
       } else {
-        setShowFirstDiv(false)
-        setShowSecondDiv(true)
+        setShowFirstDiv(false);
+        setShowSecondDiv(true);
       }
-    }
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="greetings-container">
@@ -35,7 +35,10 @@ function Greetings({ onScrollDown }) {
         <Grid.Row>
           <Grid.Column width={16} only="computer" textAlign="center">
             <div style={{ opacity: showFirstDiv ? 1 : 0, transition: 'opacity 0.7s ease' }}>
-              <p className="welcome-text">WELCOME TO {'\n'} DURGAVILLE</p>
+              <p className="welcome-text">
+                <span style={{ display: 'block' }}>WELCOME TO</span>
+                <span>DURGAVILLE</span>
+              </p>
               <p
                 className="tag-text"
                 style={{
@@ -117,7 +120,8 @@ function Greetings({ onScrollDown }) {
                   textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
                 }}
               >
-                WELCOME TO {'\n'} DURGAVILLE
+                <span style={{ display: 'block' }}>WELCOME TO</span>
+                <span>DURGAVILLE</span>
               </p>
               <p
                 style={{
@@ -204,7 +208,8 @@ function Greetings({ onScrollDown }) {
                   textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
                 }}
               >
-                WELCOME TO DURGAVILLE
+                <span style={{ display: 'block' }}>WELCOME TO</span>
+                <span>DURGAVILLE</span>
               </p>
               <p
                 style={{
@@ -281,7 +286,7 @@ function Greetings({ onScrollDown }) {
         </Grid.Row>
       </Grid>
     </div>
-  )
+  );
 }
 
-export default Greetings
+export default Greetings;
