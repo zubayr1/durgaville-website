@@ -80,12 +80,6 @@ function Events() {
                 <p
                   className="item-description-events"
                   dangerouslySetInnerHTML={{ __html: wrapURLs(item.description) }}
-                  onClick={(e) => {
-                    if (e.target.tagName === 'A') {
-                      e.preventDefault(); // Prevent default behavior of anchor tag
-                      handleLinkClick(e.target.href); // Handle link click
-                    }
-                  }}
                 />
               </div>
             </div>
