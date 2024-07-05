@@ -22,8 +22,7 @@ function Navbar({ visible, setVisible }) {
       setActiveItem('meet-the-team')
     } else if (currentURL.includes('/magazine')) {
       setActiveItem('magazine')
-    }
-    else if (currentURL.includes('/adminlogin')) {
+    } else if (currentURL.includes('/adminlogin')) {
       setActiveItem('admin-portal')
     }
   }, [])
@@ -79,7 +78,7 @@ function Navbar({ visible, setVisible }) {
       <Grid centered>
         <Grid.Row>
           <Grid.Column width={16} only="computer" verticalAlign="middle" textAlign="middle">
-            <div className="custom-menu" style={{}}>
+            <div className="custom-menu" style={{ marginLeft: '4%', marginRight: '4%' }}>
               <Menu compact secondary attached="top" tabular>
                 <Menu.Item name="home" active={activeItem === 'home'} onClick={handleItemClick} className={activeItem === 'home' ? 'active' : ''} />
                 <Menu.Item
