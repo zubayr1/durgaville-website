@@ -35,7 +35,10 @@ const Magazine = () => {
   useEffect(() => {
     if (error === 0) {
       const timer = setTimeout(() => {
-        window.location.reload();
+        setError(-1);
+        setEntries([
+          { fullName: '', age: '', email: '', location: '', submissionType: '', title: '', file: null }
+        ]);
       }, 3000);
       return () => clearTimeout(timer);
     }
@@ -108,7 +111,7 @@ const Magazine = () => {
       const uploadTimeout = setTimeout(() => {
         setError(4);
         setLoading(false);
-      }, 20000); // 20 seconds timeout
+      }, 40000); // 40 seconds timeout
 
       try {
         const uploadPromises = entries.map(async (entry) => {
