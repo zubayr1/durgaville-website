@@ -36,10 +36,7 @@ const Magazine = () => {
     if (error === 0) {
       const timer = setTimeout(() => {
         setError(-1);
-        setEntries([
-          { fullName: '', age: '', email: '', location: '', submissionType: '', title: '', file: null }
-        ]);
-      }, 3000);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, [error]);
@@ -56,12 +53,12 @@ const Magazine = () => {
     setEntries(newEntries);
   };
 
-  // const addEntry = () => {
-  //   setEntries([
-  //     ...entries,
-  //     { fullName: '', age: '', email: '', location: '', submissionType: '', title: '', file: null }
-  //   ]);
-  // };
+  const addEntry = () => {
+    setEntries([
+      ...entries,
+      { fullName: '', age: '', email: '', location: '', submissionType: '', title: '', file: null }
+    ]);
+  };
 
   const removeEntry = (index) => {
     const newEntries = entries.filter((_, i) => i !== index);
@@ -70,9 +67,11 @@ const Magazine = () => {
 
   const handleSubmit = async () => {
     setError(-1);
+
     let valid = true;
     for (let i = 0; i < entries.length; i++) {
       const entry = entries[i];
+
       if (
         entry.fullName === '' ||
         entry.age === '' ||
@@ -111,11 +110,28 @@ const Magazine = () => {
       const uploadTimeout = setTimeout(() => {
         setError(4);
         setLoading(false);
-      }, 40000); // 40 seconds timeout
+      }, 80000); // 80 seconds timeout
 
       try {
         const uploadPromises = entries.map(async (entry) => {
-          const fileRef = ref(storage, `magazine/${entry.file.name}`);
+          // Function to generate a random string
+          const generateRandomString = (length) => {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+              result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+          };
+
+          // Generate a unique filename
+          const randomString = generateRandomString(8); // Adjust the length as needed
+          const fileExtension = entry.file.name.split('.').pop();
+          const baseFileName = entry.file.name.replace(/\.[^/.]+$/, "");
+          const uniqueFileName = `${baseFileName}_${randomString}.${fileExtension}`;
+
+          // Create references with the unique filename
+          const fileRef = ref(storage, `magazine/${uniqueFileName}`);
           const uploadTask = uploadBytesResumable(fileRef, entry.file);
 
           uploadTask.on('state_changed', (snapshot) => {
@@ -131,13 +147,14 @@ const Magazine = () => {
             );
           });
 
-          const fileUrl = await getDownloadURL(snapshot.ref);
-
           // Create metadata text
-          const metadataText = `Full Name: ${entry.fullName}\nAge: ${entry.age}\nEmail: ${entry.email}\nLocation: ${entry.location}\nSubmission Type: ${entry.submissionType}\nTitle: ${entry.title}\nFile Name: ${entry.file.name}`;
+          const metadataText = `Full Name: ${entry.fullName}\nAge: ${entry.age}\nEmail: ${entry.email}\nLocation:
+            ${entry.location}\nSubmission Type: ${entry.submissionType}\nTitle: ${entry.title}\nFile Name: ${uniqueFileName}`;
 
           // Upload metadata text to storage
-          await uploadString(ref(storage, `magazine_metadata/${entry.file.name.replace(/\.[^/.]+$/, "")}.txt`), metadataText, 'raw');
+          await uploadString(ref(storage, `magazine_metadata/${baseFileName}_${randomString}.txt`), metadataText, 'raw');
+
+          const fileUrl = await getDownloadURL(snapshot.ref);
 
           // Store entry data in Firestore
           const entryData = {
@@ -156,6 +173,12 @@ const Magazine = () => {
         clearTimeout(uploadTimeout);
         setLoading(false);
         setError(0);
+        setEntries([
+          { fullName: '', age: '', email: '', location: '', submissionType: '', title: '', file: null }
+        ]);
+
+        const fileInputs = document.querySelectorAll('input[type="file"]');
+        fileInputs.forEach(input => input.value = null);
       } catch (error) {
         console.error('Error during submission:', error);
         setError(4);
@@ -287,7 +310,7 @@ const Magazine = () => {
                 </Segment>
               ))}
               <div style={{ marginTop: '2%' }}>
-                {/* <Button type="button" onClick={addEntry} style={{ backgroundColor: '#690460', color: '#fff' }}>Add Another Entry</Button> */}
+                <Button type="button" onClick={addEntry} style={{ backgroundColor: '#690460', color: '#fff' }}>Add Another Entry</Button>
                 <Button type="submit" style={{ backgroundColor: '#bb0d3b', color: '#fff' }}>Submit</Button>
               </div>
             </Form>
