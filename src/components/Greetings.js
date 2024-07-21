@@ -301,28 +301,6 @@ function Greetings({ onScrollDown }) {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-
-      <div
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "20px",
-          cursor: "pointer",
-        }}
-        onClick={handleScrollDown}
-      >
-        <img
-          src={arrow}
-          alt="Arrow"
-          style={{
-            filter: "invert(1)",
-            width: "auto",
-            height: "30px",
-            maxWidth: "100%",
-            maxHeight: "100%",
-          }}
-        />
-      </div>
     </div>
   );
 }
