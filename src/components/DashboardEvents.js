@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import Background from './Background'
 import Greetings from './Greetings'
 import Footer from './Footer'
@@ -7,68 +7,19 @@ import Events from './Events'
 import { SidebarPusher, SidebarPushable, Icon, GridColumn, Grid, Sidebar } from 'semantic-ui-react'
 import { Helmet } from 'react-helmet';
 
-import { useNavigate } from 'react-router-dom'
+import useHandleNavigation from './handleNavigation';
 
 function DashboardEvents() {
-  const [navbarVisible, setNavbarVisible] = useState(false)
+  const [navbarVisible, setNavbarVisible] = useState(false);
 
-  const [scrollPosition, setScrollPosition] = useState(0)
+  const [scrollPosition, setScrollPosition] = useState(0);
 
-  const homeRef = useRef()
+  const { handlebuttonClick, handleiconClick } = useHandleNavigation();
 
-  useEffect(() => {
-    // Scroll to the Home component when scrollPosition changes
-    if (homeRef.current) {
-      homeRef.current.scrollIntoView({ behavior: 'smooth' })
-    }
-  }, [scrollPosition])
-
+  
   const handleScroll = () => {
     // Update the scroll state when handleScrollDown is clicked in Greetings
     setScrollPosition(scrollPosition + 1)
-  }
-
-  const navigate = useNavigate()
-  const handlebuttonClick = (value) => {
-    const currentURL = window.location.href
-
-    if (value === 'home') {
-      if (!currentURL.includes('/home')) {
-        navigate('/')
-      }
-    }
-    if (value === 'upcoming-events') {
-      if (!currentURL.includes('/upcoming-events')) {
-        navigate('/upcoming-events')
-      }
-    }
-    if (value === 'meet-the-team') {
-      if (!currentURL.includes('/meet-the-team')) {
-        navigate('/meet-the-team')
-      }
-    }
-    if (value === 'magazine') {
-      if (!currentURL.includes('/magazine')) {
-        navigate('/magazine')
-      }
-    }
-    if (value === 'admin-portal') {
-      if (!currentURL.includes('/admin-portal')) {
-        navigate('/adminlogin')
-      }
-    }
-  }
-
-  const handleiconClick = (value) => {
-    if (value === 'facebook') {
-      window.open('https://www.facebook.com/durgaville/', '_blank')
-    }
-    if (value === 'instagram') {
-      window.open('https://www.instagram.com/durgaville/', '_blank')
-    }
-    if (value === 'youtube') {
-      window.open('https://www.youtube.com/@durgaville8491', '_blank')
-    }
   }
 
   return (
