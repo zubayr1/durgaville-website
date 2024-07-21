@@ -10,6 +10,7 @@ import AdminAddPost from "./components/adminComponents/AdminAddPost";
 import AdminAddEvent from "./components/adminComponents/AdminAddEvent";
 import AdminAddMember from "./components/adminComponents/AdminAddMember";
 import AdminAddGallery from "./components/adminComponents/AdminAddGallery";
+
 import AdminEditPost from "./components/adminComponents/AdminEditPost";
 import AdminEditEvent from "./components/adminComponents/AdminEditEvent";
 import AdminEditMembers from "./components/adminComponents/AdminEditMembers";
