@@ -1,18 +1,19 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import DashboardHome from './components/DashboardHome'
-import DashboardEvents from './components/DashboardEvents'
-import DashboardMembers from './components/DashboardMembers'
-import DashboardAdmin from './components/DashboardAdmin'
-import AdminPortal from './components/AdminPortal'
-import AdminAddPost from './components/AdminAddPost'
-import AdminAddEvent from './components/AdminAddEvent'
-import AdminAddMember from './components/AdminAddMember'
-import AdminAddGallery from './components/AdminAddGallery'
-import AdminEditPost from './components/AdminEditPost'
-import AdminEditEvent from './components/AdminEditEvent'
-import AdminEditMembers from './components/AdminEditMembers'
-import AdminEditGallery from './components/AdminEditGallery'
-import DashboardMagazine from './components/DashboardMagazine'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import DashboardHome from "./components/DashboardHome";
+import DashboardEvents from "./components/DashboardEvents";
+import DashboardMembers from "./components/DashboardMembers";
+import DashboardMagazine from "./components/DashboardMagazine";
+import DashboardAdmin from "./components/DashboardAdmin";
+
+import AdminPortal from "./components/adminComponents/AdminPortal";
+import AdminAddPost from "./components/adminComponents/AdminAddPost";
+import AdminAddEvent from "./components/adminComponents/AdminAddEvent";
+import AdminAddMember from "./components/adminComponents/AdminAddMember";
+import AdminAddGallery from "./components/adminComponents/AdminAddGallery";
+import AdminEditPost from "./components/adminComponents/AdminEditPost";
+import AdminEditEvent from "./components/adminComponents/AdminEditEvent";
+import AdminEditMembers from "./components/adminComponents/AdminEditMembers";
+import AdminEditGallery from "./components/adminComponents/AdminEditGallery";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
           <Route exact path="/adminaddevent" element={<AdminAddEvent />} />
           <Route exact path="/adminaddmember" element={<AdminAddMember />} />
           <Route exact path="/adminaddgallery" element={<AdminAddGallery />} />
-          
+
           <Route exact path="/admineditpost" element={<AdminEditPost />} />
           <Route exact path="/admineditevent" element={<AdminEditEvent />} />
           <Route exact path="/admineditmember" element={<AdminEditMembers />} />
@@ -38,7 +39,7 @@ function App() {
         </Routes>
       </Router>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

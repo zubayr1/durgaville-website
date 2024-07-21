@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth, db } from '../firebase'; // Adjust this import to match your project's structure
-import { useNavigate } from 'react-router-dom';
-import { Button, Card, Modal, Form, Image } from 'semantic-ui-react';
-import { collection, getDocs, updateDoc, deleteDoc, doc } from 'firebase/firestore';
+import React, { useState, useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "../../firebase"; // Adjust this import to match your project's structure
+import { useNavigate } from "react-router-dom";
+import { Button, Card, Modal, Form, Image } from "semantic-ui-react";
+import { collection, getDocs, updateDoc, deleteDoc, doc } from "firebase/firestore";
 
 const AdminEditPost = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [editData, setEditData] = useState({ title: '', description: '' });
+  const [editData, setEditData] = useState({ title: "", description: "" });
   const [loading, setLoading] = useState(true); // Add loading state
   const [error, setError] = useState(null); // Add error state
   const [deleteModalOpen, setDeleteModalOpen] = useState(false); // Add delete modal state
@@ -18,8 +18,8 @@ const AdminEditPost = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user || user.email !== 'info@durgaville.com') {
-        navigate('/adminlogin');
+      if (!user || user.email !== "info@durgaville.com") {
+        navigate("/adminlogin");
       }
     });
 
@@ -29,9 +29,9 @@ const AdminEditPost = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const postsCollection = collection(db, 'posts');
+        const postsCollection = collection(db, "posts");
         const postsSnapshot = await getDocs(postsCollection);
-        const postsList = postsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const postsList = postsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
         // Sort posts by date in descending order
         postsList.sort((a, b) => b.date.localeCompare(a.date));
@@ -55,12 +55,12 @@ const AdminEditPost = () => {
 
   const handleSave = async () => {
     try {
-      const postRef = doc(db, 'posts', selectedPost.id);
+      const postRef = doc(db, "posts", selectedPost.id);
       await updateDoc(postRef, {
         title: editData.title,
-        description: editData.description
+        description: editData.description,
       });
-      setPosts(posts.map(post => (post.id === selectedPost.id ? { ...post, ...editData } : post)));
+      setPosts(posts.map((post) => (post.id === selectedPost.id ? { ...post, ...editData } : post)));
       setModalOpen(false);
     } catch (error) {
       setError(error.message);
@@ -73,8 +73,8 @@ const AdminEditPost = () => {
 
   const handleDelete = async () => {
     try {
-      await deleteDoc(doc(db, 'posts', postToDelete.id));
-      setPosts(posts.filter(post => post.id !== postToDelete.id));
+      await deleteDoc(doc(db, "posts", postToDelete.id));
+      setPosts(posts.filter((post) => post.id !== postToDelete.id));
       setDeleteModalOpen(false);
     } catch (error) {
       setError(error.message);
@@ -94,12 +94,12 @@ const AdminEditPost = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <div style={{ textAlign: 'center', marginTop: '2%', marginBottom: '3%' }}>
-        <h1 style={{ fontSize: '4rem' }}>Edit/ Delete Post</h1>
+    <div style={{ padding: "2rem" }}>
+      <div style={{ textAlign: "center", marginTop: "2%", marginBottom: "3%" }}>
+        <h1 style={{ fontSize: "4rem" }}>Edit/ Delete Post</h1>
       </div>
       <Card.Group stackable itemsPerRow={3}>
-        {posts.map(post => (
+        {posts.map((post) => (
           <Card key={post.id}>
             <Image src={post.imageUrl} wrapped ui={false} />
             <Card.Content>
@@ -108,8 +108,12 @@ const AdminEditPost = () => {
               <Card.Description>{post.description}</Card.Description>
             </Card.Content>
             <Card.Content extra>
-              <Button onClick={() => handleEdit(post)} primary>Edit</Button>
-              <Button onClick={() => openDeleteModal(post)} secondary>Delete</Button>
+              <Button onClick={() => handleEdit(post)} primary>
+                Edit
+              </Button>
+              <Button onClick={() => openDeleteModal(post)} secondary>
+                Delete
+              </Button>
             </Card.Content>
           </Card>
         ))}
@@ -119,23 +123,15 @@ const AdminEditPost = () => {
         <Modal.Header>Edit Post</Modal.Header>
         <Modal.Content>
           <Form>
-            <Form.Input
-              label="Title"
-              name="title"
-              value={editData.title}
-              onChange={handleChange}
-            />
-            <Form.TextArea
-              label="Description"
-              name="description"
-              value={editData.description}
-              onChange={handleChange}
-            />
+            <Form.Input label="Title" name="title" value={editData.title} onChange={handleChange} />
+            <Form.TextArea label="Description" name="description" value={editData.description} onChange={handleChange} />
           </Form>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={() => setModalOpen(false)}>Cancel</Button>
-          <Button onClick={handleSave} primary>Save</Button>
+          <Button onClick={handleSave} primary>
+            Save
+          </Button>
         </Modal.Actions>
       </Modal>
 
@@ -146,7 +142,9 @@ const AdminEditPost = () => {
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={closeDeleteModal}>Cancel</Button>
-          <Button onClick={handleDelete} negative>Delete</Button>
+          <Button onClick={handleDelete} negative>
+            Delete
+          </Button>
         </Modal.Actions>
       </Modal>
     </div>

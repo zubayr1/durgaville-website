@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth, db } from '../firebase'; // Adjust this import to match your project's structure
-import { useNavigate } from 'react-router-dom';
-import { Button, Card, Modal, Form, Image, Grid } from 'semantic-ui-react';
-import { collection, getDocs, updateDoc, deleteDoc, doc } from 'firebase/firestore';
+import React, { useState, useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "../../firebase"; // Adjust this import to match your project's structure
+import { useNavigate } from "react-router-dom";
+import { Button, Card, Modal, Form, Image, Grid } from "semantic-ui-react";
+import { collection, getDocs, updateDoc, deleteDoc, doc } from "firebase/firestore";
 
 const AdminEditMembers = () => {
   const navigate = useNavigate();
   const [members, setMembers] = useState([]);
   const [selectedMember, setSelectedMember] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [editData, setEditData] = useState({ title: '' });
+  const [editData, setEditData] = useState({ title: "" });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -18,8 +18,8 @@ const AdminEditMembers = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user || user.email !== 'info@durgaville.com') {
-        navigate('/adminlogin');
+      if (!user || user.email !== "info@durgaville.com") {
+        navigate("/adminlogin");
       }
     });
 
@@ -29,9 +29,9 @@ const AdminEditMembers = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const membersCollection = collection(db, 'members');
+        const membersCollection = collection(db, "members");
         const membersSnapshot = await getDocs(membersCollection);
-        const membersList = membersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const membersList = membersSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
         // Sort members by date in ascending order
         membersList.sort((a, b) => a.date.localeCompare(b.date));
@@ -55,11 +55,11 @@ const AdminEditMembers = () => {
 
   const handleSave = async () => {
     try {
-      const memberRef = doc(db, 'members', selectedMember.id);
+      const memberRef = doc(db, "members", selectedMember.id);
       await updateDoc(memberRef, {
-        title: editData.title
+        title: editData.title,
       });
-      setMembers(members.map(member => (member.id === selectedMember.id ? { ...member, ...editData } : member)));
+      setMembers(members.map((member) => (member.id === selectedMember.id ? { ...member, ...editData } : member)));
       setModalOpen(false);
     } catch (error) {
       setError(error.message);
@@ -72,8 +72,8 @@ const AdminEditMembers = () => {
 
   const handleDelete = async () => {
     try {
-      await deleteDoc(doc(db, 'members', memberToDelete.id));
-      setMembers(members.filter(member => member.id !== memberToDelete.id));
+      await deleteDoc(doc(db, "members", memberToDelete.id));
+      setMembers(members.filter((member) => member.id !== memberToDelete.id));
       setDeleteModalOpen(false);
     } catch (error) {
       setError(error.message);
@@ -93,15 +93,15 @@ const AdminEditMembers = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <div style={{ textAlign: 'center', marginTop: '2%', marginBottom: '3%' }}>
-        <h1 style={{ fontSize: '4rem' }}>Edit Members</h1>
+    <div style={{ padding: "2rem" }}>
+      <div style={{ textAlign: "center", marginTop: "2%", marginBottom: "3%" }}>
+        <h1 style={{ fontSize: "4rem" }}>Edit Members</h1>
       </div>
-      
+
       <Grid centered>
         <Grid.Column width={12}>
           <Card.Group stackable itemsPerRow={3}>
-            {members.map(member => (
+            {members.map((member) => (
               <Card key={member.id}>
                 <Image src={member.imageUrl} wrapped ui={false} />
                 <Card.Content>
@@ -109,31 +109,31 @@ const AdminEditMembers = () => {
                   <Card.Meta>{member.date}</Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
-                  <Button onClick={() => handleEdit(member)} primary>Edit</Button>
-                  <Button onClick={() => openDeleteModal(member)} secondary>Delete</Button>
+                  <Button onClick={() => handleEdit(member)} primary>
+                    Edit
+                  </Button>
+                  <Button onClick={() => openDeleteModal(member)} secondary>
+                    Delete
+                  </Button>
                 </Card.Content>
               </Card>
             ))}
           </Card.Group>
-        </Grid.Column> 
+        </Grid.Column>
       </Grid>
-      
 
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <Modal.Header>Edit Member</Modal.Header>
         <Modal.Content>
           <Form>
-            <Form.Input
-              label="Title"
-              name="title"
-              value={editData.title}
-              onChange={handleChange}
-            />
+            <Form.Input label="Title" name="title" value={editData.title} onChange={handleChange} />
           </Form>
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={() => setModalOpen(false)}>Cancel</Button>
-          <Button onClick={handleSave} primary>Save</Button>
+          <Button onClick={handleSave} primary>
+            Save
+          </Button>
         </Modal.Actions>
       </Modal>
 
@@ -144,7 +144,9 @@ const AdminEditMembers = () => {
         </Modal.Content>
         <Modal.Actions>
           <Button onClick={closeDeleteModal}>Cancel</Button>
-          <Button onClick={handleDelete} negative>Delete</Button>
+          <Button onClick={handleDelete} negative>
+            Delete
+          </Button>
         </Modal.Actions>
       </Modal>
     </div>
