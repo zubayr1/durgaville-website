@@ -1,11 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Segment } from "semantic-ui-react";
+import { useNavigate } from "react-router-dom";
 
-import { db } from "../../firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "../../firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 function AdminCheckMagazineEntries() {
+  const navigate = useNavigate();
+
   const [entries, setEntries] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user || user.email !== "info@durgaville.com") {
+        navigate("/adminlogin");
+      }
+    });
+
+    return () => unsubscribe();
+  }, [navigate]);
 
   useEffect(() => {
     const fetchEntries = async () => {
