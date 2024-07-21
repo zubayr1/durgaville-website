@@ -23,12 +23,14 @@ function App() {
           <Route exact path="/upcoming-events" element={<DashboardEvents />} />
           <Route exact path="/meet-the-team" element={<DashboardMembers />} />
           <Route exact path="/magazine" element={<DashboardMagazine />} />
+
           <Route exact path="/adminlogin" element={<DashboardAdmin />} />
           <Route exact path="/adminportal" element={<AdminPortal />} />
           <Route exact path="/adminaddpost" element={<AdminAddPost />} />
           <Route exact path="/adminaddevent" element={<AdminAddEvent />} />
           <Route exact path="/adminaddmember" element={<AdminAddMember />} />
           <Route exact path="/adminaddgallery" element={<AdminAddGallery />} />
+          
           <Route exact path="/admineditpost" element={<AdminEditPost />} />
           <Route exact path="/admineditevent" element={<AdminEditEvent />} />
           <Route exact path="/admineditmember" element={<AdminEditMembers />} />

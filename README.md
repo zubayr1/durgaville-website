@@ -138,3 +138,9 @@ Edit & Delete Members update: Card UI
 #### 3.1.1:
 Edit & Delete Members update: Image UI
 
+#### 4.0.1
+Add magazine portal
+#### 4.0.2
+Implement firebase on magazine
+
+

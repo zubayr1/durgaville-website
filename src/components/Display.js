@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { db } from '../firebase.js';
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import React, { useState, useEffect } from "react";
+import { db } from "../firebase.js";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
 
-import './display.css';
-import './home.css';
+import "./display.css";
+import "./home.css";
 
 const DisplayData = () => {
   const [items, setItems] = useState([]);
@@ -12,11 +12,10 @@ const DisplayData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(query(collection(db, 'posts'), orderBy('date', 'desc')));
+        const querySnapshot = await getDocs(query(collection(db, "posts"), orderBy("date", "desc")));
         const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setItems(newData);
-      } catch (error) {
-      }
+      } catch (error) {}
     };
 
     fetchData();
@@ -24,10 +23,10 @@ const DisplayData = () => {
 
   function formatDate(dateString) {
     const date = new Date(dateString);
-    const options = { day: 'numeric', month: 'short', year: 'numeric' };
-    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+    const options = { day: "numeric", month: "short", year: "numeric" };
+    const formattedDate = new Intl.DateTimeFormat("en-US", options).format(date);
 
-    const month = formattedDate.split(' ')[0];
+    const month = formattedDate.split(" ")[0];
     const dayWithSuffix = addDaySuffix(date.getDate());
 
     return `${dayWithSuffix} ${month}, ${date.getFullYear()}`;
@@ -35,13 +34,13 @@ const DisplayData = () => {
 
   function addDaySuffix(day) {
     if (day === 1 || day === 21 || day === 31) {
-      return day + 'st';
+      return day + "st";
     } else if (day === 2 || day === 22) {
-      return day + 'nd';
+      return day + "nd";
     } else if (day === 3 || day === 23) {
-      return day + 'rd';
+      return day + "rd";
     } else {
-      return day + 'th';
+      return day + "th";
     }
   }
 
@@ -59,7 +58,7 @@ const DisplayData = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#dee0e3' }}>
+    <div style={{ backgroundColor: "#dee0e3" }}>
       <div className="grid-container margin-container">
         {items.map((item) => (
           <div className="grid-item" key={item.id}>
@@ -69,7 +68,7 @@ const DisplayData = () => {
               <img
                 src={item.imageUrl}
                 alt={item.title}
-                className={`item-image ${clickedImage === item.imageUrl ? 'enlarged' : ''}`}
+                className={`item-image ${clickedImage === item.imageUrl ? "enlarged" : ""}`}
                 onClick={() => handleImageClick(item.imageUrl)}
                 onMouseOver={handleImageHover}
               />

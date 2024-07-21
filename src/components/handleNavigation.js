@@ -1,37 +1,37 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 const useHandleNavigation = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handlebuttonClick = (value) => {
-    const currentURL = window.location.href;
+    const currentURL = window.location.href
 
     if (value === 'home') {
       if (!currentURL.includes('/home')) {
-        navigate('/');
+        navigate('/')
       }
     }
     if (value === 'upcoming-events') {
       if (!currentURL.includes('/upcoming-events')) {
-        navigate('/upcoming-events');
+        navigate('/upcoming-events')
       }
     }
     if (value === 'meet-the-team') {
       if (!currentURL.includes('/meet-the-team')) {
-        navigate('/meet-the-team');
+        navigate('/meet-the-team')
       }
     }
     if (value === 'magazine') {
       if (!currentURL.includes('/magazine')) {
-        navigate('/magazine');
+        navigate('/magazine')
       }
     }
     if (value === 'admin-portal') {
       if (!currentURL.includes('/admin-portal')) {
-        navigate('/adminlogin');
+        navigate('/adminlogin')
       }
     }
-  };
+  }
 
   const handleiconClick = (value) => {
     if (value === 'facebook') {
@@ -45,7 +45,7 @@ const useHandleNavigation = () => {
     }
   }
 
-  return { handlebuttonClick, handleiconClick };
-};
+  return { handlebuttonClick, handleiconClick }
+}
 
-export default useHandleNavigation;
+export default useHandleNavigation
