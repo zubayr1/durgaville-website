@@ -10,7 +10,21 @@ function Greetings({ onScrollDown }) {
   const [showSecondDiv, setShowSecondDiv] = useState(false);
 
   const handleScrollDown = () => {
-    onScrollDown();
+    let targetScroll;
+    const viewportHeight = window.innerHeight;
+
+    if (window.innerWidth >= 1024) { // Desktop view
+      targetScroll = viewportHeight / 1.08;
+    } else if (window.innerWidth >= 768) { // Tablet view
+      targetScroll = viewportHeight / 1.5;
+    } else { // Mobile view
+      targetScroll = viewportHeight / 2;
+    }
+
+    window.scrollTo({
+      top: targetScroll,
+      behavior: 'smooth'
+    });
   };
 
   useEffect(() => {
@@ -285,6 +299,30 @@ function Greetings({ onScrollDown }) {
           </Grid.Column>
         </Grid.Row>
       </Grid>
+
+      <div
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          cursor: 'pointer'
+        }}
+        onClick={handleScrollDown}
+      >
+        <img
+          src={arrow}
+          alt="Arrow"
+          style={{
+            filter: 'invert(1)',
+            width: 'auto',
+            height: '30px',
+            maxWidth: '100%',
+            maxHeight: '100%'
+          }}
+        />
+      </div>
+
+
     </div>
   );
 }
