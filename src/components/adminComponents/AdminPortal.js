@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Grid, Segment } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
+import { db } from "../../firebase"; // Adjust the path as necessary
+import { collection, getDocs } from "firebase/firestore";
 
 const AdminPortal = () => {
+  const [entries, setEntries] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchEntries = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "magazine_entries"));
+        const entriesList = querySnapshot.docs.map((doc) => doc.data());
+        setEntries(entriesList);
+      } catch (error) {
+        console.error("Error fetching magazine entries: ", error);
+      }
+    };
+
+    fetchEntries();
+  }, []);
 
   const handleAddPost = () => {
     navigate("/adminaddpost");
@@ -186,29 +203,40 @@ const AdminPortal = () => {
                 </Grid.Column>
 
                 <Grid.Column width={4}>
-                  <Button onClick={handleEditEvent} style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}>
-                    Edit/ Delete Events
-                  </Button>
-                </Grid.Column>
+                <Button onClick={handleEditEvent} style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}>
+                Edit/ Delete Events
+              </Button>
+            </Grid.Column>
 
-                <Grid.Column width={4}>
-                  <Button onClick={handleEditMember} style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}>
-                    Edit/ Delete Members
-                  </Button>
-                </Grid.Column>
+            <Grid.Column width={4}>
+              <Button onClick={handleEditMember} style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}>
+                Edit/ Delete Members
+              </Button>
+            </Grid.Column>
 
-                <Grid.Column width={4}>
-                  <Button onClick={handleEditGallery} style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}>
-                    Edit/ Delete Gallery
-                  </Button>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Grid.Column>
+            <Grid.Column width={4}>
+              <Button onClick={handleEditGallery} style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}>
+                Edit/ Delete Gallery
+              </Button>
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
-      </Segment>
-    </div>
-  );
+      </Grid.Column>
+    </Grid>
+  </Segment>
+  <Segment>
+    <h2>Magazine Entries</h2>
+    <ul style={{ listStyleType: "none", padding: 0 }}>
+      {entries.map((entry, index) => (
+        <li key={index} style={{ marginBottom: "1em" }}>
+          <strong>Full Name:</strong> {entry.fullName}, <strong>Title:</strong> {entry.title}, <strong>Submission Type:</strong> {entry.submissionType}, <strong>URL:</strong> <a href={entry.fileUrl} target="_blank" rel="noopener noreferrer">View</a>
+        </li>
+      ))}
+    </ul>
+  </Segment>
+</div>
+
+);
 };
 
 export default AdminPortal;
