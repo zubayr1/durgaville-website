@@ -16,6 +16,8 @@ import AdminEditEvent from "./components/adminComponents/AdminEditEvent";
 import AdminEditMembers from "./components/adminComponents/AdminEditMembers";
 import AdminEditGallery from "./components/adminComponents/AdminEditGallery";
 
+import AdminCheckMagazineEntries from "./components/adminComponents/AdminCheckMagazineEntries";
+
 function App() {
   return (
     <div>
@@ -37,6 +39,8 @@ function App() {
           <Route exact path="/admineditevent" element={<AdminEditEvent />} />
           <Route exact path="/admineditmember" element={<AdminEditMembers />} />
           <Route exact path="/admineditgallery" element={<AdminEditGallery />} />
+
+          <Route exact path="/admincheckmagazineentries" element={<AdminCheckMagazineEntries />} />
         </Routes>
       </Router>
     </div>
