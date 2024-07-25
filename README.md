@@ -143,4 +143,5 @@ Add magazine portal
 #### 4.0.2
 Implement firebase on magazine
 
-
+#### 5.0.0
+Filter post yearwise

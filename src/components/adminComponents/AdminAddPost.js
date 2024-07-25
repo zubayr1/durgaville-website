@@ -39,8 +39,10 @@ const AdminAddPost = () => {
         // Get the download URL of the uploaded image
         const imageUrl = await getDownloadURL(imageRef);
 
+        const year = date.split("-")[0];
+
         // Add document to a 'posts' collection in Firestore
-        await addDoc(collection(db, "posts"), {
+        await addDoc(collection(db, `allposts/${year}/entries`), {
           title: title,
           description: description,
           date: date,

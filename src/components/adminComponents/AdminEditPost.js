@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "../../firebase"; // Adjust this import to match your project's structure
+import { auth, db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-import { Button, Card, Modal, Form, Image } from "semantic-ui-react";
+import { Button, Card, Modal, Form, Image, Dropdown } from "semantic-ui-react";
 import { collection, getDocs, updateDoc, deleteDoc, doc } from "firebase/firestore";
 
 const AdminEditPost = () => {
@@ -15,6 +15,8 @@ const AdminEditPost = () => {
   const [error, setError] = useState(null); // Add error state
   const [deleteModalOpen, setDeleteModalOpen] = useState(false); // Add delete modal state
   const [postToDelete, setPostToDelete] = useState(null); // Track post to delete
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear().toString());
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -26,10 +28,26 @@ const AdminEditPost = () => {
     return () => unsubscribe();
   }, [navigate]);
 
+  const generateYearOptions = () => {
+    const currentYear = new Date().getFullYear();
+    const startYear = 2021;
+    const years = [];
+    for (let year = currentYear; year >= startYear; year--) {
+      years.push({
+        key: year.toString(),
+        text: year.toString(),
+        value: year.toString(),
+      });
+    }
+    return years;
+  };
+
+  const yearOptions = generateYearOptions();
+
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const postsCollection = collection(db, "posts");
+        const postsCollection = collection(db, `allposts/${selectedYear}/entries`);
         const postsSnapshot = await getDocs(postsCollection);
         const postsList = postsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
@@ -45,7 +63,7 @@ const AdminEditPost = () => {
     };
 
     fetchPosts();
-  }, []);
+  }, [selectedYear]);
 
   const handleEdit = (post) => {
     setSelectedPost(post);
@@ -55,7 +73,7 @@ const AdminEditPost = () => {
 
   const handleSave = async () => {
     try {
-      const postRef = doc(db, "posts", selectedPost.id);
+      const postRef = doc(db, `allposts/${selectedYear}/entries`, selectedPost.id);
       await updateDoc(postRef, {
         title: editData.title,
         description: editData.description,
@@ -73,13 +91,17 @@ const AdminEditPost = () => {
 
   const handleDelete = async () => {
     try {
-      await deleteDoc(doc(db, "posts", postToDelete.id));
+      await deleteDoc(doc(db, `allposts/${selectedYear}/entries`, postToDelete.id));
       setPosts(posts.filter((post) => post.id !== postToDelete.id));
       setDeleteModalOpen(false);
     } catch (error) {
       setError(error.message);
     }
   };
+
+  const handleDropdown = (e, { value }) => {
+    setSelectedYear(value);
+  }
 
   const openDeleteModal = (post) => {
     setPostToDelete(post);
@@ -97,6 +119,9 @@ const AdminEditPost = () => {
     <div style={{ padding: "2rem" }}>
       <div style={{ textAlign: "center", marginTop: "2%", marginBottom: "3%" }}>
         <h1 style={{ fontSize: "4rem" }}>Edit/ Delete Post</h1>
+      </div>
+      <div style={{display:'flex', justifyContent:'end', paddingRight:'5%', marginBottom:'2%'}}>
+      <Dropdown placeholder="Select Year" selection options={yearOptions} defaultValue={selectedYear} onChange={handleDropdown}/>
       </div>
       <Card.Group stackable itemsPerRow={3}>
         {posts.map((post) => (

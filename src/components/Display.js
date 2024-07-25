@@ -2,24 +2,46 @@ import React, { useState, useEffect } from "react";
 import { db } from "../firebase.js";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 
+import { Dropdown } from "semantic-ui-react";
+
 import "./display.css";
 import "./home.css";
 
 const DisplayData = () => {
   const [items, setItems] = useState([]);
   const [clickedImage, setClickedImage] = useState(null);
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear().toString());
+
+
+  const generateYearOptions = () => {
+    const currentYear = new Date().getFullYear();
+    const startYear = 2021;
+    const years = [];
+    for (let year = currentYear; year >= startYear; year--) {
+      years.push({
+        key: year.toString(),
+        text: year.toString(),
+        value: year.toString(),
+      });
+    }
+    return years;
+  };
+
+  const yearOptions = generateYearOptions();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(query(collection(db, "posts"), orderBy("date", "desc")));
+        const querySnapshot = await getDocs(
+          query(collection(db, `allposts/${selectedYear}/entries`), orderBy("date", "desc")),
+        );
         const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setItems(newData);
       } catch (error) {}
     };
 
     fetchData();
-  }, []);
+  }, [selectedYear]);
 
   function formatDate(dateString) {
     const date = new Date(dateString);
@@ -48,6 +70,10 @@ const DisplayData = () => {
     setClickedImage((prevState) => (prevState === imageUrl ? null : imageUrl));
   };
 
+  const handleDropdown = (e, { value }) => {
+    setSelectedYear(value);
+  }
+
   const handleImageHover = (event) => {
     // console.log('Image hovered:', event.target.src);
   };
@@ -58,24 +84,29 @@ const DisplayData = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#dee0e3" }}>
-      <div className="grid-container margin-container">
-        {items.map((item) => (
-          <div className="grid-item" key={item.id}>
-            <h3 className="item-title">{item.title}</h3>
-            <p className="item-date">{formatDate(item.date)}</p>
-            <div className="item-content">
-              <img
-                src={item.imageUrl}
-                alt={item.title}
-                className={`item-image ${clickedImage === item.imageUrl ? "enlarged" : ""}`}
-                onClick={() => handleImageClick(item.imageUrl)}
-                onMouseOver={handleImageHover}
-              />
-              <p className="item-description" dangerouslySetInnerHTML={{ __html: wrapURLs(item.description) }} />
+    <div>
+      <div style={{ backgroundColor: "#dee0e3" }}>
+        <div className="margin-container" style={{ display: "flex", justifyContent: "end", paddingRight: "5%" }}>
+          <Dropdown placeholder="Select Year" selection options={yearOptions} defaultValue={selectedYear} onChange={handleDropdown}/>
+        </div>
+        <div className="grid-container margin-container">
+          {items.map((item) => (
+            <div className="grid-item" key={item.id}>
+              <h3 className="item-title">{item.title}</h3>
+              <p className="item-date">{formatDate(item.date)}</p>
+              <div className="item-content">
+                <img
+                  src={item.imageUrl}
+                  alt={item.title}
+                  className={`item-image ${clickedImage === item.imageUrl ? "enlarged" : ""}`}
+                  onClick={() => handleImageClick(item.imageUrl)}
+                  onMouseOver={handleImageHover}
+                />
+                <p className="item-description" dangerouslySetInnerHTML={{ __html: wrapURLs(item.description) }} />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
