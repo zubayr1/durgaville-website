@@ -3,7 +3,7 @@ import { db } from "../firebase.js";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { Modal, Button } from "semantic-ui-react";
 
-import "./events.css";
+import "./upcomingEvents.css";
 import "./home.css";
 
 function Events() {
@@ -76,7 +76,10 @@ function Events() {
               <p className="item-date-events">{formatDate(item.date)}</p>
               <div className="content-container">
                 <img src={item.imageUrl} alt={item.title} className="item-image-events" />
-                <p className="item-description-events" dangerouslySetInnerHTML={{ __html: wrapURLs(item.description) }} />
+                <p
+                  className="item-description-events"
+                  dangerouslySetInnerHTML={{ __html: wrapURLs(item.description) }}
+                />
               </div>
             </div>
           </div>

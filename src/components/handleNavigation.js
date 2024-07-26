@@ -16,6 +16,11 @@ const useHandleNavigation = () => {
         navigate('/upcoming-events')
       }
     }
+    if (value === 'past-events') {
+      if (!currentURL.includes('/past-events')) {
+        navigate('/past-events')
+      }
+    }
     if (value === 'meet-the-team') {
       if (!currentURL.includes('/meet-the-team')) {
         navigate('/meet-the-team')

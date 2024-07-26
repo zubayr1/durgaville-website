@@ -2,7 +2,6 @@
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
-  position: relative; /* Added position relative for absolute positioning of image */
 }
 
 .item-date {
@@ -16,7 +15,7 @@
   font-size: 2rem;
   /* Increased font size for title */
   margin-bottom: 10px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   text-align: center;
 }
 
@@ -47,7 +46,7 @@
 .item-description {
   font-size: 1.6rem;
   line-height: 2;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .grid-container {

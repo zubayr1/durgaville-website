@@ -3,13 +3,13 @@ import Background from "./Background";
 import Greetings from "./Greetings";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import Events from "./Events";
+import PastEvents from "./PastEvents";
 import { SidebarPusher, SidebarPushable, GridColumn, Grid, Sidebar } from "semantic-ui-react";
 import { Helmet } from "react-helmet";
 
 import MobileView from "./MobileView";
 
-function DashboardEvents() {
+function DashboardPastEvents() {
   const [navbarVisible, setNavbarVisible] = useState(false);
 
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -22,7 +22,7 @@ function DashboardEvents() {
   return (
     <div style={{ overflow: "hidden" }}>
       <Helmet>
-        <title>Events - Durgaville</title>
+        <title>Past Events - Durgaville</title>
         <meta name="description" content="Learn more about all the events of Durgaville" />
       </Helmet>
       <Grid>
@@ -32,7 +32,7 @@ function DashboardEvents() {
             <Greetings onScrollDown={handleScroll} />
             <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
             <div>
-              <Events />
+              <PastEvents />
             </div>
             <Footer />
           </Grid.Column>
@@ -58,7 +58,7 @@ function DashboardEvents() {
                 <Greetings onScrollDown={handleScroll} />
                 <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
                 <div>
-                  <Events />
+                  <PastEvents />
                 </div>
                 <Footer />
               </SidebarPusher>
@@ -70,4 +70,4 @@ function DashboardEvents() {
   );
 }
 
-export default DashboardEvents;
+export default DashboardPastEvents;
