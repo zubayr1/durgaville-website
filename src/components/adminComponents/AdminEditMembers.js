@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "../../firebase"; // Adjust this import to match your project's structure
+import { auth, db, storage } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Modal, Form, Image, Grid } from "semantic-ui-react";
 import { collection, getDocs, updateDoc, deleteDoc, doc } from "firebase/firestore";
+import { ref, deleteObject } from "firebase/storage";
 
 const AdminEditMembers = () => {
   const navigate = useNavigate();
@@ -72,6 +73,11 @@ const AdminEditMembers = () => {
 
   const handleDelete = async () => {
     try {
+      // Delete the image from Firebase Storage
+      let imagetoDelete = memberToDelete.imageUrl.split("%2F")[1].split("?alt")[0];
+      const imageRef = ref(storage, `imagesMembers/${imagetoDelete}`);
+      await deleteObject(imageRef);
+
       await deleteDoc(doc(db, "members", memberToDelete.id));
       setMembers(members.filter((member) => member.id !== memberToDelete.id));
       setDeleteModalOpen(false);
@@ -95,7 +101,7 @@ const AdminEditMembers = () => {
   return (
     <div style={{ padding: "2rem" }}>
       <div style={{ textAlign: "center", marginTop: "2%", marginBottom: "3%" }}>
-        <h1 style={{ fontSize: "4rem" }}>Edit Members</h1>
+        <h1 style={{ fontSize: "4rem" }}>Edit/ Delete Members</h1>
       </div>
 
       <Grid centered>

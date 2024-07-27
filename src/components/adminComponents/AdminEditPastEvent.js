@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "../../firebase";
+import { auth, db, storage } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Modal, Form, Image, Dropdown } from "semantic-ui-react";
 import { collection, getDocs, updateDoc, deleteDoc, doc } from "firebase/firestore";
+import { ref, deleteObject } from "firebase/storage";
 
-const AdminEditPost = () => {
+const AdminEditPastEvent = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
@@ -47,7 +48,7 @@ const AdminEditPost = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const postsCollection = collection(db, `allposts/${selectedYear}/entries`);
+        const postsCollection = collection(db, `pastEvents/${selectedYear}/entries`);
         const postsSnapshot = await getDocs(postsCollection);
         const postsList = postsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
@@ -73,7 +74,7 @@ const AdminEditPost = () => {
 
   const handleSave = async () => {
     try {
-      const postRef = doc(db, `allposts/${selectedYear}/entries`, selectedPost.id);
+      const postRef = doc(db, `pastEvents/${selectedYear}/entries`, selectedPost.id);
       await updateDoc(postRef, {
         title: editData.title,
         description: editData.description,
@@ -91,7 +92,12 @@ const AdminEditPost = () => {
 
   const handleDelete = async () => {
     try {
-      await deleteDoc(doc(db, `allposts/${selectedYear}/entries`, postToDelete.id));
+      // Delete the image from Firebase Storage
+      let imagetoDelete = postToDelete.imageUrl.split("%2F")[1].split("?alt")[0];
+      const imageRef = ref(storage, `imagesPastEvents/${imagetoDelete}`);
+      await deleteObject(imageRef);
+
+      await deleteDoc(doc(db, `pastEvents/${selectedYear}/entries`, postToDelete.id));
       setPosts(posts.filter((post) => post.id !== postToDelete.id));
       setDeleteModalOpen(false);
     } catch (error) {
@@ -118,7 +124,7 @@ const AdminEditPost = () => {
   return (
     <div style={{ padding: "2rem" }}>
       <div style={{ textAlign: "center", marginTop: "2%", marginBottom: "3%" }}>
-        <h1 style={{ fontSize: "4rem" }}>Edit/ Delete Post</h1>
+        <h1 style={{ fontSize: "4rem" }}>Edit/ Delete Past Events</h1>
       </div>
       <div style={{display:'flex', justifyContent:'end', paddingRight:'5%', marginBottom:'2%'}}>
       <Dropdown placeholder="Select Year" selection options={yearOptions} defaultValue={selectedYear} onChange={handleDropdown}/>
@@ -176,4 +182,4 @@ const AdminEditPost = () => {
   );
 };
 
-export default AdminEditPost;
+export default AdminEditPastEvent;

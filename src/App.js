@@ -7,13 +7,13 @@ import DashboardMagazine from "./components/DashboardMagazine";
 import DashboardAdmin from "./components/DashboardAdmin";
 
 import AdminPortal from "./components/adminComponents/AdminPortal";
-import AdminAddPost from "./components/adminComponents/AdminAddPost";
-import AdminAddEvent from "./components/adminComponents/AdminAddEvent";
+import AdminAddPastEvent from "./components/adminComponents/AdminAddPastEvent";
+import AdminAddUpcomingEvent from "./components/adminComponents/AdminAddUpcomingEvent";
 import AdminAddMember from "./components/adminComponents/AdminAddMember";
 import AdminAddGallery from "./components/adminComponents/AdminAddGallery";
 
-import AdminEditPost from "./components/adminComponents/AdminEditPost";
-import AdminEditEvent from "./components/adminComponents/AdminEditEvent";
+import AdminEditPastEvent from "./components/adminComponents/AdminEditPastEvent";
+import AdminEditUpcomingEvent from "./components/adminComponents/AdminEditUpcomingEvent";
 import AdminEditMembers from "./components/adminComponents/AdminEditMembers";
 import AdminEditGallery from "./components/adminComponents/AdminEditGallery";
 
@@ -32,13 +32,13 @@ function App() {
 
           <Route exact path="/adminlogin" element={<DashboardAdmin />} />
           <Route exact path="/adminportal" element={<AdminPortal />} />
-          <Route exact path="/adminaddpost" element={<AdminAddPost />} />
-          <Route exact path="/adminaddevent" element={<AdminAddEvent />} />
+          <Route exact path="/adminaddpastevent" element={<AdminAddPastEvent />} />
+          <Route exact path="/adminaddupcomingevent" element={<AdminAddUpcomingEvent />} />
           <Route exact path="/adminaddmember" element={<AdminAddMember />} />
           <Route exact path="/adminaddgallery" element={<AdminAddGallery />} />
 
-          <Route exact path="/admineditpost" element={<AdminEditPost />} />
-          <Route exact path="/admineditevent" element={<AdminEditEvent />} />
+          <Route exact path="/admineditpastevent" element={<AdminEditPastEvent />} />
+          <Route exact path="/admineditupcomingevent" element={<AdminEditUpcomingEvent />} />
           <Route exact path="/admineditmember" element={<AdminEditMembers />} />
           <Route exact path="/admineditgallery" element={<AdminEditGallery />} />
 

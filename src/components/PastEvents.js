@@ -32,7 +32,7 @@ const PastEvents = () => {
     const fetchData = async () => {
       try {
         const querySnapshot = await getDocs(
-          query(collection(db, `allposts/${selectedYear}/entries`), orderBy("date", "desc")),
+          query(collection(db, `pastEvents/${selectedYear}/entries`), orderBy("date", "desc")),
         );
         const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setItems(newData);

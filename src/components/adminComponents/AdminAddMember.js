@@ -28,10 +28,14 @@ const AdminAddMember = () => {
   const handleSubmit = async () => {
     if (name === "" || date === "" || image === null) {
       setError(1);
-    } else {
+    } else if(image.name.includes(" ")) {
+      setError(3);
+    }
+    else {
       try {
         // Upload image to Firebase Storage
-        const imageRef = ref(storage, `images/${image.name}`);
+        const imageRef = ref(storage, `imagesMembers/${image.name}`);
+
         await uploadBytes(imageRef, image);
 
         // Get the download URL of the uploaded image
@@ -70,7 +74,14 @@ const AdminAddMember = () => {
         <Message error header="Submission Error" content="Error due to unforeseen issue" />
       </div>
     );
-  } else if (error === 0) {
+  } else if (error === 3) {
+    layout = (
+      <div>
+        <Message error header="Submission Error" content="Image name should not have white spaces" />
+      </div>
+    );
+  }
+  else if (error === 0) {
     layout = (
       <div>
         <Message success header="Success" content="Submission done successfully" />

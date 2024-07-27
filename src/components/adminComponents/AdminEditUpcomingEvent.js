@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "../../firebase"; // Adjust this import to match your project's structure
+import { auth, db, storage } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Modal, Form, Image } from "semantic-ui-react";
 import { collection, getDocs, updateDoc, deleteDoc, doc } from "firebase/firestore";
+import { ref, deleteObject } from "firebase/storage";
 
-const AdminEditEvent = () => {
+const AdminEditUpcomingEvent = () => {
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -29,7 +30,7 @@ const AdminEditEvent = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const eventsCollection = collection(db, "events");
+        const eventsCollection = collection(db, "upcomingEvents");
         const eventsSnapshot = await getDocs(eventsCollection);
         const eventsList = eventsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
@@ -55,7 +56,7 @@ const AdminEditEvent = () => {
 
   const handleSave = async () => {
     try {
-      const eventRef = doc(db, "events", selectedEvent.id);
+      const eventRef = doc(db, "upcomingEvents", selectedEvent.id);
       await updateDoc(eventRef, {
         title: editData.title,
         description: editData.description,
@@ -73,7 +74,11 @@ const AdminEditEvent = () => {
 
   const handleDelete = async () => {
     try {
-      await deleteDoc(doc(db, "events", eventToDelete.id));
+      let imagetoDelete = eventToDelete.imageUrl.split("%2F")[1].split("?alt")[0];
+      const imageRef = ref(storage, `imagesUpcomingEvents/${imagetoDelete}`);
+      await deleteObject(imageRef);
+
+      await deleteDoc(doc(db, "upcomingEvents", eventToDelete.id));
       setEvents(events.filter((event) => event.id !== eventToDelete.id));
       setDeleteModalOpen(false);
     } catch (error) {
@@ -96,7 +101,7 @@ const AdminEditEvent = () => {
   return (
     <div style={{ padding: "2rem" }}>
       <div style={{ textAlign: "center", marginTop: "2%", marginBottom: "3%" }}>
-        <h1 style={{ fontSize: "4rem" }}>Edit Event</h1>
+        <h1 style={{ fontSize: "4rem" }}>Edit/ Delete Upcoming Event</h1>
       </div>
       <Card.Group stackable itemsPerRow={3}>
         {events.map((event) => (
@@ -151,4 +156,4 @@ const AdminEditEvent = () => {
   );
 };
 
-export default AdminEditEvent;
+export default AdminEditUpcomingEvent;

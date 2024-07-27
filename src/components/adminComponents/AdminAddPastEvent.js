@@ -8,7 +8,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 import { useNavigate } from "react-router-dom";
 
-const AdminAddPost = () => {
+const AdminAddPastEvent = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
@@ -30,10 +30,13 @@ const AdminAddPost = () => {
   const handleSubmit = async () => {
     if (title === "" || description === "" || date === "" || image === null) {
       setError(1);
-    } else {
+    } else if(image.name.includes(" ")) {
+      setError(3);
+    }
+    else {
       try {
         // Upload image to Firebase Storage
-        const imageRef = ref(storage, `images/${image.name}`);
+        const imageRef = ref(storage, `imagesPastEvents/${image.name}`);
         await uploadBytes(imageRef, image);
 
         // Get the download URL of the uploaded image
@@ -42,7 +45,7 @@ const AdminAddPost = () => {
         const year = date.split("-")[0];
 
         // Add document to a 'posts' collection in Firestore
-        await addDoc(collection(db, `allposts/${year}/entries`), {
+        await addDoc(collection(db, `pastEvents/${year}/entries`), {
           title: title,
           description: description,
           date: date,
@@ -75,7 +78,14 @@ const AdminAddPost = () => {
         <Message error header="Submission Error" content="Error due to unforeseen issue" />
       </div>
     );
-  } else if (error === 0) {
+  } else if (error === 3) {
+    layout = (
+      <div>
+        <Message error header="Submission Error" content="Image name should not have white spaces" />
+      </div>
+    );
+  }
+  else if (error === 0) {
     layout = (
       <div>
         <Message success header="Success" content="Submission done successfully" />
@@ -87,7 +97,7 @@ const AdminAddPost = () => {
     <div style={{ overflow: "hidden", marginTop: "10%" }}>
       <Grid centered>
         <Grid.Row>
-          <p style={{ fontWeight: "bolder", fontSize: "4rem", fontFamily: "Inter" }}>Durgaville Admin Portal: Add Post</p>
+          <p style={{ fontWeight: "bolder", fontSize: "4rem", fontFamily: "Inter" }}>Durgaville Admin Portal: Add Past Events</p>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column mobile={16} tablet={10} computer={8}>
@@ -124,4 +134,4 @@ const AdminAddPost = () => {
   );
 };
 
-export default AdminAddPost;
+export default AdminAddPastEvent;

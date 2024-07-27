@@ -8,7 +8,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 import { useNavigate } from "react-router-dom";
 
-const AdminAddEvent = () => {
+const AdminAddUpcomingEvent = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
@@ -30,17 +30,20 @@ const AdminAddEvent = () => {
   const handleSubmit = async () => {
     if (title === "" || description === "" || date === "" || image === null) {
       setError(1);
-    } else {
+    } else if(image.name.includes(" ")) {
+      setError(3);
+    }
+    else {
       try {
         // Upload image to Firebase Storage
-        const imageRef = ref(storage, `images/${image.name}`);
+        const imageRef = ref(storage, `imagesUpcomingEvents/${image.name}`);
         await uploadBytes(imageRef, image);
 
         // Get the download URL of the uploaded image
         const imageUrl = await getDownloadURL(imageRef);
 
         // Add document to a 'events' collection in Firestore
-        await addDoc(collection(db, "events"), {
+        await addDoc(collection(db, "upcomingEvents"), {
           title: title,
           description: description,
           date: date,
@@ -73,7 +76,14 @@ const AdminAddEvent = () => {
         <Message error header="Submission Error" content="Error due to unforeseen issue" />
       </div>
     );
-  } else if (error === 0) {
+  } else if (error === 3) {
+    layout = (
+      <div>
+        <Message error header="Submission Error" content="Image name should not have white spaces" />
+      </div>
+    );
+  }
+  else if (error === 0) {
     layout = (
       <div>
         <Message success header="Success" content="Submission done successfully" />
@@ -85,7 +95,7 @@ const AdminAddEvent = () => {
     <div style={{ overflow: "hidden", marginTop: "10%" }}>
       <Grid centered>
         <Grid.Row>
-          <p style={{ fontWeight: "bolder", fontSize: "4rem", fontFamily: "Inter" }}>Durgaville Admin Portal: Add Events</p>
+          <p style={{ fontWeight: "bolder", fontSize: "4rem", fontFamily: "Inter" }}>Durgaville Admin Portal: Add Upcoming Events</p>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column mobile={16} tablet={10} computer={8}>
@@ -122,4 +132,4 @@ const AdminAddEvent = () => {
   );
 };
 
-export default AdminAddEvent;
+export default AdminAddUpcomingEvent;

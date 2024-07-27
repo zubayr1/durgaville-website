@@ -23,7 +23,7 @@ function Events() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(query(collection(db, "events"), orderBy("date", "desc")));
+        const querySnapshot = await getDocs(query(collection(db, "upcomingEvents"), orderBy("date", "desc")));
         const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setItems(newData);
       } catch (error) {}

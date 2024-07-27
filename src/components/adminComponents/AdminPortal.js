@@ -6,11 +6,11 @@ const AdminPortal = () => {
   const navigate = useNavigate();
 
   const handleAddPost = () => {
-    navigate("/adminaddpost");
+    navigate("/adminaddpastevent");
   };
 
   const handleAddEvent = () => {
-    navigate("/adminaddevent");
+    navigate("/adminaddupcomingevent");
   };
 
   const handleAddMember = () => {
@@ -18,11 +18,11 @@ const AdminPortal = () => {
   };
 
   const handleEditPost = () => {
-    navigate("/admineditpost");
+    navigate("/admineditpastevent");
   };
 
   const handleEditEvent = () => {
-    navigate("/admineditevent");
+    navigate("/admineditupcomingevent");
   };
 
   const handleEditMember = () => {
@@ -48,74 +48,74 @@ const AdminPortal = () => {
           <Grid.Column width={16} only="computer" verticalAlign="middle">
             <Grid centered>
               <Grid.Row>
-                <Grid.Column width={2}>
+                <Grid.Column width={3}>
                   <Button
                     onClick={handleAddPost}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
-                    Add Post
+                    Add Past Event
                   </Button>
                 </Grid.Column>
 
-                <Grid.Column width={2}>
+                <Grid.Column width={3}>
                   <Button
                     onClick={handleAddEvent}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
-                    Add Events
+                    Add Upcoming Events
                   </Button>
                 </Grid.Column>
 
-                <Grid.Column width={2}>
+                <Grid.Column width={3}>
                   <Button
                     onClick={handleAddMember}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
                     Add Members
                   </Button>
                 </Grid.Column>
 
-                <Grid.Column width={2}>
+                <Grid.Column width={3}>
                   <Button
                     onClick={handleAddGallery}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
                     Add Gallery
                   </Button>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
-                <Grid.Column width={2}>
+                <Grid.Column width={3}>
                   <Button
                     onClick={handleEditPost}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
-                    Edit/ Delete Post
+                    Edit/ Delete Past Event
                   </Button>
                 </Grid.Column>
 
-                <Grid.Column width={2}>
+                <Grid.Column width={3}>
                   <Button
                     onClick={handleEditEvent}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
-                    Edit/ Delete Events
+                    Edit/ Delete Upcoming Events
                   </Button>
                 </Grid.Column>
 
-                <Grid.Column width={2}>
+                <Grid.Column width={3}>
                   <Button
                     onClick={handleEditMember}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
                     Edit/ Delete Members
                   </Button>
                 </Grid.Column>
 
-                <Grid.Column width={2}>
+                <Grid.Column width={3}>
                   <Button
                     onClick={handleEditGallery}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
                     Edit/ Delete Gallery
                   </Button>
@@ -130,7 +130,7 @@ const AdminPortal = () => {
                 <Grid.Column width={4}>
                   <Button
                     onClick={handleAddPost}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
                     Add Post
                   </Button>
@@ -139,7 +139,7 @@ const AdminPortal = () => {
                 <Grid.Column width={4}>
                   <Button
                     onClick={handleAddEvent}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
                     Add Events
                   </Button>
@@ -148,7 +148,7 @@ const AdminPortal = () => {
                 <Grid.Column width={4}>
                   <Button
                     onClick={handleAddMember}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
                     Add Members
                   </Button>
@@ -157,7 +157,7 @@ const AdminPortal = () => {
                 <Grid.Column width={4}>
                   <Button
                     onClick={handleAddGallery}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
                     Add Gallery
                   </Button>
@@ -167,7 +167,7 @@ const AdminPortal = () => {
                 <Grid.Column width={4}>
                   <Button
                     onClick={handleEditPost}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
                     Edit/ Delete Post
                   </Button>
@@ -176,7 +176,7 @@ const AdminPortal = () => {
                 <Grid.Column width={4}>
                   <Button
                     onClick={handleEditEvent}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
                     Edit/ Delete Events
                   </Button>
@@ -185,7 +185,7 @@ const AdminPortal = () => {
                 <Grid.Column width={4}>
                   <Button
                     onClick={handleEditMember}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
                     Edit/ Delete Members
                   </Button>
@@ -194,7 +194,7 @@ const AdminPortal = () => {
                 <Grid.Column width={4}>
                   <Button
                     onClick={handleEditGallery}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.3rem" }}
+                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
                   >
                     Edit/ Delete Gallery
                   </Button>
@@ -290,7 +290,7 @@ const AdminPortal = () => {
                   backgroundColor: "white",
                   color: "black",
                   border: "2px solid black",
-                  fontSize: ".9rem",
+                  fontSize: "1.2rem",
                   marginBottom: "1%",
                 }}
               >
