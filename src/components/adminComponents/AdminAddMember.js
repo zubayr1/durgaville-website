@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Grid, Image, Message } from "semantic-ui-react";
-
+import { Button, Form, Grid, Message } from "semantic-ui-react";
+import Cropper from "react-easy-crop";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db, storage } from "../../firebase.js";
 import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
+import getCroppedImg from "./cropimage.js";
 import { useNavigate } from "react-router-dom";
 
 const AdminAddMember = () => {
   const [name, setName] = useState("");
   const [image, setImage] = useState(null);
+  const [imageURL, setImageURL] = useState(null);
   const [date, setDate] = useState("");
   const [error, setError] = useState(-1);
+  const [isCropped, setIsCropped] = useState(0);
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const [croppedImage, setCroppedImage] = useState(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    //navgate to login
     onAuthStateChanged(auth, (user) => {
       if (!user || user.email !== "info@durgaville.com") {
         navigate("/adminlogin");
@@ -25,30 +29,47 @@ const AdminAddMember = () => {
     });
   }, [navigate]);
 
-  const handleSubmit = async () => {
-    if (name === "" || date === "" || image === null) {
-      setError(1);
-    } else if(image.name.includes(" ")) {
-      setError(3);
+  const onCropComplete = async (croppedArea, croppedAreaPixels) => {
+    try {
+      const croppedImg = await getCroppedImg(imageURL, croppedAreaPixels, 0);
+      setIsCropped(1);
+      setCroppedImage(croppedImg);
+    } catch (e) {
+      console.error(e);
     }
-    else {
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(file);
+        setImageURL(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (name === "" || date === "" || image === null || croppedImage === null) {
+      setError(1);
+    } else if (image.name.includes(" ")) {
+      setError(3);
+    } else if (!isCropped) {
+      setError(4);
+    } else {
       try {
-        // Upload image to Firebase Storage
         const imageRef = ref(storage, `imagesMembers/${image.name}`);
+        await uploadBytes(imageRef, croppedImage);
 
-        await uploadBytes(imageRef, image);
-
-        // Get the download URL of the uploaded image
         const imageUrl = await getDownloadURL(imageRef);
-
-        // Add document to a 'members' collection in Firestore
-        await addDoc(collection(db, "members"), {
+        await addDoc(collection(db, "coreMembers"), {
           title: name,
           date: date,
           imageUrl: imageUrl,
         });
         setError(0);
-
         setTimeout(() => {
           window.location.reload();
         }, 2000);
@@ -59,7 +80,6 @@ const AdminAddMember = () => {
   };
 
   let layout;
-
   if (error === -1) {
     layout = <div></div>;
   } else if (error === 1) {
@@ -80,8 +100,13 @@ const AdminAddMember = () => {
         <Message error header="Submission Error" content="Image name should not have white spaces" />
       </div>
     );
-  }
-  else if (error === 0) {
+  } else if (error === 4) {
+    layout = (
+      <div>
+        <Message error header="Submission Error" content="Image is not cropped yet" />
+      </div>
+    );
+  } else if (error === 0) {
     layout = (
       <div>
         <Message success header="Success" content="Submission done successfully" />
@@ -89,11 +114,44 @@ const AdminAddMember = () => {
     );
   }
 
+  let cropLayout = <div></div>;
+  if (imageURL !== null) {
+    cropLayout = (
+      <Grid centered>
+        <Grid.Row style={{ width: "100%", height: "400px" }}>
+          <Cropper
+            image={imageURL}
+            crop={crop}
+            zoom={zoom}
+            aspect={1}
+            onCropChange={setCrop}
+            onCropComplete={onCropComplete}
+            onZoomChange={setZoom}
+          />
+        </Grid.Row>
+        <Grid.Row>
+          <input
+            type="range"
+            value={zoom}
+            min={1}
+            max={3}
+            step={0.1}
+            aria-labelledby="Zoom"
+            onChange={(e) => setZoom(e.target.value)}
+            className="zoom-range"
+          />
+        </Grid.Row>
+      </Grid>
+    );
+  }
+
   return (
     <div style={{ overflow: "hidden", marginTop: "10%" }}>
       <Grid centered>
         <Grid.Row>
-          <p style={{ fontWeight: "bolder", fontSize: "4rem", fontFamily: "Inter" }}>Durgaville Admin Portal: Add Member</p>
+          <p style={{ fontWeight: "bolder", fontSize: "4rem", fontFamily: "Inter" }}>
+            Durgaville Admin Portal: Add Member
+          </p>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column mobile={16} tablet={10} computer={8}>
@@ -106,7 +164,7 @@ const AdminAddMember = () => {
               <Form.Field>
                 <label htmlFor="datetime">Date and Time</label>
                 <input
-                  type="datetime-local" // Use type datetime-local for date and time input
+                  type="datetime-local"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
                 />
@@ -114,20 +172,17 @@ const AdminAddMember = () => {
 
               <Form.Field>
                 <label htmlFor="image">Image</label>
-                <input type="file" onChange={(e) => setImage(e.target.files[0])} />
+                <input type="file" onChange={handleImageChange} />
               </Form.Field>
+
               <Button type="submit">Submit</Button>
             </Form>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column mobile={16} tablet={10} computer={8}>
-            {image && <Image src={URL.createObjectURL(image)} size="medium" />}
           </Grid.Column>
         </Grid.Row>
 
         <Grid.Row>{layout}</Grid.Row>
       </Grid>
+      {cropLayout}
     </div>
   );
 };

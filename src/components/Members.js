@@ -23,7 +23,7 @@ function Members() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(query(collection(db, "members"), orderBy("date", "asc")));
+        const querySnapshot = await getDocs(query(collection(db, "coreMembers"), orderBy("date", "asc")));
         const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setItems(newData);
       } catch (error) {}

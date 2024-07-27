@@ -30,7 +30,7 @@ const AdminEditMembers = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const membersCollection = collection(db, "members");
+        const membersCollection = collection(db, "coreMembers");
         const membersSnapshot = await getDocs(membersCollection);
         const membersList = membersSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
@@ -56,7 +56,7 @@ const AdminEditMembers = () => {
 
   const handleSave = async () => {
     try {
-      const memberRef = doc(db, "members", selectedMember.id);
+      const memberRef = doc(db, "coreMembers", selectedMember.id);
       await updateDoc(memberRef, {
         title: editData.title,
       });
@@ -78,7 +78,7 @@ const AdminEditMembers = () => {
       const imageRef = ref(storage, `imagesMembers/${imagetoDelete}`);
       await deleteObject(imageRef);
 
-      await deleteDoc(doc(db, "members", memberToDelete.id));
+      await deleteDoc(doc(db, "coreMembers", memberToDelete.id));
       setMembers(members.filter((member) => member.id !== memberToDelete.id));
       setDeleteModalOpen(false);
     } catch (error) {
