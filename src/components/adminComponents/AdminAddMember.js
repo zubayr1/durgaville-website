@@ -1,88 +1,88 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Form, Grid, Image, Message } from 'semantic-ui-react'
+import React, { useState, useEffect } from "react";
+import { Button, Form, Grid, Image, Message } from "semantic-ui-react";
 
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth, db, storage } from '../firebase.js'
-import { collection, addDoc } from 'firebase/firestore'
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db, storage } from "../../firebase.js";
+import { collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 const AdminAddMember = () => {
-  const [name, setName] = useState('')
-  const [image, setImage] = useState(null)
-  const [date, setDate] = useState('')
-  const [error, setError] = useState(-1)
+  const [name, setName] = useState("");
+  const [image, setImage] = useState(null);
+  const [date, setDate] = useState("");
+  const [error, setError] = useState(-1);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     //navgate to login
     onAuthStateChanged(auth, (user) => {
-      if (!user || user.email !== 'info@durgaville.com') {
-        navigate('/adminlogin')
+      if (!user || user.email !== "info@durgaville.com") {
+        navigate("/adminlogin");
       }
-    })
-  }, [navigate])
+    });
+  }, [navigate]);
 
   const handleSubmit = async () => {
-    if (name === '' || date === '' || image === null) {
-      setError(1)
+    if (name === "" || date === "" || image === null) {
+      setError(1);
     } else {
       try {
         // Upload image to Firebase Storage
-        const imageRef = ref(storage, `images/${image.name}`)
-        await uploadBytes(imageRef, image)
+        const imageRef = ref(storage, `images/${image.name}`);
+        await uploadBytes(imageRef, image);
 
         // Get the download URL of the uploaded image
-        const imageUrl = await getDownloadURL(imageRef)
+        const imageUrl = await getDownloadURL(imageRef);
 
         // Add document to a 'members' collection in Firestore
-        await addDoc(collection(db, 'members'), {
+        await addDoc(collection(db, "members"), {
           title: name,
           date: date,
           imageUrl: imageUrl,
-        })
-        setError(0)
+        });
+        setError(0);
 
         setTimeout(() => {
-          window.location.reload()
-        }, 2000)
+          window.location.reload();
+        }, 2000);
       } catch (error) {
-        setError(2)
+        setError(2);
       }
     }
-  }
+  };
 
-  let layout
+  let layout;
 
   if (error === -1) {
-    layout = <div></div>
+    layout = <div></div>;
   } else if (error === 1) {
     layout = (
       <div>
         <Message error header="Submission Error" content="One of the entries is empty" />
       </div>
-    )
+    );
   } else if (error === 2) {
     layout = (
       <div>
         <Message error header="Submission Error" content="Error due to unforeseen issue" />
       </div>
-    )
+    );
   } else if (error === 0) {
     layout = (
       <div>
         <Message success header="Success" content="Submission done successfully" />
       </div>
-    )
+    );
   }
 
   return (
-    <div style={{ overflow: 'hidden', marginTop: '10%' }}>
+    <div style={{ overflow: "hidden", marginTop: "10%" }}>
       <Grid centered>
         <Grid.Row>
-          <p style={{ fontWeight: 'bolder', fontSize: '4rem', fontFamily: 'Inter' }}>Durgaville Admin Portal: Add Member</p>
+          <p style={{ fontWeight: "bolder", fontSize: "4rem", fontFamily: "Inter" }}>Durgaville Admin Portal: Add Member</p>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column mobile={16} tablet={10} computer={8}>
@@ -118,7 +118,7 @@ const AdminAddMember = () => {
         <Grid.Row>{layout}</Grid.Row>
       </Grid>
     </div>
-  )
-}
+  );
+};
 
-export default AdminAddMember
+export default AdminAddMember;

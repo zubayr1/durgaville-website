@@ -1,40 +1,48 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Form, Grid, Image, Message } from 'semantic-ui-react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth, db, storage } from '../firebase.js';
-import { collection, addDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Button, Form, Grid, Image, Message } from "semantic-ui-react";
 
-const AdminAddGallery = () => {
-  const [date, setDate] = useState('');
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db, storage } from "../../firebase.js";
+import { collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
+import { useNavigate } from "react-router-dom";
+
+const AdminAddEvent = () => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
   const [image, setImage] = useState(null);
+
   const [error, setError] = useState(-1);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Navigate to login
+    //navgate to login
     onAuthStateChanged(auth, (user) => {
-      if (!user || user.email !== 'info@durgaville.com') {
-        navigate('/adminlogin');
+      if (!user || user.email !== "info@durgaville.com") {
+        navigate("/adminlogin");
       }
     });
   }, [navigate]);
 
   const handleSubmit = async () => {
-    if (date === '' || image === null) {
+    if (title === "" || description === "" || date === "" || image === null) {
       setError(1);
     } else {
       try {
         // Upload image to Firebase Storage
-        const imageRef = ref(storage, `gallery/${image.name}`);
+        const imageRef = ref(storage, `images/${image.name}`);
         await uploadBytes(imageRef, image);
 
         // Get the download URL of the uploaded image
         const imageUrl = await getDownloadURL(imageRef);
 
-        // Add document to a 'gallery' collection in Firestore
-        await addDoc(collection(db, 'gallery'), {
+        // Add document to a 'events' collection in Firestore
+        await addDoc(collection(db, "events"), {
+          title: title,
+          description: description,
           date: date,
           imageUrl: imageUrl,
         });
@@ -74,14 +82,22 @@ const AdminAddGallery = () => {
   }
 
   return (
-    <div style={{ overflow: 'hidden', marginTop: '10%' }}>
+    <div style={{ overflow: "hidden", marginTop: "10%" }}>
       <Grid centered>
         <Grid.Row>
-          <p style={{ fontWeight: 'bolder', fontSize: '4rem', fontFamily: 'Inter' }}>Durgaville Admin Portal: Add Gallery</p>
+          <p style={{ fontWeight: "bolder", fontSize: "4rem", fontFamily: "Inter" }}>Durgaville Admin Portal: Add Events</p>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column mobile={16} tablet={10} computer={8}>
             <Form onSubmit={handleSubmit}>
+              <Form.Field>
+                <label htmlFor="title">Title</label>
+                <input placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+              </Form.Field>
+              <Form.Field>
+                <label htmlFor="description">Description</label>
+                <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
+              </Form.Field>
               <Form.Field>
                 <label htmlFor="date">Date</label>
                 <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
@@ -99,10 +115,11 @@ const AdminAddGallery = () => {
             {image && <Image src={URL.createObjectURL(image)} size="medium" />}
           </Grid.Column>
         </Grid.Row>
+
         <Grid.Row>{layout}</Grid.Row>
       </Grid>
     </div>
   );
 };
 
-export default AdminAddGallery;
+export default AdminAddEvent;

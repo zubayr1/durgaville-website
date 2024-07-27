@@ -3,12 +3,13 @@ import Background from "./Background";
 import Greetings from "./Greetings";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import Home from "./Home";
+import UpcomingEvents from "./UpcomingEvents";
 import { SidebarPusher, SidebarPushable, GridColumn, Grid, Sidebar } from "semantic-ui-react";
 import { Helmet } from "react-helmet";
+
 import MobileView from "./MobileView";
 
-function DashboardHome() {
+function DashboardUpcomingEvents() {
   const [navbarVisible, setNavbarVisible] = useState(false);
 
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -21,8 +22,8 @@ function DashboardHome() {
   return (
     <div style={{ overflow: "hidden" }}>
       <Helmet>
-        <title>Home - Durgaville</title>
-        <meta name="description" content="Welcome to Durgaville, your go-to place for everything about Durgapujo in Erlangen, Bavaria, Germany" />
+        <title>Upcoming Events - Durgaville</title>
+        <meta name="description" content="Learn more about all the events of Durgaville" />
       </Helmet>
       <Grid>
         <Grid.Row>
@@ -30,7 +31,9 @@ function DashboardHome() {
             <Background />
             <Greetings onScrollDown={handleScroll} />
             <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
-            <Home />
+            <div>
+              <UpcomingEvents />
+            </div>
             <Footer />
           </Grid.Column>
 
@@ -54,7 +57,9 @@ function DashboardHome() {
                 <Background />
                 <Greetings onScrollDown={handleScroll} />
                 <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
-                <Home />
+                <div>
+                  <UpcomingEvents />
+                </div>
                 <Footer />
               </SidebarPusher>
             </SidebarPushable>
@@ -65,4 +70,4 @@ function DashboardHome() {
   );
 }
 
-export default DashboardHome;
+export default DashboardUpcomingEvents;
