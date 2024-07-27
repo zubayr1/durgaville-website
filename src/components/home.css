@@ -8,3 +8,54 @@
         margin-right: 4%;
     }
 }
+
+.slider-container {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+  
+  .slider-item {
+    transition: transform 0.5s, filter 0.5s;
+  }
+  
+  .slider-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .slick-center .slider-item {
+    transform: scale(1.1);
+    filter: brightness(1);
+  }
+  
+  .slick-slide:not(.slick-center) .slider-item {
+    filter: brightness(0.5);
+    transform: scale(0.9);
+  }
+  
+  .slick-prev:before, .slick-next:before {
+    color: black;
+  }
+  
+  .slick-dots li button:before {
+    color: black;
+  }
+  
+  .slick-dots li.slick-active button:before {
+    color: black;
+  }
+
+  .video-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .video-container iframe {
+    width: 80%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Ensures a 16:9 aspect ratio */
+  }
