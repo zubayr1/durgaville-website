@@ -1,17 +1,21 @@
 import React from 'react';
 import { Divider, Grid, Image } from 'semantic-ui-react';
 import Slider from 'react-slick';
-import thakurhome from '../assets/thakurHome.jpg';
-import mag from '../assets/magazine_entry.jpg';
-
-import './home.css';
-import MagazineDeclare from './MagazineDeclare';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import MagazineDeclare from './MagazineDeclare';
+import './home.css';
+import thakurhome from '../assets/thakurHome.jpg';
+
+// Dynamically create an array of image paths
+const imagePaths = [];
+for (let i = 1; i <= 26; i++) {
+  imagePaths.push(require(`../assets/slide/slide${i}.jpeg`));
+}
 
 function Home() {
   const sliderSettings = {
-    dots: true,
+    dots: false, // Set dots to false to remove the dots under the slider
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -27,7 +31,7 @@ function Home() {
           slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
+          dots: false, // Ensure dots are also disabled for smaller screen sizes
         },
       },
       {
@@ -35,6 +39,7 @@ function Home() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: false, // Ensure dots are also disabled for smaller screen sizes
         },
       },
     ],
@@ -173,18 +178,11 @@ function Home() {
 
         <div style={{ marginTop: '5%', maxWidth: '80%', margin: '0 auto' }}>
           <Slider {...sliderSettings}>
-            <div className="slider-item">
-              <img src={thakurhome} alt="Thakur Durgaville" className="slider-image" />
-            </div>
-            <div className="slider-item">
-              <img src={mag} alt="Mag Durgaville" className="slider-image" />
-            </div>
-            <div className="slider-item">
-              <img src={thakurhome} alt="Thakur Durgaville" className="slider-image" />
-            </div>
-            <div className="slider-item">
-              <img src={mag} alt="Mag Durgaville" className="slider-image" />
-            </div>
+            {imagePaths.map((image, index) => (
+              <div key={index} className="slider-item">
+                <img src={image} alt={`Slide ${index + 1}`} className="slider-image" />
+              </div>
+            ))}
           </Slider>
         </div>
       </div>
