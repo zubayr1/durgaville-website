@@ -26,7 +26,7 @@ function MobileView() {
         </p>
       </Grid.Row>
 
-      <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
+      {/* <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
         <p onClick={() => handlebuttonClick("meet-the-team")} style={{ fontWeight: "bolder", fontFamily: "Inter" }}>
           MEET THE TEAM
         </p>
@@ -36,7 +36,7 @@ function MobileView() {
         <p onClick={() => handlebuttonClick("magazine")} style={{ fontWeight: "bolder", fontFamily: "Inter" }}>
           MAGAZINE
         </p>
-      </Grid.Row>
+      </Grid.Row> */}
 
       <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
         <p onClick={() => handlebuttonClick("admin-portal")} style={{ fontWeight: "bolder", fontFamily: "Inter" }}>

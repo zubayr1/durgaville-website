@@ -20,11 +20,13 @@ function Navbar({ visible, setVisible }) {
       setActiveItem("upcoming-events");
     } else if (currentURL.includes("/past-events")) {
       setActiveItem("past-events");
-    } else if (currentURL.includes("/meet-the-team")) {
-      setActiveItem("meet-the-team");
-    } else if (currentURL.includes("/magazine")) {
-      setActiveItem("magazine");
-    } else if (currentURL.includes("/adminlogin")) {
+    }
+    // else if (currentURL.includes("/meet-the-team")) {
+    //   setActiveItem("meet-the-team");
+    // } else if (currentURL.includes("/magazine")) {
+    //   setActiveItem("magazine");
+    // }
+    else if (currentURL.includes("/adminlogin")) {
       setActiveItem("admin-portal");
     }
   }, []);
@@ -105,7 +107,7 @@ function Navbar({ visible, setVisible }) {
                   onClick={handleItemClick}
                   className={activeItem === "past-events" ? "active" : ""}
                 />
-                <Menu.Item
+                {/* <Menu.Item
                   name="meet-the-team"
                   active={activeItem === "meet-the-team"}
                   onClick={handleItemClick}
@@ -116,7 +118,7 @@ function Navbar({ visible, setVisible }) {
                   active={activeItem === "magazine"}
                   onClick={handleItemClick}
                   className={activeItem === "magazine" ? "active" : ""}
-                />
+                /> */}
 
                 <Menu.Item
                   name="admin-portal"
@@ -168,7 +170,7 @@ function Navbar({ visible, setVisible }) {
                   onClick={handleItemClick}
                   className={activeItem === "past-events" ? "active" : ""}
                 />
-                <Menu.Item
+                {/* <Menu.Item
                   name="meet-the-team"
                   active={activeItem === "meet-the-team"}
                   onClick={handleItemClick}
@@ -179,7 +181,7 @@ function Navbar({ visible, setVisible }) {
                   active={activeItem === "magazine"}
                   onClick={handleItemClick}
                   className={activeItem === "magazine" ? "active" : ""}
-                />
+                /> */}
 
                 <Menu.Item
                   name="admin-portal"

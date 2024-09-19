@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DashboardHome from "./components/DashboardHome";
 import DashboardUpcomingEvents from "./components/DashboardUpcomingEvents";
 import DashboardPastEvents from "./components/DashboardPastEvents";
-import DashboardMembers from "./components/DashboardMembers";
-import DashboardMagazine from "./components/DashboardMagazine";
+// import DashboardMembers from "./components/DashboardMembers";
+// import DashboardMagazine from "./components/DashboardMagazine";
 import DashboardAdmin from "./components/DashboardAdmin";
 
 import AdminPortal from "./components/adminComponents/AdminPortal";
@@ -19,6 +19,8 @@ import AdminEditGallery from "./components/adminComponents/AdminEditGallery";
 
 import AdminCheckMagazineEntries from "./components/adminComponents/AdminCheckMagazineEntries";
 
+import PageNotFound from "./components/PageNotFound";
+
 function App() {
   return (
     <div>
@@ -27,8 +29,8 @@ function App() {
           <Route exact path="/" element={<DashboardHome />} />
           <Route exact path="/upcoming-events" element={<DashboardUpcomingEvents />} />
           <Route exact path="/past-events" element={<DashboardPastEvents />} />
-          <Route exact path="/meet-the-team" element={<DashboardMembers />} />
-          <Route exact path="/magazine" element={<DashboardMagazine />} />
+          {/* <Route exact path="/meet-the-team" element={<DashboardMembers />} />
+          <Route exact path="/magazine" element={<DashboardMagazine />} /> */}
 
           <Route exact path="/adminlogin" element={<DashboardAdmin />} />
           <Route exact path="/adminportal" element={<AdminPortal />} />
@@ -43,6 +45,8 @@ function App() {
           <Route exact path="/admineditgallery" element={<AdminEditGallery />} />
 
           <Route exact path="/admincheckmagazineentries" element={<AdminCheckMagazineEntries />} />
+
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
     </div>
