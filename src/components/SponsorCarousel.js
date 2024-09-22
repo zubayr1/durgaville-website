@@ -52,32 +52,32 @@ function SponsorCarousel({ deviceType }) {
         forwardBtnProps={{
           style: {
             alignSelf: "center",
-            background: "black",
+            background: "#daffffff",
             border: "none",
             borderRadius: "50%",
-            color: "white",
+            color: "black",
             cursor: "pointer",
-            fontSize: "20px",
             height: 30,
             lineHeight: 1,
             textAlign: "center",
             width: 30,
+            margin: "1px",
           },
           children: <span>{`>`}</span>,
         }}
         backwardBtnProps={{
           style: {
             alignSelf: "center",
-            background: "black",
+            background: "#daffffff",
             border: "none",
             borderRadius: "50%",
-            color: "white",
+            color: "black",
             cursor: "pointer",
             height: 30,
             lineHeight: 1,
             textAlign: "center",
             width: 30,
-            margin: "2px",
+            margin: "1px",
           },
           children: <span>{`<`}</span>,
         }}
