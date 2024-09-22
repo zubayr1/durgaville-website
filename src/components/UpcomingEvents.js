@@ -75,7 +75,12 @@ function Events() {
               <h4 className="item-title-events">{item.title}</h4>
               <p className="item-date-events">{formatDate(item.date)}</p>
               <div className="content-container">
-                <img src={item.imageUrl} alt={item.title} className="item-image-events" />
+                <img
+                  src={item.imageUrl}
+                  alt={item.title}
+                  className="item-image-events"
+                  style={{ width: "80%", aspectRatio: "16 / 9", objectFit: "contain" }}
+                />
                 <p
                   className="item-description-events"
                   dangerouslySetInnerHTML={{ __html: wrapURLs(item.description) }}
