@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Grid, Image, Icon, Button, Divider } from "semantic-ui-react";
 
 import durgapujo from "../assets/durgapujo_2024.jpg";
+import schedule from "../assets/schedule.jpg";
 
 import { ToastContainer, toast } from "react-toast";
 
@@ -357,6 +358,14 @@ function Durgapujo() {
               label={{ basic: true, color: "red", pointing: "left", icon: message }}
             />
           </Grid.Column>
+        </Grid.Row>
+
+        <Grid.Row centered>
+          <Image
+            alt="Durgapujo Schedule"
+            src={schedule}
+            style={{ width: "60%", aspectRatio: "16 / 9", objectFit: "fill" }}
+          />
         </Grid.Row>
       </Grid>
       <Divider />
