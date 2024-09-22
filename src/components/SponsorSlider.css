@@ -26,6 +26,21 @@
     /* Make sure the images scale properly */
 }
 
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    .slide {
+        width: 60px;
+        /* Smaller width for images on mobile */
+        margin-right: 10px;
+        /* Adjust spacing between images */
+    }
+
+    .slider {
+        animation: scroll 40s linear infinite;
+        /* Slower scroll for mobile */
+    }
+}
+
 @keyframes scroll {
     0% {
         transform: translateX(0);

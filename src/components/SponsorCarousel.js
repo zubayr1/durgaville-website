@@ -33,7 +33,6 @@ function SponsorSlider() {
   return (
     <div className="slider-container">
       <div className="slider">
-        {/* Duplicate the list of sponsors to create an infinite loop effect */}
         {[...sponsors, ...sponsors].map((src, index) => (
           <div className="slide" key={index}>
             <Image src={src} alt={`sponsor-${index}`} />
