@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+
 import ReactSimplyCarousel from "react-simply-carousel";
+
 import { Image } from "semantic-ui-react";
 
 import cgi from "../assets/sponsors/cgi.png";
@@ -37,7 +39,7 @@ function SponsorCarousel({ deviceType }) {
   }, [deviceType]);
 
   return (
-    <div style={{ width: "100%", overflow: "hidden" }}>
+    <div>
       <ReactSimplyCarousel
         activeSlideIndex={activeSlideIndex}
         onRequestChange={setActiveSlideIndex}
@@ -107,20 +109,12 @@ function SponsorCarousel({ deviceType }) {
               justifyContent: "center",
               alignItems: "center",
               height: dimension,
-              width: "100%",
-              margin: "0 5%",
+              width: dimension,
+              margin: "0 7%",
               background: "#ffffff",
             }}
           >
-            <Image
-              alt={`sponsor-${index}`}
-              src={src}
-              style={{
-                maxHeight: "100%",
-                maxWidth: "100%",
-                objectFit: "contain",
-              }}
-            />
+            <Image alt={`sponsor-${index}`} src={src} style={{ maxHeight: "100%", maxWidth: "100%" }} />
           </div>
         ))}
       </ReactSimplyCarousel>
