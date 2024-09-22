@@ -1,0 +1,37 @@
+.slider-container {
+    overflow: hidden;
+    /* Hide the overflowing part */
+    width: 100%;
+    /* Adjust width to container */
+}
+
+.slider {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    /* Infinite scrolling animation */
+}
+
+.slide {
+    flex: 0 0 auto;
+    width: 200px;
+    /* Set a fixed width for the images */
+    margin-right: 20px;
+    /* Add some spacing between images */
+}
+
+.slide img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    /* Make sure the images scale properly */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}

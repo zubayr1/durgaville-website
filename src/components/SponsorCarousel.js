@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from "react";
-
-import ReactSimplyCarousel from "react-simply-carousel";
-
+import React from "react";
 import { Image } from "semantic-ui-react";
 
 import cgi from "../assets/sponsors/cgi.png";
@@ -16,110 +13,35 @@ import sangam from "../assets/sponsors/sangam.png";
 import sparkasse from "../assets/sponsors/sparkasse.jpg";
 import toms_ok from "../assets/sponsors/toms_ok.png";
 
-function SponsorCarousel({ deviceType }) {
-  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-  const [itemsToShow, setItemsToShow] = useState(2);
-  const [itemsToScroll, setItemsToScroll] = useState(1);
-  const [dimension, setDimension] = useState(100);
+import "./SponsorSlider.css"; // External CSS for animation styles
 
-  useEffect(() => {
-    if (deviceType === "computer") {
-      setItemsToShow(5);
-      setItemsToScroll(2);
-      setDimension(300);
-    } else if (deviceType === "tablet") {
-      setItemsToShow(3);
-      setItemsToScroll(1);
-      setDimension(200);
-    } else {
-      setItemsToShow(1);
-      setItemsToScroll(1);
-      setDimension(120);
-    }
-  }, [deviceType]);
+function SponsorSlider() {
+  const sponsors = [
+    cgi,
+    chai_roti,
+    d4dance,
+    ergo,
+    indian_street_food,
+    kulturfoerderung_stadt_erlangen,
+    rasam,
+    ruchi,
+    sangam,
+    sparkasse,
+    toms_ok,
+  ];
 
   return (
-    <div>
-      <ReactSimplyCarousel
-        activeSlideIndex={activeSlideIndex}
-        onRequestChange={setActiveSlideIndex}
-        itemsToShow={itemsToShow}
-        itemsToScroll={itemsToScroll}
-        autoplay={true}
-        autoplayDirection={"forward"}
-        autoplayDelay={2000}
-        infinite={true}
-        forwardBtnProps={{
-          style: {
-            alignSelf: "center",
-            background: "#daffffff",
-            border: "none",
-            borderRadius: "50%",
-            color: "black",
-            cursor: "pointer",
-            height: 20,
-            lineHeight: 1,
-            textAlign: "center",
-            width: 20,
-          },
-          children: <span>{`>`}</span>,
-        }}
-        backwardBtnProps={{
-          style: {
-            alignSelf: "center",
-            background: "#daffffff",
-            border: "none",
-            borderRadius: "50%",
-            color: "black",
-            cursor: "pointer",
-            height: 20,
-            lineHeight: 1,
-            textAlign: "center",
-            width: 20,
-          },
-          children: <span>{`<`}</span>,
-        }}
-        responsiveProps={[
-          {
-            itemsToShow: itemsToShow,
-            itemsToScroll: itemsToScroll,
-            minWidth: 768,
-          },
-        ]}
-        speed={400}
-        easing="linear"
-      >
-        {[
-          cgi,
-          chai_roti,
-          d4dance,
-          ergo,
-          indian_street_food,
-          kulturfoerderung_stadt_erlangen,
-          rasam,
-          ruchi,
-          sangam,
-          sparkasse,
-          toms_ok,
-        ].map((src, index) => (
-          <div
-            key={index}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: dimension,
-              width: dimension,
-              margin: "0 7%",
-              background: "#ffffff",
-            }}
-          >
-            <Image alt={`sponsor-${index}`} src={src} style={{ maxHeight: "100%", maxWidth: "100%" }} />
+    <div className="slider-container">
+      <div className="slider">
+        {/* Duplicate the list of sponsors to create an infinite loop effect */}
+        {[...sponsors, ...sponsors].map((src, index) => (
+          <div className="slide" key={index}>
+            <Image src={src} alt={`sponsor-${index}`} />
           </div>
         ))}
-      </ReactSimplyCarousel>
+      </div>
     </div>
   );
 }
 
-export default SponsorCarousel;
+export default SponsorSlider;
