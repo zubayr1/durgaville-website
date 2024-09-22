@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Grid, Image, Icon, Button, Divider } from "semantic-ui-react";
 
 import durgapujo from "../assets/durgapujo_2024.jpg";
-import schedule from "../assets/schedule.jpg";
 
 import { ToastContainer, toast } from "react-toast";
 
 import Sponsors from "./Sponsors";
 import Registration from "./Registration";
+import Schedule from "./Schedule";
 
 function Durgapujo() {
   const [message, setMessage] = useState("clipboard");
@@ -329,7 +329,7 @@ function Durgapujo() {
         </Grid.Row>
 
         <Grid.Row>
-          <Grid.Column width={6} floated="right" only="computer">
+          <Grid.Column width={4} floated="right" only="computer">
             <Button
               onClick={handleCopy}
               color="red"
@@ -339,7 +339,7 @@ function Durgapujo() {
             />
           </Grid.Column>
 
-          <Grid.Column width={7} floated="right" only="tablet">
+          <Grid.Column width={6} floated="right" only="tablet">
             <Button
               onClick={handleCopy}
               color="red"
@@ -361,11 +361,7 @@ function Durgapujo() {
         </Grid.Row>
 
         <Grid.Row centered>
-          <Image
-            alt="Durgapujo Schedule"
-            src={schedule}
-            style={{ width: "60%", aspectRatio: "16 / 9", objectFit: "fill" }}
-          />
+          <Schedule />
         </Grid.Row>
       </Grid>
       <Divider />
