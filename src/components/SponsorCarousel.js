@@ -34,7 +34,7 @@ function SponsorCarousel({ deviceType }) {
     } else {
       setItemsToShow(3);
       setItemsToScroll(1);
-      setDimension(110);
+      setDimension(90);
     }
   }, [deviceType]);
 
