@@ -32,9 +32,9 @@ function SponsorCarousel({ deviceType }) {
       setItemsToScroll(1);
       setDimension(200);
     } else {
-      setItemsToShow(3);
+      setItemsToShow(2);
       setItemsToScroll(1);
-      setDimension(90);
+      setDimension(120);
     }
   }, [deviceType]);
 
