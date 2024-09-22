@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Image, Icon, Button } from "semantic-ui-react";
+import { Grid, Image, Icon, Button, Divider } from "semantic-ui-react";
 
 import durgapujo from "../assets/durgapujo_2024.jpg";
 
@@ -30,7 +30,7 @@ function Durgapujo() {
     <div style={{ marginBottom: "5%" }}>
       <ToastContainer position="bottom-right" delay={2000} />
       <Grid>
-        <Grid.Row>
+        <Grid.Row centered>
           <Grid.Column only="computer" width={16} textAlign="middle">
             <p
               style={{
@@ -359,7 +359,7 @@ function Durgapujo() {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-
+      <Divider />
       <Registration />
 
       <Sponsors />

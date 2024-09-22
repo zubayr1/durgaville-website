@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DashboardHome from "./components/DashboardHome";
 import DashboardUpcomingEvents from "./components/DashboardUpcomingEvents";
 import DashboardPastEvents from "./components/DashboardPastEvents";
+import DashboardDurgapujo from "./components/DashboardDurgapujo";
 // import DashboardMembers from "./components/DashboardMembers";
 // import DashboardMagazine from "./components/DashboardMagazine";
 import DashboardAdmin from "./components/DashboardAdmin";
@@ -27,6 +28,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<DashboardHome />} />
+          <Route exact path="/pujo-2024" element={<DashboardDurgapujo />} />
           <Route exact path="/upcoming-events" element={<DashboardUpcomingEvents />} />
           <Route exact path="/past-events" element={<DashboardPastEvents />} />
           {/* <Route exact path="/meet-the-team" element={<DashboardMembers />} />

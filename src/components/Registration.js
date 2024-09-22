@@ -84,8 +84,7 @@ function Registration() {
                 fontSize: "3.5rem",
                 color: "black",
                 fontWeight: "bold",
-                marginBottom: "1%",
-                marginTop: "2%",
+                marginTop: "3%",
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
             >
@@ -100,8 +99,7 @@ function Registration() {
                 fontSize: "2.5rem",
                 color: "black",
                 fontWeight: "bold",
-                marginBottom: "1%",
-                marginTop: "2%",
+                marginTop: "3%",
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
             >
@@ -116,8 +114,7 @@ function Registration() {
                 fontSize: "1.5rem",
                 color: "black",
                 fontWeight: "bold",
-                marginBottom: "1%",
-                marginTop: "2%",
+                marginTop: "5%",
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
             >
@@ -127,7 +124,7 @@ function Registration() {
         </Grid.Row>
 
         <Grid.Row>
-          <Grid.Column mobile={16} tablet={10} computer={8}>
+          <Grid.Column mobile={14} tablet={10} computer={8}>
             <Form onSubmit={handleSubmit}>
               {entries.map((entry, index) => (
                 <Segment key={index} padded="very">

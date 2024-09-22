@@ -3,7 +3,6 @@ import { Divider, Grid, Image } from "semantic-ui-react";
 import thakurhome from "../assets/thakurHome.jpg";
 
 import "./home.css";
-import Durgapujo from "./Durgapujo";
 
 function Home() {
   return (
@@ -144,10 +143,6 @@ function Home() {
         </Grid>
 
         <Divider />
-
-        <Grid centered>
-          <Durgapujo />
-        </Grid>
       </div>
     </div>
   );

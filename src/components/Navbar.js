@@ -16,6 +16,8 @@ function Navbar({ visible, setVisible }) {
     const currentURL = window.location.href;
     if (currentURL.includes("/home")) {
       setActiveItem("home");
+    } else if (currentURL.includes("/pujo-2024")) {
+      setActiveItem("Durgapujo, 2024");
     } else if (currentURL.includes("/upcoming-events")) {
       setActiveItem("upcoming-events");
     } else if (currentURL.includes("/past-events")) {
@@ -39,6 +41,11 @@ function Navbar({ visible, setVisible }) {
         navigate("/");
       }
     }
+    if (name === "Durgapujo, 2024") {
+      if (!currentURL.includes("/pujo-2024")) {
+        navigate("/pujo-2024");
+      }
+    }
     if (name === "upcoming-events") {
       if (!currentURL.includes("/upcoming-events")) {
         navigate("/upcoming-events");
@@ -49,16 +56,16 @@ function Navbar({ visible, setVisible }) {
         navigate("/past-events");
       }
     }
-    if (name === "meet-the-team") {
-      if (!currentURL.includes("/meet-the-team")) {
-        navigate("/meet-the-team");
-      }
-    }
-    if (name === "magazine") {
-      if (!currentURL.includes("/magazine")) {
-        navigate("/magazine");
-      }
-    }
+    // if (name === "meet-the-team") {
+    //   if (!currentURL.includes("/meet-the-team")) {
+    //     navigate("/meet-the-team");
+    //   }
+    // }
+    // if (name === "magazine") {
+    //   if (!currentURL.includes("/magazine")) {
+    //     navigate("/magazine");
+    //   }
+    // }
     if (name === "admin-portal") {
       if (!currentURL.includes("/admin-portal")) {
         navigate("/adminlogin");
@@ -94,6 +101,12 @@ function Navbar({ visible, setVisible }) {
                   active={activeItem === "home"}
                   onClick={handleItemClick}
                   className={activeItem === "home" ? "active" : ""}
+                />
+                <Menu.Item
+                  name="Durgapujo, 2024"
+                  active={activeItem === "Durgapujo, 2024"}
+                  onClick={handleItemClick}
+                  className={activeItem === "Durgapujo, 2024" ? "active" : ""}
                 />
                 <Menu.Item
                   name="upcoming-events"
@@ -157,6 +170,12 @@ function Navbar({ visible, setVisible }) {
                   active={activeItem === "home"}
                   onClick={handleItemClick}
                   className={activeItem === "home" ? "active" : ""}
+                />
+                <Menu.Item
+                  name="Durgapujo, 2024"
+                  active={activeItem === "Durgapujo, 2024"}
+                  onClick={handleItemClick}
+                  className={activeItem === "Durgapujo, 2024" ? "active" : ""}
                 />
                 <Menu.Item
                   name="upcoming-events"

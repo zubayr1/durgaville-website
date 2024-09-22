@@ -15,6 +15,12 @@ function MobileView() {
       </Grid.Row>
 
       <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
+        <p onClick={() => handlebuttonClick("Durgapujo, 2024")} style={{ fontWeight: "bolder", fontFamily: "Inter" }}>
+          DURGAPUJO, 2024
+        </p>
+      </Grid.Row>
+
+      <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
         <p onClick={() => handlebuttonClick("upcoming-events")} style={{ fontWeight: "bolder", fontFamily: "Inter" }}>
           UPCOMING EVENTS
         </p>
