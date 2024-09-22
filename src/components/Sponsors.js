@@ -64,7 +64,7 @@ function Sponsors() {
           <Carousel deviceType="tablet" />
         </Grid.Row>
 
-        <Grid.Row style={{ width: "90%" }} only="mobile">
+        <Grid.Row style={{ width: "100%" }} only="mobile">
           <Carousel deviceType="mobile" />
         </Grid.Row>
       </Grid>
