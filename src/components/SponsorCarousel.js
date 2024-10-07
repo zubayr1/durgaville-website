@@ -14,6 +14,9 @@ import ruchi from "../assets/sponsors/ruchi.png";
 import sangam from "../assets/sponsors/sangam.png";
 import sparkasse from "../assets/sponsors/sparkasse.jpg";
 import toms_ok from "../assets/sponsors/toms_ok.png";
+import stadt_erlangen from "../assets/sponsors/stadt_erlangen.png";
+import vielfalt from "../assets/sponsors/vielfalt.png";
+import namaste_herzo from "../assets/sponsors/namaste_herzo.png";
 
 function SponsorSlider() {
   const sponsors = [
@@ -28,6 +31,9 @@ function SponsorSlider() {
     sangam,
     sparkasse,
     toms_ok,
+    stadt_erlangen,
+    vielfalt,
+    namaste_herzo,
   ];
 
   return (
