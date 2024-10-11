@@ -165,7 +165,7 @@ function Registration() {
                 </Segment>
               ))}
               <div style={{ marginTop: "2%" }}>
-                <Button type="submit" style={{ backgroundColor: "#bb0d3b", color: "#fff" }}>
+                <Button disabled type="submit" style={{ backgroundColor: "#bb0d3b", color: "#fff" }}>
                   Register
                 </Button>
               </div>
