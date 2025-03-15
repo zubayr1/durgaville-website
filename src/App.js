@@ -19,7 +19,7 @@ import AdminEditMembers from "./components/adminComponents/AdminEditMembers";
 import AdminEditGallery from "./components/adminComponents/AdminEditGallery";
 
 import AdminCheckMagazineEntries from "./components/adminComponents/AdminCheckMagazineEntries";
-
+import DashboardBoishakhi from "./components/DashboardBoishakhi";
 import PageNotFound from "./components/PageNotFound";
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<DashboardHome />} />
           <Route exact path="/pujo-2024" element={<DashboardDurgapujo />} />
+          <Route exact path="/boishakhi-2025" element={<DashboardBoishakhi />} />
           <Route exact path="/upcoming-events" element={<DashboardUpcomingEvents />} />
           <Route exact path="/past-events" element={<DashboardPastEvents />} />
           {/* <Route exact path="/meet-the-team" element={<DashboardMembers />} />
