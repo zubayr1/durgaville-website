@@ -16,6 +16,11 @@ const useHandleNavigation = () => {
         navigate("/pujo-2024");
       }
     }
+    if (value === "Boishakhi, 2025") {
+      if (!currentURL.includes("/boishakhi-2025")) {
+        navigate("/boishakhi-2025");
+      }
+    }
     if (value === "upcoming-events") {
       if (!currentURL.includes("/upcoming-events")) {
         navigate("/upcoming-events");

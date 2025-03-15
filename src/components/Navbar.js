@@ -18,6 +18,8 @@ function Navbar({ visible, setVisible }) {
       setActiveItem("home");
     } else if (currentURL.includes("/pujo-2024")) {
       setActiveItem("Durgapujo, 2024");
+    } else if (currentURL.includes("/boishakhi-2025")) {
+      setActiveItem("Boishakhi, 2025");
     } else if (currentURL.includes("/upcoming-events")) {
       setActiveItem("upcoming-events");
     } else if (currentURL.includes("/past-events")) {
@@ -44,6 +46,11 @@ function Navbar({ visible, setVisible }) {
     if (name === "Durgapujo, 2024") {
       if (!currentURL.includes("/pujo-2024")) {
         navigate("/pujo-2024");
+      }
+    }
+    if (name === "Boishakhi, 2025") {
+      if (!currentURL.includes("/boishakhi-2025")) {
+        navigate("/boishakhi-2025");
       }
     }
     if (name === "upcoming-events") {
@@ -109,6 +116,12 @@ function Navbar({ visible, setVisible }) {
                   className={activeItem === "Durgapujo, 2024" ? "active" : ""}
                 />
                 <Menu.Item
+                  name="Boishakhi, 2025"
+                  active={activeItem === "Boishakhi, 2025"}
+                  onClick={handleItemClick}
+                  className={activeItem === "Boishakhi, 2025" ? "active" : ""}
+                />
+                <Menu.Item
                   name="upcoming-events"
                   active={activeItem === "upcoming-events"}
                   onClick={handleItemClick}
@@ -133,12 +146,12 @@ function Navbar({ visible, setVisible }) {
                   className={activeItem === "magazine" ? "active" : ""}
                 /> */}
 
-                <Menu.Item
+                {/* <Menu.Item
                   name="admin-portal"
                   active={activeItem === "admin-portal"}
                   onClick={handleItemClick}
                   className={activeItem === "admin-portal" ? "active" : ""}
-                />
+                /> */}
                 <Menu.Menu position="right">
                   <Menu.Item>
                     <div onClick={() => handleiconClick("facebook")} style={{ cursor: "pointer" }}>
@@ -178,6 +191,12 @@ function Navbar({ visible, setVisible }) {
                   className={activeItem === "Durgapujo, 2024" ? "active" : ""}
                 />
                 <Menu.Item
+                  name="Boishakhi, 2025"
+                  active={activeItem === "Boishakhi, 2025"}
+                  onClick={handleItemClick}
+                  className={activeItem === "Boishakhi, 2025" ? "active" : ""}
+                />
+                <Menu.Item
                   name="upcoming-events"
                   active={activeItem === "upcoming-events"}
                   onClick={handleItemClick}
@@ -202,12 +221,12 @@ function Navbar({ visible, setVisible }) {
                   className={activeItem === "magazine" ? "active" : ""}
                 /> */}
 
-                <Menu.Item
+                {/* <Menu.Item
                   name="admin-portal"
                   active={activeItem === "admin-portal"}
                   onClick={handleItemClick}
                   className={activeItem === "admin-portal" ? "active" : ""}
-                />
+                /> */}
                 <Menu.Menu position="right">
                   <Menu.Item>
                     <div onClick={() => handleiconClick("facebook")} style={{ cursor: "pointer" }}>
