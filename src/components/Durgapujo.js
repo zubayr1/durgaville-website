@@ -1,35 +1,20 @@
-import React, { useState } from "react";
-import { Grid, Image, Icon, Button, Divider } from "semantic-ui-react";
+import React from "react";
+import { Grid, Image, Icon, Divider } from "semantic-ui-react";
 
-import durgapujo from "../assets/durgapujo_2024.jpg";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
-import { ToastContainer, toast } from "react-toast";
+import pujo_2024_aarti from "../assets/pujo_2024/aarti.jpg";
+import pujo_2024_ladies from "../assets/pujo_2024/narisakti.jpg";
+import pujo_2024_men from "../assets/pujo_2024/men.jpg";
 
 import Sponsors from "./Sponsors";
-import Registration from "./Registration";
+// import Registration from "./Registration";
 import Schedule from "./Schedule";
 
 function Durgapujo() {
-  const [message, setMessage] = useState("clipboard");
-
-  const handleCopy = () => {
-    const email = "info@durgaville.com";
-
-    navigator.clipboard
-      .writeText(email)
-      .then(() => {
-        setMessage("check");
-        toast.success("Mail Id Copied to Clipboard");
-      })
-      .catch((err) => {
-        setMessage("times");
-        toast.error("Cound not Copy");
-      });
-  };
-
   return (
     <div style={{ marginBottom: "5%" }}>
-      <ToastContainer position="bottom-right" delay={2000} />
       <Grid>
         <Grid.Row centered>
           <Grid.Column only="computer" width={16} textAlign="middle">
@@ -58,17 +43,17 @@ function Durgapujo() {
                 marginRight: "7%",
               }}
             >
-              We are very pleased to inform you that we are all set to perform our fourth edition of Durga Puja starting
-              from <span style={{ color: "#e88310" }}>9th Oct 2024, Wednesday until 13th Oct, 2024, Sunday</span>.
-              <br />
-              We heartily invite you, along with your friends and family to the festival. Come and join us as we pray
-              for speedy justice for "Abhaya" and pray to "Maa" Durga to bless us all and help catch the real demons of
-              the modern society. Our motto is to devote ourselves to "Maa" Durga and perform the rituals in the purest
-              and most traditional way possible. This cannot be achieved without your active participation, and hence
-              let us all join hands together once again, and create a "Home away from home".
+              We are thrilled to look back on our fourth edition of Durga Puja, which took place from
+              <span style={{ color: "#e88310" }}> 9th to 13th October 2024. </span>
+              It was a heartwarming experience to gather with friends and family as we prayed for speedy justice for
+              "Abhaya" and sought the blessings of "Maa" Durga to protect us from the real demons of modern society. Our
+              commitment to honoring "Maa" Durga through pure and traditional rituals was truly fulfilled, thanks to the
+              active participation of everyone involved. Together, we created a beautiful 'Home away from home.' We are
+              grateful that participation, prasad, and entry were free and open to all, allowing everyone to join in the
+              festivities without any registrations.
               <span style={{ color: "#e88310" }}>
-                <br /> Participation, prasad and entry to the festival is and will always be free and open to all. No
-                registrations are required!
+                {" "}
+                <br /> Thank you to everyone who made this celebration so special.
               </span>
             </p>
           </Grid.Column>
@@ -99,17 +84,17 @@ function Durgapujo() {
                 marginRight: "7%",
               }}
             >
-              We are very pleased to inform you that we are all set to perform our fourth edition of Durga Puja starting
-              from <span style={{ color: "#e88310" }}>9th Oct 2024, Wednesday until 13th Oct, 2024, Sunday</span>.
-              <br />
-              We heartily invite you, along with your friends and family to the festival. Come and join us as we pray
-              for speedy justice for "Abhaya" and pray to "Maa" Durga to bless us all and help catch the real demons of
-              the modern society. Our motto is to devote ourselves to "Maa" Durga and perform the rituals in the purest
-              and most traditional way possible. This cannot be achieved without your active participation, and hence
-              let us all join hands together once again, and create a "Home away from home".
+              We are thrilled to look back on our fourth edition of Durga Puja, which took place from
+              <span style={{ color: "#e88310" }}> 9th to 13th October 2024. </span>
+              It was a heartwarming experience to gather with friends and family as we prayed for speedy justice for
+              "Abhaya" and sought the blessings of "Maa" Durga to protect us from the real demons of modern society. Our
+              commitment to honoring "Maa" Durga through pure and traditional rituals was truly fulfilled, thanks to the
+              active participation of everyone involved. Together, we created a beautiful 'Home away from home.' We are
+              grateful that participation, prasad, and entry were free and open to all, allowing everyone to join in the
+              festivities without any registrations.
               <span style={{ color: "#e88310" }}>
-                <br /> Participation, prasad and entry to the festival is and will always be free and open to all. No
-                registrations are required!
+                {" "}
+                <br /> Thank you to everyone who made this celebration so special.
               </span>
             </p>
           </Grid.Column>
@@ -139,17 +124,17 @@ function Durgapujo() {
                 marginRight: "7%",
               }}
             >
-              We are very pleased to inform you that we are all set to perform our fourth edition of Durga Puja starting
-              from <span style={{ color: "#e88310" }}>9th Oct 2024, Wednesday until 13th Oct, 2024, Sunday</span>.
-              <br />
-              We heartily invite you, along with your friends and family to the festival. Come and join us as we pray
-              for speedy justice for "Abhaya" and pray to "Maa" Durga to bless us all and help catch the real demons of
-              the modern society. Our motto is to devote ourselves to "Maa" Durga and perform the rituals in the purest
-              and most traditional way possible. This cannot be achieved without your active participation, and hence
-              let us all join hands together once again, and create a "Home away from home".
+              We are thrilled to look back on our fourth edition of Durga Puja, which took place from
+              <span style={{ color: "#e88310" }}> 9th to 13th October 2024. </span>
+              It was a heartwarming experience to gather with friends and family as we prayed for speedy justice for
+              "Abhaya" and sought the blessings of "Maa" Durga to protect us from the real demons of modern society. Our
+              commitment to honoring "Maa" Durga through pure and traditional rituals was truly fulfilled, thanks to the
+              active participation of everyone involved. Together, we created a beautiful 'Home away from home.' We are
+              grateful that participation, prasad, and entry were free and open to all, allowing everyone to join in the
+              festivities without any registrations.
               <span style={{ color: "#e88310" }}>
-                <br /> Participation, prasad and entry to the festival is and will always be free and open to all. No
-                registrations are required!
+                {" "}
+                <br /> Thank you to everyone who made this celebration so special.
               </span>
             </p>
           </Grid.Column>
@@ -320,44 +305,63 @@ function Durgapujo() {
           </Grid.Column>
         </Grid.Row>
 
-        <Grid.Row centered>
-          <Image
-            alt="Durgapujo durgaville"
-            src={durgapujo}
-            style={{ width: "80%", aspectRatio: "16 / 9", objectFit: "cover" }}
-          />
+        <Grid.Row centered only="computer tablet">
+          <div style={{ width: "80%" }}>
+            <Carousel autoPlay={true} infiniteLoop={true}>
+              <div>
+                <Image
+                  alt="Durgapujo 2024 Aarti"
+                  src={pujo_2024_aarti}
+                  style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
+                />
+                <p className="legend">Durgapujo 2024 Aarti</p>
+              </div>
+              <div>
+                <Image
+                  alt="Durgapujo 2024 NariSakti"
+                  src={pujo_2024_ladies}
+                  style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
+                />
+                <p className="legend">Durgapujo 2024 NariSakti</p>
+              </div>
+              <div>
+                <Image
+                  alt="Durgapujo 2024 men gang"
+                  src={pujo_2024_men}
+                  style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
+                />
+                <p className="legend">Durgapujo 2024 Men's Club</p>
+              </div>
+            </Carousel>
+          </div>
         </Grid.Row>
 
-        <Grid.Row>
-          <Grid.Column width={4} floated="right" only="computer">
-            <Button
-              onClick={handleCopy}
-              color="red"
-              content="Contact Us"
-              icon="mail"
-              label={{ basic: true, color: "red", pointing: "left", icon: message }}
-            />
-          </Grid.Column>
-
-          <Grid.Column width={6} floated="right" only="tablet">
-            <Button
-              onClick={handleCopy}
-              color="red"
-              content="Contact Us"
-              icon="mail"
-              label={{ basic: true, color: "red", pointing: "left", icon: message }}
-            />
-          </Grid.Column>
-
-          <Grid.Column width={9} floated="right" only="mobile">
-            <Button
-              onClick={handleCopy}
-              color="red"
-              content="Contact Us"
-              icon="mail"
-              label={{ basic: true, color: "red", pointing: "left", icon: message }}
-            />
-          </Grid.Column>
+        <Grid.Row centered only="mobile">
+          <div style={{ width: "80%" }}>
+            <Carousel autoPlay={true} infiniteLoop={true}>
+              <div>
+                <Image
+                  alt="Durgapujo 2024 Aarti"
+                  src={pujo_2024_aarti}
+                  style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
+                />
+              </div>
+              <div>
+                <Image
+                  alt="Durgapujo 2024 Narisakti"
+                  src={pujo_2024_ladies}
+                  style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
+                />
+              </div>
+              <div>
+                <Image
+                  alt="Durgapujo 2024 men gang"
+                  src={pujo_2024_men}
+                  style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
+                />
+              </div>
+            </Carousel>
+          </div>
         </Grid.Row>
 
         <Grid.Row centered>
@@ -365,7 +369,7 @@ function Durgapujo() {
         </Grid.Row>
       </Grid>
       <Divider />
-      <Registration />
+      {/* <Registration /> */}
 
       <Sponsors />
     </div>
