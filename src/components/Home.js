@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider, Grid, Image } from "semantic-ui-react";
+import { Divider, Grid, Image, Button } from "semantic-ui-react";
 import thakurhome from "../assets/thakurHome.jpg";
 
 import "./home.css";
@@ -140,6 +140,67 @@ function Home() {
               />
             </div>
           </Grid.Column>
+        </Grid>
+
+        <Grid centered>
+          <Grid.Row centered>
+            <Grid.Column only="computer" textAlign="middle" width={16}>
+              <p
+                style={{
+                  fontFamily: "Inter",
+                  lineHeight: "2.0",
+                  fontSize: "1.6rem",
+                  color: "black",
+                  fontStyle: "italic",
+                  marginTop: "4%",
+                  marginLeft: "7%",
+                  marginRight: "7%",
+                }}
+              >
+                Let's Celebrate Boishakhi 2025
+              </p>
+            </Grid.Column>
+
+            <Grid.Column only="tablet" textAlign="middle" width={16}>
+              <p
+                style={{
+                  fontFamily: "Inter",
+                  lineHeight: "1.8",
+                  fontSize: "1.4rem",
+                  color: "black",
+                  fontStyle: "italic",
+                  marginTop: "3%",
+                  marginLeft: "6%",
+                  marginRight: "6%",
+                }}
+              >
+                Let's Celebrate Boishakhi 2025
+              </p>
+            </Grid.Column>
+
+            <Grid.Column only="mobile" textAlign="middle" width={16}>
+              <p
+                style={{
+                  fontFamily: "Inter",
+                  lineHeight: "1.5",
+                  fontSize: "1.2rem",
+                  color: "black",
+                  fontStyle: "italic",
+                  marginTop: "3%",
+                  marginLeft: "6%",
+                  marginRight: "6%",
+                }}
+              >
+                Let's Celebrate Boishakhi 2025
+              </p>
+            </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row centered width={16}>
+            <Button style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "1em", marginTop: "1em" }}>
+              Boishakhi 2025
+            </Button>
+          </Grid.Row>
         </Grid>
 
         <Divider />
