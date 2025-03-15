@@ -1,8 +1,23 @@
 import React from "react";
 import { Divider, Grid, Image, Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import thakurhome from "../assets/thakurHome.jpg";
 
 import "./home.css";
+
+export const LinkButton = ({ to, children }) => {
+  return (
+    <div>
+      <Button
+        as={Link}
+        to={to}
+        style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "1em", marginTop: "1em" }}
+      >
+        {children}
+      </Button>
+    </div>
+  );
+};
 
 function Home() {
   return (
@@ -43,6 +58,39 @@ function Home() {
               plethora of cultural, social, and sporting events. This expansion reflects their aim to foster camaraderie
               and togetherness among the Indian community in Erlangen.
             </p>
+
+            <div
+              style={{
+                backgroundColor: "#fff3f3",
+                padding: "2rem",
+                borderRadius: "10px",
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                margin: "2rem 7%",
+                border: "2px solid #ff0000",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "Inter",
+                  lineHeight: "2.0",
+                  fontSize: "1.6rem",
+                  color: "black",
+                  fontStyle: "italic",
+                  marginTop: "0",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                Let's Celebrate Boishakhi 2025
+              </p>
+
+              <Button
+                as={Link}
+                to="/boishakhi-2025"
+                style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
+              >
+                Boishakhi 2025
+              </Button>
+            </div>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
               <Image
@@ -88,6 +136,39 @@ function Home() {
               and togetherness among the Indian community in Erlangen.
             </p>
 
+            <div
+              style={{
+                backgroundColor: "#fff3f3",
+                padding: "2rem",
+                borderRadius: "10px",
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                margin: "2rem 6%",
+                border: "2px solid #ff0000",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "Inter",
+                  lineHeight: "2.0",
+                  fontSize: "1.6rem",
+                  color: "black",
+                  fontStyle: "italic",
+                  marginTop: "0",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                Let's Celebrate Boishakhi 2025
+              </p>
+
+              <Button
+                as={Link}
+                to="/boishakhi-2025"
+                style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
+              >
+                Boishakhi 2025
+              </Button>
+            </div>
+
             <div style={{ display: "flex", justifyContent: "center", padding: "6%" }}>
               <Image
                 alt="Thakur Durgaville"
@@ -132,6 +213,39 @@ function Home() {
               and togetherness among the Indian community in Erlangen.
             </p>
 
+            <div
+              style={{
+                backgroundColor: "#fff3f3",
+                padding: "2rem",
+                borderRadius: "10px",
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                margin: "2rem 6%",
+                border: "2px solid #ff0000",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "Inter",
+                  lineHeight: "2.0",
+                  fontSize: "1.6rem",
+                  color: "black",
+                  fontStyle: "italic",
+                  marginTop: "0",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                Let's Celebrate Boishakhi 2025
+              </p>
+
+              <Button
+                as={Link}
+                to="/boishakhi-2025"
+                style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
+              >
+                Boishakhi 2025
+              </Button>
+            </div>
+
             <div style={{ display: "flex", justifyContent: "center", padding: "6%" }}>
               <Image
                 alt="Thakur Durgaville"
@@ -140,67 +254,6 @@ function Home() {
               />
             </div>
           </Grid.Column>
-        </Grid>
-
-        <Grid centered>
-          <Grid.Row centered>
-            <Grid.Column only="computer" textAlign="middle" width={16}>
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  lineHeight: "2.0",
-                  fontSize: "1.6rem",
-                  color: "black",
-                  fontStyle: "italic",
-                  marginTop: "4%",
-                  marginLeft: "7%",
-                  marginRight: "7%",
-                }}
-              >
-                Let's Celebrate Boishakhi 2025
-              </p>
-            </Grid.Column>
-
-            <Grid.Column only="tablet" textAlign="middle" width={16}>
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  lineHeight: "1.8",
-                  fontSize: "1.4rem",
-                  color: "black",
-                  fontStyle: "italic",
-                  marginTop: "3%",
-                  marginLeft: "6%",
-                  marginRight: "6%",
-                }}
-              >
-                Let's Celebrate Boishakhi 2025
-              </p>
-            </Grid.Column>
-
-            <Grid.Column only="mobile" textAlign="middle" width={16}>
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  lineHeight: "1.5",
-                  fontSize: "1.2rem",
-                  color: "black",
-                  fontStyle: "italic",
-                  marginTop: "3%",
-                  marginLeft: "6%",
-                  marginRight: "6%",
-                }}
-              >
-                Let's Celebrate Boishakhi 2025
-              </p>
-            </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row centered width={16}>
-            <Button style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "1em", marginTop: "1em" }}>
-              Boishakhi 2025
-            </Button>
-          </Grid.Row>
         </Grid>
 
         <Divider />
