@@ -5,13 +5,26 @@ import { db } from "../firebase.js";
 import { TailSpin } from "react-loader-spinner";
 
 import sparkasse from "../assets/sponsors/sparkasse.jpg";
-
-const sampleFoodImage = "https://via.placeholder.com/150"; // Replace with actual food image
+import jol_puchka from "../assets/foods/jol_puchka.jpg";
+import doi_puchka from "../assets/foods/doi_puchka.jpg";
+import egg_roll from "../assets/foods/egg_roll.jpg";
+import chicken_roll from "../assets/foods/chicken_roll.jpg";
+import paneer_roll from "../assets/foods/paneer_roll.jpg";
+import mango_lassi from "../assets/foods/mango_lassi.jpg";
+import chicken_pakora from "../assets/foods/chicken_pakora.jpg";
+import dry_chilli_chicken from "../assets/foods/chilli_chicken_dry.jpeg";
+import dry_chilli_paneer from "../assets/foods/chilli_paneer_dry.jpeg";
 
 const foodItems = [
-  { id: 1, name: "Panta Ilish", price: 250 },
-  { id: 2, name: "Vorta Platter", price: 150 },
-  { id: 3, name: "Boishakhi Sweet", price: 100 },
+  { id: 1, name: "Jol Phuchka", price: 4.5, image: jol_puchka },
+  { id: 2, name: "Doi Phuchka", price: 4.5, image: doi_puchka },
+  { id: 3, name: "Egg Roll", price: 6.5, image: egg_roll },
+  { id: 4, name: "Chicken Roll", price: 8.5, image: chicken_roll },
+  { id: 5, name: "Paneer Roll", price: 8.5, image: paneer_roll },
+  { id: 6, name: "Mango Lassi", price: 3.0, image: mango_lassi },
+  { id: 7, name: "Chicken pakora", price: 5.5, image: chicken_pakora },
+  { id: 8, name: "Vorta Platter", price: 7.5, image: dry_chilli_chicken },
+  { id: 9, name: "Boishakhi Sweet", price: 6.5, image: dry_chilli_paneer },
 ];
 
 const Boishakhi = () => {
@@ -159,7 +172,7 @@ const Boishakhi = () => {
                     <Grid>
                       <Grid.Row verticalAlign="middle">
                         <Grid.Column width={4}>
-                          <Image src={sampleFoodImage} size="small" rounded />
+                          <Image src={item.image} size="small" rounded />
                         </Grid.Column>
                         <Grid.Column width={8}>
                           <h4>{item.name}</h4>
