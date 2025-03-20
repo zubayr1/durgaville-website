@@ -110,16 +110,16 @@ function Navbar({ visible, setVisible }) {
                   className={activeItem === "home" ? "active" : ""}
                 />
                 <Menu.Item
-                  name="Durgapujo, 2024"
-                  active={activeItem === "Durgapujo, 2024"}
-                  onClick={handleItemClick}
-                  className={activeItem === "Durgapujo, 2024" ? "active" : ""}
-                />
-                <Menu.Item
                   name="Boishakhi, 2025"
                   active={activeItem === "Boishakhi, 2025"}
                   onClick={handleItemClick}
                   className={activeItem === "Boishakhi, 2025" ? "active" : ""}
+                />
+                <Menu.Item
+                  name="Durgapujo, 2024"
+                  active={activeItem === "Durgapujo, 2024"}
+                  onClick={handleItemClick}
+                  className={activeItem === "Durgapujo, 2024" ? "active" : ""}
                 />
                 <Menu.Item
                   name="upcoming-events"
@@ -185,16 +185,16 @@ function Navbar({ visible, setVisible }) {
                   className={activeItem === "home" ? "active" : ""}
                 />
                 <Menu.Item
-                  name="Durgapujo, 2024"
-                  active={activeItem === "Durgapujo, 2024"}
-                  onClick={handleItemClick}
-                  className={activeItem === "Durgapujo, 2024" ? "active" : ""}
-                />
-                <Menu.Item
                   name="Boishakhi, 2025"
                   active={activeItem === "Boishakhi, 2025"}
                   onClick={handleItemClick}
                   className={activeItem === "Boishakhi, 2025" ? "active" : ""}
+                />
+                <Menu.Item
+                  name="Durgapujo, 2024"
+                  active={activeItem === "Durgapujo, 2024"}
+                  onClick={handleItemClick}
+                  className={activeItem === "Durgapujo, 2024" ? "active" : ""}
                 />
                 <Menu.Item
                   name="upcoming-events"
