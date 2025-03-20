@@ -16,15 +16,15 @@ import dry_chilli_chicken from "../assets/foods/chilli_chicken_dry.jpeg";
 import dry_chilli_paneer from "../assets/foods/chilli_paneer_dry.jpeg";
 
 const foodItems = [
-  { id: 1, name: "Jol Phuchka", price: 4.5, image: jol_puchka },
-  { id: 2, name: "Doi Phuchka", price: 4.5, image: doi_puchka },
-  { id: 3, name: "Egg Roll", price: 6.5, image: egg_roll },
-  { id: 4, name: "Chicken Roll", price: 8.5, image: chicken_roll },
-  { id: 5, name: "Paneer Roll", price: 8.5, image: paneer_roll },
-  { id: 6, name: "Mango Lassi", price: 3.0, image: mango_lassi },
-  { id: 7, name: "Chicken pakora", price: 5.5, image: chicken_pakora },
-  { id: 8, name: "Vorta Platter", price: 7.5, image: dry_chilli_chicken },
-  { id: 9, name: "Boishakhi Sweet", price: 6.5, image: dry_chilli_paneer },
+  { id: 1, name: "Jol Phuchka", price: (4.5).toFixed(2), image: jol_puchka },
+  { id: 2, name: "Doi Phuchka", price: (4.5).toFixed(2), image: doi_puchka },
+  { id: 3, name: "Egg Roll", price: (6.5).toFixed(2), image: egg_roll },
+  { id: 4, name: "Chicken Roll", price: (8.5).toFixed(2), image: chicken_roll },
+  { id: 5, name: "Paneer Roll", price: (8.5).toFixed(2), image: paneer_roll },
+  { id: 6, name: "Mango Lassi", price: (3.0).toFixed(2), image: mango_lassi },
+  { id: 7, name: "Chicken pakora", price: (5.5).toFixed(2), image: chicken_pakora },
+  { id: 8, name: "Dry Chilli Chicken", price: (7.5).toFixed(2), image: dry_chilli_chicken },
+  { id: 9, name: "Dry Chilli Paneer", price: (6.5).toFixed(2), image: dry_chilli_paneer },
 ];
 
 const Boishakhi = () => {
@@ -220,7 +220,8 @@ const Boishakhi = () => {
                             fontFamily: "Inter",
                           }}
                         >
-                          Total Amount: €{foodOrders.reduce((sum, item) => sum + item.price * item.quantity, 0)}
+                          Total Amount: €
+                          {foodOrders.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}
                         </h3>
                       </Grid.Column>
                     </Grid.Row>
