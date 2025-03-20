@@ -2,6 +2,7 @@ import React from "react";
 import { Divider, Grid, Image, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import thakurhome from "../assets/thakurHome.jpg";
+import sparkasse from "../assets/sponsors/sparkasse.jpg";
 
 import "./home.css";
 
@@ -90,6 +91,24 @@ function Home() {
               >
                 Boishakhi 2025
               </Button>
+
+              <p
+                style={{
+                  fontFamily: "Inter",
+                  lineHeight: "2.0",
+                  fontSize: "1.4rem",
+                  color: "black",
+                  fontStyle: "italic",
+                  marginTop: "0",
+                  marginBottom: "1.0rem",
+                }}
+              >
+                Proudly Sponsored by:
+              </p>
+
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <Image alt="sponsor: Sparkasse" src={sparkasse} style={{ width: "10%" }} />
+              </div>
             </div>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
@@ -167,6 +186,24 @@ function Home() {
               >
                 Boishakhi 2025
               </Button>
+
+              <p
+                style={{
+                  fontFamily: "Inter",
+                  lineHeight: "2.0",
+                  fontSize: "1.4rem",
+                  color: "black",
+                  fontStyle: "italic",
+                  marginTop: "0",
+                  marginBottom: "1.0rem",
+                }}
+              >
+                Proudly Sponsored by:
+              </p>
+
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <Image alt="sponsor: Sparkasse" src={sparkasse} style={{ width: "20%" }} />
+              </div>
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", padding: "6%" }}>
@@ -244,6 +281,24 @@ function Home() {
               >
                 Boishakhi 2025
               </Button>
+
+              <p
+                style={{
+                  fontFamily: "Inter",
+                  lineHeight: "2.0",
+                  fontSize: "1.4rem",
+                  color: "black",
+                  fontStyle: "italic",
+                  marginTop: "0",
+                  marginBottom: "1.0rem",
+                }}
+              >
+                Proudly Sponsored by:
+              </p>
+
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <Image alt="sponsor: Sparkasse" src={sparkasse} style={{ width: "50%" }} />
+              </div>
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", padding: "6%" }}>
