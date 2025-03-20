@@ -4,6 +4,8 @@ import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase.js";
 import { TailSpin } from "react-loader-spinner";
 
+import sparkasse from "../assets/sponsors/sparkasse.jpg";
+
 const sampleFoodImage = "https://via.placeholder.com/150"; // Replace with actual food image
 
 const foodItems = [
@@ -97,7 +99,24 @@ const Boishakhi = () => {
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
             >
-              Boishakhi Food Order
+              Boishakhi 2025
+            </p>
+          </Grid.Column>
+        </Grid.Row>
+
+        <Grid.Row>
+          <Grid.Column width={16} textAlign="middle">
+            <p
+              style={{
+                fontFamily: "Inter",
+                fontSize: "2.5rem",
+                color: "black",
+                fontWeight: "bold",
+                marginTop: "3%",
+                textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
+              }}
+            >
+              Registration
             </p>
           </Grid.Column>
         </Grid.Row>
@@ -134,7 +153,7 @@ const Boishakhi = () => {
               </Segment>
 
               <Segment padded="very">
-                <h3>Select Food Items</h3>
+                <h3>Preregister Food Items</h3>
                 {foodOrders.map((item) => (
                   <div key={item.id} style={{ marginBottom: "20px" }}>
                     <Grid>
@@ -214,6 +233,66 @@ const Boishakhi = () => {
         )}
 
         <Grid.Row>{messageLayout}</Grid.Row>
+
+        <Grid.Row only="computer" centered>
+          <p
+            style={{
+              fontFamily: "Inter",
+              lineHeight: "2.0",
+              fontSize: "1.4rem",
+              color: "black",
+              fontStyle: "italic",
+              marginTop: "0",
+              marginBottom: "1.0rem",
+            }}
+          >
+            Proudly Sponsored by:
+          </p>
+
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: "2%" }}>
+            <Image alt="sponsor: Sparkasse" src={sparkasse} style={{ width: "10%" }} />
+          </div>
+        </Grid.Row>
+
+        <Grid.Row only="tablet" centered>
+          <p
+            style={{
+              fontFamily: "Inter",
+              lineHeight: "2.0",
+              fontSize: "1.4rem",
+              color: "black",
+              fontStyle: "italic",
+              marginTop: "0",
+              marginBottom: "1.0rem",
+            }}
+          >
+            Proudly Sponsored by:
+          </p>
+
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: "2%" }}>
+            <Image alt="sponsor: Sparkasse" src={sparkasse} style={{ width: "20%" }} />
+          </div>
+        </Grid.Row>
+
+        <Grid.Row only="mobile" centered>
+          <p
+            style={{
+              fontFamily: "Inter",
+              lineHeight: "2.0",
+              fontSize: "1.4rem",
+              color: "black",
+              fontStyle: "italic",
+              marginTop: "0",
+              marginBottom: "1.0rem",
+            }}
+          >
+            Proudly Sponsored by:
+          </p>
+
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: "2%" }}>
+            <Image alt="sponsor: Sparkasse" src={sparkasse} style={{ width: "40%" }} />
+          </div>
+        </Grid.Row>
       </Grid>
     </div>
   );
