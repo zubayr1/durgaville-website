@@ -172,7 +172,12 @@ const Boishakhi = () => {
                     <Grid>
                       <Grid.Row verticalAlign="middle">
                         <Grid.Column width={4}>
-                          <Image src={item.image} size="small" rounded />
+                          <Image
+                            src={item.image}
+                            size="small"
+                            rounded
+                            style={{ aspectRatio: "4 / 3", objectFit: "cover" }}
+                          />
                         </Grid.Column>
                         <Grid.Column width={8}>
                           <h4>{item.name}</h4>
