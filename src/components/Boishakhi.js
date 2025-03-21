@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Button, Form, Grid, Message, Segment, Image } from "semantic-ui-react";
+import { Button, Form, Grid, Message, Segment, Image, Modal, Card } from "semantic-ui-react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase.js";
 import { TailSpin } from "react-loader-spinner";
+import PayPalCheckout from "./PayPalCheckout";
 
 import sparkasse from "../assets/sponsors/sparkasse.jpg";
 import jol_puchka from "../assets/foods/jol_puchka.jpg";
@@ -40,6 +41,9 @@ const Boishakhi = () => {
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [orderDetails, setOrderDetails] = useState(null);
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({
@@ -69,18 +73,26 @@ const Boishakhi = () => {
       return;
     }
 
+    setShowPaymentModal(true);
+  };
+
+  const handlePaymentSuccess = async (orderID) => {
     setLoading(true);
     try {
-      await addDoc(collection(db, "boishakhi-orders"), {
+      const orderedItems = foodOrders.filter((item) => item.quantity > 0);
+      const orderData = {
         ...formData,
         orders: orderedItems,
         totalAmount: orderedItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
         timestamp: new Date(),
-      });
-      setError(0);
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
+        paymentId: orderID,
+        paymentStatus: "completed",
+      };
+
+      await addDoc(collection(db, "boishakhi-orders"), orderData);
+      setOrderDetails(orderData);
+      setShowPaymentModal(false);
+      setShowSuccessModal(true);
     } catch (error) {
       setError(2);
     } finally {
@@ -95,9 +107,9 @@ const Boishakhi = () => {
     messageLayout = <Message error header="Submission Error" content="Error submitting your order" />;
   } else if (error === 3) {
     messageLayout = <Message error header="Submission Error" content="Please select at least one food item" />;
-  } else if (error === 0) {
-    messageLayout = <Message success header="Success" content="Order submitted successfully" />;
   }
+
+  const totalAmount = foodOrders.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <div style={{ overflow: "hidden" }}>
@@ -139,7 +151,7 @@ const Boishakhi = () => {
         <Grid.Row>
           <Grid.Column mobile={14} tablet={10} computer={8}>
             <Form onSubmit={handleSubmit}>
-              <Segment padded="very">
+              <Segment padded>
                 <Form.Field>
                   <label>Full Name</label>
                   <input
@@ -167,48 +179,57 @@ const Boishakhi = () => {
                 </Form.Field>
               </Segment>
 
-              <Segment padded="very">
-                <h3>Preregister Food Items</h3>
-                {foodOrders.map((item) => (
-                  <div key={item.id} style={{ marginBottom: "20px" }}>
-                    <Grid>
-                      <Grid.Row verticalAlign="middle">
-                        <Grid.Column width={4}>
+              <Segment padded>
+                <h3>Preorder Your Favourite Kolkata Street Food Items</h3>
+                <Grid>
+                  <Grid.Row columns={2}>
+                    {foodOrders.map((item) => (
+                      <Grid.Column key={item.id} mobile={16} tablet={8} computer={8}>
+                        <Card fluid style={{ marginBottom: "1rem" }}>
                           <Image
                             src={item.image}
-                            size="small"
-                            rounded
-                            style={{ aspectRatio: "4 / 3", objectFit: "cover" }}
+                            ui={false}
+                            style={{
+                              width: "100%",
+                              height: "30vh",
+                              objectFit: "cover",
+                              objectPosition: "center",
+                            }}
                           />
-                        </Grid.Column>
-                        <Grid.Column width={8}>
-                          <h4>{item.name}</h4>
-                          <p>Price: €{item.price}</p>
-                        </Grid.Column>
-                        <Grid.Column width={4}>
-                          <Button.Group>
-                            <Button
-                              icon="minus"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleQuantityChange(item.id, -1);
-                              }}
-                              disabled={item.quantity === 0}
-                            />
-                            <Button.Or text={item.quantity.toString()} />
-                            <Button
-                              icon="plus"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleQuantityChange(item.id, 1);
-                              }}
-                            />
-                          </Button.Group>
-                        </Grid.Column>
-                      </Grid.Row>
-                    </Grid>
-                  </div>
-                ))}
+                          <Card.Content>
+                            <Card.Header style={{ fontSize: "1.2em", marginBottom: "0.5em" }}>{item.name}</Card.Header>
+                            <Card.Description style={{ fontSize: "0.9em", color: "#666", marginBottom: "1em" }}>
+                              Authentic Kolkata street food, made with fresh ingredients and traditional spices.
+                            </Card.Description>
+                            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                              <div style={{ fontSize: "1.1em", fontWeight: "bold", color: "#bb0d3b" }}>
+                                €{item.price}
+                              </div>
+                              <Button.Group size="small">
+                                <Button
+                                  icon="minus"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    handleQuantityChange(item.id, -1);
+                                  }}
+                                  disabled={item.quantity === 0}
+                                />
+                                <Button.Or text={item.quantity.toString()} />
+                                <Button
+                                  icon="plus"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    handleQuantityChange(item.id, 1);
+                                  }}
+                                />
+                              </Button.Group>
+                            </div>
+                          </Card.Content>
+                        </Card>
+                      </Grid.Column>
+                    ))}
+                  </Grid.Row>
+                </Grid>
                 <Segment
                   basic
                   style={{
@@ -244,6 +265,58 @@ const Boishakhi = () => {
             </Form>
           </Grid.Column>
         </Grid.Row>
+
+        <Modal open={showPaymentModal} onClose={() => setShowPaymentModal(false)} size="small" closeIcon>
+          <Modal.Header>Complete Your Payment</Modal.Header>
+          <Modal.Content>
+            <p>Please complete your payment to confirm your order.</p>
+            <p>Total Amount: €{totalAmount.toFixed(2)}</p>
+            <PayPalCheckout totalAmount={totalAmount} onPaymentSuccess={handlePaymentSuccess} />
+          </Modal.Content>
+        </Modal>
+
+        <Modal open={showSuccessModal} onClose={() => setShowSuccessModal(false)} size="small" closeIcon>
+          <Modal.Header style={{ color: "#28a745" }}>Order Placed Successfully!</Modal.Header>
+          <Modal.Content>
+            <div style={{ marginBottom: "1rem" }}>
+              <p>
+                <strong>Customer Name:</strong> {orderDetails?.fullName}
+              </p>
+              <p>
+                <strong>Order Total:</strong> €{orderDetails?.totalAmount.toFixed(2)}
+              </p>
+            </div>
+            <div>
+              <h4 style={{ marginBottom: "0.5rem" }}>Order Details:</h4>
+              <div
+                style={{
+                  backgroundColor: "#f8f9fa",
+                  padding: "1rem",
+                  borderRadius: "4px",
+                  border: "1px solid #dee2e6",
+                }}
+              >
+                {orderDetails?.orders.map((item, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      marginBottom: "0.5rem",
+                      paddingBottom: "0.5rem",
+                      borderBottom: index < orderDetails.orders.length - 1 ? "1px solid #dee2e6" : "none",
+                    }}
+                  >
+                    <span>
+                      {item.name} x {item.quantity}
+                    </span>
+                    <span>€{(item.price * item.quantity).toFixed(2)}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Modal.Content>
+        </Modal>
 
         {loading && (
           <Grid.Row>
