@@ -16,18 +16,21 @@ import chicken_pakora from "../assets/foods/chicken_pakora.jpg";
 import dry_chilli_chicken from "../assets/foods/chilli_chicken_dry.jpeg";
 import dry_chilli_paneer from "../assets/foods/chilli_paneer_dry.jpeg";
 import chicken_momo from "../assets/foods/chicken_momo.jpg";
+import papdi_chat from "../assets/foods/papdi_chaat.jpg";
+import ksf_logo from "../assets/foods/ksf_logo.png";
 
 const foodItems = [
-  { id: 1, name: "Pani Puri", price: (4.5).toFixed(2), image: jol_puchka },
-  { id: 2, name: "Dahi Puri", price: (5.5).toFixed(2), image: doi_puchka },
-  { id: 3, name: "Mughlai Egg Roll", price: (6.5).toFixed(2), image: egg_roll },
-  { id: 4, name: "Chicken Kathi Roll", price: (8.5).toFixed(2), image: chicken_roll },
-  { id: 5, name: "Paneer Kathi Roll", price: (8.5).toFixed(2), image: paneer_roll },
-  { id: 6, name: "Mango Kesar Lassi", price: (3.5).toFixed(2), image: mango_lassi },
-  { id: 7, name: "Chicken Pakora", price: (5.5).toFixed(2), image: chicken_pakora },
-  { id: 8, name: "Dry Chilli Chicken", price: (7.5).toFixed(2), image: dry_chilli_chicken },
-  { id: 9, name: "Dry Chilli Paneer", price: (6.5).toFixed(2), image: dry_chilli_paneer },
-  { id: 10, name: "Chicken Momo (5pieces)", price: (4.5).toFixed(2), image: chicken_momo },
+  { id: 1, name: "Pani Puri (5pieces)", price: (4.6).toFixed(2), image: jol_puchka },
+  { id: 2, name: "Dahi Puri (5pieces)", price: (5.6).toFixed(2), image: doi_puchka },
+  { id: 3, name: "Papri Chaat", price: (7.1).toFixed(2), image: papdi_chat },
+  { id: 4, name: "Dry Chilli Chicken", price: (7.7).toFixed(2), image: dry_chilli_chicken },
+  { id: 5, name: "Dry Chilli Paneer", price: (6.6).toFixed(2), image: dry_chilli_paneer },
+  { id: 6, name: "Chicken Momo (5pieces)", price: (4.6).toFixed(2), image: chicken_momo },
+  { id: 7, name: "Chicken Pakora", price: (5.6).toFixed(2), image: chicken_pakora },
+  { id: 8, name: "Mughlai Egg Roll", price: (6.6).toFixed(2), image: egg_roll },
+  { id: 9, name: "Chicken Kathi Roll", price: (8.7).toFixed(2), image: chicken_roll },
+  { id: 10, name: "Paneer Kathi Roll", price: (8.7).toFixed(2), image: paneer_roll },
+  { id: 11, name: "Mango Kesar Lassi", price: (3.5).toFixed(2), image: mango_lassi },
 ];
 
 const Boishakhi = () => {
@@ -180,6 +183,17 @@ const Boishakhi = () => {
               </Segment>
 
               <Segment padded>
+                <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+                  <h3 style={{ marginBottom: "1rem" }}>Cooked and delivered to you with love by our own</h3>
+                  <Image
+                    src={ksf_logo}
+                    alt="KSF Logo"
+                    style={{
+                      height: "80px",
+                      margin: "0 auto",
+                    }}
+                  />
+                </div>
                 <h3>Preorder Your Favourite Kolkata Street Food Items</h3>
                 <Grid>
                   <Grid.Row columns={2}>
