@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DashboardHome from "./components/DashboardHome";
+import DashboardBoishakhi from "./components/DashboardBoishakhi";
 import DashboardUpcomingEvents from "./components/DashboardUpcomingEvents";
 import DashboardPastEvents from "./components/DashboardPastEvents";
 import DashboardDurgapujo from "./components/DashboardDurgapujo";
@@ -19,7 +20,8 @@ import AdminEditMembers from "./components/adminComponents/AdminEditMembers";
 import AdminEditGallery from "./components/adminComponents/AdminEditGallery";
 
 import AdminCheckMagazineEntries from "./components/adminComponents/AdminCheckMagazineEntries";
-import DashboardBoishakhi from "./components/DashboardBoishakhi";
+import AdminBoishakhiOrders from "./components/adminComponents/AdminBoishakhiOrders";
+
 import PageNotFound from "./components/PageNotFound";
 
 function App() {
@@ -48,6 +50,8 @@ function App() {
           <Route exact path="/admineditgallery" element={<AdminEditGallery />} />
 
           <Route exact path="/admincheckmagazineentries" element={<AdminCheckMagazineEntries />} />
+
+          <Route path="/admin/boishakhi-orders" element={<AdminBoishakhiOrders />} />
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
