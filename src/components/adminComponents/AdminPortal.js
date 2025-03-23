@@ -1,305 +1,134 @@
 import React from "react";
-import { Button, Grid, Segment } from "semantic-ui-react";
+import { Button, Grid, Segment, Header } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AdminPortal = () => {
   const navigate = useNavigate();
 
-  const handleAddPost = () => {
-    navigate("/adminaddpastevent");
-  };
-
-  const handleAddEvent = () => {
-    navigate("/adminaddupcomingevent");
-  };
-
-  const handleAddMember = () => {
-    navigate("/adminaddmember");
-  };
-
-  const handleEditPost = () => {
-    navigate("/admineditpastevent");
-  };
-
-  const handleEditEvent = () => {
-    navigate("/admineditupcomingevent");
-  };
-
-  const handleEditMember = () => {
-    navigate("/admineditmember");
-  };
-
-  const handleAddGallery = () => {
-    navigate("/adminaddgallery");
-  };
-
-  const handleEditGallery = () => {
-    navigate("/admineditgallery");
-  };
-
-  const handlecheckEntries = () => {
-    navigate("/admincheckmagazineentries");
-  };
-
   return (
-    <div style={{ overflow: "hidden", marginTop: "10%", marginLeft: "5%", marginRight: "5%" }}>
-      <Segment>
-        <Grid>
-          <Grid.Column width={16} only="computer" verticalAlign="middle">
-            <Grid centered>
-              <Grid.Row>
-                <Grid.Column width={3}>
-                  <Button
-                    onClick={handleAddPost}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Add Past Event
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={3}>
-                  <Button
-                    onClick={handleAddEvent}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Add Upcoming Events
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={3}>
-                  <Button
-                    onClick={handleAddMember}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Add Members
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={3}>
-                  <Button
-                    onClick={handleAddGallery}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Add Gallery
-                  </Button>
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column width={3}>
-                  <Button
-                    onClick={handleEditPost}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Edit/ Delete Past Event
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={3}>
-                  <Button
-                    onClick={handleEditEvent}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Edit/ Delete Upcoming Events
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={3}>
-                  <Button
-                    onClick={handleEditMember}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Edit/ Delete Members
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={3}>
-                  <Button
-                    onClick={handleEditGallery}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Edit/ Delete Gallery
-                  </Button>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
+    <div style={{ overflow: "hidden" }}>
+      <Grid centered>
+        <Grid.Row>
+          <Grid.Column width={16} textAlign="middle">
+            <p
+              style={{
+                fontFamily: "Inter",
+                fontSize: "3.5rem",
+                color: "black",
+                fontWeight: "bold",
+                marginTop: "3%",
+                textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
+              }}
+            >
+              Admin Portal
+            </p>
           </Grid.Column>
+        </Grid.Row>
 
-          <Grid.Column width={16} only="tablet" verticalAlign="middle">
-            <Grid centered>
-              <Grid.Row>
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleAddPost}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Add Post
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleAddEvent}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Add Events
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleAddMember}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Add Members
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleAddGallery}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Add Gallery
-                  </Button>
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleEditPost}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Edit/ Delete Post
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleEditEvent}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Edit/ Delete Events
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleEditMember}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Edit/ Delete Members
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleEditGallery}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: "1.2rem" }}
-                  >
-                    Edit/ Delete Gallery
-                  </Button>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Grid.Column>
-
-          <Grid.Column width={16} only="mobile" verticalAlign="middle">
-            <Grid centered>
-              <Grid.Row>
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleAddPost}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}
-                  >
-                    Add Post
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleAddEvent}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}
-                  >
-                    Add Events
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleAddMember}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}
-                  >
-                    Add Members
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleAddGallery}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}
-                  >
-                    Add Gallery
-                  </Button>
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleEditPost}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}
-                  >
-                    Edit/ Delete Post
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleEditEvent}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}
-                  >
-                    Edit/ Delete Events
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleEditMember}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}
-                  >
-                    Edit/ Delete Members
-                  </Button>
-                </Grid.Column>
-
-                <Grid.Column width={4}>
-                  <Button
-                    onClick={handleEditGallery}
-                    style={{ backgroundColor: "white", color: "black", border: "2px solid black", fontSize: ".9rem" }}
-                  >
-                    Edit/ Delete Gallery
-                  </Button>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Grid.Column>
-
-          <Grid.Column width={16}>
-            <Grid centered>
+        <Grid.Row>
+          <Grid.Column mobile={14} tablet={10} computer={8}>
+            <Segment padded>
+              <Header as="h3">Boishakhi 2025</Header>
               <Button
-                onClick={handlecheckEntries}
-                style={{
-                  backgroundColor: "white",
-                  color: "black",
-                  border: "2px solid black",
-                  fontSize: "1.2rem",
-                  marginBottom: "1%",
-                }}
+                fluid
+                style={{ marginBottom: "1rem", backgroundColor: "#bb0d3b", color: "#fff" }}
+                as={Link}
+                to="/admin/boishakhi-orders"
               >
-                Check Magazine entries
+                View Food Orders
               </Button>
-            </Grid>
+            </Segment>
+
+            <Segment padded>
+              <Header as="h3">Gallery Management</Header>
+              <Button
+                fluid
+                style={{ marginBottom: "1rem", backgroundColor: "#bb0d3b", color: "#fff" }}
+                onClick={() => navigate("/adminaddgallery")}
+              >
+                Add Gallery
+              </Button>
+              <Button
+                fluid
+                style={{ marginBottom: "1rem", backgroundColor: "#bb0d3b", color: "#fff" }}
+                onClick={() => navigate("/admineditgallery")}
+              >
+                Edit Gallery
+              </Button>
+            </Segment>
+
+            <Segment padded>
+              <Header as="h3">Member Management</Header>
+              <Button
+                fluid
+                style={{ marginBottom: "1rem", backgroundColor: "#bb0d3b", color: "#fff" }}
+                onClick={() => navigate("/adminaddmember")}
+              >
+                Add Member
+              </Button>
+              <Button
+                fluid
+                style={{ marginBottom: "1rem", backgroundColor: "#bb0d3b", color: "#fff" }}
+                onClick={() => navigate("/admineditmembers")}
+              >
+                Edit Members
+              </Button>
+            </Segment>
+
+            <Segment padded>
+              <Header as="h3">Event Management</Header>
+
+              <Header as="h4" style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+                Past Events
+              </Header>
+              <Button
+                fluid
+                style={{ marginBottom: "1rem", backgroundColor: "#bb0d3b", color: "#fff" }}
+                onClick={() => navigate("/adminaddpastevent")}
+              >
+                Add Past Event
+              </Button>
+              <Button
+                fluid
+                style={{ marginBottom: "2rem", backgroundColor: "#bb0d3b", color: "#fff" }}
+                onClick={() => navigate("/admineditpastevent")}
+              >
+                Edit Past Event
+              </Button>
+
+              <Header as="h4" style={{ marginTop: "1rem", marginBottom: "1rem" }}>
+                Upcoming Events
+              </Header>
+              <Button
+                fluid
+                style={{ marginBottom: "1rem", backgroundColor: "#bb0d3b", color: "#fff" }}
+                onClick={() => navigate("/adminaddupcomingevent")}
+              >
+                Add Upcoming Event
+              </Button>
+              <Button
+                fluid
+                style={{ marginBottom: "1rem", backgroundColor: "#bb0d3b", color: "#fff" }}
+                onClick={() => navigate("/admineditupcomingevent")}
+              >
+                Edit Upcoming Event
+              </Button>
+            </Segment>
+
+            <Segment padded>
+              <Header as="h3">Magazine Management</Header>
+              <Button
+                fluid
+                style={{ marginBottom: "1rem", backgroundColor: "#bb0d3b", color: "#fff" }}
+                onClick={() => navigate("/admincheckmagazineentries")}
+              >
+                Check Magazine Entries
+              </Button>
+            </Segment>
           </Grid.Column>
-        </Grid>
-      </Segment>
+        </Grid.Row>
+      </Grid>
     </div>
   );
 };
