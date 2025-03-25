@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Grid, Message, Segment, Image, Modal, Card } from "semantic-ui-react";
+import { Button, Form, Grid, Message, Segment, Image, Modal, Card, Checkbox } from "semantic-ui-react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase.js";
 import { TailSpin } from "react-loader-spinner";
@@ -117,6 +117,7 @@ const Boishakhi = () => {
     fullName: "",
     email: "",
     phone: "",
+    agreement: false,
   });
 
   const [foodOrders, setFoodOrders] = useState(foodItems.map((item) => ({ ...item, quantity: 0 })));
@@ -144,7 +145,7 @@ const Boishakhi = () => {
     e.preventDefault();
     setError(null);
 
-    if (!formData.fullName || !formData.email || !formData.phone) {
+    if (!formData.fullName || !formData.email || !formData.phone || !formData.agreement) {
       setError(1);
       return;
     }
@@ -427,6 +428,19 @@ const Boishakhi = () => {
                     onChange={(e) => handleInputChange("phone", e.target.value)}
                   />
                 </Form.Field>
+                <Form.Field>
+                  <Checkbox
+                    label={
+                      <label style={{ fontSize: "0.9em", lineHeight: "1.4" }}>
+                        I agree that my name, email id and phone number is required by durgaville team to organize the
+                        program smoothly and my data shall not be processed or forwarded otherwise. My data shall be
+                        deleted from all durgaville systems and databases after the conclusion of the event
+                      </label>
+                    }
+                    checked={formData.agreement}
+                    onChange={(e, data) => handleInputChange("agreement", data.checked)}
+                  />
+                </Form.Field>
               </Segment>
 
               <Segment padded>
@@ -443,6 +457,18 @@ const Boishakhi = () => {
                   />
                 </div>
                 <h3>Preorder Your Favourite Kolkata Street Food Items</h3>
+                <p
+                  style={{
+                    color: "#bb0d3b",
+                    fontSize: "1.1em",
+                    marginBottom: "1.5rem",
+                    textAlign: "left",
+                    fontWeight: "500",
+                  }}
+                >
+                  On-spot registrations and food orders are subjected to availability. We highly recommend you to
+                  register online and pre-order your food!
+                </p>
                 <Grid>
                   <Grid.Row columns={2}>
                     {foodOrders.map((item) => (
@@ -753,6 +779,18 @@ const Boishakhi = () => {
                 <Button type="submit" style={{ backgroundColor: "#bb0d3b", color: "#fff" }}>
                   Pay & Register
                 </Button>
+                <p
+                  style={{
+                    color: "#bb0d3b",
+                    fontSize: "1.1em",
+                    marginTop: "1rem",
+                    textAlign: "center",
+                    fontStyle: "italic",
+                  }}
+                >
+                  Orders, once processed cannot be cancelled. For further information please contact durgaville team
+                  directly via info@durgaville.com
+                </p>
               </div>
             </Form>
           </Grid.Column>
@@ -836,7 +874,14 @@ const Boishakhi = () => {
           </p>
 
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "2%" }}>
-            <Image alt="sponsor: Sparkasse" src={sparkasse} style={{ width: "10%" }} />
+            <Image
+              alt="sponsor: Sparkasse"
+              src={sparkasse}
+              style={{ width: "10%" }}
+              href="https://www.sparkasse-erlangen.de/"
+              target="_blank"
+              rel="noopener noreferrer"
+            />
           </div>
         </Grid.Row>
 
@@ -856,7 +901,14 @@ const Boishakhi = () => {
           </p>
 
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "2%" }}>
-            <Image alt="sponsor: Sparkasse" src={sparkasse} style={{ width: "20%" }} />
+            <Image
+              alt="sponsor: Sparkasse"
+              src={sparkasse}
+              style={{ width: "20%" }}
+              href="https://www.sparkasse-erlangen.de/"
+              target="_blank"
+              rel="noopener noreferrer"
+            />
           </div>
         </Grid.Row>
 
@@ -876,7 +928,14 @@ const Boishakhi = () => {
           </p>
 
           <div style={{ display: "flex", justifyContent: "center", marginBottom: "2%" }}>
-            <Image alt="sponsor: Sparkasse" src={sparkasse} style={{ width: "40%" }} />
+            <Image
+              alt="sponsor: Sparkasse"
+              src={sparkasse}
+              style={{ width: "40%" }}
+              href="https://www.sparkasse-erlangen.de/"
+              target="_blank"
+              rel="noopener noreferrer"
+            />
           </div>
         </Grid.Row>
       </Grid>

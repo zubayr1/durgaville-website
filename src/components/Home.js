@@ -121,7 +121,14 @@ function Home() {
               </p>
 
               <div style={{ display: "flex", justifyContent: "center" }}>
-                <Image alt="sponsor: Sparkasse" src={sparkasse} style={{ width: "10%" }} />
+                <Image
+                  alt="sponsor: Sparkasse"
+                  src={sparkasse}
+                  style={{ width: "10%" }}
+                  href="https://www.sparkasse-erlangen.de/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
               </div>
             </div>
 
@@ -229,7 +236,14 @@ function Home() {
               </p>
 
               <div style={{ display: "flex", justifyContent: "center" }}>
-                <Image alt="sponsor: Sparkasse" src={sparkasse} style={{ width: "20%" }} />
+                <Image
+                  alt="sponsor: Sparkasse"
+                  src={sparkasse}
+                  style={{ width: "20%" }}
+                  href="https://www.sparkasse-erlangen.de/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
               </div>
             </div>
 
@@ -337,7 +351,14 @@ function Home() {
               </p>
 
               <div style={{ display: "flex", justifyContent: "center" }}>
-                <Image alt="sponsor: Sparkasse" src={sparkasse} style={{ width: "50%" }} />
+                <Image
+                  alt="sponsor: Sparkasse"
+                  src={sparkasse}
+                  style={{ width: "50%" }}
+                  href="https://www.sparkasse-erlangen.de/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
               </div>
             </div>
 
