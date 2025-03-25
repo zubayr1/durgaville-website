@@ -48,19 +48,19 @@ const foodItems = [
   },
   {
     id: 4,
-    name: "Dry Chilli Chicken (A,B,E)",
-    price: (7.7).toFixed(2),
-    image: dry_chilli_chicken,
-    description:
-      "Fiery, crispy, and irresistibly bold—our Dry Chili Chicken is the perfect Indo-Chinese indulgence! Tossed in smoky spices, crunchy peppers, and a sizzling wok-kissed sauce, every bite packs a punch of heat and flavor. One plate, endless satisfaction—dive in and awaken your taste buds at our Boishakhi event!",
-  },
-  {
-    id: 5,
     name: "Dry Chilli Paneer (A,E)",
     price: (6.6).toFixed(2),
     image: dry_chilli_paneer,
     description:
       "Spicy, crispy, and loaded with flavor—our Dry Chili Paneer is an irresistible Indo-Chinese delight! Tossed in a smoky wok with crunchy peppers, fiery chilies, and zesty sauces, every bite is a perfect balance of heat and crunch. A dish that excites, satisfies, and keeps you coming back!",
+  },
+  {
+    id: 5,
+    name: "Dry Chilli Chicken (A,B,E)",
+    price: (7.7).toFixed(2),
+    image: dry_chilli_chicken,
+    description:
+      "Fiery, crispy, and irresistibly bold—our Dry Chili Chicken is the perfect Indo-Chinese indulgence! Tossed in smoky spices, crunchy peppers, and a sizzling wok-kissed sauce, every bite packs a punch of heat and flavor. One plate, endless satisfaction—dive in and awaken your taste buds at our Boishakhi event!",
   },
   {
     id: 6,
@@ -80,6 +80,14 @@ const foodItems = [
   },
   {
     id: 8,
+    name: "Paneer Kathi Roll (A,C,E)",
+    price: (8.7).toFixed(2),
+    image: paneer_roll,
+    description:
+      "Relive the charm of Kolkata with our Paneer Kathi Roll! Soft, spiced paneer grilled to perfection, wrapped in a crispy, golden paratha, and drizzled with tangy chutneys. A symphony of flavors, a taste of home—every bite takes you back to the streets you love. Indulge in nostalgia during our Boishakhi event!",
+  },
+  {
+    id: 9,
     name: "Mughlai Egg Roll (A,B,E)",
     price: (6.6).toFixed(2),
     image: egg_roll,
@@ -87,20 +95,12 @@ const foodItems = [
       "Crispy, golden paratha hugged by two luscious eggs, filled with crunchy onions, zesty spices, and a splash of tangy chutney—our Mughlai Egg Roll is pure Kolkata nostalgia! A bite of warmth, a taste of the streets, a rush of memories. Simple, soulful, and irresistibly delicious. Grab yours now and enjoy it during our Boishakhi event!",
   },
   {
-    id: 9,
+    id: 10,
     name: "Chicken Kathi Roll (A,B,E)",
     price: (8.7).toFixed(2),
     image: chicken_roll,
     description:
       "Experience the magic of Kolkata with every bite of our Chicken Kathi Roll! Tender, smoky chicken wrapped in a buttery paratha, layered with spices, onions, and chutneys. A bite of nostalgia, a burst of flavor—just like the bustling streets of Kolkata. One roll, endless memories. Taste it at our Boishakhi event!",
-  },
-  {
-    id: 10,
-    name: "Paneer Kathi Roll (A,C,E)",
-    price: (8.7).toFixed(2),
-    image: paneer_roll,
-    description:
-      "Relive the charm of Kolkata with our Paneer Kathi Roll! Soft, spiced paneer grilled to perfection, wrapped in a crispy, golden paratha, and drizzled with tangy chutneys. A symphony of flavors, a taste of home—every bite takes you back to the streets you love. Indulge in nostalgia during our Boishakhi event!",
   },
   {
     id: 11,
