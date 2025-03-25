@@ -3,6 +3,7 @@ import { Divider, Grid, Image, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import thakurhome from "../assets/thakurHome.jpg";
 import sparkasse from "../assets/sponsors/sparkasse.jpg";
+import boishakhi_header from "../assets/foods/boishakhi_header.png";
 
 import "./home.css";
 
@@ -84,12 +85,25 @@ function Home() {
                 Let's Celebrate Boishakhi 2025
               </p>
 
+              <Image
+                src={boishakhi_header}
+                alt="Boishakhi 2025"
+                style={{
+                  width: "80%",
+                  maxWidth: "600px",
+                  maxHeight: "300px",
+                  margin: "0 auto 1.5rem",
+                  display: "block",
+                  objectFit: "contain",
+                }}
+              />
+
               <Button
                 as={Link}
                 to="/boishakhi-2025"
                 style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
               >
-                Boishakhi 2025
+                Go to Registration Page
               </Button>
 
               <p
@@ -179,12 +193,25 @@ function Home() {
                 Let's Celebrate Boishakhi 2025
               </p>
 
+              <Image
+                src={boishakhi_header}
+                alt="Boishakhi 2025"
+                style={{
+                  width: "90%",
+                  maxWidth: "500px",
+                  maxHeight: "250px",
+                  margin: "0 auto 1.5rem",
+                  display: "block",
+                  objectFit: "contain",
+                }}
+              />
+
               <Button
                 as={Link}
                 to="/boishakhi-2025"
                 style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
               >
-                Boishakhi 2025
+                Go to Registration Page
               </Button>
 
               <p
@@ -274,12 +301,25 @@ function Home() {
                 Let's Celebrate Boishakhi 2025
               </p>
 
+              <Image
+                src={boishakhi_header}
+                alt="Boishakhi 2025"
+                style={{
+                  width: "95%",
+                  maxWidth: "400px",
+                  maxHeight: "200px",
+                  margin: "0 auto 1.5rem",
+                  display: "block",
+                  objectFit: "contain",
+                }}
+              />
+
               <Button
                 as={Link}
                 to="/boishakhi-2025"
                 style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
               >
-                Boishakhi 2025
+                Go to Registration Page
               </Button>
 
               <p
