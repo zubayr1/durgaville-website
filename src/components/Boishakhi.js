@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button, Form, Grid, Message, Segment, Image, Modal, Card, Checkbox } from "semantic-ui-react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase.js";
@@ -113,6 +113,14 @@ const foodItems = [
 ];
 
 const Boishakhi = () => {
+  const componentRef = useRef(null);
+
+  useEffect(() => {
+    if (componentRef.current) {
+      componentRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -195,7 +203,7 @@ const Boishakhi = () => {
   const totalAmount = foodOrders.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div style={{ overflow: "hidden" }}>
+    <div style={{ overflow: "hidden" }} ref={componentRef}>
       <Grid centered>
         <Grid.Row centered>
           <Grid.Column width={16} textAlign="middle">
