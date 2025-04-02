@@ -1,10 +1,7 @@
-
-
 import React, { useState, useEffect } from "react";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../../firebase.js";
 import { Table, Container, Header, Loader, Message, Button } from "semantic-ui-react";
-import { format } from "date-fns";
 
 function AdminBoishakhiOrders() {
   const [orders, setOrders] = useState([]);
@@ -15,140 +12,74 @@ function AdminBoishakhiOrders() {
     const fetchOrders = async () => {
       try {
         const ordersQuery = query(collection(db, "boishakhi-orders"), orderBy("timestamp", "desc"));
-
         const querySnapshot = await getDocs(ordersQuery);
         const ordersData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
           timestamp: doc.data().timestamp?.toDate(),
         }));
-
         setOrders(ordersData);
         setLoading(false);
       } catch (err) {
-        console.error("Error fetching orders:", err);
         setError("Failed to load orders");
         setLoading(false);
       }
     };
-
     fetchOrders();
   }, []);
 
-  if (loading) {
-    return (
-      <Container style={{ marginTop: "2em" }}>
-        <Loader active>Loading Orders...</Loader>
-      </Container>
-    );
-  }
+  if (loading) return <Loader active>Loading Orders...</Loader>;
+  if (error) return <Message negative>{error}</Message>;
 
-  if (error) {
-    return (
-      <Container style={{ marginTop: "2em" }}>
-        <Message negative>
-          <Message.Header>Error</Message.Header>
-          <p>{error}</p>
-        </Message>
-      </Container>
-    );
-  }
-
-  // Food items list
   const foodItems = [
-    "Pani Puri",
-    "Dahi Puri",
-    "Papri Chaat",
-    "Dry Chilli Paneer",
-    "Dry Chilli Chicken",
-    "Chicken Momo",
-    "Chicken Pakora",
-    "Paneer Kathi Roll",
-    "Mughlai Egg Roll",
-    "Chicken Kathi Roll",
-    "Mango Kesar Lassi",
+    "Pani Puri", "Dahi Puri", "Papri Chaat", "Dry Chilli Paneer", "Dry Chilli Chicken",
+    "Chicken Momo", "Chicken Pakora", "Paneer Kathi Roll", "Mughlai Egg Roll",
+    "Chicken Kathi Roll", "Mango Kesar Lassi",
   ];
 
-  // Group orders by email
   const groupOrdersByEmail = () => {
     const groupedOrders = {};
-
-    orders.forEach((order) => {
-      const { email, fullName, phone, timestamp, totalAmount, orders: orderItems, receivedBy } = order;
+    orders.forEach(({ email, fullName, phone, totalAmount, orders: orderItems }) => {
       if (!groupedOrders[email]) {
-        groupedOrders[email] = {
-          fullName,
-          phone,
-          timestamp,
-          totalAmount: 0,
-          orders: [],
-          receivedBy,  // Add the "Received by Durgaville" information
-        };
+        groupedOrders[email] = { fullName, phone, totalAmount: 0, netAmount: 0, orders: [] };
       }
-
-      // Add the order to the grouped data
+      const netAmount = totalAmount - 0.4 - (0.0291 * totalAmount);
       groupedOrders[email].totalAmount += totalAmount;
+      groupedOrders[email].netAmount += netAmount;
 
-      // Aggregate the food item quantities
       foodItems.forEach((item) => {
-        const foodItem = orderItems.find((orderItem) => orderItem.name.split(" (")[0] === item);
-        if (foodItem) {
-          const existingItem = groupedOrders[email].orders.find(
-            (orderItem) => orderItem.name === item
-          );
-          if (existingItem) {
-            existingItem.quantity += foodItem.quantity;
-          } else {
-            groupedOrders[email].orders.push({
-              name: item,
-              quantity: foodItem.quantity,
-            });
-          }
+        const foundItem = orderItems.find((orderItem) => orderItem.name.split(" (")[0] === item);
+        if (foundItem) {
+          const existingItem = groupedOrders[email].orders.find((o) => o.name === item);
+          if (existingItem) existingItem.quantity += foundItem.quantity;
+          else groupedOrders[email].orders.push({ name: item, quantity: foundItem.quantity });
         }
       });
     });
-
-    // Convert the grouped orders back to an array format
-    return Object.keys(groupedOrders).map((email) => ({
-      email,
-      ...groupedOrders[email],
-    }));
+    return Object.keys(groupedOrders).map((email) => ({ email, ...groupedOrders[email] }));
   };
 
   const groupedOrders = groupOrdersByEmail();
 
-  // Function to convert data to CSV format
+  const totalGrossAmount = groupedOrders.reduce((sum, order) => sum + order.totalAmount, 0);
+  const totalNetAmount = groupedOrders.reduce((sum, order) => sum + order.netAmount, 0);
+
+  const totalQuantities = foodItems.reduce((totals, item) => {
+    totals[item] = groupedOrders.reduce((sum, order) => {
+      const foodItem = order.orders.find((o) => o.name === item);
+      return sum + (foodItem ? foodItem.quantity : 0);
+    }, 0);
+    return totals;
+  }, {});
+
   const convertToCSV = (data, columns) => {
     const header = columns.join(",");
-    const rows = data.map((row) =>
-      columns
-        .map((col) => (row[col] !== undefined ? `"${row[col]}"` : ""))
-        .join(",")
-    );
-    return [header, ...rows].join("\n");
+    const rows = data.map((row) => columns.map((col) => (row[col] !== undefined ? row[col] : "")).join(","));
+    const totalRow = `Total,,€${totalGrossAmount.toFixed(2)},€${totalNetAmount.toFixed(2)}`;
+    return [header, ...rows, totalRow].join("\n");
   };
 
-  // Function to trigger CSV download
   const downloadCSV = (data, columns, filename) => {
-    // Calculate totals for food items
-    const totalQuantities = foodItems.reduce((totals, item) => {
-      totals[item] = groupedOrders.reduce((sum, order) => {
-        const foodItem = order.orders.find((orderItem) => orderItem.name === item);
-        return sum + (foodItem ? foodItem.quantity : 0);
-      }, 0);
-      return totals;
-    }, {});
-
-    // Add total row at the end of the data
-    const totalRow = { "Customer Name": "Total" };
-    foodItems.forEach((item) => {
-      totalRow[item] = totalQuantities[item];
-    });
-
-    // Append total row to the data
-    data.push(totalRow);
-
-    // Convert data to CSV format
     const csvContent = convertToCSV(data, columns);
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
@@ -158,104 +89,77 @@ function AdminBoishakhiOrders() {
     link.click();
   };
 
-  // Columns for Ordered Items by Food Table CSV
-  const orderedItemsColumns = ["Customer Name", ...foodItems];
-
   return (
-    <Container style={{ marginTop: "2em", marginBottom: "2em" }}>
-      {/* 1st Table - All Orders-Summary (Including Order ID, Phone, and other details) */}
-      <Header as="h2" textAlign="center" style={{ marginTop: "3em" }}>
-        All Orders - Summary
-      </Header>
-
+    <Container style={{ marginTop: "2em" }}>
+      <Header as="h2" textAlign="center">All Orders - Summary</Header>
       <Table celled>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Customer Name</Table.HeaderCell>
             <Table.HeaderCell>Email</Table.HeaderCell>
             <Table.HeaderCell>Phone</Table.HeaderCell>
-            <Table.HeaderCell>Order Date</Table.HeaderCell>
-            <Table.HeaderCell>Total Amount</Table.HeaderCell>
-            <Table.HeaderCell>Received by Durgaville</Table.HeaderCell>
+            <Table.HeaderCell>Gross Amount (€)</Table.HeaderCell>
+            <Table.HeaderCell>Net Amount (€)</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-
         <Table.Body>
-          {orders.map((order) => {
-            const receivedAmount = (order.totalAmount - 0.4 - 0.0291 * order.totalAmount).toFixed(2);
-            return (
-              <Table.Row key={order.id}>
-                <Table.Cell>{order.fullName}</Table.Cell>
-                <Table.Cell>{order.email}</Table.Cell>
-                <Table.Cell>{order.phone}</Table.Cell>
-                <Table.Cell>{order.timestamp ? format(order.timestamp, "PPpp") : "N/A"}</Table.Cell>
-                <Table.Cell>€{order.totalAmount.toFixed(2)}</Table.Cell>
-                <Table.Cell>€{receivedAmount}</Table.Cell>
-              </Table.Row>
-            );
-          })}
+          {groupedOrders.map(({ email, fullName, phone, totalAmount, netAmount }) => (
+            <Table.Row key={email}>
+              <Table.Cell>{fullName}</Table.Cell>
+              <Table.Cell>{email}</Table.Cell>
+              <Table.Cell>{phone}</Table.Cell>
+              <Table.Cell>€{totalAmount.toFixed(2)}</Table.Cell>
+              <Table.Cell>€{netAmount.toFixed(2)}</Table.Cell>
+            </Table.Row>
+          ))}
+          <Table.Row>
+            <Table.Cell><strong>Total</strong></Table.Cell>
+            <Table.Cell></Table.Cell>
+            <Table.Cell></Table.Cell>
+            <Table.Cell><strong>€{totalGrossAmount.toFixed(2)}</strong></Table.Cell>
+            <Table.Cell><strong>€{totalNetAmount.toFixed(2)}</strong></Table.Cell>
+          </Table.Row>
         </Table.Body>
       </Table>
 
-      {/* 2nd Table - Ordered Items by Food (Grouped by Email) */}
-      <Header as="h2" textAlign="center" style={{ marginTop: "3em" }}>
-        Ordered Items by Food (Grouped by Email)
-      </Header>
-
+      <Header as="h2" textAlign="center">Ordered Items by Food</Header>
       <Table celled>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Customer Name</Table.HeaderCell>
-            {foodItems.map((item, index) => (
-              <Table.HeaderCell key={index}>{item}</Table.HeaderCell>
-            ))}
+            {foodItems.map((item) => (<Table.HeaderCell key={item}>{item}</Table.HeaderCell>))}
           </Table.Row>
         </Table.Header>
-
         <Table.Body>
-          {groupedOrders.map((order) => {
-            const itemQuantities = foodItems.reduce((acc, item) => {
-              const foodItem = order.orders.find((orderItem) => orderItem.name === item);
-              acc[item] = foodItem ? foodItem.quantity : 0;
-              return acc;
-            }, {});
-
-            return (
-              <Table.Row key={order.email}>
-                <Table.Cell>{order.fullName}</Table.Cell>
-                {foodItems.map((item, index) => (
-                  <Table.Cell key={index}>{itemQuantities[item]}</Table.Cell>
-                ))}
-              </Table.Row>
-            );
-          })}
-
-          {/* Row to show total quantity for each food item */}
+          {groupedOrders.map(({ fullName, orders }) => (
+            <Table.Row key={fullName}>
+              <Table.Cell>{fullName}</Table.Cell>
+              {foodItems.map((item) => (
+                <Table.Cell key={item}>{orders.find((o) => o.name === item)?.quantity || 0}</Table.Cell>
+              ))}
+            </Table.Row>
+          ))}
           <Table.Row>
             <Table.Cell><strong>Total</strong></Table.Cell>
-            {foodItems.map((item, index) => (
-              <Table.Cell key={index}><strong>{groupedOrders.reduce((sum, order) => {
-                const foodItem = order.orders.find((orderItem) => orderItem.name === item);
-                return sum + (foodItem ? foodItem.quantity : 0);
-              }, 0)}</strong></Table.Cell>
+            {foodItems.map((item) => (
+              <Table.Cell key={item}><strong>{totalQuantities[item]}</strong></Table.Cell>
             ))}
           </Table.Row>
         </Table.Body>
       </Table>
 
-      {/* Download Button */}
-      <div style={{ marginTop: "2em", display: "flex", justifyContent: "center" }}>
+      <div style={{ marginTop: "2em", textAlign: "center" }}>
         <Button
           onClick={() => downloadCSV(
-            groupedOrders.map((order) => {
+            groupedOrders.map(({ fullName, orders }) => {
               const itemQuantities = foodItems.reduce((acc, item) => {
-                const foodItem = order.orders.find((orderItem) => orderItem.name === item);
+                const foodItem = orders.find((o) => o.name === item);
                 acc[item] = foodItem ? foodItem.quantity : 0;
                 return acc;
               }, {});
-              return { "Customer Name": order.fullName, ...itemQuantities };
+              return { "Customer Name": fullName, ...itemQuantities };
             }),
-            orderedItemsColumns,
+            ["Customer Name", ...foodItems],
             "ordered_items_by_food.csv"
           )}
           primary
