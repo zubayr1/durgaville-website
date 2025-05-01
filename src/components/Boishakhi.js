@@ -337,7 +337,7 @@ const Boishakhi = () => {
                   textAlign: "center",
                 }}
               >
-                Please register by 3rd May 2025.
+                Please register by 7th May 2025.
               </p>
 
               <div
