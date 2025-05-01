@@ -235,6 +235,26 @@ const Boishakhi = () => {
                 fontFamily: "Inter",
               }}
             >
+
+<div
+  style={{
+    fontSize: "1.1rem",
+    lineHeight: "1.6",
+    color: "#444",
+    backgroundColor: "#f9f9f9",
+    padding: "1rem",
+    borderRadius: "8px",
+    boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
+    marginBottom: "1.5rem",
+  }}
+>
+  <strong>Date:</strong> 10th May, 2025
+  <ul style={{ paddingLeft: "1.2rem", marginTop: "0.5rem" }}>
+    <li><strong>4:30–5:30 PM:</strong> Food Festival</li>
+    <li><strong>5:30–7:30 PM:</strong> Cultural Program</li>
+    <li><strong>7:30–9:30 PM:</strong> Food Festival</li>
+  </ul>
+</div>
               <p
                 style={{
                   fontSize: "1.2rem",
@@ -300,11 +320,13 @@ const Boishakhi = () => {
                   textAlign: "justify",
                 }}
               >
-                Don't miss this opportunity to celebrate a cultural and food festival like non other here in Erlangen.
+                Don't miss this opportunity to celebrate a cultural and food festival like none other here in Erlangen.
                 Let's come together to create beautiful memories!
                 <br />
-                We look forward to celebrating Boishaki with you!
+                We look forward to celebrating Boishakhi with you!
               </p>
+
+
 
               <p
                 style={{
