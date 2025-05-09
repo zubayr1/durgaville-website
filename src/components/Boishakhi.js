@@ -121,14 +121,16 @@ const Boishakhi = () => {
     }
   }, []);
 
-  const [formData, setFormData] = useState({
+  const [formData] = useState({
     fullName: "",
     email: "",
     phone: "",
     agreement: false,
   });
-
-  const [foodOrders, setFoodOrders] = useState(foodItems.map((item) => ({ ...item, quantity: 0 })));
+  
+  const [foodOrders] = useState(
+    foodItems.map((item) => ({ ...item, quantity: 0 }))
+  );
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
