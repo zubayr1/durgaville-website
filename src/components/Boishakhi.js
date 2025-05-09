@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Button, Form, Grid, Message, Segment, Image, Modal, Card, Checkbox } from "semantic-ui-react";
+import { Form, Grid, Message, Segment, Image, Modal, Card } from "semantic-ui-react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase.js";
 import { TailSpin } from "react-loader-spinner";
@@ -136,18 +136,18 @@ const Boishakhi = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [orderDetails, setOrderDetails] = useState(null);
 
-  const handleInputChange = (field, value) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
+  // const handleInputChange = (field, value) => {
+  //   setFormData((prev) => ({
+  //     ...prev,
+  //     [field]: value,
+  //   }));
+  // };
 
-  const handleQuantityChange = (id, change) => {
-    setFoodOrders((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity: Math.max(0, item.quantity + change) } : item)),
-    );
-  };
+  // const handleQuantityChange = (id, change) => {
+  //   setFoodOrders((prev) =>
+  //     prev.map((item) => (item.id === id ? { ...item, quantity: Math.max(0, item.quantity + change) } : item)),
+  //   );
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
