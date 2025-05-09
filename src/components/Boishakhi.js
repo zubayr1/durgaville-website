@@ -337,7 +337,7 @@ const Boishakhi = () => {
                   textAlign: "center",
                 }}
               >
-                Please register by 7th May 2025.
+                Registrations closed! Please drop by for walk-in registrations or drop a note to info@durgaville.com
               </p>
 
               <div
@@ -412,7 +412,7 @@ const Boishakhi = () => {
           </Grid.Column>
         </Grid.Row>
 
-        <Grid.Row>
+        {/* <Grid.Row>
           <Grid.Column width={16} textAlign="middle">
             <p
               style={{
@@ -427,12 +427,12 @@ const Boishakhi = () => {
               Registration
             </p>
           </Grid.Column>
-        </Grid.Row>
+        </Grid.Row> */}
 
         <Grid.Row>
           <Grid.Column mobile={14} tablet={10} computer={8}>
             <Form onSubmit={handleSubmit}>
-              <Segment padded>
+              {/* <Segment padded>
                 <Form.Field>
                   <label>Full Name</label>
                   <input
@@ -471,7 +471,7 @@ const Boishakhi = () => {
                     onChange={(e, data) => handleInputChange("agreement", data.checked)}
                   />
                 </Form.Field>
-              </Segment>
+              </Segment> */}
 
               <Segment padded>
                 <div style={{ textAlign: "center", marginBottom: "2rem" }}>
@@ -486,7 +486,7 @@ const Boishakhi = () => {
                     }}
                   />
                 </div>
-                <h3>Preorder Your Favourite Kolkata Street Food Items</h3>
+                {/* <h3>Preorder Your Favourite Kolkata Street Food Items</h3> */}
                 <p
                   style={{
                     color: "#bb0d3b",
@@ -496,8 +496,7 @@ const Boishakhi = () => {
                     fontWeight: "500",
                   }}
                 >
-                  On-spot registrations and food orders are subjected to availability. We highly recommend you to
-                  register online and pre-order your food!
+                  On-spot registrations and food orders are subjected to availability.
                 </p>
                 <Grid>
                   <Grid.Row columns={2}>
@@ -551,7 +550,7 @@ const Boishakhi = () => {
                               <div style={{ fontSize: "1.1em", fontWeight: "bold", color: "#bb0d3b" }}>
                                 €{item.price}
                               </div>
-                              <Button.Group size="small">
+                              {/* <Button.Group size="small">
                                 <Button
                                   icon="minus"
                                   onClick={(e) => {
@@ -568,7 +567,7 @@ const Boishakhi = () => {
                                     handleQuantityChange(item.id, 1);
                                   }}
                                 />
-                              </Button.Group>
+                              </Button.Group> */}
                             </div>
                           </Card.Content>
                         </Card>
@@ -789,7 +788,7 @@ const Boishakhi = () => {
                   <Grid>
                     <Grid.Row>
                       <Grid.Column floated="right" width={16}>
-                        <h3
+                        {/* <h3
                           style={{
                             textAlign: "right",
                             color: "#bb0d3b",
@@ -798,7 +797,7 @@ const Boishakhi = () => {
                         >
                           Total Amount: €
                           {foodOrders.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}
-                        </h3>
+                        </h3> */}
                       </Grid.Column>
                     </Grid.Row>
                   </Grid>
@@ -806,10 +805,10 @@ const Boishakhi = () => {
               </Segment>
 
               <div style={{ marginTop: "2%" }}>
-                <Button type="submit" style={{ backgroundColor: "#bb0d3b", color: "#fff" }}>
+                {/* <Button type="submit" style={{ backgroundColor: "#bb0d3b", color: "#fff" }}>
                   Pay & Register
-                </Button>
-                <p
+                </Button> */}
+                {/* <p
                   style={{
                     color: "#bb0d3b",
                     fontSize: "1.1em",
@@ -820,7 +819,7 @@ const Boishakhi = () => {
                 >
                   Orders, once processed cannot be cancelled. For further information please contact durgaville team
                   directly via info@durgaville.com
-                </p>
+                </p> */}
               </div>
             </Form>
           </Grid.Column>
