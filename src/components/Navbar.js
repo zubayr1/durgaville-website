@@ -16,19 +16,24 @@ function Navbar({ visible, setVisible }) {
     const currentURL = window.location.href;
     if (currentURL.includes("/home")) {
       setActiveItem("home");
+    } else if (currentURL.includes("/pujo-2025")) {
+      setActiveItem("Durgapujo, 2025");
     } else if (currentURL.includes("/pujo-2024")) {
       setActiveItem("Durgapujo, 2024");
-    } else if (currentURL.includes("/boishakhi-2025")) {
-      setActiveItem("Boishakhi, 2025");
-    } else if (currentURL.includes("/upcoming-events")) {
+    }
+    // else if (currentURL.includes("/boishakhi-2025")) {
+    //   setActiveItem("Boishakhi, 2025");
+    // }
+    else if (currentURL.includes("/upcoming-events")) {
       setActiveItem("upcoming-events");
     } else if (currentURL.includes("/past-events")) {
       setActiveItem("past-events");
     }
     // else if (currentURL.includes("/meet-the-team")) {
     //   setActiveItem("meet-the-team");
-    // } else if (currentURL.includes("/magazine")) {
-    //   setActiveItem("magazine");
+    // }
+    // else if (currentURL.includes("/magazine")) {
+    //   setActiveItem("magazine 2025");
     // }
     else if (currentURL.includes("/adminlogin")) {
       setActiveItem("admin-portal");
@@ -43,16 +48,21 @@ function Navbar({ visible, setVisible }) {
         navigate("/");
       }
     }
+    if (name === "Durgapujo, 2025") {
+      if (!currentURL.includes("/pujo-2025")) {
+        navigate("/pujo-2025");
+      }
+    }
     if (name === "Durgapujo, 2024") {
       if (!currentURL.includes("/pujo-2024")) {
         navigate("/pujo-2024");
       }
     }
-    if (name === "Boishakhi, 2025") {
-      if (!currentURL.includes("/boishakhi-2025")) {
-        navigate("/boishakhi-2025");
-      }
-    }
+    // if (name === "Boishakhi, 2025") {
+    //   if (!currentURL.includes("/boishakhi-2025")) {
+    //     navigate("/boishakhi-2025");
+    //   }
+    // }
     if (name === "upcoming-events") {
       if (!currentURL.includes("/upcoming-events")) {
         navigate("/upcoming-events");
@@ -68,7 +78,7 @@ function Navbar({ visible, setVisible }) {
     //     navigate("/meet-the-team");
     //   }
     // }
-    // if (name === "magazine") {
+    // if (name === "magazine 2025") {
     //   if (!currentURL.includes("/magazine")) {
     //     navigate("/magazine");
     //   }
@@ -109,11 +119,17 @@ function Navbar({ visible, setVisible }) {
                   onClick={handleItemClick}
                   className={activeItem === "home" ? "active" : ""}
                 />
-                <Menu.Item
+                {/* <Menu.Item
                   name="Boishakhi, 2025"
                   active={activeItem === "Boishakhi, 2025"}
                   onClick={handleItemClick}
                   className={activeItem === "Boishakhi, 2025" ? "active" : ""}
+                /> */}
+                <Menu.Item
+                  name="Durgapujo, 2025"
+                  active={activeItem === "Durgapujo, 2025"}
+                  onClick={handleItemClick}
+                  className={activeItem === "Durgapujo, 2025" ? "active" : ""}
                 />
                 <Menu.Item
                   name="Durgapujo, 2024"
@@ -138,12 +154,12 @@ function Navbar({ visible, setVisible }) {
                   active={activeItem === "meet-the-team"}
                   onClick={handleItemClick}
                   className={activeItem === "meet-the-team" ? "active" : ""}
-                />
-                <Menu.Item
-                  name="magazine"
-                  active={activeItem === "magazine"}
+                />*/}
+                {/* <Menu.Item
+                  name="magazine 2025"
+                  active={activeItem === "magazine 2025"}
                   onClick={handleItemClick}
-                  className={activeItem === "magazine" ? "active" : ""}
+                  className={activeItem === "magazine 2025" ? "active" : ""}
                 /> */}
 
                 {/* <Menu.Item
@@ -184,11 +200,17 @@ function Navbar({ visible, setVisible }) {
                   onClick={handleItemClick}
                   className={activeItem === "home" ? "active" : ""}
                 />
-                <Menu.Item
+                {/* <Menu.Item
                   name="Boishakhi, 2025"
                   active={activeItem === "Boishakhi, 2025"}
                   onClick={handleItemClick}
                   className={activeItem === "Boishakhi, 2025" ? "active" : ""}
+                /> */}
+                <Menu.Item
+                  name="Durgapujo, 2025"
+                  active={activeItem === "Durgapujo, 2025"}
+                  onClick={handleItemClick}
+                  className={activeItem === "Durgapujo, 2025" ? "active" : ""}
                 />
                 <Menu.Item
                   name="Durgapujo, 2024"
@@ -213,12 +235,12 @@ function Navbar({ visible, setVisible }) {
                   active={activeItem === "meet-the-team"}
                   onClick={handleItemClick}
                   className={activeItem === "meet-the-team" ? "active" : ""}
-                />
-                <Menu.Item
-                  name="magazine"
-                  active={activeItem === "magazine"}
+                />*/}
+                {/* <Menu.Item
+                  name="magazine 2025"
+                  active={activeItem === "magazine 2025"}
                   onClick={handleItemClick}
-                  className={activeItem === "magazine" ? "active" : ""}
+                  className={activeItem === "magazine 2025" ? "active" : ""}
                 /> */}
 
                 {/* <Menu.Item

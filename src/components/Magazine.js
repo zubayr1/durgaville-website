@@ -21,14 +21,12 @@ const submissionTypes = [
 ];
 
 const Magazine = () => {
-  const [entries, setEntries] = useState([{ fullName: "", age: "", email: "", location: "", submissionType: "", title: "", file: null }]);
+  const [entries, setEntries] = useState([
+    { fullName: "", age: "", email: "", location: "", submissionType: "", title: "", file: null },
+  ]);
   const [error, setError] = useState(-1);
   const [loading, setLoading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   useEffect(() => {
     if (error === 0) {
@@ -52,7 +50,10 @@ const Magazine = () => {
   };
 
   const addEntry = () => {
-    setEntries([...entries, { fullName: "", age: "", email: "", location: "", submissionType: "", title: "", file: null }]);
+    setEntries([
+      ...entries,
+      { fullName: "", age: "", email: "", location: "", submissionType: "", title: "", file: null },
+    ]);
   };
 
   const removeEntry = (index) => {
@@ -67,13 +68,27 @@ const Magazine = () => {
     for (let i = 0; i < entries.length; i++) {
       const entry = entries[i];
 
-      if (entry.fullName === "" || entry.age === "" || entry.email === "" || entry.location === "" || entry.submissionType === "" || entry.title === "" || entry.file === null) {
+      if (
+        entry.fullName === "" ||
+        entry.age === "" ||
+        entry.email === "" ||
+        entry.location === "" ||
+        entry.submissionType === "" ||
+        entry.title === "" ||
+        entry.file === null
+      ) {
         setError(1);
         valid = false;
         break;
       }
 
-      const allowedTypes = ["application/pdf", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "image/png"];
+      const allowedTypes = [
+        "application/pdf",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "image/jpeg",
+        "image/jpg",
+        "image/png",
+      ];
       if (!allowedTypes.includes(entry.file.type)) {
         setError(2);
         valid = false;
@@ -135,7 +150,11 @@ const Magazine = () => {
             ${entry.location}\nSubmission Type: ${entry.submissionType}\nTitle: ${entry.title}\nFile Name: ${uniqueFileName}`;
 
           // Upload metadata text to storage
-          await uploadString(ref(storage, `magazine_metadata/${baseFileName}_${randomString}.txt`), metadataText, "raw");
+          await uploadString(
+            ref(storage, `magazine_metadata/${baseFileName}_${randomString}.txt`),
+            metadataText,
+            "raw",
+          );
 
           const fileUrl = await getDownloadURL(snapshot.ref);
 
@@ -182,7 +201,11 @@ const Magazine = () => {
   } else if (error === 2) {
     layout = (
       <div>
-        <Message error header="Submission Error" content="Invalid file type. Only .docx, .pdf, .jpg, .jpeg, and .png files are allowed" />
+        <Message
+          error
+          header="Submission Error"
+          content="Invalid file type. Only .docx, .pdf, .jpg, .jpeg, and .png files are allowed"
+        />
       </div>
     );
   } else if (error === 3) {
@@ -214,8 +237,33 @@ const Magazine = () => {
           </div>
         </Grid.Row>
 
-        <Grid.Row>
-          <p style={{ fontWeight: "bolder", fontSize: "4rem", fontFamily: "Inter", marginTop: "-3%", marginLeft: "2%", marginRight: "2%" }}>Add Your Entry for the magazine</p>
+        <Grid.Row only="computer tablet">
+          <p
+            style={{
+              fontWeight: "bolder",
+              fontSize: "4rem",
+              fontFamily: "Inter",
+              marginTop: "-3%",
+              marginLeft: "2%",
+              marginRight: "2%",
+            }}
+          >
+            Add Your Entry for the magazine
+          </p>
+        </Grid.Row>
+        <Grid.Row only="mobile">
+          <p
+            style={{
+              fontWeight: "bolder",
+              fontSize: "2rem",
+              fontFamily: "Inter",
+              marginTop: "-3%",
+              marginLeft: "2%",
+              marginRight: "2%",
+            }}
+          >
+            Add Your Entry for the magazine
+          </p>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column mobile={16} tablet={10} computer={8}>
@@ -224,19 +272,37 @@ const Magazine = () => {
                 <Segment key={index} padded="very">
                   <Form.Field>
                     <label htmlFor={`fullName-${index}`}>Full Name</label>
-                    <input placeholder="Full Name" value={entry.fullName} onChange={(e) => handleInputChange(index, "fullName", e.target.value)} />
+                    <input
+                      placeholder="Full Name"
+                      value={entry.fullName}
+                      onChange={(e) => handleInputChange(index, "fullName", e.target.value)}
+                    />
                   </Form.Field>
                   <Form.Field>
                     <label htmlFor={`age-${index}`}>Age</label>
-                    <input type="number" placeholder="Age" value={entry.age} onChange={(e) => handleInputChange(index, "age", e.target.value)} />
+                    <input
+                      type="number"
+                      placeholder="Age"
+                      value={entry.age}
+                      onChange={(e) => handleInputChange(index, "age", e.target.value)}
+                    />
                   </Form.Field>
                   <Form.Field>
                     <label htmlFor={`email-${index}`}>Email</label>
-                    <input type="email" placeholder="Email" value={entry.email} onChange={(e) => handleInputChange(index, "email", e.target.value)} />
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      value={entry.email}
+                      onChange={(e) => handleInputChange(index, "email", e.target.value)}
+                    />
                   </Form.Field>
                   <Form.Field>
                     <label htmlFor={`location-${index}`}>Location</label>
-                    <input placeholder="Location" value={entry.location} onChange={(e) => handleInputChange(index, "location", e.target.value)} />
+                    <input
+                      placeholder="Location"
+                      value={entry.location}
+                      onChange={(e) => handleInputChange(index, "location", e.target.value)}
+                    />
                   </Form.Field>
                   <Form.Field>
                     <label htmlFor={`submissionType-${index}`}>Submission Type</label>
@@ -251,14 +317,26 @@ const Magazine = () => {
                   </Form.Field>
                   <Form.Field>
                     <label htmlFor={`title-${index}`}>Title</label>
-                    <input placeholder="Title" value={entry.title} onChange={(e) => handleInputChange(index, "title", e.target.value)} />
+                    <input
+                      placeholder="Title"
+                      value={entry.title}
+                      onChange={(e) => handleInputChange(index, "title", e.target.value)}
+                    />
                   </Form.Field>
                   <Form.Field>
                     <label htmlFor={`file-${index}`}>Upload</label>
-                    <input type="file" accept=".docx,.pdf,image/jpeg,image/jpg,image/png" onChange={(e) => handleFileChange(index, e.target.files[0])} />
+                    <input
+                      type="file"
+                      accept=".docx,.pdf,image/jpeg,image/jpg,image/png"
+                      onChange={(e) => handleFileChange(index, e.target.files[0])}
+                    />
                   </Form.Field>
                   {index > 0 && (
-                    <Button type="button" onClick={() => removeEntry(index)} style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "1em" }}>
+                    <Button
+                      type="button"
+                      onClick={() => removeEntry(index)}
+                      style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "1em" }}
+                    >
                       Cancel
                     </Button>
                   )}
