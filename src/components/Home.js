@@ -2,8 +2,9 @@ import React from "react";
 import { Divider, Grid, Image, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import thakurhome from "../assets/thakurHome.jpg";
-import sparkasse from "../assets/sponsors/sparkasse.jpg";
-import boishakhi_header from "../assets/foods/boishakhi_header.png";
+// import sparkasse from "../assets/sponsors/sparkasse.jpg";
+// import boishakhi_header from "../assets/foods/boishakhi_header.png";
+import pujo_2025_logo from "../assets/pujo_2025_logo.png";
 
 import "./home.css";
 
@@ -82,12 +83,12 @@ function Home() {
                   marginBottom: "1.5rem",
                 }}
               >
-                Let's Celebrate Boishakhi 2025
+                Let's Celebrate Pujo 2025
               </p>
 
               <Image
-                src={boishakhi_header}
-                alt="Boishakhi 2025"
+                src={pujo_2025_logo}
+                alt="Pujo 2025"
                 style={{
                   width: "80%",
                   maxWidth: "600px",
@@ -100,10 +101,10 @@ function Home() {
 
               <Button
                 as={Link}
-                to="/boishakhi-2025"
+                to="/pujo-2025"
                 style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
               >
-                Go to Registration Page
+                Go to Pujo 2025 Page
               </Button>
 
               <p
@@ -121,14 +122,7 @@ function Home() {
               </p>
 
               <div style={{ display: "flex", justifyContent: "center" }}>
-                <Image
-                  alt="sponsor: Sparkasse"
-                  src={sparkasse}
-                  style={{ width: "10%" }}
-                  href="https://www.sparkasse-erlangen.de/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
+                {/* You can add sponsor images here if needed */}
               </div>
             </div>
 
@@ -197,12 +191,12 @@ function Home() {
                   marginBottom: "1.5rem",
                 }}
               >
-                Let's Celebrate Boishakhi 2025
+                Let's Celebrate Pujo 2025
               </p>
 
               <Image
-                src={boishakhi_header}
-                alt="Boishakhi 2025"
+                src={pujo_2025_logo}
+                alt="Pujo 2025"
                 style={{
                   width: "90%",
                   maxWidth: "500px",
@@ -215,10 +209,10 @@ function Home() {
 
               <Button
                 as={Link}
-                to="/boishakhi-2025"
+                to="/pujo-2025"
                 style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
               >
-                Go to Registration Page
+                Go to Pujo 2025 Page
               </Button>
 
               <p
@@ -236,14 +230,7 @@ function Home() {
               </p>
 
               <div style={{ display: "flex", justifyContent: "center" }}>
-                <Image
-                  alt="sponsor: Sparkasse"
-                  src={sparkasse}
-                  style={{ width: "20%" }}
-                  href="https://www.sparkasse-erlangen.de/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
+                {/* You can add sponsor images here if needed */}
               </div>
             </div>
 
@@ -312,12 +299,12 @@ function Home() {
                   marginBottom: "1.5rem",
                 }}
               >
-                Let's Celebrate Boishakhi 2025
+                Let's Celebrate Pujo 2025
               </p>
 
               <Image
-                src={boishakhi_header}
-                alt="Boishakhi 2025"
+                src={pujo_2025_logo}
+                alt="Pujo 2025"
                 style={{
                   width: "95%",
                   maxWidth: "400px",
@@ -330,10 +317,10 @@ function Home() {
 
               <Button
                 as={Link}
-                to="/boishakhi-2025"
+                to="/pujo-2025"
                 style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
               >
-                Go to Registration Page
+                Go to Pujo 2025 Page
               </Button>
 
               <p
@@ -351,14 +338,7 @@ function Home() {
               </p>
 
               <div style={{ display: "flex", justifyContent: "center" }}>
-                <Image
-                  alt="sponsor: Sparkasse"
-                  src={sparkasse}
-                  style={{ width: "50%" }}
-                  href="https://www.sparkasse-erlangen.de/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
+                {/* You can add sponsor images here if needed */}
               </div>
             </div>
 
