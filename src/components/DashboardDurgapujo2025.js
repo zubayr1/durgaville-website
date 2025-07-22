@@ -33,7 +33,7 @@ function DashboardDurgapujo2025() {
             <div style={{ display: "flex", justifyContent: "center", paddingLeft: "10%", paddingRight: "10%" }}>
               <Image src={pujo_2025_tagline} alt="Pujo 2025" />
             </div>
-            <Magazine />
+            {/* <Magazine /> */}
             <Footer />
           </Grid.Column>
 
@@ -60,7 +60,7 @@ function DashboardDurgapujo2025() {
                 <div style={{ display: "flex", justifyContent: "center", paddingLeft: "5%", paddingRight: "5%" }}>
                   <Image src={pujo_2025_tagline} alt="Pujo 2025" />
                 </div>
-                <Magazine />
+                {/* <Magazine /> */}
                 <Footer />
               </SidebarPusher>
             </SidebarPushable>
