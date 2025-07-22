@@ -72,20 +72,6 @@ function Home() {
                 border: "2px solid #ff0000",
               }}
             >
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  lineHeight: "2.0",
-                  fontSize: "1.6rem",
-                  color: "black",
-                  fontStyle: "italic",
-                  marginTop: "0",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                Let's Celebrate Pujo 2025
-              </p>
-
               <Image
                 src={pujo_2025_logo}
                 alt="Pujo 2025"
@@ -104,26 +90,8 @@ function Home() {
                 to="/pujo-2025"
                 style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
               >
-                Go to Pujo 2025 Page
+                Go to DurgaPujo 2025 Page
               </Button>
-
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  lineHeight: "2.0",
-                  fontSize: "1.4rem",
-                  color: "black",
-                  fontStyle: "italic",
-                  marginTop: "0",
-                  marginBottom: "1.0rem",
-                }}
-              >
-                Proudly Sponsored by:
-              </p>
-
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                {/* You can add sponsor images here if needed */}
-              </div>
             </div>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
@@ -180,20 +148,6 @@ function Home() {
                 border: "2px solid #ff0000",
               }}
             >
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  lineHeight: "2.0",
-                  fontSize: "1.6rem",
-                  color: "black",
-                  fontStyle: "italic",
-                  marginTop: "0",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                Let's Celebrate Pujo 2025
-              </p>
-
               <Image
                 src={pujo_2025_logo}
                 alt="Pujo 2025"
@@ -212,26 +166,8 @@ function Home() {
                 to="/pujo-2025"
                 style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
               >
-                Go to Pujo 2025 Page
+                Go to DurgaPujo 2025 Page
               </Button>
-
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  lineHeight: "2.0",
-                  fontSize: "1.4rem",
-                  color: "black",
-                  fontStyle: "italic",
-                  marginTop: "0",
-                  marginBottom: "1.0rem",
-                }}
-              >
-                Proudly Sponsored by:
-              </p>
-
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                {/* You can add sponsor images here if needed */}
-              </div>
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", padding: "6%" }}>
@@ -288,20 +224,6 @@ function Home() {
                 border: "2px solid #ff0000",
               }}
             >
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  lineHeight: "2.0",
-                  fontSize: "1.6rem",
-                  color: "black",
-                  fontStyle: "italic",
-                  marginTop: "0",
-                  marginBottom: "1.5rem",
-                }}
-              >
-                Let's Celebrate Pujo 2025
-              </p>
-
               <Image
                 src={pujo_2025_logo}
                 alt="Pujo 2025"
@@ -320,26 +242,8 @@ function Home() {
                 to="/pujo-2025"
                 style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
               >
-                Go to Pujo 2025 Page
+                Go to DurgaPujo 2025 Page
               </Button>
-
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  lineHeight: "2.0",
-                  fontSize: "1.4rem",
-                  color: "black",
-                  fontStyle: "italic",
-                  marginTop: "0",
-                  marginBottom: "1.0rem",
-                }}
-              >
-                Proudly Sponsored by:
-              </p>
-
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                {/* You can add sponsor images here if needed */}
-              </div>
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", padding: "6%" }}>
