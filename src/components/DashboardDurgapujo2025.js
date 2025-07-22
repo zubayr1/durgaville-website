@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import { SidebarPusher, SidebarPushable, GridColumn, Grid, Sidebar, Image } from "semantic-ui-react";
 import { Helmet } from "react-helmet";
 import MobileView from "./MobileView";
-import Magazine from "./Magazine";
+// import Magazine from "./Magazine";
 // import Durgapujo2025 from "./Durgapujo2025";
 import pujo_2025_tagline from "../assets/pujo_2025_tagline.png";
 
