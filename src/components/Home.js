@@ -34,12 +34,12 @@ function Home() {
                 fontSize: "4.5rem",
                 color: "black",
                 fontWeight: "bold",
-                marginBottom: "5%",
-                marginTop: "6%",
+                marginBottom: "2%",
+                marginTop: "2%",
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
             >
-              ABOUT DURGAVILLE
+              About Durgaville
             </p>
 
             <p
@@ -110,12 +110,12 @@ function Home() {
                 fontSize: "3.5rem",
                 color: "black",
                 fontWeight: "bold",
-                marginBottom: "5%",
-                marginTop: "6%",
+                marginBottom: "2%",
+                marginTop: "2%",
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
             >
-              ABOUT DURGAVILLE
+              About Durgaville
             </p>
 
             <p
@@ -186,12 +186,12 @@ function Home() {
                 fontSize: "2.5rem",
                 color: "black",
                 fontWeight: "bold",
-                marginBottom: "5%",
-                marginTop: "6%",
+                marginBottom: "3%",
+                marginTop: "3%",
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
             >
-              ABOUT DURGAVILLE
+              About Durgaville
             </p>
 
             <p

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Icon, Menu } from "semantic-ui-react";
+import { Grid, Icon, Menu, Image } from "semantic-ui-react";
 
 import "./navbar.css";
+import durgavilleLogo from "../assets/durgaville_logo.png";
 
 import { useNavigate } from "react-router-dom";
 
@@ -113,6 +114,9 @@ function Navbar({ visible, setVisible }) {
           <Grid.Column width={16} only="computer" verticalAlign="middle" textAlign="middle">
             <div className="custom-menu" style={{ marginLeft: "3%", marginRight: "3%" }}>
               <Menu compact secondary attached="top" tabular>
+                <Menu.Item>
+                  <Image src={durgavilleLogo} size="mini" style={{ height: "40px", width: "auto" }} />
+                </Menu.Item>
                 <Menu.Item
                   name="home"
                   active={activeItem === "home"}
@@ -194,6 +198,9 @@ function Navbar({ visible, setVisible }) {
           <Grid.Column width={16} only="tablet" verticalAlign="middle" textAlign="middle">
             <div className="custom-menu" style={{ marginLeft: "3%", marginRight: "3%" }}>
               <Menu compact secondary attached="top" tabular>
+                <Menu.Item>
+                  <Image src={durgavilleLogo} size="mini" style={{ height: "40px", width: "auto" }} />
+                </Menu.Item>
                 <Menu.Item
                   name="home"
                   active={activeItem === "home"}
@@ -273,7 +280,7 @@ function Navbar({ visible, setVisible }) {
           </Grid.Column>
 
           <Grid.Column width={16} only="mobile" verticalAlign="middle" textAlign="middle">
-            <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "15%" }}>
+            <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "2%" }}>
               <div
                 onClick={() => handleSidebarIconClick()}
                 style={{ color: "white", marginRight: "14px", display: "flex", alignItems: "center" }}

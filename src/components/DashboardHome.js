@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Background from "./Background";
 import Greetings from "./Greetings";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -22,14 +21,17 @@ function DashboardHome() {
     <div style={{ overflow: "hidden" }}>
       <Helmet>
         <title>Home - Durgaville</title>
-        <meta name="description" content="Welcome to Durgaville, your go-to place for everything about Durgapujo in Erlangen, Bavaria, Germany" />
+        <meta
+          name="description"
+          content="Welcome to Durgaville, your go-to place for everything about Durgapujo in Erlangen, Bavaria, Germany"
+        />
       </Helmet>
       <Grid>
         <Grid.Row>
           <Grid.Column width={16} only="computer tablet" verticalAlign="middle" textAlign="middle">
-            <Background />
-            <Greetings onScrollDown={handleScroll} />
             <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
+            <Greetings />
+
             <Home />
             <Footer />
           </Grid.Column>
@@ -51,7 +53,6 @@ function DashboardHome() {
               </Sidebar>
 
               <SidebarPusher dimmed={navbarVisible}>
-                <Background />
                 <Greetings onScrollDown={handleScroll} />
                 <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
                 <Home />

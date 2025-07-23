@@ -1,83 +1,107 @@
-/* General styles for the navbar container */
+/* Simplified navbar styles */
 .navbar-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    transform: translate(0, -50%);
-    overflow: hidden;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 8px 0;
+}
 
-  /* Positioning for different screen sizes */
-  @media only screen and (min-width: 768px) {
-    .navbar-container {
-      top: 68vh; /* For tablets */
-    }
+/* Light red background for computer and tablet screens */
+@media (min-width: 768px) {
+  .navbar-container {
+    background-color: #ffebee;
+    /* Light red background */
+    padding: 8px 20px;
+    /* Add left and right padding */
   }
+}
 
-  @media only screen and (min-width: 992px) {
-    .navbar-container {
-      top: 97vh; /* For desktops */
-    }
+/* Transparent background for mobile only */
+@media (max-width: 767px) {
+  .navbar-container {
+    background-color: transparent;
   }
+}
 
-  @media only screen and (max-width: 767px) {
-    .navbar-container {
-      top: 0%; /* For mobile devices */
-    }
-  }
+.custom-menu {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 10px;
+}
 
-  /* Custom menu styles */
+.custom-menu .item {
+  color: #333 !important;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 8px 10px !important;
+  margin: 0 2px !important;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.custom-menu .item:hover {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  color: #000 !important;
+}
+
+.custom-menu .item.active {
+  background-color: #fff !important;
+  color: #d32f2f !important;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive font sizes and spacing */
+@media (min-width: 768px) and (max-width: 1023px) {
   .custom-menu {
-    background-color: rgba(255, 255, 255, 0.2); /* Translucent whitish background */
-    margin-left: 15%;
-    margin-right: 15%;
+    padding: 0 8px;
   }
 
-  /* Adjust margins for smaller screens */
-  @media (max-width: 1496px) {
-    .custom-menu {
-      margin-left: 10%;
-      margin-right: 10%;
-    }
-  }
-
-  /* Menu item styles */
   .custom-menu .item {
-    color: white !important; /* White text color for menu items */
-    font-family: "Inter", sans-serif;
-    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 6px 8px !important;
+    margin: 0 1px !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .custom-menu .item {
+    font-size: 0.9rem;
+    padding: 8px 10px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .custom-menu .item {
+    font-size: 1rem;
+    padding: 10px 12px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .custom-menu {
+    padding: 0 10px;
   }
 
-  /* Font size adjustments for different screen sizes */
-  @media only screen and (min-width: 768px) {
-    .custom-menu .item {
-      font-size: 1rem; /* For tablets */
-    }
+  .custom-menu .item {
+    font-size: 0.9rem;
+    padding: 8px 12px !important;
+  }
+}
+
+/* Light red color for mobile menu text and icons */
+@media (max-width: 767px) {
+  .navbar-container .icon {
+    color: #ffffff !important;
   }
 
-  @media only screen and (min-width: 992px) {
-    .custom-menu .item {
-      font-size: 1.3rem; /* For desktops */
-    }
+  .navbar-container p {
+    color: #ffffff !important;
   }
-
-  @media only screen and (max-width: 767px) {
-    .custom-menu .item {
-      font-size: 1rem; /* For mobile devices */
-    }
-  }
-
-  /* Active menu item styles */
-  .custom-menu .item.active {
-    color: black !important; /* Black text color for active menu items */
-    background-color: white !important; /* White background color for active menu items */
-    font-weight: bolder;
-    border-radius: 5px;
-  }
-
-
-  @media only screen and (min-width: 992px) {
-      .custom-menu .item.active {
-        font-size: 1.4rem; /* For desktops */
-      }
-    }
+}

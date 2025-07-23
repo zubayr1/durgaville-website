@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import Background from "./Background";
 import Greetings from "./Greetings";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -80,7 +79,6 @@ function DashboardAdmin() {
       <Grid>
         <Grid.Row>
           <Grid.Column width={16} only="computer tablet" verticalAlign="middle" textAlign="middle">
-            <Background />
             <Greetings onScrollDown={handleScroll} />
             <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
             {/* <div ref={homeRef}> */}
@@ -111,47 +109,76 @@ function DashboardAdmin() {
                   </Grid.Row>
 
                   <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
-                    <p onClick={() => handlebuttonClick("upcoming-events")} style={{ fontWeight: "bolder", fontFamily: "Inter" }}>
+                    <p
+                      onClick={() => handlebuttonClick("upcoming-events")}
+                      style={{ fontWeight: "bolder", fontFamily: "Inter" }}
+                    >
                       UPCOMING EVENTS
                     </p>
                   </Grid.Row>
 
                   <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
-                    <p onClick={() => handlebuttonClick("meet-the-team")} style={{ fontWeight: "bolder", fontFamily: "Inter" }}>
+                    <p
+                      onClick={() => handlebuttonClick("meet-the-team")}
+                      style={{ fontWeight: "bolder", fontFamily: "Inter" }}
+                    >
                       MEET THE TEAM
                     </p>
                   </Grid.Row>
 
                   <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
-                    <p onClick={() => handlebuttonClick("magazine")} style={{ fontWeight: "bolder", fontFamily: "Inter" }}>
+                    <p
+                      onClick={() => handlebuttonClick("magazine")}
+                      style={{ fontWeight: "bolder", fontFamily: "Inter" }}
+                    >
                       MAGAZINE
                     </p>
                   </Grid.Row>
 
                   <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
-                    <p onClick={() => handlebuttonClick("admin-portal")} style={{ fontWeight: "bolder", fontFamily: "Inter" }}>
+                    <p
+                      onClick={() => handlebuttonClick("admin-portal")}
+                      style={{ fontWeight: "bolder", fontFamily: "Inter" }}
+                    >
                       ADMIN PORTAL
                     </p>
                   </Grid.Row>
 
                   <Grid.Row style={{ marginTop: "6%" }}>
                     <Grid.Column width={4}>
-                      <Icon onClick={() => handleiconClick("facebook")} circular color="black" name="facebook f" size="large" />
+                      <Icon
+                        onClick={() => handleiconClick("facebook")}
+                        circular
+                        color="black"
+                        name="facebook f"
+                        size="large"
+                      />
                     </Grid.Column>
 
                     <Grid.Column width={4}>
-                      <Icon onClick={() => handleiconClick("instagram")} circular color="black" name="instagram" size="large" />
+                      <Icon
+                        onClick={() => handleiconClick("instagram")}
+                        circular
+                        color="black"
+                        name="instagram"
+                        size="large"
+                      />
                     </Grid.Column>
 
                     <Grid.Column width={4}>
-                      <Icon onClick={() => handleiconClick("youtube")} circular color="black" name="youtube" size="large" />
+                      <Icon
+                        onClick={() => handleiconClick("youtube")}
+                        circular
+                        color="black"
+                        name="youtube"
+                        size="large"
+                      />
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
               </Sidebar>
 
               <SidebarPusher dimmed={navbarVisible}>
-                <Background />
                 <Greetings onScrollDown={handleScroll} />
                 <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
                 {/* <div ref={homeRef}> */}

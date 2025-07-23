@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Background from "./Background";
 import Greetings from "./Greetings";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -28,7 +27,6 @@ function DashboardUpcomingEvents() {
       <Grid>
         <Grid.Row>
           <Grid.Column width={16} only="computer tablet" verticalAlign="middle" textAlign="middle">
-            <Background />
             <Greetings onScrollDown={handleScroll} />
             <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
             <div>
@@ -54,7 +52,6 @@ function DashboardUpcomingEvents() {
               </Sidebar>
 
               <SidebarPusher dimmed={navbarVisible}>
-                <Background />
                 <Greetings onScrollDown={handleScroll} />
                 <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
                 <div>

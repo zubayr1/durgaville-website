@@ -23,6 +23,9 @@ import AdminEditGallery from "./components/adminComponents/AdminEditGallery";
 import AdminCheckMagazineEntries from "./components/adminComponents/AdminCheckMagazineEntries";
 import AdminBoishakhiOrders from "./components/adminComponents/AdminBoishakhiOrders";
 
+import DataPrivacy from "./components/dataprivacy";
+import Impressum from "./components/impressum";
+
 import PageNotFound from "./components/PageNotFound";
 
 function App() {
@@ -54,6 +57,9 @@ function App() {
           <Route exact path="/admincheckmagazineentries" element={<AdminCheckMagazineEntries />} />
 
           <Route path="/admin/boishakhi-orders" element={<AdminBoishakhiOrders />} />
+
+          <Route exact path="/dataprivacy" element={<DataPrivacy />} />
+          <Route exact path="/impressum" element={<Impressum />} />
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>

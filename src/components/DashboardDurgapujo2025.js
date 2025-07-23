@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Background from "./Background";
 import Greetings from "./Greetings";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -27,7 +26,6 @@ function DashboardDurgapujo2025() {
       <Grid>
         <Grid.Row>
           <Grid.Column width={16} only="computer tablet" verticalAlign="middle" textAlign="middle">
-            <Background />
             <Greetings onScrollDown={handleScroll} />
             <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
             <div style={{ display: "flex", justifyContent: "center", paddingLeft: "10%", paddingRight: "10%" }}>
@@ -54,7 +52,6 @@ function DashboardDurgapujo2025() {
               </Sidebar>
 
               <SidebarPusher dimmed={navbarVisible}>
-                <Background />
                 <Greetings onScrollDown={handleScroll} />
                 <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
                 <div style={{ display: "flex", justifyContent: "center", paddingLeft: "5%", paddingRight: "5%" }}>
