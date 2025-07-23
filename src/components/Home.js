@@ -90,7 +90,7 @@ function Home() {
                 to="/pujo-2025"
                 style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
               >
-                Go to DurgaPujo 2025 Page
+                More Details about Durga Puja 2025
               </Button>
             </div>
 
@@ -166,7 +166,7 @@ function Home() {
                 to="/pujo-2025"
                 style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
               >
-                Go to DurgaPujo 2025 Page
+                More Details about Durga Puja 2025
               </Button>
             </div>
 
@@ -242,7 +242,7 @@ function Home() {
                 to="/pujo-2025"
                 style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
               >
-                Go to DurgaPujo 2025 Page
+                More Details about Durga Puja 2025
               </Button>
             </div>
 
