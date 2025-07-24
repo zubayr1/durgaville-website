@@ -23,17 +23,21 @@ export default function DataPrivacy() {
         Germany
         <br />
         E-Mail: info@durgaville.com
+        <br />
+        VR 201678
       </p>
       <h2>2. Erhebung und Speicherung personenbezogener Daten</h2>
       <p>
         Wir erheben und speichern Ihre personenbezogenen Daten (z.B. Name, E-Mail-Adresse, Telefonnummer), wenn Sie
         unser Kontaktformular nutzen oder sich für Veranstaltungen registrieren. Die Daten werden ausschließlich zur
-        Bearbeitung Ihrer Anfrage oder Anmeldung verwendet.
+        Bearbeitung Ihrer Anfrage oder Anmeldung verwendet. Wir erfassen diese Daten nur im Vorfeld einer Veranstaltung,
+         wenn dies unbedingt erforderlich ist, und löschen sie unmittelbar nach Abschluss der Veranstaltung. 
+         Wir geben keine personenbezogenen Daten innerhalb oder außerhalb unserer Organisation weiter und verwenden sie 
+         ausschließlich zur Durchführung einer reibungslosen Veranstaltungsabwicklung.
       </p>
       <h2>3. Weitergabe von Daten</h2>
       <p>
-        Eine Weitergabe Ihrer Daten an Dritte erfolgt nicht, es sei denn, dies ist gesetzlich vorgeschrieben oder zur
-        Durchführung der Veranstaltung erforderlich.
+        Eine Weitergabe Ihrer Daten an Dritte erfolgt nicht, es sei denn, dies ist gesetzlich vorgeschrieben.
       </p>
       <h2>4. Ihre Rechte</h2>
       <ul>

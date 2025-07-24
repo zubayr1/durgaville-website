@@ -21,9 +21,11 @@ export default function Impressum() {
         91056 Erlangen
         <br />
         Germany
+        <br />
+        VR 201678
       </p>
       <h2>Vertreten durch:</h2>
-      <p>Vorstand: [Name des Vorstands eintragen]</p>
+      <p>Khalid Zubayr, Sarkar Dipankar, Zakaria Khabbab</p>
       <h2>Kontakt</h2>
       <p>
         E-Mail: info@durgaville.com
@@ -34,12 +36,12 @@ export default function Impressum() {
       <p>
         Eintragung im Vereinsregister.
         <br />
-        Registergericht: Erlangen
+        Registergericht: Fürth
         <br />
-        Registernummer: [Nummer eintragen]
+        Registernummer: VR 201678
       </p>
       <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-      <p>[Name, Anschrift wie oben]</p>
+      <p>Khalid Zubayr, Sarkar Dipankar, Zakaria Khabbab, Anschrift wie oben</p>
       <h2>Haftungsausschluss</h2>
       <p>
         Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und
