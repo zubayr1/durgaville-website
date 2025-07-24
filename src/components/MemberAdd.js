@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Divider, Grid, Image, Button, Form, Message, Segment, Container, Header, Icon } from "semantic-ui-react";
+import { Divider, Grid, Image, Button, Message, Segment, Header, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import thakurhome from "../assets/thakurHome.jpg";
-import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebase";
+// import { collection, addDoc } from "firebase/firestore";
+// import { db } from "../firebase";
 
 import "./home.css";
 
@@ -22,74 +22,74 @@ export const LinkButton = ({ to, children }) => {
 };
 
 function MemberAdd() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    address: "",
-    mobileNumber: "",
-    whatsappNumber: "",
-    email: "",
-    introduction: "",
-    howDidYouLearn: "",
-  });
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(null);
+  // const [formData, setFormData] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   address: "",
+  //   mobileNumber: "",
+  //   whatsappNumber: "",
+  //   email: "",
+  //   introduction: "",
+  //   howDidYouLearn: "",
+  // });
+  // const [loading, setLoading] = useState(false);
+  const [success] = useState(false);
+  const [error] = useState(null);
 
-  const handleInputChange = (e, { name, value }) => {
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  // const handleInputChange = (e, { name, value }) => {
+  //   setFormData((prev) => ({
+  //     ...prev,
+  //     [name]: value,
+  //   }));
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   setError(null);
 
-    try {
-      // Validate required fields
-      const requiredFields = [
-        "firstName",
-        "lastName",
-        "address",
-        "mobileNumber",
-        "email",
-        "introduction",
-        "howDidYouLearn",
-      ];
-      const missingFields = requiredFields.filter((field) => !formData[field].trim());
+  //   try {
+  //     // Validate required fields
+  //     const requiredFields = [
+  //       "firstName",
+  //       "lastName",
+  //       "address",
+  //       "mobileNumber",
+  //       "email",
+  //       "introduction",
+  //       "howDidYouLearn",
+  //     ];
+  //     const missingFields = requiredFields.filter((field) => !formData[field].trim());
 
-      if (missingFields.length > 0) {
-        throw new Error(`Please fill in all required fields: ${missingFields.join(", ")}`);
-      }
+  //     if (missingFields.length > 0) {
+  //       throw new Error(`Please fill in all required fields: ${missingFields.join(", ")}`);
+  //     }
 
-      // Add timestamp
-      const submissionData = {
-        ...formData,
-        timestamp: new Date(),
-      };
+  //     // Add timestamp
+  //     const submissionData = {
+  //       ...formData,
+  //       timestamp: new Date(),
+  //     };
 
-      await addDoc(collection(db, "membership-applications"), submissionData);
-      setSuccess(true);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        address: "",
-        mobileNumber: "",
-        whatsappNumber: "",
-        email: "",
-        introduction: "",
-        howDidYouLearn: "",
-      });
-    } catch (err) {
-      console.error("Error submitting membership application:", err);
-      setError(err.message || "An error occurred while submitting your application. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     await addDoc(collection(db, "membership-applications"), submissionData);
+  //     setSuccess(true);
+  //     setFormData({
+  //       firstName: "",
+  //       lastName: "",
+  //       address: "",
+  //       mobileNumber: "",
+  //       whatsappNumber: "",
+  //       email: "",
+  //       introduction: "",
+  //       howDidYouLearn: "",
+  //     });
+  //   } catch (err) {
+  //     console.error("Error submitting membership application:", err);
+  //     setError(err.message || "An error occurred while submitting your application. Please try again.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <div style={{ backgroundColor: "#dee0e3" }}>
