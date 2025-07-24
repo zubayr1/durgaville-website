@@ -85,13 +85,22 @@ function Home() {
                 }}
               />
 
-              <Button
-                as={Link}
-                to="/pujo-2025"
-                style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
-              >
-                More Details about Durga Puja 2025
-              </Button>
+              <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+                <Button
+                  as={Link}
+                  to="/pujo-2025"
+                  style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
+                >
+                  More Details about Durga Puja 2025
+                </Button>
+                <Button
+                  as={Link}
+                  to="/pujo-2025#magazine-section"
+                  style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
+                >
+                  Submit Magazine Entry
+                </Button>
+              </div>
             </div>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
@@ -161,13 +170,22 @@ function Home() {
                 }}
               />
 
-              <Button
-                as={Link}
-                to="/pujo-2025"
-                style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
-              >
-                More Details about Durga Puja 2025
-              </Button>
+              <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+                <Button
+                  as={Link}
+                  to="/pujo-2025"
+                  style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
+                >
+                  More Details about Durga Puja 2025
+                </Button>
+                <Button
+                  as={Link}
+                  to="/pujo-2025#magazine-section"
+                  style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
+                >
+                  Submit Magazine Entry
+                </Button>
+              </div>
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", padding: "6%" }}>
@@ -237,13 +255,22 @@ function Home() {
                 }}
               />
 
-              <Button
-                as={Link}
-                to="/pujo-2025"
-                style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
-              >
-                More Details about Durga Puja 2025
-              </Button>
+              <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+                <Button
+                  as={Link}
+                  to="/pujo-2025"
+                  style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
+                >
+                  More Details about Durga Puja 2025
+                </Button>
+                <Button
+                  as={Link}
+                  to="/pujo-2025#magazine-section"
+                  style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
+                >
+                  Submit Magazine Entry
+                </Button>
+              </div>
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", padding: "6%" }}>
