@@ -11,6 +11,11 @@ const useHandleNavigation = () => {
         navigate("/");
       }
     }
+    if (value === "membership") {
+      if (!currentURL.includes("/membership")) {
+        navigate("/membership");
+      }
+    }
     if (value === "Durgapujo, 2025") {
       if (!currentURL.includes("/pujo-2025")) {
         navigate("/pujo-2025");

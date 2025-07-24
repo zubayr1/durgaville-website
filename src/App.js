@@ -5,7 +5,7 @@ import DashboardUpcomingEvents from "./components/DashboardUpcomingEvents";
 import DashboardPastEvents from "./components/DashboardPastEvents";
 import DashboardDurgapujo from "./components/DashboardDurgapujo";
 import DashboardDurgapujo2025 from "./components/DashboardDurgapujo2025";
-// import DashboardMembers from "./components/DashboardMembers";
+import DashboardMembership from "./components/DashboardMembership";
 import DashboardMagazine from "./components/DashboardMagazine";
 import DashboardAdmin from "./components/DashboardAdmin";
 
@@ -34,6 +34,7 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<DashboardHome />} />
+          <Route exact path="/membership" element={<DashboardMembership />} />
           <Route exact path="/pujo-2025" element={<DashboardDurgapujo2025 />} />
           <Route exact path="/pujo-2024" element={<DashboardDurgapujo />} />
           <Route exact path="/boishakhi-2025" element={<DashboardBoishakhi />} />

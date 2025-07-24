@@ -17,6 +17,8 @@ function Navbar({ visible, setVisible }) {
     const currentURL = window.location.href;
     if (currentURL.includes("/home")) {
       setActiveItem("home");
+    } else if (currentURL.includes("/membership")) {
+      setActiveItem("membership");
     } else if (currentURL.includes("/pujo-2025")) {
       setActiveItem("Durgapujo, 2025");
     } else if (currentURL.includes("/pujo-2024")) {
@@ -47,6 +49,11 @@ function Navbar({ visible, setVisible }) {
     if (name === "home") {
       if (!currentURL.includes("/home")) {
         navigate("/");
+      }
+    }
+    if (name === "membership") {
+      if (!currentURL.includes("/membership")) {
+        navigate("/membership");
       }
     }
     if (name === "Durgapujo, 2025") {
@@ -122,6 +129,12 @@ function Navbar({ visible, setVisible }) {
                   active={activeItem === "home"}
                   onClick={handleItemClick}
                   className={activeItem === "home" ? "active" : ""}
+                />
+                <Menu.Item
+                  name="membership"
+                  active={activeItem === "membership"}
+                  onClick={handleItemClick}
+                  className={activeItem === "membership" ? "active" : ""}
                 />
                 {/* <Menu.Item
                   name="Boishakhi, 2025"
@@ -206,6 +219,12 @@ function Navbar({ visible, setVisible }) {
                   active={activeItem === "home"}
                   onClick={handleItemClick}
                   className={activeItem === "home" ? "active" : ""}
+                />
+                <Menu.Item
+                  name="membership"
+                  active={activeItem === "membership"}
+                  onClick={handleItemClick}
+                  className={activeItem === "membership" ? "active" : ""}
                 />
                 {/* <Menu.Item
                   name="Boishakhi, 2025"
