@@ -78,7 +78,7 @@ function Footer() {
     <div
       style={{
         backgroundColor: "#fafafa",
-        paddingTop: "5%",
+        paddingTop: "3%",
         paddingBottom: "3%",
       }}
     >
@@ -86,6 +86,20 @@ function Footer() {
         <Grid.Row>
           <Grid>
             <Grid.Row centered floated="left" width={16}>
+              <p
+                style={{
+                  fontFamily: "Inter",
+                  fontSize: "1.2rem",
+                  color: "#666",
+                  textAlign: "center",
+                  marginBottom: "1.5rem",
+                  marginLeft: "10%",
+                  marginRight: "10%",
+                  fontStyle: "italic",
+                }}
+              >
+                Get in touch with Durgaville to learn more about our work and how you can get involved.
+              </p>
               <Form onSubmit={handleSubmit} style={{ width: "100%", marginLeft: "10%", marginRight: "10%" }}>
                 <Form.Group widths="equal">
                   <FormField>
