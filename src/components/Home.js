@@ -31,7 +31,7 @@ function Home() {
             <p
               style={{
                 fontFamily: "Inter",
-                fontSize: "4.5rem",
+                fontSize: "4.0rem",
                 color: "black",
                 fontWeight: "bold",
                 marginBottom: "2%",
@@ -39,7 +39,7 @@ function Home() {
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
             >
-              About Durgaville
+              A Bit of Background
             </p>
 
             <p
@@ -116,7 +116,7 @@ function Home() {
             <p
               style={{
                 fontFamily: "Inter",
-                fontSize: "3.5rem",
+                fontSize: "3.0rem",
                 color: "black",
                 fontWeight: "bold",
                 marginBottom: "2%",
@@ -124,7 +124,7 @@ function Home() {
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
             >
-              About Durgaville
+              A Bit of Background
             </p>
 
             <p
@@ -201,7 +201,7 @@ function Home() {
             <p
               style={{
                 fontFamily: "Inter",
-                fontSize: "2.5rem",
+                fontSize: "2.0rem",
                 color: "black",
                 fontWeight: "bold",
                 marginBottom: "3%",
@@ -209,7 +209,7 @@ function Home() {
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
             >
-              About Durgaville
+              A Bit of Background
             </p>
 
             <p
