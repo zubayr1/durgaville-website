@@ -20,9 +20,9 @@ function Navbar({ visible, setVisible }) {
     } else if (currentURL.includes("/membership")) {
       setActiveItem("membership");
     } else if (currentURL.includes("/pujo-2025")) {
-      setActiveItem("Durgapujo, 2025");
+      setActiveItem("Sharod Utsav, 2025");
     } else if (currentURL.includes("/pujo-2024")) {
-      setActiveItem("Durgapujo, 2024");
+      setActiveItem("Sharod Utsav, 2024");
     }
     // else if (currentURL.includes("/boishakhi-2025")) {
     //   setActiveItem("Boishakhi, 2025");
@@ -56,12 +56,12 @@ function Navbar({ visible, setVisible }) {
         navigate("/membership");
       }
     }
-    if (name === "Durgapujo, 2025") {
+    if (name === "Sharod Utsav, 2025") {
       if (!currentURL.includes("/pujo-2025")) {
         navigate("/pujo-2025");
       }
     }
-    if (name === "Durgapujo, 2024") {
+    if (name === "Sharod Utsav, 2024") {
       if (!currentURL.includes("/pujo-2024")) {
         navigate("/pujo-2024");
       }
@@ -143,16 +143,16 @@ function Navbar({ visible, setVisible }) {
                   className={activeItem === "Boishakhi, 2025" ? "active" : ""}
                 /> */}
                 <Menu.Item
-                  name="Durgapujo, 2025"
-                  active={activeItem === "Durgapujo, 2025"}
+                  name="Sharod Utsav, 2025"
+                  active={activeItem === "Sharod Utsav, 2025"}
                   onClick={handleItemClick}
-                  className={activeItem === "Durgapujo, 2025" ? "active" : ""}
+                  className={activeItem === "Sharod Utsav, 2025" ? "active" : ""}
                 />
                 <Menu.Item
-                  name="Durgapujo, 2024"
-                  active={activeItem === "Durgapujo, 2024"}
+                  name="Sharod Utsav, 2024"
+                  active={activeItem === "Sharod Utsav, 2024"}
                   onClick={handleItemClick}
-                  className={activeItem === "Durgapujo, 2024" ? "active" : ""}
+                  className={activeItem === "Sharod Utsav, 2024" ? "active" : ""}
                 />
                 <Menu.Item
                   name="upcoming-events"
@@ -233,16 +233,16 @@ function Navbar({ visible, setVisible }) {
                   className={activeItem === "Boishakhi, 2025" ? "active" : ""}
                 /> */}
                 <Menu.Item
-                  name="Durgapujo, 2025"
-                  active={activeItem === "Durgapujo, 2025"}
+                  name="Sharod Utsav, 2025"
+                  active={activeItem === "Sharod Utsav, 2025"}
                   onClick={handleItemClick}
-                  className={activeItem === "Durgapujo, 2025" ? "active" : ""}
+                  className={activeItem === "Sharod Utsav, 2025" ? "active" : ""}
                 />
                 <Menu.Item
-                  name="Durgapujo, 2024"
-                  active={activeItem === "Durgapujo, 2024"}
+                  name="Sharod Utsav, 2024"
+                  active={activeItem === "Sharod Utsav, 2024"}
                   onClick={handleItemClick}
-                  className={activeItem === "Durgapujo, 2024" ? "active" : ""}
+                  className={activeItem === "Sharod Utsav, 2024" ? "active" : ""}
                 />
                 <Menu.Item
                   name="upcoming-events"

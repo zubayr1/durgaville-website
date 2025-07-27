@@ -21,7 +21,7 @@ function DashboardDurgapujo() {
     <div style={{ overflow: "hidden" }}>
       <Helmet>
         <title>Pujo, 2024 - Durgaville</title>
-        <meta name="description" content="Welcome to Durgapujo, 2024, organized by Durgaville" />
+        <meta name="description" content="Welcome to Sharod Utsav, 2024, organized by Durgaville" />
       </Helmet>
       <Grid>
         <Grid.Row>

@@ -16,14 +16,14 @@ const useHandleNavigation = () => {
         navigate("/membership");
       }
     }
-    if (value === "Durgapujo, 2025") {
-      if (!currentURL.includes("/pujo-2025")) {
-        navigate("/pujo-2025");
+    if (value === "Sharod Utsav, 2025") {
+      if (!currentURL.includes("/sharod-utsav-2025")) {
+        navigate("/sharod-utsav-2025");
       }
     }
-    if (value === "Durgapujo, 2024") {
-      if (!currentURL.includes("/pujo-2024")) {
-        navigate("/pujo-2024");
+    if (value === "Sharod Utsav, 2024") {
+      if (!currentURL.includes("/sharod-utsav-2024")) {
+        navigate("/sharod-utsav-2024");
       }
     }
     // if (value === "Boishakhi, 2025") {

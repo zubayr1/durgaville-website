@@ -29,7 +29,7 @@ function Durgapujo() {
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
             >
-              Durgapujo, 2024
+              Sharod Utsav, 2024
             </p>
 
             <p
@@ -70,7 +70,7 @@ function Durgapujo() {
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
             >
-              Durgapujo, 2024
+              Sharod Utsav, 2024
             </p>
 
             <p
@@ -111,7 +111,7 @@ function Durgapujo() {
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
             >
-              Durgapujo, 2024
+              Sharod Utsav, 2024
             </p>
             <p
               style={{

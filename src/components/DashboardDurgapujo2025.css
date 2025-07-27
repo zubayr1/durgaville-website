@@ -1,0 +1,27 @@
+.location-section {
+    margin: 2rem;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+}
+
+@media (min-width: 1024px) {
+    .location-section {
+        margin: 2rem 22%;
+    }
+}
+
+@media (max-width: 1023px) {
+    .location-section {
+        margin: 1rem 5%;
+    }
+}
+
+@media (max-width: 767px) {
+    .location-section {
+        margin: 1rem 5%;
+        padding: 1rem;
+    }
+}
