@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Greetings from "./Greetings";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import MemberAdd from "./MemberAdd";
+import GetInvolved from "./GetInvolved";
 import { SidebarPusher, SidebarPushable, GridColumn, Grid, Sidebar } from "semantic-ui-react";
 import { Helmet } from "react-helmet";
 import MobileView from "./MobileView";
@@ -32,7 +32,7 @@ function DashboardGetInvolved() {
             <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
             <Greetings />
 
-            <MemberAdd />
+            <GetInvolved />
             <Footer />
           </Grid.Column>
 
@@ -55,7 +55,7 @@ function DashboardGetInvolved() {
               <SidebarPusher dimmed={navbarVisible}>
                 <Greetings onScrollDown={handleScroll} />
                 <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
-                <MemberAdd />
+                <GetInvolved />
                 <Footer />
               </SidebarPusher>
             </SidebarPushable>

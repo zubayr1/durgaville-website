@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider, Grid, Image, Button } from "semantic-ui-react";
+import { Divider, Grid, Image, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import thakurhome from "../assets/thakurHome.jpg";
 // import sparkasse from "../assets/sponsors/sparkasse.jpg";
@@ -135,6 +135,48 @@ function Home() {
               </div>
             </div>
 
+            <div style={{ textAlign: "center", marginTop: "2rem", marginBottom: "2rem" }}>
+              <p
+                style={{
+                  fontFamily: "Inter",
+                  fontSize: "1.4rem",
+                  color: "#333",
+                  marginBottom: "1.5rem",
+                  fontStyle: "italic",
+                  lineHeight: "1.6",
+                }}
+              >
+                Ready to make a difference? Join our community and help us create meaningful cultural experiences
+                together.
+              </p>
+              <Button
+                as={Link}
+                to="/get-involved"
+                style={{
+                  backgroundColor: "#bb0d3b",
+                  color: "#fff",
+                  fontSize: "1.3rem",
+                  padding: "1rem 2.5rem",
+                  borderRadius: "8px",
+                  border: "none",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 12px rgba(187, 13, 59, 0.3)",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 6px 20px rgba(187, 13, 59, 0.4)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(187, 13, 59, 0.3)";
+                }}
+              >
+                <Icon name="users" style={{ marginRight: "0.5rem" }} />
+                Be a Part of Our Journey
+              </Button>
+            </div>
+
             <div style={{ display: "flex", justifyContent: "center" }}>
               <Image
                 alt="Thakur Durgaville"
@@ -252,7 +294,49 @@ function Home() {
               </div>
             </div>
 
-            <div style={{ display: "flex", justifyContent: "center", padding: "6%" }}>
+            <div style={{ textAlign: "center", marginTop: "2rem", marginBottom: "2rem" }}>
+              <p
+                style={{
+                  fontFamily: "Inter",
+                  fontSize: "1.3rem",
+                  color: "#333",
+                  marginBottom: "1.2rem",
+                  fontStyle: "italic",
+                  lineHeight: "1.6",
+                }}
+              >
+                Ready to make a difference? Join our community and help us create meaningful cultural experiences
+                together.
+              </p>
+              <Button
+                as={Link}
+                to="/get-involved"
+                style={{
+                  backgroundColor: "#bb0d3b",
+                  color: "#fff",
+                  fontSize: "1.2rem",
+                  padding: "0.8rem 2rem",
+                  borderRadius: "8px",
+                  border: "none",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 12px rgba(187, 13, 59, 0.3)",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 6px 20px rgba(187, 13, 59, 0.4)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(187, 13, 59, 0.3)";
+                }}
+              >
+                <Icon name="users" style={{ marginRight: "0.5rem" }} />
+                Be a Part of Our Journey
+              </Button>
+            </div>
+
+            <div style={{ display: "flex", justifyContent: "center", padding: "3%" }}>
               <Image
                 alt="Thakur Durgaville"
                 src={thakurhome}
@@ -367,6 +451,48 @@ function Home() {
                   Submit Magazine Entry
                 </Button>
               </div>
+            </div>
+
+            <div style={{ textAlign: "center", marginTop: "2rem", marginBottom: "2rem" }}>
+              <p
+                style={{
+                  fontFamily: "Inter",
+                  fontSize: "1.2rem",
+                  color: "#333",
+                  marginBottom: "1.5rem",
+                  fontStyle: "italic",
+                  lineHeight: "1.6",
+                }}
+              >
+                Ready to make a difference? Join our community and help us create meaningful cultural experiences
+                together.
+              </p>
+              <Button
+                as={Link}
+                to="/get-involved"
+                style={{
+                  backgroundColor: "#bb0d3b",
+                  color: "#fff",
+                  fontSize: "1.1rem",
+                  padding: "0.7rem 1.8rem",
+                  borderRadius: "8px",
+                  border: "none",
+                  cursor: "pointer",
+                  boxShadow: "0 4px 12px rgba(187, 13, 59, 0.3)",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 6px 20px rgba(187, 13, 59, 0.4)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(187, 13, 59, 0.3)";
+                }}
+              >
+                <Icon name="users" style={{ marginRight: "0.5rem" }} />
+                Be a Part of Our Journey
+              </Button>
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", padding: "6%" }}>
