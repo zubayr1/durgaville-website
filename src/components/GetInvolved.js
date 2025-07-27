@@ -409,6 +409,8 @@ function GetInvolved() {
                     borderRadius: "15px",
                     boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
                     border: "2px solid #bb0d3b",
+                    marginLeft: "2%",
+                    marginRight: "2%",
                     marginBottom: "2rem",
                   }}
                 >
@@ -460,6 +462,8 @@ function GetInvolved() {
                     borderRadius: "15px",
                     boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
                     border: "2px solid #25D366",
+                    marginLeft: "2%",
+                    marginRight: "2%",
                     marginBottom: "2rem",
                   }}
                 >
@@ -528,6 +532,8 @@ function GetInvolved() {
                     borderRadius: "15px",
                     boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
                     border: "2px solid #ff6b35",
+                    marginLeft: "2%",
+                    marginRight: "2%",
                   }}
                 >
                   <Header
