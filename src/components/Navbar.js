@@ -17,8 +17,8 @@ function Navbar({ visible, setVisible }) {
     const currentURL = window.location.href;
     if (currentURL.includes("/home")) {
       setActiveItem("home");
-    } else if (currentURL.includes("/membership")) {
-      setActiveItem("membership");
+    } else if (currentURL.includes("/get-involved")) {
+      setActiveItem("get-involved");
     } else if (currentURL.includes("/sharod-utsav-2025")) {
       setActiveItem("Sharod Utsav, 2025");
     } else if (currentURL.includes("/sharod-utsav-2024")) {
@@ -51,9 +51,9 @@ function Navbar({ visible, setVisible }) {
         navigate("/");
       }
     }
-    if (name === "membership") {
-      if (!currentURL.includes("/membership")) {
-        navigate("/membership");
+    if (name === "get-involved") {
+      if (!currentURL.includes("/get-involved")) {
+        navigate("/get-involved");
       }
     }
     if (name === "Sharod Utsav, 2025") {
@@ -131,10 +131,10 @@ function Navbar({ visible, setVisible }) {
                   className={activeItem === "home" ? "active" : ""}
                 />
                 <Menu.Item
-                  name="membership"
-                  active={activeItem === "membership"}
+                  name="get-involved"
+                  active={activeItem === "get-involved"}
                   onClick={handleItemClick}
-                  className={activeItem === "membership" ? "active" : ""}
+                  className={activeItem === "get-involved" ? "active" : ""}
                 />
                 {/* <Menu.Item
                   name="Boishakhi, 2025"
@@ -221,10 +221,10 @@ function Navbar({ visible, setVisible }) {
                   className={activeItem === "home" ? "active" : ""}
                 />
                 <Menu.Item
-                  name="membership"
-                  active={activeItem === "membership"}
+                  name="get-involved"
+                  active={activeItem === "get-involved"}
                   onClick={handleItemClick}
-                  className={activeItem === "membership" ? "active" : ""}
+                  className={activeItem === "get-involved" ? "active" : ""}
                 />
                 {/* <Menu.Item
                   name="Boishakhi, 2025"

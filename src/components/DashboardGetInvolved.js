@@ -7,7 +7,7 @@ import { SidebarPusher, SidebarPushable, GridColumn, Grid, Sidebar } from "seman
 import { Helmet } from "react-helmet";
 import MobileView from "./MobileView";
 
-function DashboardMembership() {
+function DashboardGetInvolved() {
   const [navbarVisible, setNavbarVisible] = useState(false);
 
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -20,7 +20,7 @@ function DashboardMembership() {
   return (
     <div style={{ overflow: "hidden" }}>
       <Helmet>
-        <title>Membership - Durgaville</title>
+        <title>Get Involved - Durgaville</title>
         <meta
           name="description"
           content="Join Durgaville community - voluntary group, no membership fee! Everyone is welcome to be part of Durga Puja in Erlangen, Bavaria, Germany"
@@ -66,4 +66,4 @@ function DashboardMembership() {
   );
 }
 
-export default DashboardMembership;
+export default DashboardGetInvolved;

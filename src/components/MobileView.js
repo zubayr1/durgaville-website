@@ -15,8 +15,8 @@ function MobileView() {
       </Grid.Row>
 
       <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
-        <p onClick={() => handlebuttonClick("membership")} style={{ fontWeight: "bolder", fontFamily: "Inter" }}>
-          MEMBERSHIP
+        <p onClick={() => handlebuttonClick("get-involved")} style={{ fontWeight: "bolder", fontFamily: "Inter" }}>
+          GET INVOLVED
         </p>
       </Grid.Row>
 

@@ -11,9 +11,9 @@ const useHandleNavigation = () => {
         navigate("/");
       }
     }
-    if (value === "membership") {
-      if (!currentURL.includes("/membership")) {
-        navigate("/membership");
+    if (value === "get-involved") {
+      if (!currentURL.includes("/get-involved")) {
+        navigate("/get-involved");
       }
     }
     if (value === "Sharod Utsav, 2025") {
