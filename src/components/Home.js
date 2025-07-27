@@ -34,7 +34,7 @@ function Home() {
                 fontSize: "4.0rem",
                 color: "black",
                 fontWeight: "bold",
-                marginBottom: "2%",
+                marginBottom: "1%",
                 marginTop: "2%",
                 textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
               }}
@@ -45,21 +45,53 @@ function Home() {
             <p
               style={{
                 fontFamily: "Inter",
-                lineHeight: "2.0",
-                fontSize: "1.6rem",
+                lineHeight: "1.5",
+                fontSize: "1.4rem",
                 color: "black",
                 fontStyle: "italic",
-                marginBottom: "5%",
+                marginBottom: "1%",
                 marginLeft: "7%",
                 marginRight: "7%",
               }}
             >
-              "Durgaville" stands as a testament to the enduring spirit of Durga Puja among Bengalis, transcending
-              borders to find expression in Erlangen, Germany. Initiated by three Bengali families, it began as a
-              heartfelt endeavor to recreate the essence of Durga Puja away from home. Over time, "Durgaville" has
-              blossomed into a vibrant community, not only celebrating Durga Puja but also fostering unity through a
-              plethora of cultural, social, and sporting events. This expansion reflects their aim to foster camaraderie
-              and togetherness among the Indian community in Erlangen.
+              Here at Durgaville, we are driven by a single goal: to celebrate Durga Puja in the city of Erlangen in the
+              most pious way possible. We are a small group of Bengalis living in Erlangen, just like all of you - not
+              special or privileged, but simply driven by passion, dedication and love for Durga Puja. From 2021, we
+              decided to celebrate Durga Puja on our own, putting in extra effort in our free time to focus on something
+              that brings utmost joy not only to us but to all.
+            </p>
+
+            <h3
+              style={{
+                fontFamily: "Inter",
+                fontSize: "1.5rem",
+                color: "#bb0d3b",
+                fontWeight: "600",
+                textAlign: "center",
+                marginBottom: "1%",
+                marginTop: "2%",
+              }}
+            >
+              Turning Interest Into Action
+            </h3>
+
+            <p
+              style={{
+                fontFamily: "Inter",
+                lineHeight: "1.5",
+                fontSize: "1.4rem",
+                color: "black",
+                fontStyle: "italic",
+                marginBottom: "2%",
+                marginLeft: "7%",
+                marginRight: "7%",
+              }}
+            >
+              Performing such an event requires ample support and contribution from each and every individual. Our
+              vision is that everyone contributes and owns the puja and can be proud of it in the end. We look forward
+              to collaborate with all of you and convert this "yet small but big" initiative into a "home away from
+              home" concept. Come let's perform and enjoy Durga Puja together and have a great time with our friends and
+              family.
             </p>
 
             <div
@@ -130,21 +162,53 @@ function Home() {
             <p
               style={{
                 fontFamily: "Inter",
-                lineHeight: "1.8",
-                fontSize: "1.4rem",
+                lineHeight: "1.5",
+                fontSize: "1.3rem",
                 color: "black",
                 fontStyle: "italic",
-                marginBottom: "5%",
+                marginBottom: "1%",
                 marginLeft: "6%",
                 marginRight: "6%",
               }}
             >
-              "Durgaville" stands as a testament to the enduring spirit of Durga Puja among Bengalis, transcending
-              borders to find expression in Erlangen, Germany. Initiated by three Bengali families, it began as a
-              heartfelt endeavor to recreate the essence of Durga Puja away from home. Over time, "Durgaville" has
-              blossomed into a vibrant community, not only celebrating Durga Puja but also fostering unity through a
-              plethora of cultural, social, and sporting events. This expansion reflects their aim to foster camaraderie
-              and togetherness among the Indian community in Erlangen.
+              Here at Durgaville, we are driven by a single goal: to celebrate Durga Puja in the city of Erlangen in the
+              most pious way possible. We are a small group of Bengalis living in Erlangen, just like all of you - not
+              special or privileged, but simply driven by passion, dedication and love for Durga Puja. From 2021, we
+              decided to celebrate Durga Puja on our own, putting in extra effort in our free time to focus on something
+              that brings utmost joy not only to us but to all.
+            </p>
+
+            <h3
+              style={{
+                fontFamily: "Inter",
+                fontSize: "1.5rem",
+                color: "#bb0d3b",
+                fontWeight: "600",
+                textAlign: "center",
+                marginBottom: "1%",
+                marginTop: "2%",
+              }}
+            >
+              Turning Interest Into Action
+            </h3>
+
+            <p
+              style={{
+                fontFamily: "Inter",
+                lineHeight: "1.5",
+                fontSize: "1.3rem",
+                color: "black",
+                fontStyle: "italic",
+                marginBottom: "2%",
+                marginLeft: "6%",
+                marginRight: "6%",
+              }}
+            >
+              Performing such an event requires ample support and contribution from each and every individual. Our
+              vision is that everyone contributes and owns the puja and can be proud of it in the end. We look forward
+              to collaborate with all of you and convert this "yet small but big" initiative into a "home away from
+              home" concept. Come let's perform and enjoy Durga Puja together and have a great time with our friends and
+              family.
             </p>
 
             <div
@@ -215,21 +279,53 @@ function Home() {
             <p
               style={{
                 fontFamily: "Inter",
-                lineHeight: "1.5",
+                lineHeight: "1.3",
                 fontSize: "1.2rem",
                 color: "black",
                 fontStyle: "italic",
-                marginBottom: "5%",
+                marginBottom: "1%",
                 marginLeft: "6%",
                 marginRight: "6%",
               }}
             >
-              "Durgaville" stands as a testament to the enduring spirit of Durga Puja among Bengalis, transcending
-              borders to find expression in Erlangen, Germany. Initiated by three Bengali families, it began as a
-              heartfelt endeavor to recreate the essence of Durga Puja away from home. Over time, "Durgaville" has
-              blossomed into a vibrant community, not only celebrating Durga Puja but also fostering unity through a
-              plethora of cultural, social, and sporting events. This expansion reflects their aim to foster camaraderie
-              and togetherness among the Indian community in Erlangen.
+              Here at Durgaville, we are driven by a single goal: to celebrate Durga Puja in the city of Erlangen in the
+              most pious way possible. We are a small group of Bengalis living in Erlangen, just like all of you - not
+              special or privileged, but simply driven by passion, dedication and love for Durga Puja. From 2021, we
+              decided to celebrate Durga Puja on our own, putting in extra effort in our free time to focus on something
+              that brings utmost joy not only to us but to all.
+            </p>
+
+            <h3
+              style={{
+                fontFamily: "Inter",
+                fontSize: "1.3rem",
+                color: "#bb0d3b",
+                fontWeight: "600",
+                textAlign: "center",
+                marginBottom: "1%",
+                marginTop: "2%",
+              }}
+            >
+              Turning Interest Into Action
+            </h3>
+
+            <p
+              style={{
+                fontFamily: "Inter",
+                lineHeight: "1.3",
+                fontSize: "1.2rem",
+                color: "black",
+                fontStyle: "italic",
+                marginBottom: "2%",
+                marginLeft: "6%",
+                marginRight: "6%",
+              }}
+            >
+              Performing such an event requires ample support and contribution from each and every individual. Our
+              vision is that everyone contributes and owns the puja and can be proud of it in the end. We look forward
+              to collaborate with all of you and convert this "yet small but big" initiative into a "home away from
+              home" concept. Come let's perform and enjoy Durga Puja together and have a great time with our friends and
+              family.
             </p>
 
             <div
