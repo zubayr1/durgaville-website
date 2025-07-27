@@ -35,8 +35,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<DashboardHome />} />
           <Route exact path="/membership" element={<DashboardMembership />} />
-          <Route exact path="/pujo-2025" element={<DashboardDurgapujo2025 />} />
-          <Route exact path="/pujo-2024" element={<DashboardDurgapujo />} />
+          <Route exact path="/sharod-utsav-2025" element={<DashboardDurgapujo2025 />} />
+          <Route exact path="/sharod-utsav-2024" element={<DashboardDurgapujo />} />
           <Route exact path="/boishakhi-2025" element={<DashboardBoishakhi />} />
           <Route exact path="/upcoming-events" element={<DashboardUpcomingEvents />} />
           <Route exact path="/past-events" element={<DashboardPastEvents />} />

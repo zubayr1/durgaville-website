@@ -88,14 +88,14 @@ function Home() {
               <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
                 <Button
                   as={Link}
-                  to="/pujo-2025"
+                  to="/sharod-utsav-2025"
                   style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
                 >
                   More Details about Durga Puja 2025
                 </Button>
                 <Button
                   as={Link}
-                  to="/pujo-2025#magazine-section"
+                  to="/sharod-utsav-2025#magazine-section"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
                   Submit Magazine Entry
@@ -173,14 +173,14 @@ function Home() {
               <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
                 <Button
                   as={Link}
-                  to="/pujo-2025"
+                  to="/sharod-utsav-2025"
                   style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
                 >
                   More Details about Durga Puja 2025
                 </Button>
                 <Button
                   as={Link}
-                  to="/pujo-2025#magazine-section"
+                  to="/sharod-utsav-2025#magazine-section"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
                   Submit Magazine Entry
@@ -258,14 +258,14 @@ function Home() {
               <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
                 <Button
                   as={Link}
-                  to="/pujo-2025"
+                  to="/sharod-utsav-2025"
                   style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
                 >
                   More Details about Durga Puja 2025
                 </Button>
                 <Button
                   as={Link}
-                  to="/pujo-2025#magazine-section"
+                  to="/sharod-utsav-2025#magazine-section"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
                   Submit Magazine Entry
