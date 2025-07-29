@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { db } from "../firebase.js";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 
-import { Dropdown, Grid } from "semantic-ui-react";
-
 import "./pastEvents.css";
 import "./home.css";
 
@@ -17,11 +15,7 @@ const PastEvents = () => {
     const startYear = 2021;
     const years = [];
     for (let year = currentYear; year >= startYear; year--) {
-      years.push({
-        key: year.toString(),
-        text: year.toString(),
-        value: year.toString(),
-      });
+      years.push(year.toString());
     }
     return years;
   };
@@ -31,12 +25,13 @@ const PastEvents = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(
-          query(collection(db, `pastEvents/${selectedYear}/entries`), orderBy("date", "desc")),
-        );
+        const q = query(collection(db, `pastEvents/${selectedYear}/entries`), orderBy("date", "desc"));
+        const querySnapshot = await getDocs(q);
         const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setItems(newData);
-      } catch (error) {}
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
     fetchData();
@@ -44,80 +39,61 @@ const PastEvents = () => {
 
   function formatDate(dateString) {
     const date = new Date(dateString);
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    const formattedDate = new Intl.DateTimeFormat("en-US", options).format(date);
-
-    const month = formattedDate.split(" ")[0];
-    const dayWithSuffix = addDaySuffix(date.getDate());
-
-    return `${dayWithSuffix} ${month}, ${date.getFullYear()}`;
-  }
-
-  function addDaySuffix(day) {
-    if (day === 1 || day === 21 || day === 31) {
-      return day + "st";
-    } else if (day === 2 || day === 22) {
-      return day + "nd";
-    } else if (day === 3 || day === 23) {
-      return day + "rd";
-    } else {
-      return day + "th";
-    }
+    const day = date.getDate();
+    let suffix = 'th';
+    if (day === 1 || day === 21 || day === 31) suffix = 'st';
+    else if (day === 2 || day === 22) suffix = 'nd';
+    else if (day === 3 || day === 23) suffix = 'rd';
+    
+    const month = date.toLocaleString('en-US', { month: 'short' });
+    return `${day}${suffix} ${month}, ${date.getFullYear()}`;
   }
 
   const handleImageClick = (imageUrl) => {
     setClickedImage((prevState) => (prevState === imageUrl ? null : imageUrl));
   };
 
-  const handleDropdown = (e, { value }) => {
-    setSelectedYear(value);
-  };
-
-  const handleImageHover = (event) => {
-    // console.log('Image hovered:', event.target.src);
+  const handleYearClick = (year) => {
+    setSelectedYear(year);
   };
 
   const wrapURLs = (text) => {
+    if (!text) return '';
     const urlRegex = /(https?:\/\/[^\s]+)/g;
-    return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank">${url}</a>`);
+    return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
   };
 
   return (
     <div style={{ backgroundColor: "#dee0e3" }}>
-      <div
-        className="margin-container"
-        style={{ display: "flex", justifyContent: "end", paddingRight: "5%", paddingTop: "4%" }}
-      >
-        <Grid>
-          <Grid.Row style={{justifyContent:'end'}}>
-            <p style={{fontFamily: 'Inter', fontWeight:'bolder'}}>Select Year</p>
-          </Grid.Row>
-
-          <Grid.Row style={{justifyContent:'end'}}>
-            <Dropdown
-              placeholder="Select Year"
-              selection
-              options={yearOptions}
-              defaultValue={selectedYear}
-              onChange={handleDropdown}
-            />
-          </Grid.Row>
-        </Grid>
+      <div className="year-header-container margin-container">
+        {yearOptions.map((year) => (
+          <div
+            key={year}
+            className={`year-header ${selectedYear === year ? "active" : ""}`}
+            onClick={() => handleYearClick(year)}
+          >
+            {year}
+          </div>
+        ))}
       </div>
+
       <div className="grid-container margin-container">
         {items.map((item) => (
           <div className="grid-item" key={item.id}>
-            <h3 className="item-title">{item.title}</h3>
-            <p className="item-date">{formatDate(item.date)}</p>
             <div className="item-content">
               <img
                 src={item.imageUrl}
                 alt={item.title}
                 className={`item-image ${clickedImage === item.imageUrl ? "enlarged" : ""}`}
                 onClick={() => handleImageClick(item.imageUrl)}
-                onMouseOver={handleImageHover}
               />
-              <p className="item-description" dangerouslySetInnerHTML={{ __html: wrapURLs(item.description) }} />
+              
+              <div className="item-text-content">
+                <h3 className="item-title">{item.title}</h3>
+                {/* The date has been moved here, under the title */}
+                <p className="item-date">{formatDate(item.date)}</p>
+                <p className="item-description" dangerouslySetInnerHTML={{ __html: wrapURLs(item.description) }} />
+              </div>
             </div>
           </div>
         ))}

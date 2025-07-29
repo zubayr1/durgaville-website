@@ -5,110 +5,143 @@
 }
 
 .item-date {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
-  margin-bottom: 5px;
-  text-align: center;
+  text-align: left;
+  /* Adjusted margin for better spacing under the title */
+  margin-bottom: 15px; 
 }
 
-.item-title {
-  font-size: 2rem;
-  /* Increased font size for title */
-  margin-bottom: 10px;
-  font-family: "Inter", sans-serif;
-  text-align: center;
-}
 
+/* Container for the side-by-side image and text */
 .item-content {
-  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  flex-direction: row;
+  align-items: flex-start; /* Aligns items to the top */
+  text-align: left;
+  gap: 20px;
 }
 
 .item-image {
-  max-width: 100%;
-  height: auto; /* Allow image to adjust its height */
-  max-height: 600px; /* Limit maximum height for larger images */
-  /* Set a fixed height for images */
-  object-fit: contain; /* Maintain aspect ratio and contain within container */
-  margin-bottom: 10px;
-  cursor: pointer; /* Add pointer cursor for indicating clickable */
-  transition: transform 0.3s ease; /* Add smooth transition for click effect */
+  width: 360px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin-bottom: 0;
 }
 
 .item-image.enlarged {
-  transform: scale(1.5); /* Enlarge image when clicked */
-  z-index: 2; /* Bring image to top */
+  transform: scale(1.5);
+  z-index: 2;
+}
+
+/* New wrapper for title and description */
+.item-text-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Allows this column to take up remaining space */
+}
+
+/* Title is now aligned with the image */
+.item-title {
+  margin-top: 0;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  font-family: "Inter", sans-serif;
+  /* Changed from left to center */
+  text-align: left; 
 }
 
 .item-description {
-  font-size: 1.6rem;
-  line-height: 2;
+  font-size: 1.3rem;
+  line-height: 1.8;
   font-family: "Inter", sans-serif;
+  /* flex: 1; is no longer needed here */
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
-  /* Adjusts to fit two columns for desktop view */
   gap: 20px;
   padding: 60px;
-  /* Add padding to grid container */
 }
 
-@media (max-width: 767px) {
+/* Tablet view */
+@media (max-width: 768px) {
   .grid-container {
-    grid-template-columns: repeat(1, 1fr);
-    /* One column for tablet and mobile view */
+    grid-template-columns: 1fr;
+    padding: 30px;
   }
-}
 
-/* Media query for tablet screens */
-@media only screen and (max-width: 768px) {
-  .item-description {
-    font-size: 1.4rem;
-    /* Decrease font size for tablets */
+  .item-content {
+    flex-direction: column; /* Stacks image on top of text block */
+    align-items: center;
+    text-align: center;
   }
-}
+  
+  .item-title {
+    text-align: center; /* Center title on tablets */
+  }
 
-/* Media query for mobile screens */
-@media only screen and (max-width: 480px) {
+  .item-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
   .item-description {
     font-size: 1.2rem;
-    /* Further decrease font size for mobile */
+    text-align: center;
   }
 }
 
-/* Media query for tablet screens */
-@media only screen and (max-width: 768px) {
-  .item-image {
-    max-height: 400px;
-    /* Decrease height for tablets */
-  }
-}
-
-/* Media query for mobile screens */
-@media only screen and (max-width: 480px) {
-  .item-image {
-    max-height: 300px;
-    /* Further decrease height for mobile */
-  }
-}
-
-/* Media query for tablet screens */
-@media only screen and (max-width: 768px) {
-  .grid-container {
-    padding: 30px;
-    /* Decrease padding for tablet */
-  }
-}
-
-/* Media query for mobile screens */
-@media only screen and (max-width: 480px) {
+/* Mobile view */
+@media (max-width: 480px) {
   .grid-container {
     padding: 20px;
-    /* Further decrease padding for mobile */
   }
+
+  .item-description {
+    font-size: 1rem;
+  }
+
+  .item-image {
+    max-height: 300px;
+  }
+}
+
+
+.year-header-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 40px 5% 20px 5%;
+}
+
+.year-header {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  padding: 14px 20px;
+  background-color: #d2d2d2;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  max-width: 200px;
+}
+
+.year-header:hover {
+  background-color: #bcbcbc;
+}
+
+.year-header.active {
+  background-color: #bc0f42;
+  color: white;
 }
