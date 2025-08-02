@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase.js";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { Modal, Button } from "semantic-ui-react";
 
 import "./pastEvents.css";
 import "./home.css";
 
 const PastEvents = () => {
   const [items, setItems] = useState([]);
-  const [clickedImage, setClickedImage] = useState(null);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear().toString());
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const generateYearOptions = () => {
     const currentYear = new Date().getFullYear();
@@ -44,13 +46,17 @@ const PastEvents = () => {
     if (day === 1 || day === 21 || day === 31) suffix = 'st';
     else if (day === 2 || day === 22) suffix = 'nd';
     else if (day === 3 || day === 23) suffix = 'rd';
-    
     const month = date.toLocaleString('en-US', { month: 'short' });
     return `${day}${suffix} ${month}, ${date.getFullYear()}`;
   }
 
-  const handleImageClick = (imageUrl) => {
-    setClickedImage((prevState) => (prevState === imageUrl ? null : imageUrl));
+  const handleImageClick = (item) => {
+    setSelectedItem(item);
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
   };
 
   const handleYearClick = (year) => {
@@ -84,20 +90,36 @@ const PastEvents = () => {
               <img
                 src={item.imageUrl}
                 alt={item.title}
-                className={`item-image ${clickedImage === item.imageUrl ? "enlarged" : ""}`}
-                onClick={() => handleImageClick(item.imageUrl)}
+                className="item-image"
+                onClick={() => handleImageClick(item)}
               />
-              
               <div className="item-text-content">
                 <h3 className="item-title">{item.title}</h3>
-                {/* The date has been moved here, under the title */}
                 <p className="item-date">{formatDate(item.date)}</p>
-                <p className="item-description" dangerouslySetInnerHTML={{ __html: wrapURLs(item.description) }} />
+                <p
+                  className="item-description"
+                  dangerouslySetInnerHTML={{ __html: wrapURLs(item.description) }}
+                />
               </div>
             </div>
           </div>
         ))}
       </div>
+
+      <Modal open={modalOpen} onClose={handleModalClose} basic size="small">
+        <Modal.Content>
+          <img
+            src={selectedItem?.imageUrl}
+            alt={selectedItem?.title}
+            style={{ width: "100%", borderRadius: "8px" }}
+          />
+        </Modal.Content>
+        <Modal.Actions>
+          <Button color="green" inverted onClick={handleModalClose}>
+            Close
+          </Button>
+        </Modal.Actions>
+      </Modal>
     </div>
   );
 };
