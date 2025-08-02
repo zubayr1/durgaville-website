@@ -130,7 +130,7 @@ function GetInvolved() {
                   </p>
                   <Button
                     as="a"
-                    href="https://chat.whatsapp.com/your-group-link"
+                    href="https://chat.whatsapp.com/BP36i7vFS4BKAIclXCxRk8?mode=ac_t"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -174,7 +174,7 @@ function GetInvolved() {
                       lineHeight: "1.8",
                       fontSize: "1.2rem",
                       color: "#333",
-                      marginBottom: "2rem",
+                      marginBottom: "1rem",
                       flex: "1",
                     }}
                   >
@@ -182,6 +182,117 @@ function GetInvolved() {
                     incredible opportunity to lend your support. It's a great way to contribute to our cause, and every
                     little bit counts towards paving the path for a better tomorrow. Contact us for more details:
                   </p>
+                  <div
+                    style={{
+                      marginBottom: "1.5rem",
+                      padding: "1rem",
+                      backgroundColor: "#f8f9fa",
+                      borderRadius: "8px",
+                      border: "1px solid #e9ecef",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontFamily: "Inter",
+                        fontSize: "1rem",
+                        color: "#666",
+                        marginBottom: "0.5rem",
+                        fontWeight: "600",
+                      }}
+                    >
+                      Bank Account Details:
+                    </p>
+                    <div style={{ marginBottom: "1rem" }}>
+                      <p
+                        style={{
+                          fontSize: "0.8rem",
+                          color: "#666",
+                          marginBottom: "0.3rem",
+                          fontStyle: "italic",
+                        }}
+                      >
+                        Account Name: Durgaville
+                      </p>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          backgroundColor: "#fff",
+                          padding: "0.5rem",
+                          borderRadius: "4px",
+                          border: "1px solid #e0e0e0",
+                        }}
+                      >
+                        <p
+                          style={{
+                            fontSize: "0.9rem",
+                            color: "#333",
+                            fontFamily: "monospace",
+                            margin: 0,
+                          }}
+                        >
+                          DE75 7635 0000 0060 1590 18
+                        </p>
+                        <Icon
+                          name="copy"
+                          style={{ cursor: "pointer", color: "#666", transition: "color 0.2s" }}
+                          onClick={(e) => {
+                            navigator.clipboard.writeText("DE75 7635 0000 0060 1590 18");
+                            e.target.style.color = "#25D366";
+                            setTimeout(() => {
+                              e.target.style.color = "#666";
+                            }, 500);
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <p
+                        style={{
+                          fontSize: "0.8rem",
+                          color: "#666",
+                          marginBottom: "0.3rem",
+                          fontStyle: "italic",
+                        }}
+                      >
+                        Account Name: Durgaville
+                      </p>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          backgroundColor: "#fff",
+                          padding: "0.5rem",
+                          borderRadius: "4px",
+                          border: "1px solid #e0e0e0",
+                        }}
+                      >
+                        <p
+                          style={{
+                            fontSize: "0.9rem",
+                            color: "#333",
+                            fontFamily: "monospace",
+                            margin: 0,
+                          }}
+                        >
+                          DE79 1001 1001 2621 8434 02
+                        </p>
+                        <Icon
+                          name="copy"
+                          style={{ cursor: "pointer", color: "#666", transition: "color 0.2s" }}
+                          onClick={(e) => {
+                            navigator.clipboard.writeText("DE79 1001 1001 2621 8434 02");
+                            e.target.style.color = "#25D366";
+                            setTimeout(() => {
+                              e.target.style.color = "#666";
+                            }, 500);
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
                   <Button
                     onClick={scrollToFooter}
                     style={{
@@ -315,7 +426,7 @@ function GetInvolved() {
                   </p>
                   <Button
                     as="a"
-                    href="https://chat.whatsapp.com/your-group-link"
+                    href="https://chat.whatsapp.com/BP36i7vFS4BKAIclXCxRk8?mode=ac_t"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -355,13 +466,124 @@ function GetInvolved() {
                       lineHeight: "1.8",
                       fontSize: "1.1rem",
                       color: "#333",
-                      marginBottom: "2rem",
+                      marginBottom: "1rem",
                     }}
                   >
                     Want to join our efforts but not sure where to start? Make a Donation and take advantage of this
                     incredible opportunity to lend your support. It's a great way to contribute to our cause, and every
                     little bit counts towards paving the path for a better tomorrow. Contact us for more details:
                   </p>
+                  <div
+                    style={{
+                      marginBottom: "1.5rem",
+                      padding: "1rem",
+                      backgroundColor: "#f8f9fa",
+                      borderRadius: "8px",
+                      border: "1px solid #e9ecef",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontFamily: "Inter",
+                        fontSize: "0.9rem",
+                        color: "#666",
+                        marginBottom: "0.5rem",
+                        fontWeight: "600",
+                      }}
+                    >
+                      Bank Account Details:
+                    </p>
+                    <div style={{ marginBottom: "1rem" }}>
+                      <p
+                        style={{
+                          fontSize: "0.7rem",
+                          color: "#666",
+                          marginBottom: "0.3rem",
+                          fontStyle: "italic",
+                        }}
+                      >
+                        Account Name: Durgaville
+                      </p>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          backgroundColor: "#fff",
+                          padding: "0.5rem",
+                          borderRadius: "4px",
+                          border: "1px solid #e0e0e0",
+                        }}
+                      >
+                        <p
+                          style={{
+                            fontSize: "0.8rem",
+                            color: "#333",
+                            fontFamily: "monospace",
+                            margin: 0,
+                          }}
+                        >
+                          DE75 7635 0000 0060 1590 18
+                        </p>
+                        <Icon
+                          name="copy"
+                          style={{ cursor: "pointer", color: "#666", transition: "color 0.2s" }}
+                          onClick={(e) => {
+                            navigator.clipboard.writeText("DE75 7635 0000 0060 1590 18");
+                            e.target.style.color = "#25D366";
+                            setTimeout(() => {
+                              e.target.style.color = "#666";
+                            }, 500);
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <p
+                        style={{
+                          fontSize: "0.7rem",
+                          color: "#666",
+                          marginBottom: "0.3rem",
+                          fontStyle: "italic",
+                        }}
+                      >
+                        Account Name: Durgaville
+                      </p>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          backgroundColor: "#fff",
+                          padding: "0.5rem",
+                          borderRadius: "4px",
+                          border: "1px solid #e0e0e0",
+                        }}
+                      >
+                        <p
+                          style={{
+                            fontSize: "0.8rem",
+                            color: "#333",
+                            fontFamily: "monospace",
+                            margin: 0,
+                          }}
+                        >
+                          DE79 1001 1001 2621 8434 02
+                        </p>
+                        <Icon
+                          name="copy"
+                          style={{ cursor: "pointer", color: "#666", transition: "color 0.2s" }}
+                          onClick={(e) => {
+                            navigator.clipboard.writeText("DE79 1001 1001 2621 8434 02");
+                            e.target.style.color = "#25D366";
+                            setTimeout(() => {
+                              e.target.style.color = "#666";
+                            }, 500);
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
                   <Button
                     onClick={scrollToFooter}
                     style={{
@@ -504,7 +726,7 @@ function GetInvolved() {
                   </p>
                   <Button
                     as="a"
-                    href="https://chat.whatsapp.com/your-group-link"
+                    href="https://chat.whatsapp.com/BP36i7vFS4BKAIclXCxRk8?mode=ac_t"
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{
@@ -549,13 +771,124 @@ function GetInvolved() {
                       lineHeight: "1.6",
                       fontSize: "1rem",
                       color: "#333",
-                      marginBottom: "1.5rem",
+                      marginBottom: "1rem",
                     }}
                   >
                     Want to join our efforts but not sure where to start? Make a Donation and take advantage of this
                     incredible opportunity to lend your support. It's a great way to contribute to our cause, and every
                     little bit counts towards paving the path for a better tomorrow. Contact us for more details:
                   </p>
+                  <div
+                    style={{
+                      marginBottom: "1.5rem",
+                      padding: "1rem",
+                      backgroundColor: "#f8f9fa",
+                      borderRadius: "8px",
+                      border: "1px solid #e9ecef",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontFamily: "Inter",
+                        fontSize: "0.9rem",
+                        color: "#666",
+                        marginBottom: "0.5rem",
+                        fontWeight: "600",
+                      }}
+                    >
+                      Bank Account Details:
+                    </p>
+                    <div style={{ marginBottom: "1rem" }}>
+                      <p
+                        style={{
+                          fontSize: "0.7rem",
+                          color: "#666",
+                          marginBottom: "0.3rem",
+                          fontStyle: "italic",
+                        }}
+                      >
+                        Account Name: Durgaville
+                      </p>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          backgroundColor: "#fff",
+                          padding: "0.5rem",
+                          borderRadius: "4px",
+                          border: "1px solid #e0e0e0",
+                        }}
+                      >
+                        <p
+                          style={{
+                            fontSize: "0.8rem",
+                            color: "#333",
+                            fontFamily: "monospace",
+                            margin: 0,
+                          }}
+                        >
+                          DE75 7635 0000 0060 1590 18
+                        </p>
+                        <Icon
+                          name="copy"
+                          style={{ cursor: "pointer", color: "#666", transition: "color 0.2s" }}
+                          onClick={(e) => {
+                            navigator.clipboard.writeText("DE75 7635 0000 0060 1590 18");
+                            e.target.style.color = "#25D366";
+                            setTimeout(() => {
+                              e.target.style.color = "#666";
+                            }, 500);
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <p
+                        style={{
+                          fontSize: "0.7rem",
+                          color: "#666",
+                          marginBottom: "0.3rem",
+                          fontStyle: "italic",
+                        }}
+                      >
+                        Account Name: Durgaville
+                      </p>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          backgroundColor: "#fff",
+                          padding: "0.5rem",
+                          borderRadius: "4px",
+                          border: "1px solid #e0e0e0",
+                        }}
+                      >
+                        <p
+                          style={{
+                            fontSize: "0.8rem",
+                            color: "#333",
+                            fontFamily: "monospace",
+                            margin: 0,
+                          }}
+                        >
+                          DE79 1001 1001 2621 8434 02
+                        </p>
+                        <Icon
+                          name="copy"
+                          style={{ cursor: "pointer", color: "#666", transition: "color 0.2s" }}
+                          onClick={(e) => {
+                            navigator.clipboard.writeText("DE79 1001 1001 2621 8434 02");
+                            e.target.style.color = "#25D366";
+                            setTimeout(() => {
+                              e.target.style.color = "#666";
+                            }, 500);
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
                   <Button
                     onClick={scrollToFooter}
                     style={{
