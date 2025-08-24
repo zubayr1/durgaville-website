@@ -38,7 +38,9 @@ function Navbar({ visible, setVisible }) {
     // else if (currentURL.includes("/magazine")) {
     //   setActiveItem("magazine 2025");
     // }
-    else if (currentURL.includes("/adminlogin")) {
+    else if (currentURL.includes("/publications")) {
+      setActiveItem("publications");
+    } else if (currentURL.includes("/adminlogin")) {
       setActiveItem("admin-portal");
     }
   }, []);
@@ -91,6 +93,11 @@ function Navbar({ visible, setVisible }) {
     //     navigate("/magazine");
     //   }
     // }
+    if (name === "publications") {
+      if (!currentURL.includes("/publications")) {
+        navigate("/publications");
+      }
+    }
     if (name === "admin-portal") {
       if (!currentURL.includes("/admin-portal")) {
         navigate("/adminlogin");
@@ -165,6 +172,12 @@ function Navbar({ visible, setVisible }) {
                   active={activeItem === "past-events"}
                   onClick={handleItemClick}
                   className={activeItem === "past-events" ? "active" : ""}
+                />
+                <Menu.Item
+                  name="publications"
+                  active={activeItem === "publications"}
+                  onClick={handleItemClick}
+                  className={activeItem === "publications" ? "active" : ""}
                 />
                 {/* <Menu.Item
                   name="meet-the-team"
@@ -255,6 +268,12 @@ function Navbar({ visible, setVisible }) {
                   active={activeItem === "past-events"}
                   onClick={handleItemClick}
                   className={activeItem === "past-events" ? "active" : ""}
+                />
+                <Menu.Item
+                  name="publications"
+                  active={activeItem === "publications"}
+                  onClick={handleItemClick}
+                  className={activeItem === "publications" ? "active" : ""}
                 />
                 {/* <Menu.Item
                   name="meet-the-team"

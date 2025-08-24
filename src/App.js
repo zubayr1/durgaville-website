@@ -22,11 +22,13 @@ import AdminEditGallery from "./components/adminComponents/AdminEditGallery";
 
 import AdminCheckMagazineEntries from "./components/adminComponents/AdminCheckMagazineEntries";
 import AdminBoishakhiOrders from "./components/adminComponents/AdminBoishakhiOrders";
+import AdminMagazineUpload from "./components/adminComponents/AdminMagazineUpload";
 
 import DataPrivacy from "./components/dataprivacy";
 import Impressum from "./components/impressum";
 
 import PageNotFound from "./components/PageNotFound";
+import DashboardPublications from "./components/DashboardPublications";
 
 function App() {
   return (
@@ -42,7 +44,9 @@ function App() {
           <Route exact path="/past-events" element={<DashboardPastEvents />} />
           {/* <Route exact path="/meet-the-team" element={<DashboardMembers />} />*/}
           <Route exact path="/magazine" element={<DashboardMagazine />} />
-
+          <Route exact path="/publications" element={<DashboardPublications />} />
+          <Route exact path="/publications/previous-magazines" element={<DashboardPublications />} />
+          <Route exact path="/publications/blogs" element={<DashboardPublications />} />
           <Route exact path="/adminlogin" element={<DashboardAdmin />} />
           <Route exact path="/adminportal" element={<AdminPortal />} />
           <Route exact path="/adminaddpastevent" element={<AdminAddPastEvent />} />
@@ -56,6 +60,7 @@ function App() {
           <Route exact path="/admineditgallery" element={<AdminEditGallery />} />
 
           <Route exact path="/admincheckmagazineentries" element={<AdminCheckMagazineEntries />} />
+          <Route exact path="/magazineupload" element={<AdminMagazineUpload />} />
 
           <Route path="/admin/boishakhi-orders" element={<AdminBoishakhiOrders />} />
 

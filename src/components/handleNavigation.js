@@ -41,6 +41,11 @@ const useHandleNavigation = () => {
         navigate("/past-events");
       }
     }
+    if (value === "publications") {
+      if (!currentURL.includes("/publications")) {
+        navigate("/publications");
+      }
+    }
     // if (value === "meet-the-team") {
     //   if (!currentURL.includes("/meet-the-team")) {
     //     navigate("/meet-the-team");
