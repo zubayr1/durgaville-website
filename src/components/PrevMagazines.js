@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Grid, Card, Header, Segment, Icon, Loader, Message } from "semantic-ui-react";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { db } from "../firebase.js";
+import "./PrevMagazines.css";
 
 function PrevMagazines() {
   const [magazines, setMagazines] = useState([]);
@@ -147,8 +148,7 @@ function PrevMagazines() {
                           alt={magazine.name}
                           style={{
                             width: "100%",
-                            height: "220px",
-                            objectFit: "cover",
+                            height: "350px",
                             marginBottom: "0.5rem",
                             borderRadius: "4px",
                           }}
@@ -174,11 +174,11 @@ function PrevMagazines() {
                           lineHeight: "1.6",
                           color: "#666",
                           flex: 1,
-                          overflow: "hidden",
-                          display: "-webkit-box",
-                          WebkitLineClamp: 4,
-                          WebkitBoxOrient: "vertical",
+                          overflow: "auto",
+                          scrollbarWidth: "thin",
+                          scrollbarColor: "#c1c1c1 #f1f1f1",
                         }}
+                        className="custom-scrollbar"
                       >
                         {magazine.description}
                       </Card.Description>
