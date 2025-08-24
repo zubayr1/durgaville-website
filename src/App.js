@@ -60,7 +60,7 @@ function App() {
           <Route exact path="/admineditgallery" element={<AdminEditGallery />} />
 
           <Route exact path="/admincheckmagazineentries" element={<AdminCheckMagazineEntries />} />
-          <Route exact path="/magazineupload" element={<AdminMagazineUpload />} />
+          <Route exact path="/adminmagazineupload" element={<AdminMagazineUpload />} />
 
           <Route path="/admin/boishakhi-orders" element={<AdminBoishakhiOrders />} />
 
