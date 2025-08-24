@@ -1,10 +1,92 @@
-import React from "react";
-import { Grid, Button, Header, Icon, Segment } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Grid, Button, Header, Icon, Segment, Modal, Form, Input, TextArea, Message } from "semantic-ui-react";
+import { db } from "../firebase.js";
+import { collection, addDoc } from "firebase/firestore";
 import "./home.css";
 
 function GetInvolved() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // null, 'success', 'error'
+  const [errorMessage, setErrorMessage] = useState("");
+
   const scrollToFooter = () => {
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  };
+
+  const handleInputChange = (e, { name, value }) => {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const submitToFirebase = async (formData) => {
+    try {
+      const currentDate = new Date();
+      const docData = {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        message: formData.message,
+        date: currentDate.toLocaleString(),
+        timestamp: currentDate,
+      };
+
+      await addDoc(collection(db, "become-member"), docData);
+      return true;
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      return false;
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setSubmitStatus(null);
+    setErrorMessage("");
+
+    // Validate required fields
+    if (!formData.name.trim() || !formData.phone.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setSubmitStatus("error");
+      setErrorMessage("Please fill in all required fields (Name, Phone Number, Email, and Message).");
+      setLoading(false);
+      return;
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setSubmitStatus("error");
+      setErrorMessage("Please enter a valid email address.");
+      setLoading(false);
+      return;
+    }
+
+    const success = await submitToFirebase(formData);
+
+    if (success) {
+      setSubmitStatus("success");
+      // Give user 2 seconds to read success message, then close modal and reset form
+      setTimeout(() => {
+        setModalOpen(false);
+        setFormData({ name: "", phone: "", email: "", message: "" });
+        setSubmitStatus(null);
+        setErrorMessage("");
+      }, 2000);
+    } else {
+      setSubmitStatus("error");
+      setErrorMessage("There was an error submitting your request. Please try again.");
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -112,6 +194,35 @@ function GetInvolved() {
                     to be successful is for the community to actively get involved. Everyone is welcome to be part of
                     Durga Puja celebrations with Durgaville! We are a voluntary community group with no membership fees.
                   </p>
+                  <p
+                    style={{
+                      fontFamily: "Inter",
+                      lineHeight: "1.6",
+                      fontSize: "1rem",
+                      color: "#666",
+                      marginBottom: "1.5rem",
+                      fontStyle: "italic",
+                    }}
+                  >
+                    Contact us to be a member and one of our members will get back to you shortly.
+                  </p>
+                  <Button
+                    onClick={() => setModalOpen(true)}
+                    style={{
+                      backgroundColor: "#25D366",
+                      color: "#fff",
+                      fontSize: "1rem",
+                      padding: "0.8rem 1.5rem",
+                      borderRadius: "8px",
+                      border: "none",
+                      cursor: "pointer",
+                      marginBottom: "1rem",
+                      alignSelf: "center",
+                    }}
+                  >
+                    <Icon name="mail" />
+                    Contact Us to Join
+                  </Button>
                   <Header as="h3" style={{ color: "#25D366", marginBottom: "1rem", fontSize: "1.1rem" }}>
                     <Icon name="whatsapp" />
                     Become Part of the Community Group
@@ -119,9 +230,9 @@ function GetInvolved() {
                   <p
                     style={{
                       fontFamily: "Inter",
-                      lineHeight: "1.6",
-                      fontSize: "1rem",
-                      color: "#666",
+                      lineHeight: "1.8",
+                      fontSize: "1.2rem",
+                      color: "#333",
                       marginBottom: "1.5rem",
                       flex: "1",
                     }}
@@ -409,6 +520,34 @@ function GetInvolved() {
                     to be successful is for the community to actively get involved. Everyone is welcome to be part of
                     Durga Puja celebrations with Durgaville! We are a voluntary community group with no membership fees.
                   </p>
+                  <p
+                    style={{
+                      fontFamily: "Inter",
+                      lineHeight: "1.6",
+                      fontSize: "1rem",
+                      color: "#666",
+                      marginBottom: "1.5rem",
+                      fontStyle: "italic",
+                    }}
+                  >
+                    Contact us to be a member and one of our members will get back to you shortly.
+                  </p>
+                  <Button
+                    onClick={() => setModalOpen(true)}
+                    style={{
+                      backgroundColor: "#25D366",
+                      color: "#fff",
+                      fontSize: "0.9rem",
+                      padding: "0.7rem 1.2rem",
+                      borderRadius: "8px",
+                      border: "none",
+                      cursor: "pointer",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    <Icon name="mail" />
+                    Contact Us to Join
+                  </Button>
                   <Header as="h3" style={{ color: "#25D366", marginBottom: "1rem", fontSize: "1rem" }}>
                     <Icon name="whatsapp" />
                     Become Part of the Community Group
@@ -416,9 +555,9 @@ function GetInvolved() {
                   <p
                     style={{
                       fontFamily: "Inter",
-                      lineHeight: "1.6",
-                      fontSize: "1rem",
-                      color: "#666",
+                      lineHeight: "1.8",
+                      fontSize: "1.1rem",
+                      color: "#333",
                       marginBottom: "1.5rem",
                     }}
                   >
@@ -709,6 +848,34 @@ function GetInvolved() {
                     to be successful is for the community to actively get involved. Everyone is welcome to be part of
                     Durga Puja celebrations with Durgaville! We are a voluntary community group with no membership fees.
                   </p>
+                  <p
+                    style={{
+                      fontFamily: "Inter",
+                      lineHeight: "1.5",
+                      fontSize: "0.9rem",
+                      color: "#666",
+                      marginBottom: "1.5rem",
+                      fontStyle: "italic",
+                    }}
+                  >
+                    Contact us to be a member and one of our members will get back to you shortly.
+                  </p>
+                  <Button
+                    onClick={() => setModalOpen(true)}
+                    style={{
+                      backgroundColor: "#25D366",
+                      color: "#fff",
+                      fontSize: "0.8rem",
+                      padding: "0.6rem 1rem",
+                      borderRadius: "8px",
+                      border: "none",
+                      cursor: "pointer",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    <Icon name="mail" />
+                    Contact Us to Join
+                  </Button>
                   <Header as="h3" style={{ color: "#25D366", marginBottom: "0.8rem", fontSize: "1.1rem" }}>
                     <Icon name="whatsapp" />
                     Become Part of the Community Group
@@ -716,9 +883,9 @@ function GetInvolved() {
                   <p
                     style={{
                       fontFamily: "Inter",
-                      lineHeight: "1.5",
-                      fontSize: "0.9rem",
-                      color: "#666",
+                      lineHeight: "1.6",
+                      fontSize: "1rem",
+                      color: "#333",
                       marginBottom: "1.5rem",
                     }}
                   >
@@ -910,6 +1077,183 @@ function GetInvolved() {
           </Grid.Column>
         </Grid>
       </div>
+
+      {/* Contact Modal */}
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)} size="small" style={{ fontFamily: "Inter" }}>
+        <Modal.Header
+          style={{
+            backgroundColor: "#fff",
+            color: "#333",
+            textAlign: "center",
+            borderBottom: "3px solid #25D366",
+            padding: "1.5rem 1rem",
+            fontSize: "1.3rem",
+            fontWeight: "600",
+          }}
+        >
+          <Icon name="users" style={{ marginRight: "0.5rem", color: "#25D366" }} />
+          Become a Member
+        </Modal.Header>
+        <Modal.Content style={{ padding: "2rem" }}>
+          {submitStatus === "success" && (
+            <Message
+              success
+              header="Success!"
+              content="Your membership request has been submitted successfully. We'll get back to you shortly!"
+              style={{ marginBottom: "1rem" }}
+            />
+          )}
+          {submitStatus === "error" && (
+            <Message error header="Error!" content={errorMessage} style={{ marginBottom: "1rem" }} />
+          )}
+          <Form onSubmit={handleSubmit}>
+            <Form.Field>
+              <label
+                style={{
+                  fontFamily: "Inter",
+                  fontWeight: "600",
+                  color: "#333",
+                  fontSize: "1rem",
+                  marginBottom: "0.5rem",
+                  display: "block",
+                }}
+              >
+                Name *
+              </label>
+              <Input
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                placeholder="Enter your full name"
+                required
+                style={{
+                  fontFamily: "Inter",
+                  fontSize: "1rem",
+                  padding: "0.8rem",
+                }}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label
+                style={{
+                  fontFamily: "Inter",
+                  fontWeight: "600",
+                  color: "#333",
+                  fontSize: "1rem",
+                  marginBottom: "0.5rem",
+                  display: "block",
+                }}
+              >
+                Phone Number *
+              </label>
+              <Input
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                placeholder="Enter your phone number"
+                required
+                style={{
+                  fontFamily: "Inter",
+                  fontSize: "1rem",
+                  padding: "0.8rem",
+                }}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label
+                style={{
+                  fontFamily: "Inter",
+                  fontWeight: "600",
+                  color: "#333",
+                  fontSize: "1rem",
+                  marginBottom: "0.5rem",
+                  display: "block",
+                }}
+              >
+                Email *
+              </label>
+              <Input
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Enter your email address"
+                required
+                style={{
+                  fontFamily: "Inter",
+                  fontSize: "1rem",
+                  padding: "0.8rem",
+                }}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label
+                style={{
+                  fontFamily: "Inter",
+                  fontWeight: "600",
+                  color: "#333",
+                  fontSize: "1rem",
+                  marginBottom: "0.5rem",
+                  display: "block",
+                }}
+              >
+                Message *
+              </label>
+              <TextArea
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                placeholder="Tell us why you'd like to join Durgaville..."
+                rows={4}
+                required
+                style={{
+                  fontFamily: "Inter",
+                  fontSize: "1rem",
+                  padding: "0.8rem",
+                }}
+              />
+            </Form.Field>
+          </Form>
+        </Modal.Content>
+        <Modal.Actions
+          style={{
+            textAlign: "center",
+            padding: "1.5rem 2rem",
+            borderTop: "1px solid #e0e0e0",
+          }}
+        >
+          <Button
+            onClick={() => setModalOpen(false)}
+            style={{
+              backgroundColor: "#f5f5f5",
+              color: "#666",
+              marginRight: "1rem",
+              border: "1px solid #ddd",
+              padding: "0.8rem 1.5rem",
+              fontSize: "1rem",
+              fontWeight: "500",
+            }}
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={handleSubmit}
+            loading={loading}
+            disabled={loading}
+            style={{
+              backgroundColor: "#25D366",
+              color: "#fff",
+              padding: "0.8rem 1.5rem",
+              fontSize: "1rem",
+              fontWeight: "500",
+              boxShadow: "0 2px 4px rgba(37, 211, 102, 0.3)",
+            }}
+          >
+            <Icon name="send" style={{ marginRight: "0.5rem" }} />
+            {loading ? "Submitting..." : "Submit"}
+          </Button>
+        </Modal.Actions>
+      </Modal>
     </div>
   );
 }
