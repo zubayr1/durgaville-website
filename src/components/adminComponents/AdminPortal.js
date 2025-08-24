@@ -125,6 +125,13 @@ const AdminPortal = () => {
               >
                 Check Magazine Entries
               </Button>
+              <Button
+                fluid
+                style={{ marginBottom: "1rem", backgroundColor: "#bb0d3b", color: "#fff" }}
+                onClick={() => navigate("/magazineupload")}
+              >
+                Upload Magazine
+              </Button>
             </Segment>
           </Grid.Column>
         </Grid.Row>
