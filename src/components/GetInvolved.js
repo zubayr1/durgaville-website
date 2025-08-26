@@ -279,7 +279,7 @@ function GetInvolved() {
                       fontStyle: "italic",
                     }}
                   >
-                    Contact us to be a member and one of our members will get back to you shortly.
+                    Send us your membership request and we will soon, get back to you!
                   </p>
                   <Button
                     onClick={() => setModalOpen(true)}
@@ -296,7 +296,7 @@ function GetInvolved() {
                     }}
                   >
                     <Icon name="mail" />
-                    Contact Us to Join
+                    Send Membership Request
                   </Button>
                   <Header as="h3" style={{ color: "#25D366", marginBottom: "1rem", fontSize: "1.1rem" }}>
                     <Icon name="whatsapp" />
@@ -605,7 +605,7 @@ function GetInvolved() {
                       fontStyle: "italic",
                     }}
                   >
-                    Contact us to be a member and one of our members will get back to you shortly.
+                    Send us your membership request and we will soon, get back to you!
                   </p>
                   <Button
                     onClick={() => setModalOpen(true)}
@@ -621,7 +621,7 @@ function GetInvolved() {
                     }}
                   >
                     <Icon name="mail" />
-                    Contact Us to Join
+                    Send Membership Request
                   </Button>
                   <Header as="h3" style={{ color: "#25D366", marginBottom: "1rem", fontSize: "1rem" }}>
                     <Icon name="whatsapp" />
@@ -933,7 +933,7 @@ function GetInvolved() {
                       fontStyle: "italic",
                     }}
                   >
-                    Contact us to be a member and one of our members will get back to you shortly.
+                    Send us your membership request and we will soon, get back to you!
                   </p>
                   <Button
                     onClick={() => setModalOpen(true)}
@@ -949,7 +949,7 @@ function GetInvolved() {
                     }}
                   >
                     <Icon name="mail" />
-                    Contact Us to Join
+                    Send Membership Request
                   </Button>
                   <Header as="h3" style={{ color: "#25D366", marginBottom: "0.8rem", fontSize: "1.1rem" }}>
                     <Icon name="whatsapp" />
@@ -1209,122 +1209,130 @@ function GetInvolved() {
       />
     </Form.Field>
 
-    {/* Q3 */}
-    <Form.Field>
-      <label style={labelStyle}>Q3) Your current residence City *</label>
-      <select
-        name="residenceOption"
-        value={formData.residenceOption}
-        onChange={(e) => {
-          handleInputChange(e);
-          // Reset dependent answers
-          handleInputChange({ target: { name: "planResideSoon", value: "" } });
-          handleInputChange({ target: { name: "startMonth", value: "" } });
-          handleInputChange({ target: { name: "longDistancePlan", value: "" } });
-        }}
-        required
-        style={selectStyle}
-      >
-        <option value="">Select one</option>
-        <option value="1">01. Erlangen</option>
-        <option value="2">02. Nürnberg</option>
-        <option value="3">03. Fürth</option>
-        <option value="4">04. Forchheim</option>
-        <option value="5">05. Bamberg</option>
-        <option value="6">06. Inside of Franconia</option>
-        <option value="7">07. Outside of Franconia</option>
-        <option value="8">08. Munich</option>
-        <option value="9">09. Inside of Bayern</option>
-        <option value="10">10. Outside of Bayern</option>
-        <option value="11">11. Outside of Germany</option>
-      </select>
-    </Form.Field>
 
-    {/* Conditional Questions */}
-    {Number(formData.residenceOption) >= 7 && (
-      <Form.Field>
-        <label style={labelStyle}>Q4) Are you planning to reside in Erlangen or any nearby city of Erlangen soon? *</label>
-        <div style={{ display: "flex", gap: "1rem" }}>
-          <label>
-            <input
-              type="radio"
-              name="planResideSoon"
-              value="yes"
-              checked={formData.planResideSoon === "yes"}
-              onChange={handleInputChange}
-              required
-            />{" "}
-            Yes
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="planResideSoon"
-              value="no"
-              checked={formData.planResideSoon === "no"}
-              onChange={handleInputChange}
-              required
-            />{" "}
-            No
-          </label>
-        </div>
-      </Form.Field>
-    )}
+{/* Q3 */}
+<Form.Field>
+  <label style={labelStyle}>Q3) Your current residence City *</label>
+  <select
+    name="residenceOption"
+    value={formData.residenceOption}
+    onChange={(e) => {
+      handleInputChange(e);
+      // Reset dependent fields
+      setFormData((prev) => ({
+        ...prev,
+        planResideSoon: "",
+        startMonth: "",
+        longDistancePlan: "",
+      }));
+    }}
+    required
+    style={selectStyle}
+  >
+    <option value="">Select one</option>
+    <option value="1">01. Erlangen</option>
+    <option value="2">02. Nürnberg</option>
+    <option value="3">03. Fürth</option>
+    <option value="4">04. Forchheim</option>
+    <option value="5">05. Bamberg</option>
+    <option value="6">06. Inside of Franconia</option>
+    <option value="7">07. Outside of Franconia</option>
+    <option value="8">08. Munich</option>
+    <option value="9">09. Inside of Bayern</option>
+    <option value="10">10. Outside of Bayern</option>
+    <option value="11">11. Outside of Germany</option>
+  </select>
+</Form.Field>
 
-    {/* Q5 if city is 1-6 or Q4 is Yes */}
-    {(Number(formData.residenceOption) <= 6 || formData.planResideSoon === "yes") && (
-      <Form.Field>
-        <label style={labelStyle}>Q5) When are you planning to start residing in your chosen city? *</label>
-        <Input
-          type="month"
-          name="startMonth"
-          value={formData.startMonth}
+{/* Q4 (Only if Q3 >= 7) */}
+{Number(formData.residenceOption) >= 7 && (
+  <Form.Field>
+    <label style={labelStyle}>
+      Q4) Are you planning to reside in Erlangen or any nearby city of Erlangen soon? *
+    </label>
+    <div style={{ display: "flex", gap: "1rem" }}>
+      <label>
+        <input
+          type="radio"
+          name="planResideSoon"
+          value="yes"
+          checked={formData.planResideSoon === "yes"}
           onChange={handleInputChange}
-          placeholder="MM/YYYY"
           required
-          style={inputStyle}
-        />
-      </Form.Field>
-    )}
-
-    {/* Q6 if Q4 is No */}
-    {formData.planResideSoon === "no" && (
-      <Form.Field>
-        <label style={labelStyle}>
-          Q6) How do you plan to attend monthly meetings and volunteer in events with a long distance? *
-        </label>
-        <Input
-          name="longDistancePlan"
-          value={formData.longDistancePlan}
-          onChange={(e) =>
-            handleInputChange({
-              target: { name: "longDistancePlan", value: e.target.value.slice(0, 100) },
-            })
-          }
-          placeholder="Max 100 characters"
+        />{" "}
+        Yes
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="planResideSoon"
+          value="no"
+          checked={formData.planResideSoon === "no"}
+          onChange={handleInputChange}
           required
-          style={inputStyle}
-        />
-      </Form.Field>
-    )}
+        />{" "}
+        No
+      </label>
+    </div>
+  </Form.Field>
+)}
 
-    {/* Q7 */}
-    <Form.Field>
-      <label style={labelStyle}>Q7) Why do you want to be part of Durgaville? *</label>
-      <TextArea
-        name="motivation"
-        value={formData.motivation}
-        onChange={(e) =>
-          handleInputChange({
-            target: { name: "motivation", value: e.target.value.slice(0, 200) },
-          })
-        }
-        placeholder="Max 200 characters"
-        rows={4}
-        required
-        style={inputStyle}
-      />
-    </Form.Field>
+{/* Q5 (Only if Q4 = Yes) */}
+{formData.planResideSoon === "yes" && (
+  <Form.Field>
+    <label style={labelStyle}>
+      Q5) When are you planning to start residing in your chosen city? *
+    </label>
+    <Input
+      type="month"
+      name="startMonth"
+      value={formData.startMonth}
+      onChange={handleInputChange}
+      placeholder="MM/YYYY"
+      required
+      style={inputStyle}
+    />
+  </Form.Field>
+)}
+
+{/* Q6 (Only if Q4 = No) */}
+{formData.planResideSoon === "no" && (
+  <Form.Field>
+    <label style={labelStyle}>
+      Q6) How do you plan to attend monthly meetings and volunteer in events with a long distance? *
+    </label>
+    <Input
+      name="longDistancePlan"
+      value={formData.longDistancePlan}
+      onChange={(e) =>
+        handleInputChange({
+          target: { name: "longDistancePlan", value: e.target.value.slice(0, 100) },
+        })
+      }
+      placeholder="Max 100 characters"
+      required
+      style={inputStyle}
+    />
+  </Form.Field>
+)}
+
+{/* Q7 and onward always appear */}
+<Form.Field>
+  <label style={labelStyle}>Q7) Why do you want to be part of Durgaville? *</label>
+  <TextArea
+    name="motivation"
+    value={formData.motivation}
+    onChange={(e) =>
+      handleInputChange({
+        target: { name: "motivation", value: e.target.value.slice(0, 200) },
+      })
+    }
+    placeholder="Max 200 characters"
+    rows={4}
+    required
+    style={inputStyle}
+  />
+</Form.Field>
 
     {/* Q8 */}
     <Form.Field>
