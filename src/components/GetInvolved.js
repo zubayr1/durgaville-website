@@ -7,10 +7,17 @@ import "./home.css";
 function GetInvolved() {
   const [modalOpen, setModalOpen] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
+    fullName: "",
+    profession: "",
+    residenceOption: "",
+    planResideSoon: "",
+    startMonth: "",
+    longDistancePlan: "",
+    motivation: "",
+    specialSkills: "",
+    mobileNumber: "",
+    whatsappNumber: "",
     email: "",
-    message: "",
   });
   const [loading, setLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // null, 'success', 'error'
@@ -20,23 +27,21 @@ function GetInvolved() {
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   };
 
-  const handleInputChange = (e, { name, value }) => {
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  const handleInputChange = (e) => {
+  const { name, value } = e.target || e; // Fallback to e if no target
+  setFormData((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+};
 
   const submitToFirebase = async (formData) => {
     try {
       const currentDate = new Date();
       const docData = {
-        name: formData.name,
-        phone: formData.phone,
-        email: formData.email,
-        message: formData.message,
-        date: currentDate.toLocaleString(),
-        timestamp: currentDate,
+        ...formData, 
+      date: currentDate.toLocaleString(),
+      timestamp: currentDate,
       };
 
       await addDoc(collection(db, "become-member"), docData);
@@ -54,11 +59,44 @@ function GetInvolved() {
     setErrorMessage("");
 
     // Validate required fields
-    if (!formData.name.trim() || !formData.phone.trim() || !formData.email.trim() || !formData.message.trim()) {
-      setSubmitStatus("error");
-      setErrorMessage("Please fill in all required fields (Name, Phone Number, Email, and Message).");
-      setLoading(false);
-      return;
+    if (
+        !formData.fullName.trim() ||
+        !formData.profession.trim() ||
+        !formData.residenceOption.trim() ||
+        !formData.motivation.trim() ||
+        !formData.mobileNumber.trim() ||
+        !formData.whatsappNumber.trim() ||
+        !formData.email.trim()
+    ) {
+        setSubmitStatus("error");
+        setErrorMessage("Please fill in all required fields marked with *.");
+        setLoading(false);
+        return;
+    }
+
+    const isLongDistance = Number(formData.residenceOption) >= 7;
+    if (isLongDistance) {
+        // Check if Q4 is answered
+        if (!formData.planResideSoon) {
+            setSubmitStatus("error");
+            setErrorMessage("Please answer if you are planning to relocate (Q4).");
+            setLoading(false);
+            return;
+        }
+        // If they are NOT relocating, check if they filled out the plan (Q6)
+        if (formData.planResideSoon === "no" && !formData.longDistancePlan.trim()) {
+            setSubmitStatus("error");
+            setErrorMessage("Please explain how you plan to participate from a long distance (Q6).");
+            setLoading(false);
+            return;
+        }
+    }
+
+    if ((Number(formData.residenceOption) <= 6 || formData.planResideSoon === "yes") && !formData.startMonth.trim()) {
+        setSubmitStatus("error");
+        setErrorMessage("Please provide your planned relocation date (Q5).");
+        setLoading(false);
+        return;
     }
 
     // Basic email validation
@@ -77,7 +115,19 @@ function GetInvolved() {
       // Give user 2 seconds to read success message, then close modal and reset form
       setTimeout(() => {
         setModalOpen(false);
-        setFormData({ name: "", phone: "", email: "", message: "" });
+        setFormData({
+        fullName: "",
+        profession: "",
+        residenceOption: "",
+        planResideSoon: "",
+        startMonth: "",
+        longDistancePlan: "",
+        motivation: "",
+        specialSkills: "",
+        mobileNumber: "",
+        whatsappNumber: "",
+        email: "",
+    });
         setSubmitStatus(null);
         setErrorMessage("");
       }, 2000);
@@ -87,6 +137,31 @@ function GetInvolved() {
     }
 
     setLoading(false);
+  };
+
+
+  const labelStyle = {
+    fontFamily: "Inter",
+    fontWeight: "600",
+    color: "#333",
+    fontSize: "1rem",
+    marginBottom: "0.5rem",
+    display: "block",
+  };
+
+  const inputStyle = {
+    fontFamily: "Inter",
+    fontSize: "1rem",
+    padding: "0.8rem",
+  };
+
+  const selectStyle = {
+    fontFamily: "Inter",
+    fontSize: "1rem",
+    padding: "0.8rem",
+    width: "100%",
+    borderRadius: 4,
+    border: "1px solid rgba(34,36,38,.15)",
   };
 
   return (
@@ -1094,127 +1169,223 @@ function GetInvolved() {
           <Icon name="users" style={{ marginRight: "0.5rem", color: "#25D366" }} />
           Become a Member
         </Modal.Header>
+        
         <Modal.Content style={{ padding: "2rem" }}>
-          {submitStatus === "success" && (
-            <Message
-              success
-              header="Success!"
-              content="Your membership request has been submitted successfully. We'll get back to you shortly!"
-              style={{ marginBottom: "1rem" }}
-            />
-          )}
-          {submitStatus === "error" && (
-            <Message error header="Error!" content={errorMessage} style={{ marginBottom: "1rem" }} />
-          )}
-          <Form onSubmit={handleSubmit}>
-            <Form.Field>
-              <label
-                style={{
-                  fontFamily: "Inter",
-                  fontWeight: "600",
-                  color: "#333",
-                  fontSize: "1rem",
-                  marginBottom: "0.5rem",
-                  display: "block",
-                }}
-              >
-                Name *
-              </label>
-              <Input
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                placeholder="Enter your full name"
-                required
-                style={{
-                  fontFamily: "Inter",
-                  fontSize: "1rem",
-                  padding: "0.8rem",
-                }}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label
-                style={{
-                  fontFamily: "Inter",
-                  fontWeight: "600",
-                  color: "#333",
-                  fontSize: "1rem",
-                  marginBottom: "0.5rem",
-                  display: "block",
-                }}
-              >
-                Phone Number *
-              </label>
-              <Input
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                placeholder="Enter your phone number"
-                required
-                style={{
-                  fontFamily: "Inter",
-                  fontSize: "1rem",
-                  padding: "0.8rem",
-                }}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label
-                style={{
-                  fontFamily: "Inter",
-                  fontWeight: "600",
-                  color: "#333",
-                  fontSize: "1rem",
-                  marginBottom: "0.5rem",
-                  display: "block",
-                }}
-              >
-                Email *
-              </label>
-              <Input
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Enter your email address"
-                required
-                style={{
-                  fontFamily: "Inter",
-                  fontSize: "1rem",
-                  padding: "0.8rem",
-                }}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label
-                style={{
-                  fontFamily: "Inter",
-                  fontWeight: "600",
-                  color: "#333",
-                  fontSize: "1rem",
-                  marginBottom: "0.5rem",
-                  display: "block",
-                }}
-              >
-                Message *
-              </label>
-              <TextArea
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                placeholder="Tell us why you'd like to join Durgaville..."
-                rows={4}
-                required
-                style={{
-                  fontFamily: "Inter",
-                  fontSize: "1rem",
-                  padding: "0.8rem",
-                }}
-              />
-            </Form.Field>
-          </Form>
-        </Modal.Content>
+  {submitStatus === "success" && (
+    <Message
+      success
+      header="Success!"
+      content="Your membership request has been submitted successfully. We'll get back to you shortly!"
+      style={{ marginBottom: "1rem" }}
+    />
+  )}
+  {submitStatus === "error" && (
+    <Message error header="Error!" content={errorMessage} style={{ marginBottom: "1rem" }} />
+  )}
+  <Form onSubmit={handleSubmit}>
+    {/* Q1 */}
+    <Form.Field>
+      <label style={labelStyle}>Q1) Full Name *</label>
+      <Input
+        name="fullName"
+        value={formData.fullName}
+        onChange={handleInputChange}
+        placeholder="Enter your full name"
+        required
+        style={inputStyle}
+      />
+    </Form.Field>
+
+    {/* Q2 */}
+    <Form.Field>
+      <label style={labelStyle}>Q2) Profession *</label>
+      <Input
+        name="profession"
+        value={formData.profession}
+        onChange={handleInputChange}
+        placeholder="Enter your profession"
+        required
+        style={inputStyle}
+      />
+    </Form.Field>
+
+    {/* Q3 */}
+    <Form.Field>
+      <label style={labelStyle}>Q3) Your current residence City *</label>
+      <select
+        name="residenceOption"
+        value={formData.residenceOption}
+        onChange={(e) => {
+          handleInputChange(e);
+          // Reset dependent answers
+          handleInputChange({ target: { name: "planResideSoon", value: "" } });
+          handleInputChange({ target: { name: "startMonth", value: "" } });
+          handleInputChange({ target: { name: "longDistancePlan", value: "" } });
+        }}
+        required
+        style={selectStyle}
+      >
+        <option value="">Select one</option>
+        <option value="1">01. Erlangen</option>
+        <option value="2">02. Nürnberg</option>
+        <option value="3">03. Fürth</option>
+        <option value="4">04. Forchheim</option>
+        <option value="5">05. Bamberg</option>
+        <option value="6">06. Inside of Franconia</option>
+        <option value="7">07. Outside of Franconia</option>
+        <option value="8">08. Munich</option>
+        <option value="9">09. Inside of Bayern</option>
+        <option value="10">10. Outside of Bayern</option>
+        <option value="11">11. Outside of Germany</option>
+      </select>
+    </Form.Field>
+
+    {/* Conditional Questions */}
+    {Number(formData.residenceOption) >= 7 && (
+      <Form.Field>
+        <label style={labelStyle}>Q4) Are you planning to reside in Erlangen or any nearby city of Erlangen soon? *</label>
+        <div style={{ display: "flex", gap: "1rem" }}>
+          <label>
+            <input
+              type="radio"
+              name="planResideSoon"
+              value="yes"
+              checked={formData.planResideSoon === "yes"}
+              onChange={handleInputChange}
+              required
+            />{" "}
+            Yes
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="planResideSoon"
+              value="no"
+              checked={formData.planResideSoon === "no"}
+              onChange={handleInputChange}
+              required
+            />{" "}
+            No
+          </label>
+        </div>
+      </Form.Field>
+    )}
+
+    {/* Q5 if city is 1-6 or Q4 is Yes */}
+    {(Number(formData.residenceOption) <= 6 || formData.planResideSoon === "yes") && (
+      <Form.Field>
+        <label style={labelStyle}>Q5) When are you planning to start residing in your chosen city? *</label>
+        <Input
+          type="month"
+          name="startMonth"
+          value={formData.startMonth}
+          onChange={handleInputChange}
+          placeholder="MM/YYYY"
+          required
+          style={inputStyle}
+        />
+      </Form.Field>
+    )}
+
+    {/* Q6 if Q4 is No */}
+    {formData.planResideSoon === "no" && (
+      <Form.Field>
+        <label style={labelStyle}>
+          Q6) How do you plan to attend monthly meetings and volunteer in events with a long distance? *
+        </label>
+        <Input
+          name="longDistancePlan"
+          value={formData.longDistancePlan}
+          onChange={(e) =>
+            handleInputChange({
+              target: { name: "longDistancePlan", value: e.target.value.slice(0, 100) },
+            })
+          }
+          placeholder="Max 100 characters"
+          required
+          style={inputStyle}
+        />
+      </Form.Field>
+    )}
+
+    {/* Q7 */}
+    <Form.Field>
+      <label style={labelStyle}>Q7) Why do you want to be part of Durgaville? *</label>
+      <TextArea
+        name="motivation"
+        value={formData.motivation}
+        onChange={(e) =>
+          handleInputChange({
+            target: { name: "motivation", value: e.target.value.slice(0, 200) },
+          })
+        }
+        placeholder="Max 200 characters"
+        rows={4}
+        required
+        style={inputStyle}
+      />
+    </Form.Field>
+
+    {/* Q8 */}
+    <Form.Field>
+      <label style={labelStyle}>
+        Q8) Any special skills, values you bring that you want to tell us about? (Optional)
+      </label>
+      <Input
+        name="specialSkills"
+        value={formData.specialSkills}
+        onChange={(e) =>
+          handleInputChange({
+            target: { name: "specialSkills", value: e.target.value.slice(0, 100) },
+          })
+        }
+        placeholder="Max 100 characters"
+        style={inputStyle}
+      />
+    </Form.Field>
+
+    {/* Q9 */}
+    <Form.Field>
+      <label style={labelStyle}>Q9) Mobile Number *</label>
+      <Input
+        name="mobileNumber"
+        value={formData.mobileNumber}
+        onChange={handleInputChange}
+        placeholder="Enter your mobile number"
+        required
+        style={inputStyle}
+      />
+    </Form.Field>
+
+    {/* Q10 */}
+    <Form.Field>
+      <label style={labelStyle}>Q10) WhatsApp Number *</label>
+      <Input
+        name="whatsappNumber"
+        value={formData.whatsappNumber}
+        onChange={handleInputChange}
+        placeholder="Enter your WhatsApp number"
+        required
+        style={inputStyle}
+      />
+    </Form.Field>
+
+    {/* Q11 */}
+    <Form.Field>
+      <label style={labelStyle}>Q11) Email ID *</label>
+      <Input
+        name="email"
+        type="email"
+        value={formData.email}
+        onChange={handleInputChange}
+        placeholder="Enter your email address"
+        required
+        style={inputStyle}
+      />
+    </Form.Field>
+  </Form>
+</Modal.Content>
+
         <Modal.Actions
           style={{
             textAlign: "center",
