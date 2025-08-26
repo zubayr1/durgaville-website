@@ -1,36 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Form, Grid, Message, Image, Dropdown, Segment } from 'semantic-ui-react';
-import { db, storage } from '../firebase.js';
-import { collection, addDoc } from 'firebase/firestore';
-import { ref, uploadBytesResumable, getDownloadURL, uploadString } from 'firebase/storage';
-import { TailSpin } from 'react-loader-spinner';
+import React, { useState, useEffect } from "react";
+import { Button, Form, Grid, Message, Dropdown, Segment } from "semantic-ui-react";
+import { db, storage } from "../firebase.js";
+import { collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytesResumable, getDownloadURL, uploadString } from "firebase/storage";
+import { TailSpin } from "react-loader-spinner";
 
-import magazine from '../assets/magazine_entry.jpg';
+// import magazine from "../assets/magazine_entry.jpg";
 
 const submissionTypes = [
-  { key: 'article', text: 'Article Write-up', value: 'Article Write-up' },
-  { key: 'travellogue', text: 'Travellogue', value: 'Travellogue' },
-  { key: 'poem', text: 'Poem', value: 'Poem' },
-  { key: 'story', text: 'Story', value: 'Story' },
-  { key: 'recipes', text: 'Recipes', value: 'Recipes' },
-  { key: 'tutorial', text: 'Tutorial', value: 'Tutorial' },
-  { key: 'promotion', text: 'Promotion', value: 'Promotion' },
-  { key: 'photography', text: 'Photography', value: 'Photography' },
-  { key: 'painting', text: 'Painting', value: 'Painting' },
-  { key: 'others', text: 'Others', value: 'Others' }
+  { key: "article", text: "Article Write-up", value: "Article Write-up" },
+  { key: "travellogue", text: "Travellogue", value: "Travellogue" },
+  { key: "poem", text: "Poem", value: "Poem" },
+  { key: "story", text: "Story", value: "Story" },
+  { key: "recipes", text: "Recipes", value: "Recipes" },
+  { key: "tutorial", text: "Tutorial", value: "Tutorial" },
+  { key: "promotion", text: "Promotion", value: "Promotion" },
+  { key: "photography", text: "Photography", value: "Photography" },
+  { key: "painting", text: "Painting", value: "Painting" },
+  { key: "others", text: "Others", value: "Others" },
 ];
 
 const Magazine = () => {
   const [entries, setEntries] = useState([
-    { fullName: '', age: '', email: '', location: '', submissionType: '', title: '', file: null }
+    { fullName: "", age: "", email: "", location: "", submissionType: "", title: "", file: null },
   ]);
   const [error, setError] = useState(-1);
   const [loading, setLoading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   useEffect(() => {
     if (error === 0) {
@@ -56,7 +52,7 @@ const Magazine = () => {
   const addEntry = () => {
     setEntries([
       ...entries,
-      { fullName: '', age: '', email: '', location: '', submissionType: '', title: '', file: null }
+      { fullName: "", age: "", email: "", location: "", submissionType: "", title: "", file: null },
     ]);
   };
 
@@ -73,12 +69,12 @@ const Magazine = () => {
       const entry = entries[i];
 
       if (
-        entry.fullName === '' ||
-        entry.age === '' ||
-        entry.email === '' ||
-        entry.location === '' ||
-        entry.submissionType === '' ||
-        entry.title === '' ||
+        entry.fullName === "" ||
+        entry.age === "" ||
+        entry.email === "" ||
+        entry.location === "" ||
+        entry.submissionType === "" ||
+        entry.title === "" ||
         entry.file === null
       ) {
         setError(1);
@@ -87,18 +83,19 @@ const Magazine = () => {
       }
 
       const allowedTypes = [
-        'application/pdf',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'image/jpeg',
-        'image/jpg',
-        'image/png'
+        "application/pdf",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "image/jpeg",
+        "image/jpg",
+        "image/png",
       ];
       if (!allowedTypes.includes(entry.file.type)) {
         setError(2);
         valid = false;
         break;
       }
-      if (entry.file.size > 10 * 1024 * 1024) { // 10MB
+      if (entry.file.size > 10 * 1024 * 1024) {
+        // 10MB
         setError(3);
         valid = false;
         break;
@@ -116,8 +113,8 @@ const Magazine = () => {
         const uploadPromises = entries.map(async (entry) => {
           // Function to generate a random string
           const generateRandomString = (length) => {
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            let result = '';
+            const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            let result = "";
             for (let i = 0; i < length; i++) {
               result += characters.charAt(Math.floor(Math.random() * characters.length));
             }
@@ -126,7 +123,7 @@ const Magazine = () => {
 
           // Generate a unique filename
           const randomString = generateRandomString(8); // Adjust the length as needed
-          const fileExtension = entry.file.name.split('.').pop();
+          const fileExtension = entry.file.name.split(".").pop();
           const baseFileName = entry.file.name.replace(/\.[^/.]+$/, "");
           const uniqueFileName = `${baseFileName}_${randomString}.${fileExtension}`;
 
@@ -134,16 +131,17 @@ const Magazine = () => {
           const fileRef = ref(storage, `magazine/${uniqueFileName}`);
           const uploadTask = uploadBytesResumable(fileRef, entry.file);
 
-          uploadTask.on('state_changed', (snapshot) => {
+          uploadTask.on("state_changed", (snapshot) => {
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             setUploadProgress(progress);
           });
 
           const snapshot = await new Promise((resolve, reject) => {
-            uploadTask.on('state_changed',
+            uploadTask.on(
+              "state_changed",
               null,
               (error) => reject(error),
-              () => resolve(uploadTask.snapshot)
+              () => resolve(uploadTask.snapshot),
             );
           });
 
@@ -152,7 +150,11 @@ const Magazine = () => {
             ${entry.location}\nSubmission Type: ${entry.submissionType}\nTitle: ${entry.title}\nFile Name: ${uniqueFileName}`;
 
           // Upload metadata text to storage
-          await uploadString(ref(storage, `magazine_metadata/${baseFileName}_${randomString}.txt`), metadataText, 'raw');
+          await uploadString(
+            ref(storage, `magazine_metadata/${baseFileName}_${randomString}.txt`),
+            metadataText,
+            "raw",
+          );
 
           const fileUrl = await getDownloadURL(snapshot.ref);
 
@@ -164,23 +166,21 @@ const Magazine = () => {
             email: entry.email,
             location: entry.location,
             submissionType: entry.submissionType,
-            title: entry.title
+            title: entry.title,
           };
-          await addDoc(collection(db, 'magazine_entries'), entryData);
+          await addDoc(collection(db, "magazine_entries"), entryData);
         });
 
         await Promise.all(uploadPromises);
         clearTimeout(uploadTimeout);
         setLoading(false);
         setError(0);
-        setEntries([
-          { fullName: '', age: '', email: '', location: '', submissionType: '', title: '', file: null }
-        ]);
+        setEntries([{ fullName: "", age: "", email: "", location: "", submissionType: "", title: "", file: null }]);
 
         const fileInputs = document.querySelectorAll('input[type="file"]');
-        fileInputs.forEach(input => input.value = null);
+        fileInputs.forEach((input) => (input.value = null));
       } catch (error) {
-        console.error('Error during submission:', error);
+        console.error("Error during submission:", error);
         setError(4);
         setLoading(false);
         clearTimeout(uploadTimeout);
@@ -201,7 +201,11 @@ const Magazine = () => {
   } else if (error === 2) {
     layout = (
       <div>
-        <Message error header="Submission Error" content="Invalid file type. Only .docx, .pdf, .jpg, .jpeg, and .png files are allowed" />
+        <Message
+          error
+          header="Submission Error"
+          content="Invalid file type. Only .docx, .pdf, .jpg, .jpeg, and .png files are allowed"
+        />
       </div>
     );
   } else if (error === 3) {
@@ -225,118 +229,155 @@ const Magazine = () => {
   }
 
   return (
-    <div style={{ overflow: 'hidden', marginTop: '5%', marginLeft: '2%', marginRight: '2%' }}>
-      <Grid centered>
-        <Grid.Row>
-          <div style={{ display: 'flex', justifyContent: 'center', padding: '6%', marginTop: '-7%' }}>
-            <Image alt="Magazine" src={magazine} style={{ maxWidth: '100%', height: 'auto' }} />
+    <div id="magazine-section">
+      <div
+        style={{
+          overflow: "hidden",
+          marginTop: "1%",
+          marginLeft: "2%",
+          marginRight: "2%",
+        }}
+      >
+        <Grid centered>
+          {/* <Grid.Row>
+          <div style={{ display: "flex", justifyContent: "center", padding: "6%", marginTop: "-7%" }}>
+            <Image alt="Magazine" src={magazine} style={{ maxWidth: "100%", height: "auto" }} />
           </div>
-        </Grid.Row>
+        </Grid.Row> */}
 
-        <Grid.Row>
-          <p style={{ fontWeight: 'bolder', fontSize: '4rem', fontFamily: 'Inter', marginTop: '-3%', marginLeft:'2%', marginRight:'2%' }}>Add Your Entry for the magazine</p>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column mobile={16} tablet={10} computer={8}>
-            <Form onSubmit={handleSubmit}>
-              {entries.map((entry, index) => (
-                <Segment key={index} padded="very">
-                  <Form.Field>
-                    <label htmlFor={`fullName-${index}`}>Full Name</label>
-                    <input
-                      placeholder="Full Name"
-                      value={entry.fullName}
-                      onChange={(e) => handleInputChange(index, 'fullName', e.target.value)}
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <label htmlFor={`age-${index}`}>Age</label>
-                    <input
-                      type="number"
-                      placeholder="Age"
-                      value={entry.age}
-                      onChange={(e) => handleInputChange(index, 'age', e.target.value)}
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <label htmlFor={`email-${index}`}>Email</label>
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      value={entry.email}
-                      onChange={(e) => handleInputChange(index, 'email', e.target.value)}
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <label htmlFor={`location-${index}`}>Location</label>
-                    <input
-                      placeholder="Location"
-                      value={entry.location}
-                      onChange={(e) => handleInputChange(index, 'location', e.target.value)}
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <label htmlFor={`submissionType-${index}`}>Submission Type</label>
-                    <Dropdown
-                      placeholder="Select Submission Type"
-                      fluid
-                      selection
-                      options={submissionTypes}
-                      value={entry.submissionType}
-                      onChange={(e, { value }) => handleInputChange(index, 'submissionType', value)}
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <label htmlFor={`title-${index}`}>Title</label>
-                    <input
-                      placeholder="Title"
-                      value={entry.title}
-                      onChange={(e) => handleInputChange(index, 'title', e.target.value)}
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <label htmlFor={`file-${index}`}>Upload</label>
-                    <input
-                      type="file"
-                      accept=".docx,.pdf,image/jpeg,image/jpg,image/png"
-                      onChange={(e) => handleFileChange(index, e.target.files[0])}
-                    />
-                  </Form.Field>
-                  {index > 0 && (
-                    <Button type="button" onClick={() => removeEntry(index)} style={{ backgroundColor: '#ff0000', color: '#fff', marginBottom: '1em' }}>
-                      Cancel
-                    </Button>
-                  )}
-                </Segment>
-              ))}
-              <div style={{ marginTop: '2%' }}>
-                <Button type="button" onClick={addEntry} style={{ backgroundColor: '#690460', color: '#fff' }}>Add Another Entry</Button>
-                <Button type="submit" style={{ backgroundColor: '#bb0d3b', color: '#fff' }}>Submit</Button>
+          <Grid.Row only="computer tablet">
+            <p
+              style={{
+                fontWeight: "bolder",
+                fontSize: "2rem",
+                fontFamily: "Inter",
+                marginTop: "0%",
+                marginLeft: "2%",
+                marginRight: "2%",
+              }}
+            >
+              Add Your Entry for the magazine
+            </p>
+          </Grid.Row>
+          <Grid.Row only="mobile">
+            <p
+              style={{
+                fontWeight: "bolder",
+                fontSize: "1.5rem",
+                fontFamily: "Inter",
+                marginTop: "1%",
+                marginLeft: "2%",
+                marginRight: "2%",
+              }}
+            >
+              Add Your Entry for the magazine
+            </p>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column mobile={16} tablet={10} computer={8}>
+              <Form onSubmit={handleSubmit}>
+                {entries.map((entry, index) => (
+                  <Segment key={index} padded="very">
+                    <Form.Field>
+                      <label htmlFor={`fullName-${index}`}>Full Name</label>
+                      <input
+                        placeholder="Full Name"
+                        value={entry.fullName}
+                        onChange={(e) => handleInputChange(index, "fullName", e.target.value)}
+                      />
+                    </Form.Field>
+                    <Form.Field>
+                      <label htmlFor={`age-${index}`}>Age</label>
+                      <input
+                        type="number"
+                        placeholder="Age"
+                        value={entry.age}
+                        onChange={(e) => handleInputChange(index, "age", e.target.value)}
+                      />
+                    </Form.Field>
+                    <Form.Field>
+                      <label htmlFor={`email-${index}`}>Email</label>
+                      <input
+                        type="email"
+                        placeholder="Email"
+                        value={entry.email}
+                        onChange={(e) => handleInputChange(index, "email", e.target.value)}
+                      />
+                    </Form.Field>
+                    <Form.Field>
+                      <label htmlFor={`location-${index}`}>Location</label>
+                      <input
+                        placeholder="Location"
+                        value={entry.location}
+                        onChange={(e) => handleInputChange(index, "location", e.target.value)}
+                      />
+                    </Form.Field>
+                    <Form.Field>
+                      <label htmlFor={`submissionType-${index}`}>Submission Type</label>
+                      <Dropdown
+                        placeholder="Select Submission Type"
+                        fluid
+                        selection
+                        options={submissionTypes}
+                        value={entry.submissionType}
+                        onChange={(e, { value }) => handleInputChange(index, "submissionType", value)}
+                      />
+                    </Form.Field>
+                    <Form.Field>
+                      <label htmlFor={`title-${index}`}>Title</label>
+                      <input
+                        placeholder="Title"
+                        value={entry.title}
+                        onChange={(e) => handleInputChange(index, "title", e.target.value)}
+                      />
+                    </Form.Field>
+                    <Form.Field>
+                      <label htmlFor={`file-${index}`}>Upload</label>
+                      <input
+                        type="file"
+                        accept=".docx,.pdf,image/jpeg,image/jpg,image/png"
+                        onChange={(e) => handleFileChange(index, e.target.files[0])}
+                      />
+                    </Form.Field>
+                    {index > 0 && (
+                      <Button
+                        type="button"
+                        onClick={() => removeEntry(index)}
+                        style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "1em" }}
+                      >
+                        Cancel
+                      </Button>
+                    )}
+                  </Segment>
+                ))}
+                <div style={{ marginTop: "2%" }}>
+                  <Button type="button" onClick={addEntry} style={{ backgroundColor: "#690460", color: "#fff" }}>
+                    Add Another Entry
+                  </Button>
+                  <Button type="submit" style={{ backgroundColor: "#bb0d3b", color: "#fff" }}>
+                    Submit
+                  </Button>
+                </div>
+              </Form>
+            </Grid.Column>
+          </Grid.Row>
+          {loading && (
+            <Grid.Row>
+              <div style={{ display: "flex", justifyContent: "center", marginTop: "2em" }}>
+                <TailSpin height="80" width="80" color="#bb0d3b" ariaLabel="loading" />
               </div>
-            </Form>
-          </Grid.Column>
-        </Grid.Row>
-        {loading && (
-          <Grid.Row>
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2em' }}>
-              <TailSpin
-                height="80"
-                width="80"
-                color="#bb0d3b"
-                ariaLabel="loading"
-              />
-            </div>
-          </Grid.Row>
-        )}
-        {uploadProgress > 0 && uploadProgress < 100 && (
-          <Grid.Row>
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2em' }}>
-              <p>Uploading... {Math.round(uploadProgress)}%</p>
-            </div>
-          </Grid.Row>
-        )}
-        <Grid.Row>{layout}</Grid.Row>
-      </Grid>
+            </Grid.Row>
+          )}
+          {uploadProgress > 0 && uploadProgress < 100 && (
+            <Grid.Row>
+              <div style={{ display: "flex", justifyContent: "center", marginTop: "2em" }}>
+                <p>Uploading... {Math.round(uploadProgress)}%</p>
+              </div>
+            </Grid.Row>
+          )}
+          <Grid.Row>{layout}</Grid.Row>
+        </Grid>
+      </div>
     </div>
   );
 };

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { db } from '../firebase.js';
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
-import { Modal, Button } from 'semantic-ui-react';
+import React, { useState, useEffect } from "react";
+import { db } from "../firebase.js";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { Modal, Button } from "semantic-ui-react";
 
-import './members.css';
-import './home.css';
+import "./members.css";
+import "./home.css";
 
 function Members() {
   const [items, setItems] = useState([]);
@@ -23,18 +23,17 @@ function Members() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const querySnapshot = await getDocs(query(collection(db, 'members'), orderBy('date', 'asc')));
+        const querySnapshot = await getDocs(query(collection(db, "coreMembers"), orderBy("date", "asc")));
         const newData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setItems(newData);
-      } catch (error) {
-      }
+      } catch (error) {}
     };
 
     fetchData();
   }, []);
 
   return (
-    <div style={{ backgroundColor: '#dee0e3' }}>
+    <div style={{ backgroundColor: "#dee0e3" }}>
       <div className="grid-container-member margin-container">
         {items.map((item) => (
           <div className="grid-item-member" key={item.id} onClick={() => handleItemClick(item)}>
@@ -49,12 +48,12 @@ function Members() {
         ))}
       </div>
 
-      <Modal open={modalOpen} onClose={handleModalClose} style={{ width: 'auto', height: 'auto' }}>
+      <Modal open={modalOpen} onClose={handleModalClose} style={{ width: "auto", height: "auto" }}>
         <Modal.Header>{selectedItem?.title}</Modal.Header>
         <Modal.Content>
           <p>{selectedItem?.description}</p>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src={selectedItem?.imageUrl} alt={selectedItem?.title} style={{ maxWidth: '70vw', maxHeight: '50vh' }} />
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <img src={selectedItem?.imageUrl} alt={selectedItem?.title} style={{ maxWidth: "70vw", maxHeight: "50vh" }} />
           </div>
         </Modal.Content>
         <Modal.Actions>
@@ -62,7 +61,7 @@ function Members() {
         </Modal.Actions>
       </Modal>
 
-      <p style={{ textAlign: 'center', fontSize: '15px' }}>*members' names are posted in random order</p>
+      <p style={{ textAlign: "center", fontSize: "15px" }}>*members' names are posted in random order</p>
     </div>
   );
 }
