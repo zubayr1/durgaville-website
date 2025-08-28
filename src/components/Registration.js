@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Grid, Message, Segment, Header, Icon, List } from "semantic-ui-react";
+import { Button, Form, Grid, Segment, Header, Icon, List } from "semantic-ui-react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase.js";
 
