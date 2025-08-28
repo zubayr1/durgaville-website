@@ -15,7 +15,7 @@ const competitionData = {
       "Participants must bring their own pencil and colors.",
       "No reference photos are allowed during the competition.",
       "Allowed time is 60 minutes.",
-      "Top 3 winners will receive certificates and prizes.",
+
     ],
   },
   "Drawing Competition Age Group 2": {
@@ -28,7 +28,7 @@ const competitionData = {
       "Participants must bring their own pencil and colors.",
       "No reference photos are allowed during the competition.",
       "Allowed time is 60 minutes.",
-      "Top 3 winners will receive certificates and prizes.",
+
     ],
   },
   "Fancy dress competition for kids Group 1": {
@@ -39,7 +39,7 @@ const competitionData = {
     rules: [
       "Dress and makeup are to be done by the participants beforehand.",
       "Please note: There is no dressing room available in the puja hall.",
-      "Top 3 winners will receive certificates and prizes.",
+
     ],
   },
   "Fancy dress competition for kids Group 2": {
@@ -50,7 +50,6 @@ const competitionData = {
     rules: [
       "Dress and makeup are to be done by the participants beforehand.",
       "Please note: There is no dressing room available in the puja hall.",
-      "Top 3 winners will receive certificates and prizes.",
     ],
   },
   "Conch Playing": {
