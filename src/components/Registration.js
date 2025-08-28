@@ -15,8 +15,9 @@ const competitionData = {
       "Participants must bring their own pencil and colors.",
       "No reference photos are allowed during the competition.",
       "Allowed time is 60 minutes.",
-
     ],
+    minAge: 6,
+    maxAge: 11,
   },
   "Drawing Competition Age Group 2": {
     type: "kid",
@@ -28,8 +29,9 @@ const competitionData = {
       "Participants must bring their own pencil and colors.",
       "No reference photos are allowed during the competition.",
       "Allowed time is 60 minutes.",
-
     ],
+    minAge: 12,
+    maxAge: 17,
   },
   "Fancy dress competition for kids Group 1": {
     type: "kid",
@@ -39,8 +41,9 @@ const competitionData = {
     rules: [
       "Dress and makeup are to be done by the participants beforehand.",
       "Please note: There is no dressing room available in the puja hall.",
-
     ],
+    minAge: 3,
+    maxAge: 7,
   },
   "Fancy dress competition for kids Group 2": {
     type: "kid",
@@ -51,6 +54,8 @@ const competitionData = {
       "Dress and makeup are to be done by the participants beforehand.",
       "Please note: There is no dressing room available in the puja hall.",
     ],
+    minAge: 8,
+    maxAge: 12,
   },
   "Conch Playing": {
     type: "adult",
@@ -72,12 +77,10 @@ const competitionData = {
   },
 };
 
-// --- Main Component ---
 function Registration() {
-  // State now holds an array of entries
-  const [entries, setEntries] = useState([
-    { selectedCompetition: "", formData: {}, status: { loading: false, error: null, success: false } },
-  ]);
+  const [selectedCompetition, setSelectedCompetition] = useState("");
+  const [formData, setFormData] = useState({});
+  const [status, setStatus] = useState({ loading: false, error: null });
 
   const competitionOptions = Object.keys(competitionData).map((name) => ({
     key: name,
@@ -85,75 +88,75 @@ function Registration() {
     value: name,
   }));
 
-  // --- Handlers ---
-  const handleCompetitionChange = (index, value) => {
-    const newEntries = [...entries];
-    newEntries[index].selectedCompetition = value;
-    newEntries[index].formData = {}; // reset form data
-    newEntries[index].status = { loading: false, error: null, success: false };
-    setEntries(newEntries);
+  const handleCompetitionChange = (e, { value }) => {
+    setSelectedCompetition(value);
+    setFormData({});
+    setStatus({ loading: false, error: null });
   };
 
-  const handleInputChange = (index, name, value) => {
-    const newEntries = [...entries];
-    newEntries[index].formData[name] = value;
-    setEntries(newEntries);
+  const handleInputChange = (e, { name, value }) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (index) => {
-    const entry = entries[index];
-    const competitionInfo = competitionData[entry.selectedCompetition];
-
+  const handleSubmit = async () => {
+    const competitionInfo = competitionData[selectedCompetition];
     if (!competitionInfo) {
-      updateStatus(index, { loading: false, error: "Please select a competition.", success: false });
+      alert("Please select a competition.");
       return;
     }
 
+    // Required fields
     const requiredFields =
       competitionInfo.type === "kid"
         ? ["kidName", "kidAge", "parentName", "parentPhone", "parentEmail"]
         : ["name", "phone", "email"];
 
     for (const field of requiredFields) {
-      if (!entry.formData[field]) {
-        updateStatus(index, { loading: false, error: "Please fill out all required fields.", success: false });
+      if (!formData[field]) {
+        alert("Please fill out all required fields.");
         return;
       }
     }
 
-    const emailField = competitionInfo.type === "kid" ? entry.formData.parentEmail : entry.formData.email;
-    if (emailField && !/\S+@\S+\.\S+/.test(emailField)) {
-      updateStatus(index, { loading: false, error: "Please enter a valid email address.", success: false });
+    // Email validation
+    const emailField = competitionInfo.type === "kid" ? formData.parentEmail : formData.email;
+    if (!/^\S+@\S+\.\S+$/.test(emailField)) {
+      alert("Please submit a proper Email ID.");
       return;
     }
 
+    // Kid age validation
+    if (competitionInfo.type === "kid") {
+      const age = parseInt(formData.kidAge, 10);
+      if (isNaN(age) || age < competitionInfo.minAge || age > competitionInfo.maxAge) {
+        alert(`Please enter a valid age between ${competitionInfo.minAge} and ${competitionInfo.maxAge}.`);
+        return;
+      }
+    }
+
     // Submit to Firebase
-    updateStatus(index, { loading: true, error: null, success: false });
+    setStatus({ loading: true, error: null });
     try {
       await addDoc(collection(db, "competitions2025"), {
-        competition: entry.selectedCompetition,
-        ...entry.formData,
+        competition: selectedCompetition,
+        ...formData,
         registrationTime: new Date().toISOString(),
       });
-      updateStatus(index, { loading: false, error: null, success: true });
+      setStatus({ loading: false, error: null });
+      alert(
+        "Your registration is now complete. All the best! To register for another competition or child, you can submit again."
+      );
+      setSelectedCompetition("");
+      setFormData({});
     } catch (error) {
       console.error(error);
-      updateStatus(index, { loading: false, error: "An unexpected error occurred.", success: false });
+      setStatus({ loading: false, error: "An unexpected error occurred." });
     }
   };
 
-  const updateStatus = (index, newStatus) => {
-    const newEntries = [...entries];
-    newEntries[index].status = newStatus;
-    setEntries(newEntries);
-  };
-
-  const addEntry = () => {
-    setEntries([
-      ...entries,
-      { selectedCompetition: "", formData: {}, status: { loading: false, error: null, success: false } },
-    ]);
-  };
+  const currentCompetition = competitionData[selectedCompetition];
+  const isKidCompetition = currentCompetition?.type === "kid";
+  const isAdultCompetition = currentCompetition?.type === "adult";
 
   return (
     <div style={{ padding: "2em 0", overflowX: "hidden" }}>
@@ -174,161 +177,140 @@ function Registration() {
           </Grid.Column>
         </Grid.Row>
 
-        {entries.map((entry, index) => {
-          const currentCompetition = competitionData[entry.selectedCompetition];
-          const isKidCompetition = currentCompetition?.type === "kid";
-          const isAdultCompetition = currentCompetition?.type === "adult";
+        {/* Rules */}
+        {currentCompetition && (
+          <Grid.Row>
+            <Grid.Column mobile={15} tablet={12} computer={10}>
+              <Segment>
+                <Header as="h3">{selectedCompetition}</Header>
+                <p>
+                  <Icon name="calendar alternate outline" /> <strong>Date:</strong> {currentCompetition.date}
+                </p>
+                <p>
+                  <Icon name="clock outline" /> <strong>Time:</strong> {currentCompetition.time}
+                </p>
+                {currentCompetition.age && (
+                  <p>
+                    <Icon name="child" /> <strong>Age Group:</strong> {currentCompetition.age}
+                  </p>
+                )}
+                <Header as="h4">Rules:</Header>
+                <List bulleted>
+                  {currentCompetition.rules.map((rule, i) => (
+                    <List.Item key={i}>{rule}</List.Item>
+                  ))}
+                </List>
+              </Segment>
+            </Grid.Column>
+          </Grid.Row>
+        )}
 
-          return (
-            <React.Fragment key={index}>
-              {/* Rules */}
-              {currentCompetition && (
-                <Grid.Row>
-                  <Grid.Column mobile={15} tablet={12} computer={10}>
-                    <Segment>
-                      <Header as="h3">{entry.selectedCompetition}</Header>
-                      <p>
-                        <Icon name="calendar alternate outline" /> <strong>Date:</strong> {currentCompetition.date}
-                      </p>
-                      <p>
-                        <Icon name="clock outline" /> <strong>Time:</strong> {currentCompetition.time}
-                      </p>
-                      {currentCompetition.age && (
-                        <p>
-                          <Icon name="child" /> <strong>Age Group:</strong> {currentCompetition.age}
-                        </p>
-                      )}
-                      <Header as="h4">Rules:</Header>
-                      <List bulleted>
-                        {currentCompetition.rules.map((rule, i) => (
-                          <List.Item key={i}>{rule}</List.Item>
-                        ))}
-                      </List>
-                    </Segment>
-                  </Grid.Column>
-                </Grid.Row>
-              )}
+        {/* Form */}
+        <Grid.Row>
+          <Grid.Column mobile={15} tablet={12} computer={10}>
+            <Segment padded="very">
+              <Form loading={status.loading}>
+                <Form.Select
+                  fluid
+                  label="Competition Type"
+                  options={competitionOptions}
+                  placeholder="Choose a competition..."
+                  value={selectedCompetition}
+                  onChange={handleCompetitionChange}
+                  required
+                />
 
-              {/* Form */}
-              <Grid.Row>
-                <Grid.Column mobile={15} tablet={12} computer={10}>
-                  <Segment padded="very">
-                    <Form loading={entry.status.loading}>
-                      <Form.Select
-                        fluid
-                        label="Competition Type"
-                        options={competitionOptions}
-                        placeholder="Choose a competition..."
-                        value={entry.selectedCompetition}
-                        onChange={(e, { value }) => handleCompetitionChange(index, value)}
-                        required
-                      />
+                {isKidCompetition && (
+                  <>
+                    <Form.Input
+                      label="Kid's Name"
+                      name="kidName"
+                      placeholder="Enter kid's full name"
+                      value={formData.kidName || ""}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <Form.Input
+                      label="Kid's Age"
+                      name="kidAge"
+                      type="number"
+                      placeholder={`Required age: ${currentCompetition.age}`}
+                      value={formData.kidAge || ""}
+                      onChange={handleInputChange}
+                      required
+                      min={currentCompetition.minAge}
+                      max={currentCompetition.maxAge}
+                    />
+                    <Form.Input
+                      label="Parent's Name"
+                      name="parentName"
+                      placeholder="Enter parent's full name"
+                      value={formData.parentName || ""}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <Form.Input
+                      label="Parent's Phone Number"
+                      name="parentPhone"
+                      placeholder="Enter parent's phone number"
+                      value={formData.parentPhone || ""}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <Form.Input
+                      label="Parent's Email"
+                      name="parentEmail"
+                      type="email"
+                      placeholder="Enter parent's email address"
+                      value={formData.parentEmail || ""}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </>
+                )}
 
-                      {isKidCompetition && (
-                        <>
-                          <Form.Input
-                            label="Kid's Name"
-                            name="kidName"
-                            placeholder="Enter kid's full name"
-                            value={entry.formData.kidName || ""}
-                            onChange={(e, { name, value }) => handleInputChange(index, name, value)}
-                            required
-                          />
-                          <Form.Input
-                            label="Kid's Age"
-                            name="kidAge"
-                            type="number"
-                            placeholder={`Required age: ${currentCompetition.age}`}
-                            value={entry.formData.kidAge || ""}
-                            onChange={(e, { name, value }) => handleInputChange(index, name, value)}
-                            required
-                          />
-                          <Form.Input
-                            label="Parent's Name"
-                            name="parentName"
-                            placeholder="Enter parent's full name"
-                            value={entry.formData.parentName || ""}
-                            onChange={(e, { name, value }) => handleInputChange(index, name, value)}
-                            required
-                          />
-                          <Form.Input
-                            label="Parent's Phone Number"
-                            name="parentPhone"
-                            placeholder="Enter parent's phone number"
-                            value={entry.formData.parentPhone || ""}
-                            onChange={(e, { name, value }) => handleInputChange(index, name, value)}
-                            required
-                          />
-                          <Form.Input
-                            label="Parent's Email"
-                            name="parentEmail"
-                            type="email"
-                            placeholder="Enter parent's email address"
-                            value={entry.formData.parentEmail || ""}
-                            onChange={(e, { name, value }) => handleInputChange(index, name, value)}
-                            required
-                          />
-                        </>
-                      )}
+                {isAdultCompetition && (
+                  <>
+                    <Form.Input
+                      label="Name"
+                      name="name"
+                      placeholder="Enter your full name"
+                      value={formData.name || ""}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <Form.Input
+                      label="Phone Number"
+                      name="phone"
+                      placeholder="Enter your phone number"
+                      value={formData.phone || ""}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <Form.Input
+                      label="Email"
+                      name="email"
+                      type="email"
+                      placeholder="Enter your email address"
+                      value={formData.email || ""}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </>
+                )}
 
-                      {isAdultCompetition && (
-                        <>
-                          <Form.Input
-                            label="Name"
-                            name="name"
-                            placeholder="Enter your full name"
-                            value={entry.formData.name || ""}
-                            onChange={(e, { name, value }) => handleInputChange(index, name, value)}
-                            required
-                          />
-                          <Form.Input
-                            label="Phone Number"
-                            name="phone"
-                            placeholder="Enter your phone number"
-                            value={entry.formData.phone || ""}
-                            onChange={(e, { name, value }) => handleInputChange(index, name, value)}
-                            required
-                          />
-                          <Form.Input
-                            label="Email"
-                            name="email"
-                            type="email"
-                            placeholder="Enter your email address"
-                            value={entry.formData.email || ""}
-                            onChange={(e, { name, value }) => handleInputChange(index, name, value)}
-                            required
-                          />
-                        </>
-                      )}
-
-                      <Button
-                        type="button"
-                        onClick={() => handleSubmit(index)}
-                        disabled={!entry.selectedCompetition || entry.status.loading}
-                        style={{ backgroundColor: "#bb0d3b", color: "#fff", marginTop: "1em", marginRight: "1em" }}
-                      >
-                        Submit
-                      </Button>
-
-                      <Button
-                        type="button"
-                        onClick={addEntry}
-                        style={{ backgroundColor: "#007bff", color: "#fff", marginTop: "1em" }}
-                      >
-                        Add More Entry
-                      </Button>
-
-                      {entry.status.error && <Message error header="Error" content={entry.status.error} />}
-                      {entry.status.success && (
-                        <Message success header="Success!" content="Your registration has been submitted." />
-                      )}
-                    </Form>
-                  </Segment>
-                </Grid.Column>
-              </Grid.Row>
-            </React.Fragment>
-          );
-        })}
+                <Button
+                  type="button"
+                  onClick={handleSubmit}
+                  disabled={!selectedCompetition || status.loading}
+                  style={{ backgroundColor: "#bb0d3b", color: "#fff", marginTop: "1em" }}
+                >
+                  Submit
+                </Button>
+              </Form>
+            </Segment>
+          </Grid.Column>
+        </Grid.Row>
       </Grid>
     </div>
   );
