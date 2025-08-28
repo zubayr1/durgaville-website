@@ -127,10 +127,10 @@ function Home() {
                 </Button>
                 <Button
                   as={Link}
-                  to="/sharod-utsav-2025#sit-&-draw-registration"
+                  to="/sharod-utsav-2025#competitions-registration"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
-                  Register for Sit & Draw
+                  Register for Competitions
                 </Button>
                 <Button
                   as={Link}
@@ -293,10 +293,10 @@ function Home() {
                 </Button>
                 <Button
                   as={Link}
-                  to="/sharod-utsav-2025#sit-&-draw-registration"
+                  to="/sharod-utsav-2025#competitions-registration"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
-                  Register for Sit & Draw
+                  Register for Competitions
                 </Button>
                 <Button
                   as={Link}
@@ -459,10 +459,10 @@ function Home() {
                 </Button>
                 <Button
                   as={Link}
-                  to="/sharod-utsav-2025#sit-&-draw-registration"
+                  to="/sharod-utsav-2025#competitions-registration"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
-                  Register for Sit & Draw
+                  Register for Competitions
                 </Button>
                 <Button
                   as={Link}

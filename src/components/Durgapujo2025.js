@@ -33,8 +33,8 @@ function Durgapujo2025() {
       }
     }
 
-    if (location.hash === "#sit-&-draw-registration") {
-      const registrationElement = document.getElementById("sit-&-draw-registration");
+    if (location.hash === "#competitions-registration") {
+      const registrationElement = document.getElementById("competitions-registration");
       if (registrationElement) {
         // Calculate position with 20% offset
         const elementTop = registrationElement.offsetTop;
@@ -175,7 +175,7 @@ function Durgapujo2025() {
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row id="sit-&-draw-registration" centered>
+          <Grid.Row id="competitions-registration" centered>
             <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
               <Registration />
             </Grid.Column>
