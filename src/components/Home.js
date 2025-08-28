@@ -127,6 +127,13 @@ function Home() {
                 </Button>
                 <Button
                   as={Link}
+                  to="/sharod-utsav-2025#sit-&-draw-registration"
+                  style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
+                >
+                  Register for Sit & Draw
+                </Button>
+                <Button
+                  as={Link}
                   to="/sharod-utsav-2025#magazine-section"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
@@ -286,6 +293,13 @@ function Home() {
                 </Button>
                 <Button
                   as={Link}
+                  to="/sharod-utsav-2025#sit-&-draw-registration"
+                  style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
+                >
+                  Register for Sit & Draw
+                </Button>
+                <Button
+                  as={Link}
                   to="/sharod-utsav-2025#magazine-section"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
@@ -442,6 +456,13 @@ function Home() {
                   style={{ backgroundColor: "#ff0000", color: "#fff", marginBottom: "0.5em" }}
                 >
                   More Details about Durga Puja 2025
+                </Button>
+                <Button
+                  as={Link}
+                  to="/sharod-utsav-2025#sit-&-draw-registration"
+                  style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
+                >
+                  Register for Sit & Draw
                 </Button>
                 <Button
                   as={Link}

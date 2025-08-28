@@ -1,371 +1,187 @@
-import React from "react";
-import { Grid, Image, Icon, Divider } from "semantic-ui-react";
+import React, { useEffect } from "react";
+import { Grid, Image, Icon, Button } from "semantic-ui-react";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+// import { Carousel } from "react-responsive-carousel";
 
-import pujo_2024_aarti from "../assets/pujo_2024/aarti.jpg";
-import pujo_2024_ladies from "../assets/pujo_2024/narisakti.jpg";
-import pujo_2024_men from "../assets/pujo_2024/men.jpg";
+import pujo_2025_tagline from "../assets/pujo_2025_tagline.png";
+import Magazine from "./Magazine";
+import { useLocation } from "react-router-dom";
 
-import Sponsors from "./Sponsors";
-// import Registration from "./Registration";
-import Schedule from "./Schedule";
+// import Sponsors from "./Sponsors";
+import Registration from "./Registration";
+// import Schedule from "./Schedule";
+import "./DashboardDurgapujo2025.css";
 
 function Durgapujo2025() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Handle anchor link scrolling
+    if (location.hash === "#magazine-section") {
+      const magazineElement = document.getElementById("magazine-section");
+      if (magazineElement) {
+        // Calculate position with 20% offset
+        const elementTop = magazineElement.offsetTop;
+        const offset = window.innerHeight * 0.1; // 10% of viewport height
+        const scrollPosition = elementTop - offset;
+
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+
+    if (location.hash === "#sit-&-draw-registration") {
+      const registrationElement = document.getElementById("sit-&-draw-registration");
+      if (registrationElement) {
+        // Calculate position with 20% offset
+        const elementTop = registrationElement.offsetTop;
+        const offset = window.innerHeight * 0.1; // 10% of viewport height
+        const scrollPosition = elementTop - offset;
+
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  }, [location.hash]);
+
   return (
-    <div style={{ marginBottom: "5%" }}>
-      <Grid>
-        <Grid.Row centered>
-          <Grid.Column only="computer" width={16} textAlign="middle">
-            <p
-              style={{
-                fontFamily: "Inter",
-                fontSize: "4.0rem",
-                color: "black",
-                fontWeight: "bold",
-                marginBottom: "2%",
-                marginTop: "4%",
-                textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
-              }}
-            >
-              Sharod Utsav, 2025
-            </p>
+    <div style={{ marginBottom: "1%" }}>
+      <div style={{ display: "flex", justifyContent: "center", paddingLeft: "10%", paddingRight: "10%" }}>
+        <Grid>
+          <Grid.Row>
+            <Image src={pujo_2025_tagline} alt="Pujo 2025" />
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={16} only="computer tablet" verticalAlign="middle" textAlign="middle">
+              {/* Compact Location Section */}
+              <div className="location-section">
+                <Grid columns={2} stackable style={{ margin: 0 }}>
+                  <Grid.Column>
+                    <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                      <Icon name="calendar" size="large" style={{ color: "#ff0000" }} />
+                      <div>
+                        <div style={{ fontSize: "1.1rem", color: "#666", marginBottom: "0.2rem" }}>Event Dates</div>
+                        <div style={{ fontSize: "1.3rem", fontWeight: "600", color: "#333" }}>
+                          28th Sep - 2nd Oct 2025
+                        </div>
+                      </div>
+                    </div>
+                  </Grid.Column>
 
-            <p
-              style={{
-                fontFamily: "Inter",
-                fontSize: "1.6rem",
-                color: "black",
-                fontStyle: "italic",
-                marginBottom: "2%",
-                marginLeft: "7%",
-                marginRight: "7%",
-              }}
-            >
-              We are excited to announce our fifth edition of Durga Puja, taking place from
-              <span style={{ color: "#e88310" }}> 28th September to 2nd October 2025. </span>
-              Join us as we come together with friends and family to celebrate, pray, and seek the blessings of "Maa"
-              Durga. Our commitment to honoring "Maa" Durga through pure and traditional rituals continues, and we look
-              forward to creating another beautiful 'Home away from home.'
-              <span style={{ color: "#e88310" }}>
-                {" "}
-                <br /> Thank you to everyone who has been part of our journey. We can't wait to celebrate with you in
-                2025!
-              </span>
-            </p>
-          </Grid.Column>
+                  <Grid.Column>
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: "0.3rem" }}>
+                      <Icon name="map marker" size="large" style={{ color: "#ff0000", marginTop: "0.2rem" }} />
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: "1.1rem", color: "#666", marginBottom: "0.2rem" }}>Venue</div>
+                        <div style={{ fontSize: "1.3rem", fontWeight: "600", color: "#333", marginBottom: "0.3rem" }}>
+                          1st Floor, Royal King Restaurant
+                        </div>
+                        <div style={{ fontSize: "1rem", color: "#666", lineHeight: "1.4" }}>
+                          <span>Hauptstraße 12</span>
+                          <br />
+                          <span>91088 Bubenreuth, Germany</span>
+                        </div>
+                      </div>
+                      <Button
+                        as="a"
+                        href="https://www.google.com/maps/place/Royal+King/@49.6272539,11.0169038,17z/data=!3m1!4b1!4m6!3m5!1s0x47a1f851ff9a13af:0x882a08fbdca459ed!8m2!3d49.6272539!4d11.0169038!16s%2Fg%2F1tdwcyq0?entry=ttu&g_ep=EgoyMDI1MDcyMy4wIKXMDSoASAFQAw%3D%3D"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        size="mini"
+                        style={{
+                          backgroundColor: "#ff0000",
+                          color: "#fff",
+                          alignSelf: "flex-start",
+                          marginTop: "2.5rem",
+                        }}
+                      >
+                        <Icon name="external alternate" />
+                        Maps
+                      </Button>
+                    </div>
+                  </Grid.Column>
+                </Grid>
+              </div>
+            </Grid.Column>
 
-          <Grid.Column only="tablet" width={16} textAlign="middle">
-            <p
-              style={{
-                fontFamily: "Inter",
-                fontSize: "3.0rem",
-                color: "black",
-                fontWeight: "bold",
-                marginBottom: "2%",
-                marginTop: "6%",
-                textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
-              }}
-            >
-              Sharod Utsav, 2025
-            </p>
-
-            <p
-              style={{
-                fontFamily: "Inter",
-                fontSize: "1.4rem",
-                color: "black",
-                fontStyle: "italic",
-                marginBottom: "2%",
-                marginLeft: "7%",
-                marginRight: "7%",
-              }}
-            >
-              We are excited to announce our fifth edition of Durga Puja, taking place from
-              <span style={{ color: "#e88310" }}> 28th September to 2nd October 2025. </span>
-              Join us as we come together with friends and family to celebrate, pray, and seek the blessings of "Maa"
-              Durga. Our commitment to honoring "Maa" Durga through pure and traditional rituals continues, and we look
-              forward to creating another beautiful 'Home away from home.'
-              <span style={{ color: "#e88310" }}>
-                {" "}
-                <br /> Thank you to everyone who has been part of our journey. We can't wait to celebrate with you in
-                2025!
-              </span>
-            </p>
-          </Grid.Column>
-
-          <Grid.Column only="mobile" width={16} textAlign="middle">
-            <p
-              style={{
-                fontFamily: "Inter",
-                fontSize: "2.0rem",
-                color: "black",
-                fontWeight: "bold",
-                marginBottom: "5%",
-                marginTop: "6%",
-                textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
-              }}
-            >
-              Sharod Utsav, 2025
-            </p>
-            <p
-              style={{
-                fontFamily: "Inter",
-                fontSize: "1.1rem",
-                color: "black",
-                fontStyle: "italic",
-                marginBottom: "5%",
-                marginLeft: "7%",
-                marginRight: "7%",
-              }}
-            >
-              We are excited to announce our fifth edition of Durga Puja, taking place from
-              <span style={{ color: "#e88310" }}> 28th September to 2nd October 2025. </span>
-              Join us as we come together with friends and family to celebrate, pray, and seek the blessings of "Maa"
-              Durga. Our commitment to honoring "Maa" Durga through pure and traditional rituals continues, and we look
-              forward to creating another beautiful 'Home away from home.'
-              <span style={{ color: "#e88310" }}>
-                {" "}
-                <br /> Thank you to everyone who has been part of our journey. We can't wait to celebrate with you in
-                2025!
-              </span>
-            </p>
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row centered only="computer">
-          <Grid.Column width={6}>
-            <div style={{ display: "flex", alignItems: "flex-start" }}>
-              <Icon name="calendar" size="huge" />
-              <p
+            <Grid.Column width={16} only="mobile" verticalAlign="middle" textAlign="middle">
+              {/* Mobile Location Section */}
+              <div
                 style={{
-                  fontFamily: "Inter",
-                  fontSize: "1.3rem",
-                  color: "black",
-                  fontStyle: "italic",
+                  margin: "1.5rem 8%",
+                  padding: "1rem",
+                  backgroundColor: "#fff",
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                  border: "1px solid #f0f0f0",
                 }}
               >
-                <span style={{ fontSize: "1.5rem" }}>28th September </span>
-                <br />
-                to
-                <br />
-                <span style={{ fontSize: "1.5rem" }}>2nd October </span>
-                <br />
-                <span style={{ fontSize: "1.5rem", color: "#e88310" }}>2025</span>
-              </p>
-            </div>
-          </Grid.Column>
+                <div style={{ marginBottom: "1rem" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.8rem" }}>
+                    <Icon name="calendar" size="large" style={{ color: "#ff0000" }} />
+                    <div>
+                      <div style={{ fontSize: "1rem", color: "#666", marginBottom: "0.1rem" }}>Event Dates</div>
+                      <div style={{ fontSize: "1.1rem", fontWeight: "600", color: "#333" }}>
+                        28th Sep - 2nd Oct 2025
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-          <Grid.Column width={6}>
-            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "flex-end" }}>
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  fontSize: "1.3rem",
-                  color: "black",
-                  fontStyle: "italic",
-                }}
-              >
-                <span style={{ fontSize: "1.5rem" }}>Gemeindezentrum</span>
-                <br />
-                <span style={{ fontSize: "1.5rem" }}>Frauenaurach</span>
-                <br />
-                <span style={{ color: "#e88310" }}>Gaisbühlstraße 4 </span>
-                <br />
-                <span style={{ color: "#e88310" }}>91056 Erlangen</span>
-                <br />
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Gaisbühlstraße+4+91056+Erlangen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "#2e10c4", textDecoration: "none" }}
-                >
-                  Open in Google Maps
-                </a>
-              </p>
-              <Icon name="map marker alternate" size="huge" />
-            </div>
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row centered only="tablet">
-          <Grid.Column width={6}>
-            <div style={{ display: "flex", alignItems: "flex-start" }}>
-              <Icon name="calendar" size="big" />
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  fontSize: "1.2rem",
-                  color: "black",
-                  fontStyle: "italic",
-                }}
-              >
-                <span style={{ fontSize: "1.3rem" }}>28th September </span>
-                <br />
-                to
-                <br />
-                <span style={{ fontSize: "1.3rem" }}>2nd October </span>
-                <br />
-                <span style={{ fontSize: "1.3rem", color: "#e88310" }}>2025</span>
-              </p>
-            </div>
-          </Grid.Column>
-
-          <Grid.Column width={6}>
-            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "flex-end" }}>
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  fontSize: "1.2rem",
-                  color: "black",
-                  fontStyle: "italic",
-                }}
-              >
-                <span style={{ fontSize: "1.3rem" }}>Gemeindezentrum</span>
-                <br />
-                <span style={{ fontSize: "1.3rem" }}>Frauenaurach</span>
-                <br />
-                <span style={{ color: "#e88310" }}>Gaisbühlstraße 4 </span>
-                <br />
-                <span style={{ color: "#e88310" }}>91056 Erlangen</span>
-                <br />
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Gaisbühlstraße+4+91056+Erlangen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "#2e10c4", textDecoration: "none" }}
-                >
-                  Open in Google Maps
-                </a>
-              </p>
-              <Icon name="map marker alternate" size="big" />
-            </div>
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row centered only="mobile">
-          <Grid.Column width={7}>
-            <div style={{ display: "flex", alignItems: "flex-start" }}>
-              <Icon name="calendar" size="large" />
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  fontSize: "1.1rem",
-                  color: "black",
-                  fontStyle: "italic",
-                }}
-              >
-                <span style={{ fontSize: "1.2rem" }}>28th September </span>
-                <br />
-                to
-                <br />
-                <span style={{ fontSize: "1.2rem" }}>2nd October </span>
-                <br />
-                <span style={{ fontSize: "1.2rem", color: "#e88310" }}>2025</span>
-              </p>
-            </div>
-          </Grid.Column>
-
-          <Grid.Column width={7}>
-            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "flex-end" }}>
-              <p
-                style={{
-                  fontFamily: "Inter",
-                  fontSize: "1.1rem",
-                  color: "black",
-                  fontStyle: "italic",
-                }}
-              >
-                <span style={{ fontSize: "1.2rem" }}>Gemeindezentrum</span>
-                <br />
-                <span style={{ fontSize: "1.2rem" }}>Frauenaurach</span>
-                <br />
-                <span style={{ color: "#e88310" }}>Gaisbühlstraße 4 </span>
-                <br />
-                <span style={{ color: "#e88310" }}>91056 Erlangen</span>
-                <br />
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Gaisbühlstraße+4+91056+Erlangen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "#2e10c4", textDecoration: "none", fontSize: "1.0rem" }}
-                >
-                  Open in Google Maps
-                </a>
-              </p>
-              <Icon name="map marker alternate" size="large" />
-            </div>
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row centered only="computer tablet">
-          <div style={{ width: "80%" }}>
-            <Carousel autoPlay={true} infiniteLoop={true}>
-              <div>
-                <Image
-                  alt="Durgapujo 2024 Aarti"
-                  src={pujo_2024_aarti}
-                  style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
-                />
-                <p className="legend">Durgapujo 2024 Aarti</p>
+                <div>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "0.8rem" }}>
+                    <Icon name="map marker" size="large" style={{ color: "#ff0000", marginTop: "0.1rem" }} />
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: "1rem", color: "#666", marginBottom: "0.1rem" }}>Venue</div>
+                      <div style={{ fontSize: "1.1rem", fontWeight: "600", color: "#333", marginBottom: "0.2rem" }}>
+                        1st Floor, Royal King Restaurant
+                      </div>
+                      <div style={{ fontSize: "0.9rem", color: "#666", lineHeight: "1.3" }}>
+                        <span>Hauptstraße 12</span>
+                        <br />
+                        <span>91088 Bubenreuth, Germany</span>
+                      </div>
+                    </div>
+                    <Button
+                      as="a"
+                      href="https://www.google.com/maps/place/Royal+King/@49.6272539,11.0169038,17z/data=!3m1!4b1!4m6!3m5!1s0x47a1f851ff9a13af:0x882a08fbdca459ed!8m2!3d49.6272539!4d11.0169038!16s%2Fg%2F1tdwcyq0?entry=ttu&g_ep=EgoyMDI1MDcyMy4wIKXMDSoASAFQAw%3D%3D"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      size="mini"
+                      style={{
+                        backgroundColor: "#ff0000",
+                        color: "#fff",
+                        alignSelf: "flex-start",
+                        marginTop: "2rem",
+                      }}
+                    >
+                      <Icon name="external alternate" />
+                      Maps
+                    </Button>
+                  </div>
+                </div>
               </div>
-              <div>
-                <Image
-                  alt="Durgapujo 2024 NariSakti"
-                  src={pujo_2024_ladies}
-                  style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
-                />
-                <p className="legend">Durgapujo 2024 NariSakti</p>
-              </div>
-              <div>
-                <Image
-                  alt="Durgapujo 2024 men gang"
-                  src={pujo_2024_men}
-                  style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
-                />
-                <p className="legend">Durgapujo 2024 Men's Club</p>
-              </div>
-            </Carousel>
-          </div>
-        </Grid.Row>
+            </Grid.Column>
+          </Grid.Row>
 
-        <Grid.Row centered only="mobile">
-          <div style={{ width: "80%" }}>
-            <Carousel autoPlay={true} infiniteLoop={true}>
-              <div>
-                <Image
-                  alt="Durgapujo 2024 Aarti"
-                  src={pujo_2024_aarti}
-                  style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
-                />
-              </div>
-              <div>
-                <Image
-                  alt="Durgapujo 2024 Narisakti"
-                  src={pujo_2024_ladies}
-                  style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
-                />
-              </div>
-              <div>
-                <Image
-                  alt="Durgapujo 2024 men gang"
-                  src={pujo_2024_men}
-                  style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
-                />
-              </div>
-            </Carousel>
-          </div>
-        </Grid.Row>
+          <Grid.Row id="magazine-section" centered>
+            <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
+              <Magazine />
+            </Grid.Column>
+          </Grid.Row>
 
-        <Grid.Row centered>
-          <Schedule />
-        </Grid.Row>
-      </Grid>
-      <Divider />
-      {/* <Registration /> */}
-
-      <Sponsors />
+          <Grid.Row id="sit-&-draw-registration" centered>
+            <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
+              <Registration />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </div>
     </div>
   );
 }
