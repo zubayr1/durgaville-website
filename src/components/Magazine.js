@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Grid, Message, Dropdown, Segment } from "semantic-ui-react";
+import { Button, Form, Grid, Message, Dropdown, Segment, Header } from "semantic-ui-react";
 import { db, storage } from "../firebase.js";
 import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL, uploadString } from "firebase/storage";
@@ -233,9 +233,10 @@ const Magazine = () => {
       <div
         style={{
           overflow: "hidden",
-          marginTop: "1%",
+          // marginTop: "4.5rem",
           marginLeft: "2%",
           marginRight: "2%",
+          paddingTop: "5rem",
         }}
       >
         <Grid centered>
@@ -245,34 +246,9 @@ const Magazine = () => {
           </div>
         </Grid.Row> */}
 
-          <Grid.Row only="computer tablet">
-            <p
-              style={{
-                fontWeight: "bolder",
-                fontSize: "2rem",
-                fontFamily: "Inter",
-                marginTop: "0%",
-                marginLeft: "2%",
-                marginRight: "2%",
-              }}
-            >
-              Add Your Entry for the magazine
-            </p>
-          </Grid.Row>
-          <Grid.Row only="mobile">
-            <p
-              style={{
-                fontWeight: "bolder",
-                fontSize: "1.5rem",
-                fontFamily: "Inter",
-                marginTop: "1%",
-                marginLeft: "2%",
-                marginRight: "2%",
-              }}
-            >
-              Add Your Entry for the magazine
-            </p>
-          </Grid.Row>
+          <Header as="h1" style={{ fontSize: "3rem", color: "#333", marginBottom: "1rem" }}>
+            Add Your Entry for the magazine
+          </Header>
           <Grid.Row>
             <Grid.Column mobile={16} tablet={10} computer={8}>
               <Form onSubmit={handleSubmit}>
