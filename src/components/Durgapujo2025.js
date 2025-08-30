@@ -18,10 +18,10 @@ function Durgapujo2025() {
     <div style={{ marginBottom: "1%" }}>
       <div style={{ display: "flex", justifyContent: "center", paddingLeft: "10%", paddingRight: "10%" }}>
         <Grid>
-          <Grid.Row>
+          <Grid.Row style={{ marginBottom: "-2rem" }}>
             <Image src={pujo_2025_tagline} alt="Pujo 2025" />
           </Grid.Row>
-          <Grid.Row>
+          <Grid.Row style={{ marginBottom: "-3rem" }}>
             <Grid.Column width={16} only="computer tablet" verticalAlign="middle" textAlign="middle">
               {/* Compact Location Section */}
               <div className="location-section">
@@ -79,7 +79,6 @@ function Durgapujo2025() {
               <div
                 style={{
                   margin: "1.5rem 8%",
-                  padding: "1rem",
                   backgroundColor: "#fff",
                   borderRadius: "8px",
                   boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
@@ -134,29 +133,17 @@ function Durgapujo2025() {
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row id="competitions-registration" centered>
+          <Grid.Row id="competitions-registration" centered style={{ marginBottom: "-3rem" }}>
             <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
-              <NavHashLink
-                smooth
-                to="/sharod-utsav-2025#competitions-registration"
-                scroll={(el) => el.scrollIntoView({ behavior: "auto", block: "end" })}
-                activeClassName="selected"
-              >
-                <Registration />
-              </NavHashLink>
+              <NavHashLink smooth to="/sharod-utsav-2025#competitions-registration"></NavHashLink>
+              <Registration />
             </Grid.Column>
           </Grid.Row>
 
           <Grid.Row id="magazine-section" centered>
             <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
-              <NavHashLink
-                smooth
-                to="/sharod-utsav-2025#magazine-section"
-                scroll={(el) => el.scrollIntoView({ behavior: "auto", block: "end" })}
-                activeClassName="selected"
-              >
-                <Magazine />
-              </NavHashLink>
+              <NavHashLink smooth to="/sharod-utsav-2025#magazine-section"></NavHashLink>
+              <Magazine />
             </Grid.Column>
           </Grid.Row>
         </Grid>
