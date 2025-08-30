@@ -144,7 +144,7 @@ function Registration() {
       });
       setStatus({ loading: false, error: null });
       alert(
-        "Your registration is now complete. All the best! To register for another competition or child, you can submit again."
+        "Your registration is now complete. All the best! To register for another competition or child, you can submit again.",
       );
       setSelectedCompetition("");
       setFormData({});
@@ -159,8 +159,8 @@ function Registration() {
   const isAdultCompetition = currentCompetition?.type === "adult";
 
   return (
-    <div style={{ padding: "2em 0", overflowX: "hidden" }}>
-      <Grid container centered stackable>
+    <div style={{ padding: "2em 0", paddingTop: "4.5rem", overflow: "visible" }}>
+      <Grid centered stackable>
         <Grid.Row>
           <Grid.Column width={12} textAlign="center">
             <Header as="h1" style={{ fontSize: "3rem", color: "#333" }}>
@@ -218,6 +218,7 @@ function Registration() {
                   value={selectedCompetition}
                   onChange={handleCompetitionChange}
                   required
+                  style={{ zIndex: 1000 }}
                 />
 
                 {isKidCompetition && (
