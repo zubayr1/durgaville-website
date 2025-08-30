@@ -1,6 +1,8 @@
 import React from "react";
 import { Divider, Grid, Image, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
+
 import thakurhome from "../assets/thakurHome.jpg";
 // import sparkasse from "../assets/sponsors/sparkasse.jpg";
 // import boishakhi_header from "../assets/foods/boishakhi_header.png";
@@ -126,14 +128,14 @@ function Home() {
                   More Details about Durga Puja 2025
                 </Button>
                 <Button
-                  as={Link}
+                  as={HashLink}
                   to="/sharod-utsav-2025#competitions-registration"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
                   Register for Competitions
                 </Button>
                 <Button
-                  as={Link}
+                  as={HashLink}
                   to="/sharod-utsav-2025#magazine-section"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
@@ -292,14 +294,14 @@ function Home() {
                   More Details about Durga Puja 2025
                 </Button>
                 <Button
-                  as={Link}
+                  as={HashLink}
                   to="/sharod-utsav-2025#competitions-registration"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
                   Register for Competitions
                 </Button>
                 <Button
-                  as={Link}
+                  as={HashLink}
                   to="/sharod-utsav-2025#magazine-section"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
@@ -458,14 +460,14 @@ function Home() {
                   More Details about Durga Puja 2025
                 </Button>
                 <Button
-                  as={Link}
+                  as={HashLink}
                   to="/sharod-utsav-2025#competitions-registration"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
                   Register for Competitions
                 </Button>
                 <Button
-                  as={Link}
+                  as={HashLink}
                   to="/sharod-utsav-2025#magazine-section"
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >

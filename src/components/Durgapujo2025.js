@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Grid, Image, Icon, Button } from "semantic-ui-react";
+import { NavHashLink } from "react-router-hash-link";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 // import { Carousel } from "react-responsive-carousel";
 
 import pujo_2025_tagline from "../assets/pujo_2025_tagline.png";
 import Magazine from "./Magazine";
-import { useLocation } from "react-router-dom";
 
 // import Sponsors from "./Sponsors";
 import Registration from "./Registration";
@@ -14,41 +14,6 @@ import Registration from "./Registration";
 import "./DashboardDurgapujo2025.css";
 
 function Durgapujo2025() {
-  const location = useLocation();
-
-  useEffect(() => {
-    // Handle anchor link scrolling
-    if (location.hash === "#magazine-section") {
-      const magazineElement = document.getElementById("magazine-section");
-      if (magazineElement) {
-        // Calculate position with 20% offset
-        const elementTop = magazineElement.offsetTop;
-        const offset = window.innerHeight * 0.1; // 10% of viewport height
-        const scrollPosition = elementTop - offset;
-
-        window.scrollTo({
-          top: scrollPosition,
-          behavior: "smooth",
-        });
-      }
-    }
-
-    if (location.hash === "#competitions-registration") {
-      const registrationElement = document.getElementById("competitions-registration");
-      if (registrationElement) {
-        // Calculate position with 20% offset
-        const elementTop = registrationElement.offsetTop;
-        const offset = window.innerHeight * 0.1; // 10% of viewport height
-        const scrollPosition = elementTop - offset;
-
-        window.scrollTo({
-          top: scrollPosition,
-          behavior: "smooth",
-        });
-      }
-    }
-  }, [location.hash]);
-
   return (
     <div style={{ marginBottom: "1%" }}>
       <div style={{ display: "flex", justifyContent: "center", paddingLeft: "10%", paddingRight: "10%" }}>
@@ -169,15 +134,29 @@ function Durgapujo2025() {
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row id="magazine-section" centered>
+          <Grid.Row id="competitions-registration" centered>
             <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
-              <Magazine />
+              <NavHashLink
+                smooth
+                to="/sharod-utsav-2025#competitions-registration"
+                scroll={(el) => el.scrollIntoView({ behavior: "auto", block: "end" })}
+                activeClassName="selected"
+              >
+                <Registration />
+              </NavHashLink>
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row id="competitions-registration" centered>
+          <Grid.Row id="magazine-section" centered>
             <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
-              <Registration />
+              <NavHashLink
+                smooth
+                to="/sharod-utsav-2025#magazine-section"
+                scroll={(el) => el.scrollIntoView({ behavior: "auto", block: "end" })}
+                activeClassName="selected"
+              >
+                <Magazine />
+              </NavHashLink>
             </Grid.Column>
           </Grid.Row>
         </Grid>
