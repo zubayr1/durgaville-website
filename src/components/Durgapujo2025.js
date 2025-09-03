@@ -6,7 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 // import { Carousel } from "react-responsive-carousel";
 
 import pujo_2025_tagline from "../assets/pujo_2025_tagline.png";
-import Magazine from "./Magazine";
+// import Magazine from "./Magazine";
 
 // import Sponsors from "./Sponsors";
 import Registration from "./Registration";
@@ -143,7 +143,17 @@ function Durgapujo2025() {
           <Grid.Row id="magazine-section" centered>
             <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
               <NavHashLink smooth to="/sharod-utsav-2025#magazine-section"></NavHashLink>
-              <Magazine />
+              <h3
+                style={{
+                  color: "#333",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                  borderRadius: "8px",
+                  padding: "1rem",
+                  marginBottom: "2rem",
+                }}
+              >
+                All entries for the magazine are closed
+              </h3>
             </Grid.Column>
           </Grid.Row>
         </Grid>

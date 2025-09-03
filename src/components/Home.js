@@ -134,13 +134,6 @@ function Home() {
                 >
                   Register for Competitions
                 </Button>
-                <Button
-                  as={HashLink}
-                  to="/sharod-utsav-2025#magazine-section"
-                  style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
-                >
-                  Submit Magazine Entry
-                </Button>
               </div>
             </div>
 
@@ -300,13 +293,6 @@ function Home() {
                 >
                   Register for Competitions
                 </Button>
-                <Button
-                  as={HashLink}
-                  to="/sharod-utsav-2025#magazine-section"
-                  style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
-                >
-                  Submit Magazine Entry
-                </Button>
               </div>
             </div>
 
@@ -465,13 +451,6 @@ function Home() {
                   style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
                 >
                   Register for Competitions
-                </Button>
-                <Button
-                  as={HashLink}
-                  to="/sharod-utsav-2025#magazine-section"
-                  style={{ backgroundColor: "#bb0d3b", color: "#fff", marginBottom: "0.5em" }}
-                >
-                  Submit Magazine Entry
                 </Button>
               </div>
             </div>
