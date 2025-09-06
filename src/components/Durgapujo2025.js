@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Image, Icon, Button } from "semantic-ui-react";
 import { NavHashLink } from "react-router-hash-link";
+import crossword from "../assets/crossword.png"; // ✅ import the image
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 // import { Carousel } from "react-responsive-carousel";
@@ -154,6 +155,17 @@ function Durgapujo2025() {
               >
                 All entries for the magazine are closed
               </h3>
+              <Image
+                src={crossword}
+                alt="Crossword"
+                style={{
+                  maxWidth: "500px",
+                  margin: "0 auto 2rem",
+                  display: "block",
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                }}
+              />
             </Grid.Column>
           </Grid.Row>
         </Grid>
