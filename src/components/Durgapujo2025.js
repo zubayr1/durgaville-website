@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Image, Icon, Button } from "semantic-ui-react";
 import { NavHashLink } from "react-router-hash-link";
-import crossword from "../assets/crossword.png"; // ✅ import the image
+// import crossword from "../assets/crossword.png"; // ✅ import the image
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 // import { Carousel } from "react-responsive-carousel";
