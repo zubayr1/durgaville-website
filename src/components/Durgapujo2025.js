@@ -14,6 +14,8 @@ import Registration from "./Registration";
 // import Schedule from "./Schedule";
 import "./DashboardDurgapujo2025.css";
 
+import scheduleInvite from "../assets/2025_Schedule_Invite.mp4"; // ✅ import the video
+
 function Durgapujo2025() {
   return (
     <div style={{ marginBottom: "1%" }}>
@@ -133,6 +135,28 @@ function Durgapujo2025() {
               </div>
             </Grid.Column>
           </Grid.Row>
+
+          <Grid.Row id="schedule-invite" centered style={{ marginBottom: "-3rem" }}>
+            <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
+              <NavHashLink smooth to="/sharod-utsav-2025#schedule-invite"></NavHashLink>
+              <video
+                src={scheduleInvite}
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{
+                  maxWidth: "700px",
+                  width: "100%",
+                  height: "1200px", // 👈 fixed reduced height
+                  objectFit: "cover", // 👈 keeps video nicely cropped instead of stretched
+                  borderRadius: "12px",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
+                  marginBottom: "2rem",
+                }}
+              />
+            </Grid.Column>
+            </Grid.Row>
 
           <Grid.Row id="competitions-registration" centered style={{ marginBottom: "-3rem" }}>
             <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
