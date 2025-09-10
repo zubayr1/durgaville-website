@@ -43,7 +43,7 @@
 /* Tablet */
 @media (min-width: 768px) {
   .reel-wrapper {
-    max-width: 600px;
+    max-width: 450px;
   }
 }
 

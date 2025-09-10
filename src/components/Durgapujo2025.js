@@ -182,7 +182,7 @@ function Durgapujo2025() {
               >
                 All entries for the magazine are closed
               </h3>
-              <Image
+              {/* <Image
                 src={crossword}
                 alt="Crossword"
                 style={{
@@ -192,7 +192,7 @@ function Durgapujo2025() {
                   borderRadius: "8px",
                   boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
                 }}
-              />
+              /> */}
             </Grid.Column>
           </Grid.Row>
         </Grid>
