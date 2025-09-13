@@ -261,15 +261,15 @@ function Durgapujo2025() {
 
               {/* Responsive YouTube Shorts Iframe */}
               {/* Responsive YouTube Shorts Iframe */}
-<div className="reel-wrapper">
-  <iframe
-  src="https://www.youtube.com/embed/3M4LcttSjvM?autoplay=1&loop=1&playlist=3M4LcttSjvM&playsinline=1&modestbranding=1&controls=0"
-    title="Durga Pujo 2025 Invite Reel"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowFullScreen
-  ></iframe>
-</div>
+          <div className="reel-wrapper">
+            <iframe
+            src="https://www.youtube.com/embed/3M4LcttSjvM?autoplay=1&loop=1&playlist=3M4LcttSjvM&playsinline=1&modestbranding=1&controls=0"
+              title="Durga Pujo 2025 Invite Reel"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          </div>
             </Grid.Column>
           </Grid.Row>
 
