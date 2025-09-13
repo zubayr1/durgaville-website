@@ -30,13 +30,12 @@
 
 .reel-wrapper {
   position: relative;
-  width: 100%;
-  padding-top: 177.77%; /* 9:16 aspect ratio */
-  max-width: 320px; /* default for mobile */
+  width: 100%;       /* take full available width */
+  padding-top: 177.77%;
+  max-width: 100%;   /* remove cap */
   margin: 0 auto;
-  border-radius: 12px;
+  border-radius: 0;  /* optional: remove rounded corners */
   overflow: hidden;
-  box-shadow: 0 4px 15px rgb(193, 2, 2);
 }
 
 .reel-wrapper iframe {
