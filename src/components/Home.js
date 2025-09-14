@@ -211,6 +211,25 @@ function Home() {
 
           {/* Tablet */}
           <Grid.Column only="tablet" width={16} textAlign="middle">
+
+             <div style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
+                <iframe
+                  width="100%"
+                  height="215"
+                  src="https://www.youtube.com/embed/ll9XOSLxS-Y"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  style={{
+                    maxWidth: "100%",
+                    borderRadius: "12px",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                  }}
+                ></iframe>
+              </div>
+
+
             <p
               style={{
                 fontFamily: "Inter",
@@ -320,23 +339,7 @@ function Home() {
 
             {/* YouTube Video + CTA */}
             <div style={{ textAlign: "center", marginTop: "2rem", marginBottom: "2rem" }}>
-              <div style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
-                <iframe
-                  width="560"
-                  height="315"
-                  src="https://www.youtube.com/embed/ll9XOSLxS-Y"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  style={{
-                    maxWidth: "100%",
-                    borderRadius: "12px",
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-                  }}
-                ></iframe>
-              </div>
-
+      
               <p
                 style={{
                   fontFamily: "Inter",
@@ -389,6 +392,23 @@ function Home() {
 
           {/* Mobile */}
           <Grid.Column only="mobile" width={16} textAlign="middle">
+             <div style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
+                <iframe
+                  width="100%"
+                  height="215"
+                  src="https://www.youtube.com/embed/ll9XOSLxS-Y"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  style={{
+                    maxWidth: "100%",
+                    borderRadius: "12px",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+                  }}
+                ></iframe>
+              </div>
+
             <p
               style={{
                 fontFamily: "Inter",
@@ -498,22 +518,6 @@ function Home() {
 
             {/* YouTube Video + CTA */}
             <div style={{ textAlign: "center", marginTop: "2rem", marginBottom: "2rem" }}>
-              <div style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
-                <iframe
-                  width="100%"
-                  height="215"
-                  src="https://www.youtube.com/embed/ll9XOSLxS-Y"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  style={{
-                    maxWidth: "100%",
-                    borderRadius: "12px",
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-                  }}
-                ></iframe>
-              </div>
 
               <p
                 style={{
