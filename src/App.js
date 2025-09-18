@@ -21,6 +21,8 @@ import AdminEditMembers from "./components/adminComponents/AdminEditMembers";
 import AdminEditGallery from "./components/adminComponents/AdminEditGallery";
 
 import AdminCheckMagazineEntries from "./components/adminComponents/AdminCheckMagazineEntries";
+import AdminCheckCompetitionEntries from "./components/adminComponents/AdminCheckCompetitionEntries";
+
 import AdminBoishakhiOrders from "./components/adminComponents/AdminBoishakhiOrders";
 import AdminMagazineUpload from "./components/adminComponents/AdminMagazineUpload";
 
@@ -60,6 +62,7 @@ function App() {
           <Route exact path="/admineditgallery" element={<AdminEditGallery />} />
 
           <Route exact path="/admincheckmagazineentries" element={<AdminCheckMagazineEntries />} />
+           <Route exact path="/admincheckcompetitionentries" element={<AdminCheckCompetitionEntries />} />
           <Route exact path="/adminmagazineupload" element={<AdminMagazineUpload />} />
 
           <Route path="/admin/boishakhi-orders" element={<AdminBoishakhiOrders />} />

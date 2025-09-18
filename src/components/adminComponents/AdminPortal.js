@@ -133,6 +133,18 @@ const AdminPortal = () => {
                 Upload Magazine
               </Button>
             </Segment>
+
+
+            <Segment padded>
+              <Header as="h3">Competition 2025 Management</Header>
+              <Button
+                fluid
+                style={{ marginBottom: "1rem", backgroundColor: "#bb0d3b", color: "#fff" }}
+                onClick={() => navigate("/admincheckcompetitionentries")}
+              >
+                Check Competition 2025 Entries
+              </Button>
+            </Segment>
           </Grid.Column>
         </Grid.Row>
       </Grid>
