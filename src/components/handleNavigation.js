@@ -16,6 +16,11 @@ const useHandleNavigation = () => {
         navigate("/get-involved");
       }
     }
+    if (value === "/boishakhi-2025") {
+      if (!currentURL.includes("/boishakhi-2025")) {
+        navigate("/boishakhi-2025");
+      }
+    }
     if (value === "Sharod Utsav, 2025") {
       if (!currentURL.includes("/sharod-utsav-2025")) {
         navigate("/sharod-utsav-2025");
