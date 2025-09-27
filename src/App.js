@@ -25,6 +25,7 @@ import AdminCheckCompetitionEntries from "./components/adminComponents/AdminChec
 
 import AdminBoishakhiOrders from "./components/adminComponents/AdminBoishakhiOrders";
 import AdminMagazineUpload from "./components/adminComponents/AdminMagazineUpload";
+import AdminPressReleases from "./components/adminComponents/AdminPressReleases";
 
 import DataPrivacy from "./components/dataprivacy";
 import Impressum from "./components/impressum";
@@ -47,8 +48,8 @@ function App() {
           {/* <Route exact path="/meet-the-team" element={<DashboardMembers />} />*/}
           <Route exact path="/magazine" element={<DashboardMagazine />} />
           <Route exact path="/publications" element={<DashboardPublications />} />
-          <Route exact path="/publications/previous-magazines" element={<DashboardPublications />} />
-          <Route exact path="/publications/blogs" element={<DashboardPublications />} />
+          <Route exact path="/publications/annual-magazines" element={<DashboardPublications />} />
+          <Route exact path="/publications/press-releases" element={<DashboardPublications />} />
           <Route exact path="/adminlogin" element={<DashboardAdmin />} />
           <Route exact path="/adminportal" element={<AdminPortal />} />
           <Route exact path="/adminaddpastevent" element={<AdminAddPastEvent />} />
@@ -62,8 +63,9 @@ function App() {
           <Route exact path="/admineditgallery" element={<AdminEditGallery />} />
 
           <Route exact path="/admincheckmagazineentries" element={<AdminCheckMagazineEntries />} />
-           <Route exact path="/admincheckcompetitionentries" element={<AdminCheckCompetitionEntries />} />
+          <Route exact path="/admincheckcompetitionentries" element={<AdminCheckCompetitionEntries />} />
           <Route exact path="/adminmagazineupload" element={<AdminMagazineUpload />} />
+          <Route exact path="/adminpressreleases" element={<AdminPressReleases />} />
 
           <Route path="/admin/boishakhi-orders" element={<AdminBoishakhiOrders />} />
 

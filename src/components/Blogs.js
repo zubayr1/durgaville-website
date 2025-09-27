@@ -2,12 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Grid, Segment, Header, Icon, Label } from "semantic-ui-react";
 import Papa from "papaparse";
 import publicationsCSV from "../assets/publications.csv";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase.js";
 
 function Blogs() {
   const [publicationsData, setPublicationsData] = useState({});
   const [loading, setLoading] = useState(true);
+  const [pressReleaseImages, setPressReleaseImages] = useState({});
 
-  const [selectedYear, setSelectedYear] = useState("2024");
+  const [selectedYear, setSelectedYear] = useState(() => {
+    // Get selected year from session storage, default to "2024"
+    return sessionStorage.getItem("selectedYear") || "2024";
+  });
 
   // Parse CSV data and organize by year
   useEffect(() => {
@@ -18,15 +24,17 @@ function Blogs() {
 
         Papa.parse(csvText, {
           header: true,
-          complete: (results) => {
+          complete: async (results) => {
             const organizedData = {};
 
             results.data.forEach((row) => {
               if (row.Year && row["News Outlet"] && row.Type) {
                 const year = row.Year;
+                const newsOutlet = row["News Outlet"];
+
                 const publication = {
                   id: parseInt(row["Publication #"]),
-                  newsOutlet: row["News Outlet"],
+                  newsOutlet: newsOutlet,
                   type: row.Type,
                   url: row.URL === "NA" ? null : row.URL,
                   printDigital: row["Print/Digital"],
@@ -40,6 +48,9 @@ function Blogs() {
             });
 
             setPublicationsData(organizedData);
+
+            // Fetch press release images from Firebase
+            await fetchPressReleaseImages();
             setLoading(false);
           },
           error: (error) => {
@@ -50,6 +61,26 @@ function Blogs() {
       } catch (error) {
         console.error("Error fetching CSV:", error);
         setLoading(false);
+      }
+    };
+
+    const fetchPressReleaseImages = async () => {
+      try {
+        const pressReleasesSnapshot = await getDocs(collection(db, "pressreleases"));
+        const imagesMap = {};
+
+        pressReleasesSnapshot.forEach((doc) => {
+          const data = doc.data();
+          // Store both image URL and year for better matching
+          imagesMap[data.name + data.year] = {
+            imageUrl: data.imageUrl,
+            year: data.year,
+          };
+        });
+
+        setPressReleaseImages(imagesMap);
+      } catch (error) {
+        console.error("Error fetching press release images:", error);
       }
     };
 
@@ -64,6 +95,8 @@ function Blogs() {
 
   const handleYearClick = (year) => {
     setSelectedYear(year);
+    // Save selected year to session storage
+    sessionStorage.setItem("selectedYear", year);
   };
 
   const getTypeColor = (type) => {
@@ -85,6 +118,12 @@ function Blogs() {
       "Print + Digital": "purple",
     };
     return pdColors[pd] || "grey";
+  };
+
+  // Simple function to get image by name
+  const getPublicationImage = (newsOutlet, year) => {
+    const imageData = pressReleaseImages[newsOutlet + year];
+    return imageData ? imageData.imageUrl : null;
   };
 
   if (loading) {
@@ -164,7 +203,7 @@ function Blogs() {
                 >
                   <Grid>
                     <Grid.Row>
-                      <Grid.Column width={16}>
+                      <Grid.Column width={12}>
                         <Header
                           as="h3"
                           style={{
@@ -173,7 +212,7 @@ function Blogs() {
                             fontSize: "1.5rem",
                           }}
                         >
-                          {publication.newsOutlet}
+                          {publication.newsOutlet.replace(/\d+$/, "")}
                         </Header>
 
                         <div
@@ -222,6 +261,34 @@ function Blogs() {
                               <Icon name="external alternate" style={{ marginRight: "0.5rem" }} />
                               Read Article
                             </a>
+                          </div>
+                        )}
+                      </Grid.Column>
+
+                      <Grid.Column width={4}>
+                        {getPublicationImage(publication.newsOutlet, selectedYear) && (
+                          <div style={{ textAlign: "center", marginTop: "1rem" }}>
+                            <img
+                              src={getPublicationImage(publication.newsOutlet, selectedYear)}
+                              alt={`${publication.newsOutlet} thumbnail`}
+                              style={{
+                                width: "120px",
+                                height: "120px",
+                                objectFit: "cover",
+                                borderRadius: "12px",
+                                boxShadow: "0 8px 25px rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.1)",
+                                border: "3px solid #fff",
+                                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                              }}
+                              onMouseEnter={(e) => {
+                                e.target.style.transform = "scale(1.05)";
+                                e.target.style.boxShadow = "0 12px 35px rgba(0,0,0,0.2), 0 6px 15px rgba(0,0,0,0.15)";
+                              }}
+                              onMouseLeave={(e) => {
+                                e.target.style.transform = "scale(1)";
+                                e.target.style.boxShadow = "0 8px 25px rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.1)";
+                              }}
+                            />
                           </div>
                         )}
                       </Grid.Column>

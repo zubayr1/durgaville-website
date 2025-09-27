@@ -134,7 +134,6 @@ const AdminPortal = () => {
               </Button>
             </Segment>
 
-
             <Segment padded>
               <Header as="h3">Competition 2025 Management</Header>
               <Button
@@ -143,6 +142,17 @@ const AdminPortal = () => {
                 onClick={() => navigate("/admincheckcompetitionentries")}
               >
                 Check Competition 2025 Entries
+              </Button>
+            </Segment>
+
+            <Segment padded>
+              <Header as="h3">Press Release Management</Header>
+              <Button
+                fluid
+                style={{ marginBottom: "1rem", backgroundColor: "#bb0d3b", color: "#fff" }}
+                onClick={() => navigate("/adminpressreleases")}
+              >
+                Upload Press Release
               </Button>
             </Segment>
           </Grid.Column>

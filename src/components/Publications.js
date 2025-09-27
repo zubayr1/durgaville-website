@@ -8,8 +8,8 @@ function Publications() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const isPreviousMagazines = location.pathname === "/publications/previous-magazines";
-  const isBlogs = location.pathname === "/publications/blogs";
+  const isPreviousMagazines = location.pathname === "/publications/annual-magazines";
+  const isBlogs = location.pathname === "/publications/press-releases";
   const isMainPublications = location.pathname === "/publications";
 
   const handleNavigation = (path) => {
@@ -60,10 +60,10 @@ function Publications() {
                     color: "#fff",
                     marginBottom: "0.5em",
                   }}
-                  onClick={() => handleNavigation("/publications/previous-magazines")}
+                  onClick={() => handleNavigation("/publications/annual-magazines")}
                 >
                   <Icon name="book" style={{ marginRight: "0.5rem" }} />
-                  Previous Magazines
+                  Annual Magazines
                 </Button>
                 <Button
                   size="large"
@@ -72,10 +72,10 @@ function Publications() {
                     color: "#fff",
                     marginBottom: "0.5em",
                   }}
-                  onClick={() => handleNavigation("/publications/blogs")}
+                  onClick={() => handleNavigation("/publications/press-releases")}
                 >
                   <Icon name="pencil" style={{ marginRight: "0.5rem" }} />
-                  Blogs
+                  Press Releases
                 </Button>
               </div>
             </Segment>
