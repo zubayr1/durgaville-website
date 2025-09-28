@@ -1,62 +1,70 @@
 .location-section {
-    margin: 2rem;
-    padding: 1.5rem;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid #f0f0f0;
+  margin: 2rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f0f0f0;
 }
 
 @media (min-width: 1024px) {
-    .location-section {
-        margin: 2rem 22%;
-    }
+  .location-section {
+    margin: 2rem 22%;
+  }
 }
 
 @media (max-width: 1023px) {
-    .location-section {
-        margin: 1rem 5%;
-    }
+  .location-section {
+    margin: 1rem 5%;
+  }
 }
 
 @media (max-width: 767px) {
-    .location-section {
-        margin: 1rem 5%;
-        padding: 1rem;
-    }
+  .location-section {
+    margin: 1rem 5%;
+    padding: 1rem;
+  }
 }
 
 
 
 .reel-wrapper {
   position: relative;
-  width: 100%;       /* take full available width */
-  padding-top: 177.77%;
-  max-width: 100%;   /* remove cap */
+  width: 100%;
+  height: 70vh;
+  /* Set a fixed height based on viewport */
+  max-width: 100%;
   margin: 0 auto;
-  border-radius: 0;  /* optional: remove rounded corners */
+  border-radius: 0;
   overflow: hidden;
 }
 
 .reel-wrapper iframe {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
   width: 100%;
   height: 100%;
+  transform: translate(-50%, -50%);
   border: none;
+  object-fit: cover;
+  /* This will crop the video to fit without black bars */
 }
 
 /* Tablet */
 @media (min-width: 768px) {
   .reel-wrapper {
     max-width: 480px;
+    height: 60vh;
+    /* Slightly smaller height on tablet */
   }
 }
 
 /* Laptop/Desktop */
 @media (min-width: 1024px) {
   .reel-wrapper {
-    max-width: 700px; /* bigger reel display */
+    max-width: 900px;
+    height: 70vh;
+    /* Bigger height on desktop */
   }
 }
