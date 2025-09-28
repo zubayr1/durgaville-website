@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Grid,
-  Segment,
-  Header,
-  Icon,
-  Label,
-  Dropdown,
-  Image, // Import Image component
-} from "semantic-ui-react";
+import { Grid, Segment, Header, Icon, Label, Dropdown, Image } from "semantic-ui-react";
 import Papa from "papaparse";
 import publicationsCSV from "../assets/publications.csv";
 import { collection, getDocs } from "firebase/firestore";
@@ -22,7 +14,6 @@ function Blogs() {
     return sessionStorage.getItem("selectedYear") || "2024";
   });
 
-  // Parse CSV data and organize by year
   useEffect(() => {
     const parseCSV = async () => {
       try {
@@ -54,7 +45,6 @@ function Blogs() {
               }
             });
 
-            // Sort publications within each year by ID in descending order
             for (const year in organizedData) {
               organizedData[year].sort((a, b) => b.id - a.id);
             }
@@ -118,7 +108,6 @@ function Blogs() {
     sessionStorage.setItem("selectedYear", value);
   };
 
-  // Helper functions for styling
   const getTypeColor = (type) => {
     const typeColors = {
       "News Article": "blue",
@@ -229,7 +218,7 @@ function Blogs() {
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          padding: "2rem",
+          padding: "2rem 1rem", // Reduced horizontal padding for mobile
         }}
       >
         <Grid centered>
@@ -340,73 +329,102 @@ function Blogs() {
 
               {/* ## Mobile Publication Card ## */}
               <Grid.Row only="mobile">
-                <Grid.Column mobile={16}>
+                {/* FIX: Changed width to 15 to give space on the right 
+                  for the image to overflow without leaving the screen. 
+                */}
+                <Grid.Column mobile={15}>
                   <Segment
                     style={{
                       backgroundColor: "#fff",
                       borderRadius: "15px",
                       boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
                       border: "1px solid #dee2e6",
-                      textAlign: "center", // Center content for mobile
+                      padding: "1rem",
+                      position: "relative", // Needed for absolute positioning of image
+                      // FIX: REMOVED overflow: 'hidden' to let the image show
                     }}
                   >
-                    {getPublicationImage(publication.newsOutlet, selectedYear) && (
-                      <Image
-                        src={getPublicationImage(publication.newsOutlet, selectedYear)}
-                        alt={`${publication.newsOutlet} thumbnail`}
-                        centered
-                        style={{
-                          width: "120px",
-                          height: "120px",
-                          objectFit: "cover",
-                          borderRadius: "12px",
-                          boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-                          border: "3px solid #fff",
-                          marginBottom: "1rem",
-                        }}
-                      />
-                    )}
-                    <Header as="h4" style={{ color: "#333" }}>
-                      {publication.newsOutlet.replace(/\d+$/, "")}
-                    </Header>
-                    <Label.Group
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        gap: "0.5rem",
-                        marginBottom: "1rem",
-                        flexWrap: "wrap",
-                      }}
-                    >
-                      <Label color={getPrintDigitalColor(publication.printDigital)} style={{ borderRadius: "20px" }}>
-                        <Icon name={publication.printDigital === "Print" ? "file text outline" : "desktop"} />
-                        {publication.printDigital}
-                      </Label>
-                      <Label color={getTypeColor(publication.type)} style={{ borderRadius: "20px" }}>
-                        <Icon name="newspaper outline" /> {publication.type}
-                      </Label>
-                    </Label.Group>
-
-                    {publication.url && (
-                      <a
-                        href={publication.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          padding: "0.5rem 1rem",
-                          backgroundColor: "#bb0d3b",
-                          color: "#fff",
-                          textDecoration: "none",
-                          borderRadius: "8px",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        <Icon name="external alternate" style={{ marginRight: "0.5rem" }} />
-                        Read Article
-                      </a>
-                    )}
+                    <Grid>
+                      <Grid.Row>
+                        <Grid.Column width={10} style={{ paddingRight: 0 }}>
+                          <Header
+                            as="h4"
+                            style={{
+                              color: "#333",
+                              marginBottom: "0.5rem",
+                              fontSize: "1.2rem",
+                            }}
+                          >
+                            {publication.newsOutlet.replace(/\d+$/, "")}
+                          </Header>
+                          <div
+                            style={{
+                              marginBottom: "0.5rem",
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: "0.3rem",
+                              // FIX: Added alignItems to prevent labels from stretching
+                              alignItems: "flex-start",
+                            }}
+                          >
+                            <Label
+                              color={getPrintDigitalColor(publication.printDigital)}
+                              size="tiny"
+                              style={{ borderRadius: "20px" }}
+                            >
+                              <Icon name={publication.printDigital === "Print" ? "file text outline" : "desktop"} />
+                              {publication.printDigital}
+                            </Label>
+                            <Label color={getTypeColor(publication.type)} size="tiny" style={{ borderRadius: "20px" }}>
+                              <Icon name="newspaper outline" />
+                              {publication.type}
+                            </Label>
+                          </div>
+                          {publication.url && (
+                            <a
+                              href={publication.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                marginTop: "0.5rem",
+                                padding: "0.4rem 0.8rem",
+                                backgroundColor: "#bb0d3b",
+                                color: "#fff",
+                                textDecoration: "none",
+                                borderRadius: "8px",
+                                fontWeight: "bold",
+                                fontSize: "0.9rem",
+                              }}
+                            >
+                              <Icon name="external alternate" style={{ marginRight: "0.3rem" }} />
+                              Read Article
+                            </a>
+                          )}
+                        </Grid.Column>
+                        {getPublicationImage(publication.newsOutlet, selectedYear) && (
+                          <Grid.Column width={6} style={{ padding: 0 }}>
+                            <Image
+                              src={getPublicationImage(publication.newsOutlet, selectedYear)}
+                              alt={`${publication.newsOutlet} thumbnail`}
+                              style={{
+                                position: "absolute",
+                                right: "-20px", // Pushes image outside to the right
+                                top: "50%",
+                                transform: "translateY(-50%)",
+                                width: "90px",
+                                height: "90px",
+                                objectFit: "cover",
+                                borderRadius: "12px",
+                                boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+                                border: "3px solid #fff",
+                              }}
+                            />
+                          </Grid.Column>
+                        )}
+                      </Grid.Row>
+                    </Grid>
                   </Segment>
                 </Grid.Column>
               </Grid.Row>
