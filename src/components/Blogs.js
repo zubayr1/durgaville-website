@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Segment, Header, Icon, Label } from "semantic-ui-react";
+import {
+  Grid,
+  Segment,
+  Header,
+  Icon,
+  Label,
+  Dropdown,
+  Image, // Import Image component
+} from "semantic-ui-react";
 import Papa from "papaparse";
 import publicationsCSV from "../assets/publications.csv";
 import { collection, getDocs } from "firebase/firestore";
@@ -11,7 +19,6 @@ function Blogs() {
   const [pressReleaseImages, setPressReleaseImages] = useState({});
 
   const [selectedYear, setSelectedYear] = useState(() => {
-    // Get selected year from session storage, default to "2024"
     return sessionStorage.getItem("selectedYear") || "2024";
   });
 
@@ -47,9 +54,12 @@ function Blogs() {
               }
             });
 
-            setPublicationsData(organizedData);
+            // Sort publications within each year by ID in descending order
+            for (const year in organizedData) {
+              organizedData[year].sort((a, b) => b.id - a.id);
+            }
 
-            // Fetch press release images from Firebase
+            setPublicationsData(organizedData);
             await fetchPressReleaseImages();
             setLoading(false);
           },
@@ -71,7 +81,6 @@ function Blogs() {
 
         pressReleasesSnapshot.forEach((doc) => {
           const data = doc.data();
-          // Store both image URL and year for better matching
           imagesMap[data.name + data.year] = {
             imageUrl: data.imageUrl,
             year: data.year,
@@ -88,17 +97,28 @@ function Blogs() {
   }, []);
 
   const generateYearOptions = () => {
-    return Object.keys(publicationsData).sort((a, b) => b - a);
+    return Object.keys(publicationsData)
+      .sort((a, b) => b - a)
+      .map((year) => ({
+        key: year,
+        text: year,
+        value: year,
+      }));
   };
 
   const yearOptions = generateYearOptions();
 
   const handleYearClick = (year) => {
     setSelectedYear(year);
-    // Save selected year to session storage
     sessionStorage.setItem("selectedYear", year);
   };
 
+  const handleYearDropdownChange = (e, { value }) => {
+    setSelectedYear(value);
+    sessionStorage.setItem("selectedYear", value);
+  };
+
+  // Helper functions for styling
   const getTypeColor = (type) => {
     const typeColors = {
       "News Article": "blue",
@@ -120,7 +140,6 @@ function Blogs() {
     return pdColors[pd] || "grey";
   };
 
-  // Simple function to get image by name
   const getPublicationImage = (newsOutlet, year) => {
     const imageData = pressReleaseImages[newsOutlet + year];
     return imageData ? imageData.imageUrl : null;
@@ -149,97 +168,119 @@ function Blogs() {
 
   return (
     <div style={{ backgroundColor: "#dee0e3", minHeight: "100vh" }}>
-      {/* Year Headers */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexWrap: "wrap",
-          gap: "1rem",
-          padding: "2rem 0",
-          backgroundColor: "#f8f9fa",
-        }}
-      >
-        {yearOptions.map((year) => (
-          <div
-            key={year}
-            style={{
-              padding: "0.75rem 1.5rem",
-              backgroundColor: selectedYear === year ? "#bb0d3b" : "#fff",
-              color: selectedYear === year ? "#fff" : "#333",
-              borderRadius: "25px",
-              cursor: "pointer",
-              fontWeight: "bold",
-              boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-              transition: "all 0.3s ease",
-              border: selectedYear === year ? "2px solid #bb0d3b" : "2px solid #dee2e6",
-            }}
-            onClick={() => handleYearClick(year)}
-          >
-            {year}
-          </div>
-        ))}
+      {/* Year Headers Section */}
+      <div style={{ backgroundColor: "#f8f9fa", padding: "2rem 1rem" }}>
+        <Grid centered>
+          {/* ## Desktop and Tablet Year Selector ## */}
+          <Grid.Row only="computer tablet">
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                gap: "1rem",
+              }}
+            >
+              {yearOptions.map(({ value: year }) => (
+                <div
+                  key={year}
+                  style={{
+                    padding: "0.75rem 1.5rem",
+                    backgroundColor: selectedYear === year ? "#bb0d3b" : "#fff",
+                    color: selectedYear === year ? "#fff" : "#333",
+                    borderRadius: "25px",
+                    cursor: "pointer",
+                    fontWeight: "bold",
+                    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                    transition: "all 0.3s ease",
+                    border: selectedYear === year ? "2px solid #bb0d3b" : "2px solid #dee2e6",
+                  }}
+                  onClick={() => handleYearClick(year)}
+                >
+                  {year}
+                </div>
+              ))}
+            </div>
+          </Grid.Row>
+
+          {/* ## Mobile Year Selector ## */}
+          <Grid.Row only="mobile">
+            <Grid.Column width={14}>
+              <Dropdown
+                placeholder="Select Year"
+                fluid
+                selection
+                options={yearOptions}
+                value={selectedYear}
+                onChange={handleYearDropdownChange}
+                style={{
+                  borderRadius: "25px",
+                  boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                  border: "2px solid #bb0d3b",
+                }}
+              />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </div>
 
-      {/* Publications Grid */}
+      {/* Publications Grid Section */}
       <div
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
-          padding: "0 2rem 2rem 2rem",
+          padding: "2rem",
         }}
       >
-        <Grid centered stackable>
+        <Grid centered>
           {publicationsData[selectedYear]?.map((publication) => (
-            <Grid.Row key={publication.id}>
-              <Grid.Column mobile={16} tablet={14} computer={12}>
-                <Segment
-                  style={{
-                    backgroundColor: "#fff",
-                    borderRadius: "15px",
-                    boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-                    border: "1px solid #dee2e6",
-                  }}
-                >
-                  <Grid>
-                    <Grid.Row>
-                      <Grid.Column width={12}>
-                        <Header
-                          as="h3"
-                          style={{
-                            color: "#333",
-                            marginBottom: "1rem",
-                            fontSize: "1.5rem",
-                          }}
-                        >
-                          {publication.newsOutlet.replace(/\d+$/, "")}
-                        </Header>
-
-                        <div
-                          style={{
-                            marginBottom: "1rem",
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                          }}
-                        >
-                          <Label
-                            color={getPrintDigitalColor(publication.printDigital)}
-                            size="large"
-                            style={{ borderRadius: "20px" }}
+            <React.Fragment key={publication.id}>
+              {/* ## Desktop and Tablet Publication Card ## */}
+              <Grid.Row only="computer tablet">
+                <Grid.Column computer={12} tablet={14}>
+                  <Segment
+                    style={{
+                      backgroundColor: "#fff",
+                      borderRadius: "15px",
+                      boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                      border: "1px solid #dee2e6",
+                    }}
+                  >
+                    <Grid>
+                      <Grid.Row>
+                        <Grid.Column width={12}>
+                          <Header
+                            as="h3"
+                            style={{
+                              color: "#333",
+                              marginBottom: "1rem",
+                              fontSize: "1.5rem",
+                            }}
                           >
-                            <Icon name={publication.printDigital === "Print" ? "file text outline" : "desktop"} />
-                            {publication.printDigital}
-                          </Label>
-
-                          <Label color={getTypeColor(publication.type)} size="large" style={{ borderRadius: "20px" }}>
-                            <Icon name="newspaper outline" />
-                            {publication.type}
-                          </Label>
-                        </div>
-
-                        {publication.url && (
-                          <div style={{ marginTop: "1rem" }}>
+                            {publication.newsOutlet.replace(/\d+$/, "")}
+                          </Header>
+                          <div
+                            style={{
+                              marginBottom: "1rem",
+                              display: "flex",
+                              gap: "1rem",
+                              alignItems: "center",
+                            }}
+                          >
+                            <Label
+                              color={getPrintDigitalColor(publication.printDigital)}
+                              size="large"
+                              style={{ borderRadius: "20px" }}
+                            >
+                              <Icon name={publication.printDigital === "Print" ? "file text outline" : "desktop"} />
+                              {publication.printDigital}
+                            </Label>
+                            <Label color={getTypeColor(publication.type)} size="large" style={{ borderRadius: "20px" }}>
+                              <Icon name="newspaper outline" />
+                              {publication.type}
+                            </Label>
+                          </div>
+                          {publication.url && (
                             <a
                               href={publication.url}
                               target="_blank"
@@ -247,6 +288,7 @@ function Blogs() {
                               style={{
                                 display: "inline-flex",
                                 alignItems: "center",
+                                marginTop: "1rem",
                                 padding: "0.5rem 1rem",
                                 backgroundColor: "#bb0d3b",
                                 color: "#fff",
@@ -255,20 +297,17 @@ function Blogs() {
                                 fontWeight: "bold",
                                 transition: "background-color 0.3s ease",
                               }}
-                              onMouseEnter={(e) => (e.target.style.backgroundColor = "#8a0a2a")}
-                              onMouseLeave={(e) => (e.target.style.backgroundColor = "#bb0d3b")}
+                              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#8a0a2a")}
+                              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#bb0d3b")}
                             >
                               <Icon name="external alternate" style={{ marginRight: "0.5rem" }} />
                               Read Article
                             </a>
-                          </div>
-                        )}
-                      </Grid.Column>
-
-                      <Grid.Column width={4}>
-                        {getPublicationImage(publication.newsOutlet, selectedYear) && (
-                          <div style={{ textAlign: "center", marginTop: "1rem" }}>
-                            <img
+                          )}
+                        </Grid.Column>
+                        <Grid.Column width={4} verticalAlign="middle">
+                          {getPublicationImage(publication.newsOutlet, selectedYear) && (
+                            <Image
                               src={getPublicationImage(publication.newsOutlet, selectedYear)}
                               alt={`${publication.newsOutlet} thumbnail`}
                               style={{
@@ -281,22 +320,97 @@ function Blogs() {
                                 transition: "transform 0.3s ease, box-shadow 0.3s ease",
                               }}
                               onMouseEnter={(e) => {
-                                e.target.style.transform = "scale(1.05)";
-                                e.target.style.boxShadow = "0 12px 35px rgba(0,0,0,0.2), 0 6px 15px rgba(0,0,0,0.15)";
+                                e.currentTarget.style.transform = "scale(1.05)";
+                                e.currentTarget.style.boxShadow =
+                                  "0 12px 35px rgba(0,0,0,0.2), 0 6px 15px rgba(0,0,0,0.15)";
                               }}
                               onMouseLeave={(e) => {
-                                e.target.style.transform = "scale(1)";
-                                e.target.style.boxShadow = "0 8px 25px rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.1)";
+                                e.currentTarget.style.transform = "scale(1)";
+                                e.currentTarget.style.boxShadow =
+                                  "0 8px 25px rgba(0,0,0,0.15), 0 4px 10px rgba(0,0,0,0.1)";
                               }}
                             />
-                          </div>
-                        )}
-                      </Grid.Column>
-                    </Grid.Row>
-                  </Grid>
-                </Segment>
-              </Grid.Column>
-            </Grid.Row>
+                          )}
+                        </Grid.Column>
+                      </Grid.Row>
+                    </Grid>
+                  </Segment>
+                </Grid.Column>
+              </Grid.Row>
+
+              {/* ## Mobile Publication Card ## */}
+              <Grid.Row only="mobile">
+                <Grid.Column mobile={16}>
+                  <Segment
+                    style={{
+                      backgroundColor: "#fff",
+                      borderRadius: "15px",
+                      boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                      border: "1px solid #dee2e6",
+                      textAlign: "center", // Center content for mobile
+                    }}
+                  >
+                    {getPublicationImage(publication.newsOutlet, selectedYear) && (
+                      <Image
+                        src={getPublicationImage(publication.newsOutlet, selectedYear)}
+                        alt={`${publication.newsOutlet} thumbnail`}
+                        centered
+                        style={{
+                          width: "120px",
+                          height: "120px",
+                          objectFit: "cover",
+                          borderRadius: "12px",
+                          boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+                          border: "3px solid #fff",
+                          marginBottom: "1rem",
+                        }}
+                      />
+                    )}
+                    <Header as="h4" style={{ color: "#333" }}>
+                      {publication.newsOutlet.replace(/\d+$/, "")}
+                    </Header>
+                    <Label.Group
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        gap: "0.5rem",
+                        marginBottom: "1rem",
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <Label color={getPrintDigitalColor(publication.printDigital)} style={{ borderRadius: "20px" }}>
+                        <Icon name={publication.printDigital === "Print" ? "file text outline" : "desktop"} />
+                        {publication.printDigital}
+                      </Label>
+                      <Label color={getTypeColor(publication.type)} style={{ borderRadius: "20px" }}>
+                        <Icon name="newspaper outline" /> {publication.type}
+                      </Label>
+                    </Label.Group>
+
+                    {publication.url && (
+                      <a
+                        href={publication.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          padding: "0.5rem 1rem",
+                          backgroundColor: "#bb0d3b",
+                          color: "#fff",
+                          textDecoration: "none",
+                          borderRadius: "8px",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        <Icon name="external alternate" style={{ marginRight: "0.5rem" }} />
+                        Read Article
+                      </a>
+                    )}
+                  </Segment>
+                </Grid.Column>
+              </Grid.Row>
+            </React.Fragment>
           ))}
         </Grid>
 
@@ -319,7 +433,6 @@ function Blogs() {
                     as="h2"
                     style={{
                       color: "#666",
-                      fontFamily: "Inter",
                       fontWeight: "normal",
                       marginTop: "1rem",
                     }}
@@ -330,7 +443,6 @@ function Blogs() {
                     style={{
                       color: "#888",
                       fontSize: "1.1rem",
-                      fontFamily: "Inter",
                       marginTop: "1rem",
                     }}
                   >
