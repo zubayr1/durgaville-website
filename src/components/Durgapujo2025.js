@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Image, Icon, Button } from "semantic-ui-react";
 import { NavHashLink } from "react-router-hash-link";
 import pujo_2025_tagline from "../assets/pujo_2025_tagline.png";
+import crossword from "../assets/crossword.png"; // ✅ Import crossword image
 import Registration from "./Registration";
 import "./DashboardDurgapujo2025.css";
 
@@ -259,17 +260,15 @@ function Durgapujo2025() {
             <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
               <NavHashLink smooth to="/sharod-utsav-2025#schedule-invite"></NavHashLink>
 
-              {/* Responsive YouTube Shorts Iframe */}
-              {/* Responsive YouTube Shorts Iframe */}
-          <div className="reel-wrapper">
-            <iframe
-            src="https://www.youtube.com/embed/3M4LcttSjvM?autoplay=1&loop=1&playlist=3M4LcttSjvM&playsinline=1&modestbranding=1&controls=0"
-              title="Durga Pujo 2025 Invite Reel"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
-          </div>
+              <div className="reel-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/3M4LcttSjvM?autoplay=1&loop=1&playlist=3M4LcttSjvM&playsinline=1&modestbranding=1&controls=0"
+                  title="Durga Pujo 2025 Invite Reel"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
             </Grid.Column>
           </Grid.Row>
 
@@ -296,6 +295,33 @@ function Durgapujo2025() {
               >
                 All entries for the magazine are closed
               </h3>
+
+              {/* ✅ Added heading before crossword */}
+              <h4
+                style={{
+                  color: "#444",
+                  fontWeight: "600",
+                  marginBottom: "1rem",
+                }}
+              >
+                Solution to the crossword puzzle from Magazine
+              </h4>
+
+              {/* ✅ Added responsive crossword image */}
+              <Image
+                src={crossword}
+                alt="Crossword Puzzle Solution"
+                fluid
+                centered
+                style={{
+                  maxWidth: "600px",
+                  width: "100%",
+                  height: "auto",
+                  borderRadius: "8px",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                  marginBottom: "2rem",
+                }}
+              />
             </Grid.Column>
           </Grid.Row>
         </Grid>
