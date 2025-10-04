@@ -3,8 +3,9 @@ import { Grid, Image, Icon, Button } from "semantic-ui-react";
 import { NavHashLink } from "react-router-hash-link";
 import pujo_2025_tagline from "../assets/pujo_2025_tagline.png";
 import crossword from "../assets/crossword.png"; // ✅ Import crossword image
-import Registration from "./Registration";
+// import Registration from "./Registration";
 import "./DashboardDurgapujo2025.css";
+import Sponsors from "./Sponsors_2025";
 
 function Durgapujo2025() {
   return (
@@ -25,12 +26,7 @@ function Durgapujo2025() {
 
           {/* Location Section (Desktop/Tablet) */}
           <Grid.Row style={{ marginBottom: "-3rem" }}>
-            <Grid.Column
-              width={16}
-              only="computer tablet"
-              verticalAlign="middle"
-              textAlign="middle"
-            >
+            <Grid.Column width={16} only="computer tablet" verticalAlign="middle" textAlign="middle">
               <div className="location-section">
                 <Grid columns={2} stackable style={{ margin: 0 }}>
                   <Grid.Column>
@@ -41,11 +37,7 @@ function Durgapujo2025() {
                         gap: "1rem",
                       }}
                     >
-                      <Icon
-                        name="calendar"
-                        size="large"
-                        style={{ color: "#ff0000" }}
-                      />
+                      <Icon name="calendar" size="large" style={{ color: "#ff0000" }} />
                       <div>
                         <div
                           style={{
@@ -77,11 +69,7 @@ function Durgapujo2025() {
                         gap: "0.3rem",
                       }}
                     >
-                      <Icon
-                        name="map marker"
-                        size="large"
-                        style={{ color: "#ff0000", marginTop: "0.2rem" }}
-                      />
+                      <Icon name="map marker" size="large" style={{ color: "#ff0000", marginTop: "0.2rem" }} />
                       <div style={{ flex: 1 }}>
                         <div
                           style={{
@@ -137,12 +125,7 @@ function Durgapujo2025() {
             </Grid.Column>
 
             {/* Mobile Location Section */}
-            <Grid.Column
-              width={16}
-              only="mobile"
-              verticalAlign="middle"
-              textAlign="middle"
-            >
+            <Grid.Column width={16} only="mobile" verticalAlign="middle" textAlign="middle">
               <div
                 style={{
                   margin: "1.5rem 8%",
@@ -160,11 +143,7 @@ function Durgapujo2025() {
                       gap: "0.8rem",
                     }}
                   >
-                    <Icon
-                      name="calendar"
-                      size="large"
-                      style={{ color: "#ff0000" }}
-                    />
+                    <Icon name="calendar" size="large" style={{ color: "#ff0000" }} />
                     <div>
                       <div
                         style={{
@@ -196,11 +175,7 @@ function Durgapujo2025() {
                       gap: "0.8rem",
                     }}
                   >
-                    <Icon
-                      name="map marker"
-                      size="large"
-                      style={{ color: "#ff0000", marginTop: "0.1rem" }}
-                    />
+                    <Icon name="map marker" size="large" style={{ color: "#ff0000", marginTop: "0.1rem" }} />
                     <div style={{ flex: 1 }}>
                       <div
                         style={{
@@ -273,13 +248,28 @@ function Durgapujo2025() {
           </Grid.Row>
 
           {/* Competitions Registration */}
-          <Grid.Row id="competitions-registration" centered style={{ marginBottom: "-3rem" }}>
+          {/* <Grid.Row id="competitions-registration" centered style={{ marginBottom: "-3rem" }}>
             <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
               <NavHashLink smooth to="/sharod-utsav-2025#competitions-registration"></NavHashLink>
               <Registration />
             </Grid.Column>
-          </Grid.Row>
+          </Grid.Row> */}
+        </Grid>
+      </div>
 
+      <div style={{ marginTop: "2%" }}>
+        <Sponsors />
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          paddingLeft: "10%",
+          paddingRight: "10%",
+        }}
+      >
+        <Grid>
           {/* Magazine Section */}
           <Grid.Row id="magazine-section" centered>
             <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
