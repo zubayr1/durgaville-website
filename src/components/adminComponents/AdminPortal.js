@@ -128,7 +128,7 @@ const AdminPortal = () => {
               <Button
                 fluid
                 style={{ marginBottom: "1rem", backgroundColor: "#bb0d3b", color: "#fff" }}
-                onClick={() => navigate("/magazineupload")}
+                onClick={() => navigate("/adminmagazineupload")}
               >
                 Upload Magazine
               </Button>

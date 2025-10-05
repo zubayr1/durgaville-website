@@ -31,7 +31,7 @@ function MobileView() {
           onClick={() => handlebuttonClick("Sharod Utsav, 2025")}
           style={{ fontWeight: "bolder", fontFamily: "Inter" }}
         >
-          SHAROD UTAV, 2025
+          SHAROD UTSAV, 2025
         </p>
       </Grid.Row>
 
@@ -40,7 +40,7 @@ function MobileView() {
           onClick={() => handlebuttonClick("Sharod Utsav, 2024")}
           style={{ fontWeight: "bolder", fontFamily: "Inter" }}
         >
-          SHAROD UTAV, 2024
+          SHAROD UTSAV, 2024
         </p>
       </Grid.Row>
 
