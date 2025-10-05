@@ -231,7 +231,7 @@ function Durgapujo2025() {
           </Grid.Row>
 
           {/* Schedule Invite Reel */}
-          <Grid.Row id="schedule-invite" centered style={{ marginBottom: "-3rem" }}>
+          <Grid.Row id="schedule-invite" centered>
             <Grid.Column width={16} verticalAlign="middle" textAlign="middle">
               <NavHashLink smooth to="/sharod-utsav-2025#schedule-invite"></NavHashLink>
 
