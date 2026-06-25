@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { Grid, FormField, Button, Form, TextArea, Message, Icon } from "semantic-ui-react";
+import emailjs from "@emailjs/browser";
 
 import { db } from "../firebase.js";
 import { collection, addDoc } from "firebase/firestore";
+
+const EMAILJS_SERVICE_ID = "service_mt6h79k";
+const EMAILJS_TEMPLATE_ID = "template_4ykihjs";
+const EMAILJS_PUBLIC_KEY = "l_rXiZHNpQzSlkYem";
 
 function Footer() {
   const [name, setName] = useState("");
@@ -27,20 +32,25 @@ function Footer() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
     if (name === "" || email === "" || description === "") {
       setError(1);
     } else {
       try {
-        // Add message to a 'messages' collection in Firestore
         await addDoc(collection(db, "messages"), {
           name: name,
           email: email,
           description: description,
           date: currentDate.toLocaleString(),
         });
-        setError(0);
 
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          { from_name: name, from_email: email, message: description },
+          EMAILJS_PUBLIC_KEY
+        );
+
+        setError(0);
         setTimeout(() => {
           window.location.reload();
         }, 2000);

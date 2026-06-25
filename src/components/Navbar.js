@@ -19,6 +19,8 @@ function Navbar({ visible, setVisible }) {
       setActiveItem("home");
     } else if (currentURL.includes("/get-involved")) {
       setActiveItem("get-involved");
+    } else if (currentURL.includes("/sharod-utsav-2026")) {
+      setActiveItem("Sharod Utsav, 2026");
     } else if (currentURL.includes("/sharod-utsav-2025")) {
       setActiveItem("Sharod Utsav, 2025");
     } else if (currentURL.includes("/sharod-utsav-2024")) {
@@ -56,6 +58,11 @@ function Navbar({ visible, setVisible }) {
     if (name === "get-involved") {
       if (!currentURL.includes("/get-involved")) {
         navigate("/get-involved");
+      }
+    }
+    if (name === "Sharod Utsav, 2026") {
+      if (!currentURL.includes("/sharod-utsav-2026")) {
+        navigate("/sharod-utsav-2026");
       }
     }
     if (name === "Sharod Utsav, 2025") {
@@ -149,6 +156,12 @@ function Navbar({ visible, setVisible }) {
                   onClick={handleItemClick}
                   className={activeItem === "Boishakhi, 2025" ? "active" : ""}
                 /> */}
+                <Menu.Item
+                  name="Sharod Utsav, 2026"
+                  active={activeItem === "Sharod Utsav, 2026"}
+                  onClick={handleItemClick}
+                  className={activeItem === "Sharod Utsav, 2026" ? "active" : ""}
+                />
                 <Menu.Item
                   name="Sharod Utsav, 2025"
                   active={activeItem === "Sharod Utsav, 2025"}
@@ -245,6 +258,12 @@ function Navbar({ visible, setVisible }) {
                   onClick={handleItemClick}
                   className={activeItem === "Boishakhi, 2025" ? "active" : ""}
                 /> */}
+                <Menu.Item
+                  name="Sharod Utsav, 2026"
+                  active={activeItem === "Sharod Utsav, 2026"}
+                  onClick={handleItemClick}
+                  className={activeItem === "Sharod Utsav, 2026" ? "active" : ""}
+                />
                 <Menu.Item
                   name="Sharod Utsav, 2025"
                   active={activeItem === "Sharod Utsav, 2025"}
