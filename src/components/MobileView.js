@@ -44,14 +44,14 @@ function MobileView() {
         </p>
       </Grid.Row>
 
-      <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
+      {/* <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
         <p
           onClick={() => handlebuttonClick("Sharod Utsav, 2024")}
           style={{ fontWeight: "bolder", fontFamily: "Inter" }}
         >
           SHAROD UTSAV, 2024
         </p>
-      </Grid.Row>
+      </Grid.Row> */}
 
       <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
         <p onClick={() => handlebuttonClick("upcoming-events")} style={{ fontWeight: "bolder", fontFamily: "Inter" }}>

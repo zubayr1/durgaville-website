@@ -6,6 +6,33 @@ import { Modal, Button } from "semantic-ui-react";
 import "./upcomingEvents.css";
 import "./home.css";
 
+import pujaImage from "../assets/puja.jpeg";
+
+// Shown above the events coming from Firestore
+const hardcodedEvents = [
+  {
+    id: "sharod-utsav-2026",
+    title: "Sharod Utsav 2026",
+    date: "2026-10-16",
+    imageUrl: pujaImage,
+    description: `She returns every year. But some arrivals feel different.
+
+For six years, Durgaville has been more than a celebration. It has been a promise to keep a piece of home alive in the heart of Germany. A place where the sound of the dhaak, the fragrance of shiuli, the glow of the lights, and the warmth of togetherness remind us that some traditions never fade, no matter how far we are from home.
+
+This year, we invite you to experience the magic.
+
+Not just to attend a festival, but to witness a spectacle that has been imagined, designed, and crafted with love over countless hours. A celebration where every detail has a purpose, every moment tells a story, and every memory is meant to stay with you long after the final dhunuchi dance.
+
+A new idol. A new vision. A season reborn.
+
+We are not ready to reveal everything just yet. But when the final curtains rise this October, we hope you won't just attend another Durga Puja. We hope you'll witness something that will make every devotee's heart feel at home, and every visitor understands why this festival means so much to us.
+
+This October, come and witness Durga Puja in Erlangen like never before.
+
+Sharod Utsav 2026 is almost here. Just 80 more days!!!`,
+  },
+];
+
 function Events() {
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -55,7 +82,7 @@ function Events() {
   return (
     <div style={{ backgroundColor: "#dee0e3" }}>
       <div className="grid-container-events">
-        {items.map((item) => (
+        {[...hardcodedEvents, ...items].map((item) => (
           <div className="grid-item-events" key={item.id} onClick={() => handleItemClick(item)}>
             {/* This is now a flex container for the row layout */}
             <div className="item-content-events">

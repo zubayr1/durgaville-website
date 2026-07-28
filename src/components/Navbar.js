@@ -168,12 +168,12 @@ function Navbar({ visible, setVisible }) {
                   onClick={handleItemClick}
                   className={activeItem === "Sharod Utsav, 2025" ? "active" : ""}
                 />
-                <Menu.Item
+                {/* <Menu.Item
                   name="Sharod Utsav, 2024"
                   active={activeItem === "Sharod Utsav, 2024"}
                   onClick={handleItemClick}
                   className={activeItem === "Sharod Utsav, 2024" ? "active" : ""}
-                />
+                /> */}
                 <Menu.Item
                   name="upcoming-events"
                   active={activeItem === "upcoming-events"}
@@ -270,12 +270,12 @@ function Navbar({ visible, setVisible }) {
                   onClick={handleItemClick}
                   className={activeItem === "Sharod Utsav, 2025" ? "active" : ""}
                 />
-                <Menu.Item
+                {/* <Menu.Item
                   name="Sharod Utsav, 2024"
                   active={activeItem === "Sharod Utsav, 2024"}
                   onClick={handleItemClick}
                   className={activeItem === "Sharod Utsav, 2024" ? "active" : ""}
-                />
+                /> */}
                 <Menu.Item
                   name="upcoming-events"
                   active={activeItem === "upcoming-events"}

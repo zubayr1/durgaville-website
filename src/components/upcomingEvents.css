@@ -52,6 +52,7 @@
   line-height: 1.7;
   font-family: "Inter", sans-serif;
   text-align: left; /* Justify or left-align is usually better for paragraphs */
+  white-space: pre-line; /* Keeps the paragraph breaks in multi-line descriptions */
 }
 
 .grid-container-events {
