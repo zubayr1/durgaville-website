@@ -1,86 +1,84 @@
-import React, { useState, useEffect, useRef } from 'react'
-import Background from './Background'
-import Greetings from './Greetings'
-import Footer from './Footer'
-import Navbar from './Navbar'
-import AdminLogin from './AdminLogin'
-import { SidebarPusher, SidebarPushable, Icon, GridColumn, Grid, Sidebar } from 'semantic-ui-react'
-import { Helmet } from 'react-helmet';
+import React, { useState, useEffect, useRef } from "react";
+import Greetings from "./Greetings";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
+import AdminLogin from "./adminComponents/AdminLogin";
+import { SidebarPusher, SidebarPushable, Icon, GridColumn, Grid, Sidebar } from "semantic-ui-react";
+import { Helmet } from "react-helmet";
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 function DashboardAdmin() {
-  const [navbarVisible, setNavbarVisible] = useState(false)
+  const [navbarVisible, setNavbarVisible] = useState(false);
 
-  const [scrollPosition, setScrollPosition] = useState(0)
+  const [scrollPosition, setScrollPosition] = useState(0);
 
-  const homeRef = useRef()
+  const homeRef = useRef();
 
   useEffect(() => {
     // Scroll to the Home component when scrollPosition changes
     if (homeRef.current) {
-      homeRef.current.scrollIntoView({ behavior: 'smooth' })
+      homeRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [scrollPosition])
+  }, [scrollPosition]);
 
   const handleScroll = () => {
     // Update the scroll state when handleScrollDown is clicked in Greetings
-    setScrollPosition(scrollPosition + 1)
-  }
+    setScrollPosition(scrollPosition + 1);
+  };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handlebuttonClick = (value) => {
-    const currentURL = window.location.href
+    const currentURL = window.location.href;
 
-    if (value === 'home') {
-      if (!currentURL.includes('/home')) {
-        navigate('/')
+    if (value === "home") {
+      if (!currentURL.includes("/home")) {
+        navigate("/");
       }
     }
-    if (value === 'upcoming-events') {
-      if (!currentURL.includes('/upcoming-events')) {
-        navigate('/upcoming-events')
+    if (value === "upcoming-events") {
+      if (!currentURL.includes("/upcoming-events")) {
+        navigate("/upcoming-events");
       }
     }
-    if (value === 'meet-the-team') {
-      if (!currentURL.includes('/meet-the-team')) {
-        navigate('/meet-the-team')
+    if (value === "meet-the-team") {
+      if (!currentURL.includes("/meet-the-team")) {
+        navigate("/meet-the-team");
       }
     }
-    if (value === 'magazine') {
-      if (!currentURL.includes('/magazine')) {
-        navigate('/magazine')
+    if (value === "magazine") {
+      if (!currentURL.includes("/magazine")) {
+        navigate("/magazine");
       }
     }
-    if (value === 'admin-portal') {
-      if (!currentURL.includes('/admin-portal')) {
-        navigate('/adminlogin')
+    if (value === "admin-portal") {
+      if (!currentURL.includes("/admin-portal")) {
+        navigate("/adminlogin");
       }
     }
-  }
+  };
 
   const handleiconClick = (value) => {
-    if (value === 'facebook') {
-      window.open('https://www.facebook.com/durgaville/', '_blank')
+    if (value === "facebook") {
+      window.open("https://www.facebook.com/durgaville/", "_blank");
     }
-    if (value === 'instagram') {
-      window.open('https://www.instagram.com/durgaville/', '_blank')
+    if (value === "instagram") {
+      window.open("https://www.instagram.com/durgaville/", "_blank");
     }
-    if (value === 'youtube') {
-      window.open('https://www.youtube.com/@durgaville8491', '_blank')
+    if (value === "youtube") {
+      window.open("https://www.youtube.com/@durgaville8491", "_blank");
     }
-  }
+  };
 
   return (
-    <div style={{ overflow: 'hidden' }}>
+    <div style={{ overflow: "hidden" }}>
       <Helmet>
-          <title>Admin - Durgaville</title>
-          <meta name="description" content="Admin access: Durgaville" />
+        <title>Admin - Durgaville</title>
+        <meta name="description" content="Admin access: Durgaville" />
       </Helmet>
       <Grid>
         <Grid.Row>
           <Grid.Column width={16} only="computer tablet" verticalAlign="middle" textAlign="middle">
-            <Background />
             <Greetings onScrollDown={handleScroll} />
             <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
             {/* <div ref={homeRef}> */}
@@ -101,57 +99,86 @@ function DashboardAdmin() {
                 visible={navbarVisible}
                 width="wide"
                 direction="right"
-                style={{ background: 'white', paddingTop: '10%', paddingLeft: '10%' }}
+                style={{ background: "white", paddingTop: "10%", paddingLeft: "10%" }}
               >
                 <Grid>
-                  <Grid.Row style={{ borderBottom: '.7px solid #dee0e3', paddingBottom: '6%', marginRight: '14%' }}>
-                    <p onClick={() => handlebuttonClick('home')} style={{ fontWeight: 'bolder', fontFamily: 'Inter' }}>
+                  <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
+                    <p onClick={() => handlebuttonClick("home")} style={{ fontWeight: "bolder", fontFamily: "Inter" }}>
                       HOME
                     </p>
                   </Grid.Row>
 
-                  <Grid.Row style={{ borderBottom: '.7px solid #dee0e3', paddingBottom: '6%', marginRight: '14%' }}>
-                    <p onClick={() => handlebuttonClick('upcoming-events')} style={{ fontWeight: 'bolder', fontFamily: 'Inter' }}>
+                  <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
+                    <p
+                      onClick={() => handlebuttonClick("upcoming-events")}
+                      style={{ fontWeight: "bolder", fontFamily: "Inter" }}
+                    >
                       UPCOMING EVENTS
                     </p>
                   </Grid.Row>
 
-                  <Grid.Row style={{ borderBottom: '.7px solid #dee0e3', paddingBottom: '6%', marginRight: '14%' }}>
-                    <p onClick={() => handlebuttonClick('meet-the-team')} style={{ fontWeight: 'bolder', fontFamily: 'Inter' }}>
+                  <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
+                    <p
+                      onClick={() => handlebuttonClick("meet-the-team")}
+                      style={{ fontWeight: "bolder", fontFamily: "Inter" }}
+                    >
                       MEET THE TEAM
                     </p>
                   </Grid.Row>
 
-                  <Grid.Row style={{ borderBottom: '.7px solid #dee0e3', paddingBottom: '6%', marginRight: '14%' }}>
-                    <p onClick={() => handlebuttonClick('magazine')} style={{ fontWeight: 'bolder', fontFamily: 'Inter' }}>
+                  <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
+                    <p
+                      onClick={() => handlebuttonClick("magazine")}
+                      style={{ fontWeight: "bolder", fontFamily: "Inter" }}
+                    >
                       MAGAZINE
                     </p>
                   </Grid.Row>
 
-                  <Grid.Row style={{ borderBottom: '.7px solid #dee0e3', paddingBottom: '6%', marginRight: '14%' }}>
-                    <p onClick={() => handlebuttonClick('admin-portal')} style={{ fontWeight: 'bolder', fontFamily: 'Inter' }}>
+                  <Grid.Row style={{ borderBottom: ".7px solid #dee0e3", paddingBottom: "6%", marginRight: "14%" }}>
+                    <p
+                      onClick={() => handlebuttonClick("admin-portal")}
+                      style={{ fontWeight: "bolder", fontFamily: "Inter" }}
+                    >
                       ADMIN PORTAL
                     </p>
                   </Grid.Row>
 
-                  <Grid.Row style={{ marginTop: '6%' }}>
+                  <Grid.Row style={{ marginTop: "6%" }}>
                     <Grid.Column width={4}>
-                      <Icon onClick={() => handleiconClick('facebook')} circular color="black" name="facebook f" size="large" />
+                      <Icon
+                        onClick={() => handleiconClick("facebook")}
+                        circular
+                        color="black"
+                        name="facebook f"
+                        size="large"
+                      />
                     </Grid.Column>
 
                     <Grid.Column width={4}>
-                      <Icon onClick={() => handleiconClick('instagram')} circular color="black" name="instagram" size="large" />
+                      <Icon
+                        onClick={() => handleiconClick("instagram")}
+                        circular
+                        color="black"
+                        name="instagram"
+                        size="large"
+                      />
                     </Grid.Column>
 
                     <Grid.Column width={4}>
-                      <Icon onClick={() => handleiconClick('youtube')} circular color="black" name="youtube" size="large" />
+                      <Icon
+                        onClick={() => handleiconClick("youtube")}
+                        circular
+                        color="black"
+                        name="youtube"
+                        size="large"
+                      />
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
               </Sidebar>
 
               <SidebarPusher dimmed={navbarVisible}>
-                <Background />
                 <Greetings onScrollDown={handleScroll} />
                 <Navbar visible={navbarVisible} setVisible={setNavbarVisible} />
                 {/* <div ref={homeRef}> */}
@@ -165,7 +192,7 @@ function DashboardAdmin() {
         </Grid.Row>
       </Grid>
     </div>
-  )
+  );
 }
 
-export default DashboardAdmin
+export default DashboardAdmin;

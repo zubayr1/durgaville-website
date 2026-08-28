@@ -1,0 +1,146 @@
+/* ── Page wrapper ── */
+.pujo26-page {
+  font-family: "Inter", sans-serif;
+  background-color: #fdf8f2;
+}
+
+
+/* ── Two-column body ── */
+.pujo26-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 3rem 5rem;
+}
+
+/* ── Left column ── */
+.pujo26-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.pujo26-tag {
+  display: inline-block;
+  background: #fdf0e0;
+  color: #c05621;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 99px;
+  border: 1px solid #f6d0a0;
+  margin-bottom: 1.2rem;
+}
+
+.pujo26-section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #2d1a0e;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+}
+
+.pujo26-text {
+  font-size: 1.05rem;
+  color: #5a4033;
+  line-height: 1.85;
+  margin-bottom: 1.1rem;
+}
+
+.pujo26-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.pujo26-highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: #fff;
+  border: 1px solid #f0e0d0;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #3d2310;
+  box-shadow: 0 2px 8px rgba(180, 80, 20, 0.07);
+}
+
+.pujo26-highlight-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+/* ── Right column — reel ── */
+.pujo26-right {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.pujo26-reel-frame {
+  padding: 6px;
+  background: linear-gradient(145deg, #d4652a, #e89c3a, #a81f3a);
+  border-radius: 22px;
+  box-shadow: 0 16px 56px rgba(100, 20, 10, 0.28);
+}
+
+.pujo26-reel-container {
+  width: 320px;
+  aspect-ratio: 9 / 16;
+  border-radius: 17px;
+  overflow: hidden;
+  background: #000;
+}
+
+.pujo26-reel-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .pujo26-body {
+    flex-direction: column;
+    padding: 3rem 2rem 4rem;
+    gap: 3rem;
+  }
+
+  .pujo26-reel-container {
+    width: 280px;
+  }
+
+  .pujo26-title {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .pujo26-title {
+    font-size: 2.2rem;
+  }
+
+  .pujo26-section-title {
+    font-size: 1.6rem;
+  }
+
+  .pujo26-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .pujo26-reel-container {
+    width: 240px;
+  }
+
+  .pujo26-body {
+    padding: 2.5rem 1.2rem 3rem;
+  }
+}
